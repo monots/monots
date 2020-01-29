@@ -1,0 +1,39 @@
+{
+  "name": "eslint-config-monots",
+  "version": "0.0.0",
+  "description": "Provides the monots eslint configuration",
+  "homepage": "https://github.com/monots/monots/tree/master/packages/eslint-config-monots",
+  "repository": "https://github.com/monots/monots/tree/master/packages/eslint-config-monots",
+  "license": "MIT",
+  "author": "Ifiok Jr. <ifiokotung@gmail.com>",
+  "files": [
+    "lib",
+    "src",
+    "*.js"
+  ],
+  "sideEffects": false,
+  "main": "index.js",
+  "types": "lib/index.d.ts",
+  "dependencies": {
+    "@types/eslint": "^6.1.6",
+    "@typescript-eslint/eslint-plugin": "^2.18.0",
+    "@typescript-eslint/parser": "^2.18.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-formatter-pretty": "^3.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^23.4.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^2.1.2",
+    "eslint-plugin-simple-import-sort": "^5.0.1",
+    "eslint-plugin-unicorn": "^15.0.0"
+  },
+  "peerDependencies": {
+    "eslint": "^6"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "cjs": "lib/dist/core.cjs.js"
+}

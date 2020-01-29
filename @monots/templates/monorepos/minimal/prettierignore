@@ -1,0 +1,14 @@
+!.babelrc.js
+!**/.babelrc.js
+!.eslintrc.js
+!**/.eslintrc.js
+**/lib
+lib
+**/dist
+dist
+node_modules
+public
+coverage
+docs/.cache/
+docs/gatsby-config.js
+.yarn/**

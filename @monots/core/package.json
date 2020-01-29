@@ -1,0 +1,51 @@
+{
+  "name": "@monots/core",
+  "version": "0.0.0",
+  "description": "The monots cli for creating your next TypeScript monorepo",
+  "homepage": "https://github.com/monots/monots/tree/master/@monots/core",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/monots/monots.git",
+    "directory": "@monots/core"
+  },
+  "license": "MIT",
+  "author": "Ifiok Jr. <ifiokotung@gmail.com>",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "dependencies": {
+    "@babel/core": "^7",
+    "@babel/runtime": "^7",
+    "@remirror/core-helpers": "^0.7.3",
+    "@sindresorhus/is": "^1.2.0",
+    "@types/fs-extra": "^8.0.1",
+    "@types/glob": "^7.1.1",
+    "@types/json5": "^0.0.30",
+    "@types/mustache": "^4.0.0",
+    "cosmiconfig": "^6.0.0",
+    "deepmerge": "^4.2.2",
+    "execa": "^4.0.0",
+    "fs-extra": "^8.1.0",
+    "get-dependents-graph": "^0.2.0",
+    "get-workspaces": "^0.6.0",
+    "glob": "^7.1.6",
+    "globby": "^11.0.0",
+    "json5": "^2.1.1",
+    "memfs": "^3.0.4",
+    "mustache": "^4.0.0",
+    "read-pkg": "^5.2.0",
+    "strip-bom": "^4.0.0",
+    "type-fest": "^0.9.0",
+    "unionfs": "^4.2.1",
+    "write-json-file": "^4.2.1"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

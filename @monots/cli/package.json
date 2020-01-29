@@ -1,0 +1,69 @@
+{
+  "name": "@monots/cli",
+  "version": "0.0.0",
+  "description": "Create and manage your TypeScript monorepo with monots",
+  "homepage": "https://github.com/monots/monots/tree/master/@monots/cli",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/monots/monots.git",
+    "directory": "@monots/cli"
+  },
+  "license": "MIT",
+  "author": "Ifiok Jr. <ifiokotung@gmail.com>",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "sideEffects": false,
+  "main": "src/index.ts",
+  "bin": {
+    "monots": "lib/cli.js",
+    "mts": "lib/cli.js"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7",
+    "@monots/core": "^0.0.0",
+    "@monots/templates": "^0.0.0",
+    "@sindresorhus/is": "^1.2.0",
+    "@types/fs-extra": "^8.0.1",
+    "@types/ink-spinner": "^2.0.3",
+    "@types/mri": "^1.1.0",
+    "@types/ms": "^0.7.31",
+    "@types/node": ">=13.5.1",
+    "@types/react": "^16.9.19",
+    "@types/update-notifier": "^2.5.0",
+    "@types/yup": "^0.26.29",
+    "chalk": "^3.0.0",
+    "clipanion": "^2.1.6",
+    "dargs": "^7.0.0",
+    "delay": "^4.3.0",
+    "figures": "^3.1.0",
+    "fs-extra": "^8.1.0",
+    "ink": "^2.5.0",
+    "ink-link": "^1.0.0",
+    "ink-multi-select": "^1.1.0",
+    "ink-spinner": "^3.0.1",
+    "load-json-file": "^6.2.0",
+    "ms": "^2.1.2",
+    "react": "^16.12.0",
+    "react-use": "^13.22.3",
+    "terminal-link": "^2.1.1",
+    "type-fest": "^0.9.0",
+    "update-notifier": "^4.0.0",
+    "yup": "^0.28.1"
+  },
+  "devDependencies": {
+    "@testing-library/react-hooks": "^3.2.1",
+    "ink-testing-library": "^1.0.3"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "publishConfig": {
+    "access": "public",
+    "main": "lib/index.js"
+  },
+  "monotsPackage": {
+    "type": "cli"
+  }
+}

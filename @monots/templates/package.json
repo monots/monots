@@ -1,0 +1,31 @@
+{
+  "name": "@monots/templates",
+  "version": "0.0.0",
+  "description": "The monots templates",
+  "homepage": "https://github.com/monots/monots/tree/master/@monots/templates",
+  "repository": "https://github.com/monots/monots/tree/master/@monots/templates",
+  "license": "MIT",
+  "author": "Ifiok Jr. <ifiokotung@gmail.com>",
+  "files": [
+    "monorepos",
+    "packages"
+  ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "dependencies": {
+    "@monots/core": "0.0.0",
+    "@types/fs-extra": "^8.0.1",
+    "@types/semver": "^7.1.0",
+    "@types/shelljs": "^0.8.6",
+    "execa": "^4.0.0",
+    "fs-extra": "^8.1.0",
+    "semver": "^7.1.1",
+    "shelljs": "^0.8.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "monotsPackage": {
+    "type": "library"
+  }
+}

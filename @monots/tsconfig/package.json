@@ -1,0 +1,26 @@
+{
+  "name": "@monots/tsconfig",
+  "version": "0.0.0",
+  "description": "The base TypeScript configuration for all monots projects",
+  "keywords": [
+    "tsconfig",
+    "typescript",
+    "ts",
+    "config",
+    "configuration"
+  ],
+  "homepage": "https://github.com/monots/monots/tree/master/@monots/tsconfig",
+  "repository": "https://github.com/monots/monots/tree/master/@monots/tsconfig",
+  "license": "MIT",
+  "author": "Ifiok Jr. <ifiokotung@gmail.com>",
+  "files": [
+    "tsconfig.json"
+  ],
+  "main": "tsconfig.json",
+  "publishConfig": {
+    "access": "public"
+  },
+  "monotsPackage": {
+    "type": "other"
+  }
+}

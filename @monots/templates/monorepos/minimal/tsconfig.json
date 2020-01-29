@@ -1,0 +1,6 @@
+{
+  "extends": "{{supportDirectory}}/tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["node", "jest"]
+  }
+}

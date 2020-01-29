@@ -1,0 +1,34 @@
+{
+  "name": "jest-preset-monots",
+  "version": "0.0.0",
+  "description": "Provides the monots eslint configuration",
+  "homepage": "https://github.com/monots/monots/tree/master/packages/jest-preset-monots",
+  "repository": "https://github.com/monots/monots/tree/master/packages/jest-preset-monots",
+  "license": "MIT",
+  "author": "Ifiok Jr. <ifiokotung@gmail.com>",
+  "files": [
+    "lib",
+    "src",
+    "*.js",
+    "*.d.ts"
+  ],
+  "sideEffects": false,
+  "main": "lib/index.js",
+  "module": "lib/dist/core.esm.js",
+  "types": "lib/index.d.ts",
+  "dependencies": {
+    "@monots/core": "^0.0.0",
+    "jest-circus": "^25.1.0",
+    "jest-watch-typeahead": "^0.4.2",
+    "ts-jest": "^25.0.0"
+  },
+  "peerDependencies": {
+    "jest": "^25.1.0",
+    "ts-jest": "^25.0.0",
+    "typescript": "^3.7.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "cjs": "lib/dist/core.cjs.js"
+}

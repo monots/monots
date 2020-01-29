@@ -1,0 +1,29 @@
+{
+  "name": "prettier-config-monots",
+  "version": "0.0.0",
+  "description": "The monots prettier configuration",
+  "homepage": "https://github.com/monots/monots/tree/master/packages/prettier-config-monots",
+  "repository": "https://github.com/monots/monots/tree/master/packages/prettier-config-monots",
+  "license": "MIT",
+  "author": "Ifiok Jr. <ifiokotung@gmail.com>",
+  "files": [
+    "internal",
+    "lib",
+    "src"
+  ],
+  "sideEffects": false,
+  "main": "index.js",
+  "module": "lib/dist/core.esm.js",
+  "types": "lib/index.d.ts",
+  "dependencies": {
+    "@types/prettier": "^1.19.0",
+    "prettier-plugin-packagejson": "^2.0.10"
+  },
+  "peerDependencies": {
+    "prettier": "^1.19.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "cjs": "lib/dist/core.cjs.js"
+}

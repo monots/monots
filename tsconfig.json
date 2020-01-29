@@ -1,0 +1,12 @@
+{
+  "extends": "./support/tsconfig.base.json",
+  "compilerOptions": {
+    "declaration": false,
+    "declarationMap": false,
+    "noEmit": true,
+    "types": ["jest", "node"],
+    "skipLibCheck": false
+  },
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js"],
+  "exclude": ["**/lib/", "**/dist/", "**/node_modules", ".yarn/**", "**/.cache/"]
+}
