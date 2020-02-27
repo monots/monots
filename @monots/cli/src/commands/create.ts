@@ -1,7 +1,14 @@
+import { CommitType } from '@monots/templates';
 import { Command } from 'clipanion';
 import terminalLink from 'terminal-link';
 
-import { BaseCommand, CommandArray, CommandString, GetShapeOfCommandData } from './base';
+import {
+  BaseCommand,
+  CommandArray,
+  CommandEnum,
+  CommandString,
+  GetShapeOfCommandData,
+} from './base';
 
 /**
  * Create a new monorepo project.
@@ -37,25 +44,36 @@ export class CreateCommand extends BaseCommand {
     ],
   });
 
+  /**
+   * The name of the created monorepo.
+   */
   @Command.String({ required: true })
-  public name!: CommandString;
+  public name: CommandString = '';
 
-  @Command.String('--template')
+  /**
+   * The monorepo template to use.
+   */
+  @Command.String('--template,-t')
   public template: CommandString = 'minimal';
+
+  /**
+   * The license to use for the monorepo.
+   */
+  @Command.String('--license,-l')
+  public license: CommandString = 'MIT';
 
   /**
    * Specify the names and types of packages you would like to build.
    *
-   * For example the following would create three packages within the awesome monorepo.
+   * For example the following would create three packages within the `awesome` monorepo.
    *
    * ```bash
-   * monots create awesome --package @awesome/cli,cli --package @awesome/core,minimal \
-   *     --package @awesome/core,react-ui
+   * monots create awesome --pkg @awesome/cli,cli --pkg @awesome/core,minimal \
+   *     --pkg @awesome/core,react-ui
    * ```
-   *
    */
-  @Command.Array('--package')
-  public packages: CommandArray = [];
+  @Command.Array('--pkg,-p', {})
+  public pkg: CommandArray = [];
 
   /**
    * The template library to default to using.
@@ -66,12 +84,22 @@ export class CreateCommand extends BaseCommand {
    *
    * Multiple can be specified.
    */
-  @Command.Array('--template-library')
-  public templateLibraries: CommandArray = [];
+  @Command.Array('--template-library,-T', {})
+  public templateLibrary: CommandArray = [];
+
+  @Command.Array('--commit-type')
+  public commitType: CommandEnum<CommitType> = 'conventional';
 
   @BaseCommand.Path('create')
   public async execute() {
-    this.context.stdout.write(this.cli.usage(null, { detailed: this.verbose }));
+    this.context.stdout.write(
+      JSON.stringify({
+        name: this.name,
+        templateLibrary: this.templateLibrary,
+        pkg: this.pkg,
+        template: this.template,
+      }),
+    );
   }
 }
 

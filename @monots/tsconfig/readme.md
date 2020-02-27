@@ -12,7 +12,8 @@
 [license]: https://flat.badgen.net/badge/license/MIT/purple
 [size]: https://bundlephobia.com/result?p=@monots/tsconfig
 [size-badge]: https://flat.badgen.net/bundlephobia/minzip/@monots/tsconfig
-[typescript]: https://flat.badgen.net/badge/icon/TypeScript/?icon=typescript&label
+[typescript]:
+  https://flat.badgen.net/badge/icon/TypeScript/?icon=typescript&label&labelColor=blue&color=555555
 [downloads-badge]: https://badgen.net/npm/dw/@monots/tsconfig/red?icon=npm
 
 ## Installation

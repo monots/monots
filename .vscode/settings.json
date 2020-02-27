@@ -5,9 +5,9 @@
   "editor.insertSpaces": true,
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.codeActionsOnSaveTimeout": 1000,
+  // "editor.codeActionsOnSaveTimeout": 1000,
   "editor.codeActionsOnSave": {
-    "source.fixAll": true
+    "source.fixAll.eslint": true
   },
 
   // File Settings

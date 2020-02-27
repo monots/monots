@@ -87,16 +87,18 @@ export interface PackageJson extends BasePackageJson {
    *
    * Please note private should be set to true to use workspaces
    */
-  workspaces?: string[] | {
-    /**
-     * The packages blob to use for workspaces.
-     */
-    packages: string[],
-    /**
-     * A list of glob patterns for npm packages that should not be hoisted.
-     */
-    nohoist: string[]
-  }
+  workspaces?:
+    | string[]
+    | {
+        /**
+         * The packages blob to use for workspaces.
+         */
+        packages?: string[];
+        /**
+         * A list of glob patterns for npm packages that should not be hoisted.
+         */
+        nohoist?: string[];
+      };
 }
 
 export interface MonotsPackage {
@@ -239,7 +241,6 @@ export interface ConfigTemplateProperties {
  * The template interface
  */
 export interface Template<Context extends TemplateContext = TemplateContext> extends BaseTemplate {
-
   /**
    * The package creator.
    */
@@ -278,15 +279,11 @@ export interface BaseTemplate {
    */
   renameFiles: MapLike<string | string[]>;
 
-
   /**
    * The absolute path to the template.
    */
   path: string;
-
 }
-
-
 
 type TemplateContext = Record<string, unknown>;
 

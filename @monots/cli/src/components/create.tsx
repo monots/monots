@@ -1,6 +1,14 @@
 import { MonorepoTemplate } from '@monots/core';
-import { copyTemplate, renameFiles, templateFiles } from '@monots/templates';
+import {
+  addDependencies,
+  copyTemplate,
+  initializeGit,
+  renameFiles,
+  templateFiles,
+  writePackageJson,
+} from '@monots/templates';
 import { render } from 'ink';
+import { join } from 'path';
 import React, { FC, useEffect } from 'react';
 import useSetState from 'react-use/lib/useSetState';
 
@@ -31,36 +39,54 @@ interface State {
   step: Step;
 }
 
-const useCreateMonorepo = ({ cwd, template, name }: CreateProps) => {
+const useCreateMonorepo = ({ cwd, config, name, license, commitType }: CreateProps) => {
   const [state, setState] = useSetState<State>({ step: Step.CopyTemplate });
 
+  const destination = join(cwd, name);
+
   useEffect(() => {
-    copyTemplate(template.path, cwd)
+    copyTemplate(config.path, destination)
       .then(() => {
         setState({ step: Step.RenameFiles });
-        return renameFiles(template.renameFiles, cwd);
+        return renameFiles(config.renameFiles, destination);
       })
       .then(() => {
-        setState({ step: Step.RenameFiles });
-        return templateFiles(template, name);
+        setState({ step: Step.TemplateFiles });
+        return templateFiles(config, name, destination);
       })
       .then(() => {
-        setState({ step: Step.RenameFiles });
-        return template;
+        setState({ step: Step.CreatePackageJson });
+        const json = config.createPackageJson(config.extraContext({ license, name }));
+        return writePackageJson(json, destination);
+      })
+      .then(() => {
+        setState({ step: Step.InstallDependencies });
+        addDependencies(config.devDependencies, { dev: true, cwd: destination });
+      })
+      .then(() => {
+        setState({ step: Step.InitializeGit });
+        initializeGit({ commitType, cwd: destination });
+      })
+      .then(() => {
+        setState({ step: Step.Complete });
       });
-  }, [template, setState, cwd, name]);
+  }, [config, setState, cwd, name, destination, license, commitType]);
 
   return state;
 };
 
 type CreateProps = {
-  template: MonorepoTemplate;
+  config: MonorepoTemplate;
 } & AvailableCommands['create'];
 
 export const Create: FC<CreateProps> = (props: CreateProps) => {
   const { step } = useCreateMonorepo(props);
 
-  return <>{step}</>;
+  return (
+    <>
+      {step} {messaging[step]}
+    </>
+  );
 };
 
 /**

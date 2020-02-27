@@ -1,0 +1,29 @@
+{
+  "name": "eslint-plugin-monots",
+  "version": "0.0.0",
+  "description": "Provides the monots eslint plugins",
+  "homepage": "https://github.com/monots/monots/tree/master/packages/eslint-plugin-monots",
+  "repository": "https://github.com/monots/monots/tree/master/packages/eslint-plugin-monots",
+  "license": "MIT",
+  "author": "Ifiok Jr. <ifiokotung@gmail.com>",
+  "files": [
+    "lib",
+    "src",
+    "*.js"
+  ],
+  "sideEffects": false,
+  "main": "index.js",
+  "types": "lib/index.d.ts",
+  "dependencies": {
+    "@types/eslint": "^6.1.8",
+    "@typescript-eslint/eslint-plugin": "^2.21.0"
+  },
+  "peerDependencies": {
+    "eslint": "^6",
+    "typescript": "^3.7"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "cjs": "lib/dist/core.cjs.js"
+}

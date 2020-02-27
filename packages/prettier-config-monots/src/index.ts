@@ -1,6 +1,5 @@
-/**
- * The main prettier configuration.
- */
+import { join } from 'path';
+
 export const useTabs = false;
 export const tabWidth = 2;
 export const jsxBracketSameLine = false;
@@ -12,4 +11,4 @@ export const trailingComma = 'all';
 export const proseWrap = 'always';
 export const endOfLine = 'lf';
 export const jsxSingleQuote = true;
-export const plugins = ['prettier-plugin-packagejson'];
+export const plugins = ['prettier-plugin-packagejson', join(__dirname, './import-sorter')];

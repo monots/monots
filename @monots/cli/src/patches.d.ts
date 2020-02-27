@@ -25,3 +25,16 @@ declare module 'ink-link' {
 
   export = Link;
 }
+
+declare module 'ink-spinner' {
+  import * as cliSpinners from 'cli-spinners';
+  import { Component } from 'react';
+
+  interface SpinnerProps {
+    type?: cliSpinners.SpinnerName;
+  }
+
+  class Spinner extends Component<SpinnerProps> {}
+
+  export = Spinner;
+}

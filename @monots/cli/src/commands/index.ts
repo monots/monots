@@ -3,16 +3,16 @@ import { Command } from 'clipanion';
 import { BaseCommand } from './base';
 
 export class HelpCommand extends BaseCommand {
-  @Command.Path('--help')
   @Command.Path('-h')
+  @Command.Path('--help')
   public async execute() {
     this.context.stdout.write(this.cli.usage(null, { detailed: this.verbose }));
   }
 }
 
 export class VersionCommand extends BaseCommand {
-  @Command.Path('--version')
   @Command.Path('-v')
+  @Command.Path('--version')
   public async execute() {
     const { version, name, stdout } = this.context;
     if (this.verbose) {
@@ -26,3 +26,4 @@ export class VersionCommand extends BaseCommand {
 }
 
 export { GenerateTypescriptCommand, GenerateCommand } from './generate';
+export { CreateCommand } from './create';

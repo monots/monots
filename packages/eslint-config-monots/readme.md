@@ -20,6 +20,15 @@
 yarn add eslint-config-monots
 ```
 
+You will also need to install the peer dependency plugins used by this package in order for things
+to work as expected.
+
+```bash
+yarn add -D eslint-config-prettier eslint-plugin-import eslint-plugin-jest \
+  eslint-plugin-jsx-a11y eslint-plugin-promise eslint-plugin-react \
+  eslint-plugin-react-hooks eslint-plugin-simple-import-sort
+```
+
 ## Usage
 
 In your `package.json` files add the following configuration
@@ -34,7 +43,7 @@ In your `package.json` files add the following configuration
 }
 ```
 
-If you don't want to use `package.json`, you can use any of the
+If you don't want to use your `package.json` file, you can use any of the
 [supported eslint configuration formats](https://eslint.org/docs/user-guide/configuring#configuration-file-formats)
 to export a string, e.g. `.eslintrc.json`:
 

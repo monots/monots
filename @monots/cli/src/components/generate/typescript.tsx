@@ -2,7 +2,7 @@
 /// <reference path="../../patches.d.ts" />
 
 import { prettifyFiles, relative } from '@monots/core';
-import { GenerateTypeScriptReturn } from '@monots/core/lib/generate/tsconfigs';
+import { GenerateTypeScriptReturn } from '@monots/core/lib/generate/tsconfig';
 import is from '@sindresorhus/is';
 import figures from 'figures';
 import { Box, Color, render, Text } from 'ink';
@@ -78,6 +78,36 @@ const useGenerateTs = ({ generate, startTime = Date.now() }: GenerateTypeScriptP
 };
 
 /**
+ * Renders a loading line
+ */
+const LoadingLine: FC<GenerateTsState & { value: Step }> = ({ step, error, value, children }) => {
+  if (step < value) {
+    return null;
+  }
+
+  const getElement = () => {
+    if (error) {
+      return <Color red={true}>{figures.cross}</Color>;
+    }
+
+    if (step === value) {
+      return <Spinner />;
+    }
+
+    return <Color green={true}>{figures.tick}</Color>;
+  };
+
+  return (
+    <Box height={1}>
+      <Box paddingRight={2}>{getElement()}</Box>
+      <Text>
+        <Color grey={true}>{children}</Color>
+      </Text>
+    </Box>
+  );
+};
+
+/**
  * Renders the loading component and timestamp for the command.
  */
 export const GenerateTypeScript = ({ verbose, ...props }: GenerateTypeScriptProps) => {
@@ -136,36 +166,6 @@ export const GenerateTypeScript = ({ verbose, ...props }: GenerateTypeScriptProp
         </Box>
       )}
     </>
-  );
-};
-
-/**
- * Renders a loading line
- */
-const LoadingLine: FC<GenerateTsState & { value: Step }> = ({ step, error, value, children }) => {
-  if (step < value) {
-    return null;
-  }
-
-  const getElement = () => {
-    if (error) {
-      return <Color red={true}>{figures.cross}</Color>;
-    }
-
-    if (step === value) {
-      return <Spinner />;
-    }
-
-    return <Color green={true}>{figures.tick}</Color>;
-  };
-
-  return (
-    <Box height={1}>
-      <Box paddingRight={2}>{getElement()}</Box>
-      <Text>
-        <Color grey={true}>{children}</Color>
-      </Text>
-    </Box>
   );
 };
 

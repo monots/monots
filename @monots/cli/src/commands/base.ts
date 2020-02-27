@@ -51,20 +51,22 @@ export interface FlaggedCommand {
   __cmdProperty?: never;
 }
 
-export type CommandString = string & FlaggedCommand;
-export type CommandBoolean = boolean & FlaggedCommand;
-export type CommandArray<GType = string> = GType[] & FlaggedCommand;
+type Annotate<GType> = GType & FlaggedCommand;
 
-type ExtractShapeKeys<Base, Condition, Ignored = undefined> = {
-  [Key in keyof Base]: Base[Key] extends Condition | (Condition | Ignored) ? Key : never;
-}[keyof Base];
+export type CommandString = Annotate<string>;
+export type CommandBoolean = Annotate<boolean>;
+export type CommandArray<GType = string> = Annotate<GType[]>;
+export type CommandEnum<GType extends string> = Annotate<GType>;
 
-type ExtractSubType<Base, Condition, Ignored = undefined> = Pick<
-  Base,
-  ExtractShapeKeys<Base, Condition, Ignored>
+type ConditionalKeys<Base, Condition> = NonNullable<
+  {
+    [Key in keyof Base]: Base[Key] extends Condition ? Key : never;
+  }[keyof Base]
 >;
 
-export type GetShapeOfCommandData<GCommand extends BaseCommand> = ExtractSubType<
+type ConditionalPick<Base, Condition> = Pick<Base, ConditionalKeys<Base, Condition>>;
+
+export type GetShapeOfCommandData<GCommand extends BaseCommand> = ConditionalPick<
   GCommand,
   FlaggedCommand
 >;

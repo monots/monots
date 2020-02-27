@@ -1,1 +1,6 @@
-export { generateMainTsConfig, generatePackageTsConfigs, generateBaseTsConfig, GenerateTypeScriptReturn } from './tsconfigs';
+export {
+  generateMainTsConfig,
+  generatePackageTsConfigs,
+  generateBaseTsConfig,
+  GenerateTypeScriptReturn,
+} from './tsconfig';

@@ -11,6 +11,7 @@ const tsProjectRules = {
 };
 
 export const parser = '@typescript-eslint/parser';
+
 const extendsConfig = [
   'eslint:recommended',
   'plugin:@typescript-eslint/eslint-recommended', // Disables incompatible eslint:recommended settings
@@ -21,6 +22,7 @@ const extendsConfig = [
   'prettier/@typescript-eslint',
   'prettier/react',
 ];
+
 export const plugins = [
   'simple-import-sort',
   'jest',
@@ -39,11 +41,13 @@ export const parserOptions = {
     jsx: true,
   },
 };
+
 export const settings = {
   react: {
     version: 'detect',
   },
 };
+
 export const env = {
   browser: true,
   node: true,

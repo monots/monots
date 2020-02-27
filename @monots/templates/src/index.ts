@@ -4,13 +4,17 @@ import { monorepos as monorepoTemplates } from './monorepos';
 import { packages as packageTemplates } from './packages';
 import { defaultMonorepoTemplate, defaultPackageTemplate, TemplateType } from './utils';
 
+export type { CommitType } from './utils';
 export {
+  addDependencies,
   copyTemplate,
-  renameFiles,
-  templateFiles,
   getAuthorName,
   getYarnVersion,
+  initializeGit,
   packageDirectory,
+  renameFiles,
+  templateFiles,
+  writePackageJson,
   yarnSetVersionCommand,
 } from './utils';
 

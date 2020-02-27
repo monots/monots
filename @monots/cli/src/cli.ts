@@ -5,6 +5,7 @@ import './side-effects';
 import { Cli } from 'clipanion';
 
 import {
+  CreateCommand,
   GenerateCommand,
   GenerateTypescriptCommand,
   HelpCommand,
@@ -25,6 +26,7 @@ cli.register(HelpCommand);
 cli.register(VersionCommand);
 cli.register(GenerateCommand);
 cli.register(GenerateTypescriptCommand);
+cli.register(CreateCommand);
 
 cli.runExit(process.argv.slice(2), {
   internal: false,

@@ -20,7 +20,7 @@
     "@monots/core": "^0.0.0",
     "jest-circus": "^25.1.0",
     "jest-watch-typeahead": "^0.4.2",
-    "ts-jest": "^25.0.0"
+    "ts-jest": "^25.2.1"
   },
   "peerDependencies": {
     "jest": "^25.1.0",

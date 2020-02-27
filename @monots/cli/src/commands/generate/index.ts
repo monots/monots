@@ -6,6 +6,7 @@ import { BaseCommand, CommandBoolean, GetShapeOfCommandData } from '../base';
 
 export class GenerateCommand extends BaseCommand {
   public static usage = Command.Usage({
+    category: 'Generate',
     description: chalk.hex(colors.lightBlue)('Generate auto created files for the project.'),
   });
 

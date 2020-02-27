@@ -12,7 +12,7 @@
       "path": "@monots/templates/tsconfig.build.json"
     },
     {
-      "path": "packages/eslint-config-monots/tsconfig.build.json"
+      "path": "packages/eslint-plugin-monots/tsconfig.build.json"
     },
     {
       "path": "packages/jest-preset-monots/tsconfig.build.json"

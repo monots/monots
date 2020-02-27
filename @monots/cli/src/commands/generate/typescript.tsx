@@ -13,6 +13,7 @@ import { BaseCommand, CommandBoolean, GetShapeOfCommandData } from '../base';
 
 export class GenerateTypescriptCommand extends BaseCommand {
   public static usage = Command.Usage({
+    category: 'Generate',
     description: chalk.hex(colors.lightBlue)('Generate tsconfig files for your project.'),
     details: `
         This command generates the typescript configuration files used throughout the project.

@@ -1,18 +1,33 @@
-# monotos
+<br />
+
+<div align="center">
+  <br />
+  <div align="center">
+    <h1>🧐 monots</h1>
+  </div>
+    <br />
+    <br />
+    <br />
+</div>
+
+> TypeScript project management for monorepos.
 
 ## Table of Contents
 
-- [monotos](#monotos)
-  - [Table of Contents](#table-of-contents)
-  - [The problem](#the-problem)
-  - [The solution](#the-solution)
-  - [Usage](#usage)
-    - [Installation](#installation)
-    - [Commands](#commands)
-    - [Docs](#docs)
-    - [Alternatives](#alternatives)
+- [Table of Contents](#table-of-contents)
+- [⚠️ Warning](#%e2%9a%a0%ef%b8%8f-warning)
+- [The problem](#the-problem)
+- [The solution](#the-solution)
+- [Usage](#usage)
+  - [Installation](#installation)
+  - [Commands](#commands)
+  - [Docs](#docs)
+  - [Alternatives](#alternatives)
 
-TypeScript project management for monorepos.
+## ⚠️ Warning
+
+This codebase is under heavy development and is not yet ready for anything other than experimental
+contexts.
 
 ## The problem
 
