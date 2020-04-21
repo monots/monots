@@ -1,7 +1,8 @@
 import is from '@sindresorhus/is';
 import { all as merge } from 'deepmerge';
 import execa from 'execa';
-import getWorkspaces from 'get-workspaces';
+import { getPackages, getPackagesSync} from '@manypkg/get-packages';
+import { findRoot, findRootSync } from '@manypkg/find-root';
 import path from 'path';
 
 import { MonotsPackage, MonotsPackageConfig, PackageJson, PackageType } from './types';
@@ -111,17 +112,40 @@ const defaultMonotsPackage: Required<MonotsPackageConfig> = {
 /**
  * Get all the workspace packages.
  */
-export const getWorkspacePackages = async () => {
+export const getWorkspacePackages = async (cwd = process.cwd()) => {
   if (packages) {
     return packages;
   }
 
-  const pkgs = await getWorkspaces();
-  packages = (pkgs ?? []).map<MonotsPackage>(({ config, dir, name }) => ({
+  const root = await findRoot(cwd);
+  const { packages: rawPackages } = await getPackages(root);
+
+  packages = (rawPackages ?? []).map<MonotsPackage>(({ packageJson, dir }) => ({
     dir,
-    name,
-    packageJson: config,
-    monotsConfig: deepMerge(defaultMonotsPackage, (config as PackageJson).monotsPackage ?? {}),
+    name: packageJson.name,
+    packageJson,
+    monotsConfig: deepMerge(defaultMonotsPackage, (packageJson as PackageJson).monotsPackage ?? {}),
+  }));
+
+  return packages;
+};
+
+/**
+ * Get all the workspace packages synchronously.
+ */
+export const getWorkspacePackagesSync = (cwd = process.cwd()) => {
+  if (packages) {
+    return packages;
+  }
+
+  const root = findRootSync(cwd);
+  const { packages: rawPackages } = getPackagesSync(root);
+
+  packages = (rawPackages ?? []).map<MonotsPackage>(({ packageJson, dir }) => ({
+    dir,
+    name: packageJson.name,
+    packageJson,
+    monotsConfig: deepMerge(defaultMonotsPackage, (packageJson as PackageJson).monotsPackage ?? {}),
   }));
 
   return packages;

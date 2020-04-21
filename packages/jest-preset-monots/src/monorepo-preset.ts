@@ -1,4 +1,4 @@
-import { getConfigSync } from '@monots/core';
+import { getConfigSync, get } from '@monots/core';
 
 const { supportDirectory, rootDirectory, packageJson } = getConfigSync();
 

@@ -2,7 +2,6 @@ const fs = require("fs");
 
 const packageJson = JSON.parse(fs.readFileSync("./package.json", "utf-8"));
 const resolutions = packageJson.resolutions;
-console.log(packageJson.resolutions);
 
 module.exports = {
   hooks: {

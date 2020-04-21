@@ -17,7 +17,7 @@
 ## Installation
 
 ```bash
-yarn add @monots/config-prettier
+yarn add {{name}}
 ```
 
 ## Usage

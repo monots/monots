@@ -1,11 +1,11 @@
-import { findAndLoadTsConfig } from '@monots/core';
+import {tsconfigResolver} from 'tsconfig-resolver';
 import { pathsToModuleNameMapper } from 'ts-jest/utils';
 
 const { MONOTS_TSCONFIG, MONOTS_CWD = process.cwd() } = process.env;
-const { config } = findAndLoadTsConfig(MONOTS_CWD, MONOTS_TSCONFIG);
+const { config } = tsconfigResolver({cwd: MONOTS_CWD, filePath: MONOTS_TSCONFIG });
 
 export const transform = {
-  '^.+\\.[tj]sx?$': [require.resolve('ts-jest'), { rootMode: 'upward' }],
+  '^.+\\.[tj]sx?$': [require.resolve('babel-jest'), { rootMode: 'upward' }],
 };
 
 export const moduleFileExtensions = ['ts', 'tsx', 'json', 'js', 'jsx', 'node'];
@@ -15,7 +15,5 @@ export const moduleNameMapper = pathsToModuleNameMapper(
 );
 
 export const globals = {
-  'ts-jest': {
-    babelConfig: true,
-  },
+
 };

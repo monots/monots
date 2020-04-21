@@ -12,11 +12,11 @@
     "*.js"
   ],
   "sideEffects": false,
-  "main": "index.js",
+  "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "dependencies": {
-    "@types/eslint": "^6.1.8",
-    "@typescript-eslint/eslint-plugin": "^2.21.0"
+    "@types/eslint": "^6.8.0",
+    "@typescript-eslint/eslint-plugin": "^2.29.0"
   },
   "peerDependencies": {
     "eslint": "^6",
