@@ -1,20 +1,21 @@
 {
   "name": "monots",
   "version": "0.0.1",
+  "private": true,
   "description": "monots",
   "homepage": "https://github.com/monots/monots/tree/master/packages/monots",
   "repository": "https://github.com/monots/monots/tree/master/packages/monots",
   "license": "MIT",
   "author": "Ifiok Jr. <ifiokotung@gmail.com>",
+  "sideEffects": false,
+  "main": "lib/index.js",
+  "module": "lib/dist/core.esm.js",
+  "types": "lib/index.d.ts",
   "files": [
     "internal",
     "lib",
     "src"
   ],
-  "sideEffects": false,
-  "main": "lib/index.js",
-  "module": "lib/dist/core.esm.js",
-  "types": "lib/index.d.ts",
   "publishConfig": {
     "access": "public"
   }

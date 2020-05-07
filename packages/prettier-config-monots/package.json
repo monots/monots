@@ -17,8 +17,8 @@
   "types": "lib/index.d.ts",
   "dependencies": {
     "@types/prettier": "^2.0.0",
-    "prettier-plugin-sorted": "^1.2.1",
-    "prettier-plugin-packagejson": "^2.2.1",
+    "prettier-plugin-packagejson": "^2.2.3",
+    "prettier-plugin-sorted": "^2.0.0",
     "tiny-invariant": "^1.1.0"
   },
   "peerDependencies": {

@@ -10,15 +10,16 @@
   },
   "license": "MIT",
   "author": "Ifiok Jr. <ifiokotung@gmail.com>",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
+    "schema.json",
     "lib",
     "src"
   ],
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
   "dependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/runtime": "^7.9.2",
+    "@babel/core": "^7.9.6",
+    "@babel/runtime": "^7.9.6",
     "@manypkg/find-root": "1.0.0",
     "@manypkg/get-packages": "^1.0.1",
     "@sindresorhus/is": "^2.1.1",

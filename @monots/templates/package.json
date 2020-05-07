@@ -6,12 +6,12 @@
   "repository": "https://github.com/monots/monots/tree/master/@monots/templates",
   "license": "MIT",
   "author": "Ifiok Jr. <ifiokotung@gmail.com>",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "monorepos",
     "packages"
   ],
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
   "dependencies": {
     "@monots/core": "0.0.0",
     "@types/fs-extra": "^8.1.0",
@@ -21,8 +21,10 @@
     "execa": "^4.0.0",
     "filter-obj": "^2.0.1",
     "fs-extra": "^9.0.0",
+    "memfs": "^3.1.2",
     "semver": "^7.3.2",
-    "shelljs": "^0.8.3",
+    "shelljs": "^0.8.4",
+    "unionfs": "^4.4.0",
     "write-pkg": "^4.0.0"
   },
   "publishConfig": {

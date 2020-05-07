@@ -6,23 +6,23 @@
   "repository": "https://github.com/monots/monots/tree/master/packages/jest-preset-monots",
   "license": "MIT",
   "author": "Ifiok Jr. <ifiokotung@gmail.com>",
+  "sideEffects": false,
+  "main": "lib/index.js",
+  "module": "lib/dist/core.esm.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib",
     "src",
     "*.js",
     "*.d.ts"
   ],
-  "sideEffects": false,
-  "main": "lib/index.js",
-  "module": "lib/dist/core.esm.js",
-  "types": "lib/index.d.ts",
   "dependencies": {
     "@monots/core": "^0.0.0",
-    "babel-jest": "^25.4.0",
-    "jest-circus": "^25.4.0",
-    "jest-watch-typeahead": "^0.5.0",
-    "ts-jest": "^25.4.0",
-    "tsconfig-resolver": "^3.0.0"
+    "babel-jest": "^26.0.1",
+    "jest-circus": "^26.0.1",
+    "jest-watch-typeahead": "^0.6.0",
+    "ts-jest": "^25.5.0",
+    "tsconfig-resolver": "^3.0.1"
   },
   "peerDependencies": {
     "jest": "^25.1.0",
