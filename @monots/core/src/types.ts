@@ -126,6 +126,12 @@ export interface MonotsPackage {
 
 export interface MonotsConfig {
   /**
+   * Where the package build directory should be relative to it's `package.json` file.
+   *
+   * @default 'dist'
+   */
+  outputDirectory: string;
+  /**
    * The default path to the support directory.
    *
    * @remarks

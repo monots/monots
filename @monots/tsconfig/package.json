@@ -13,10 +13,11 @@
   "repository": "https://github.com/monots/monots/tree/master/@monots/tsconfig",
   "license": "MIT",
   "author": "Ifiok Jr. <ifiokotung@gmail.com>",
-  "files": [
-    "tsconfig.json"
-  ],
   "main": "tsconfig.json",
+  "files": [
+    "tsconfig.json",
+    "dist"
+  ],
   "publishConfig": {
     "access": "public"
   },

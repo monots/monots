@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { join, join } from 'path';
+import { join } from 'path';
 import autoExternal from 'rollup-plugin-auto-external';
 import babel from 'rollup-plugin-babel';
 import json from 'rollup-plugin-json';
@@ -11,12 +11,12 @@ import factory from './factory';
 
 const { baseDir } = require('../scripts/helpers');
 
-const uniqueArray = arr => Array.from(new Set(arr));
+const uniqueArray = (arr) => Array.from(new Set(arr));
 
 const { PACKAGES } = process.env;
 const names = PACKAGES?.split(',') ?? [];
-const entryPoints = names.map(name => {
-  const config = rollup.find(config => config.name === name);
+const entryPoints = names.map((name) => {
+  const config = rollup.find((config) => config.name === name);
 
   if (!config) {
     throw new Error(
@@ -30,7 +30,7 @@ const entryPoints = names.map(name => {
 let filtered = rollup;
 
 const getNames = (name = '') => {
-  const config = rollup.find(conf => conf.name === name);
+  const config = rollup.find((conf) => conf.name === name);
   const arr = [name];
   if (!config) {
     return arr;
@@ -44,7 +44,7 @@ const getNames = (name = '') => {
       return [
         ...acc,
         ...Object.keys(pkg[key])
-          .filter(dep => dependencies[dep])
+          .filter((dep) => dependencies[dep])
           .reduce((acc, key) => [...acc, ...getNames(key)], []),
       ];
     }
@@ -57,16 +57,16 @@ if (entryPoints?.length) {
   filtered = uniqueArray(
     entryPoints.reduce((acc, config) => [...acc, ...getNames(config.name)], []),
   )
-    .map(key => rollup.find(config => config.name === key))
+    .map((key) => rollup.find((config) => config.name === key))
     .reverse();
 }
 
 const configurations = [];
 
-filtered.forEach(config => {
+filtered.forEach((config) => {
   const path = baseDir(config.path);
   const packageJson = join(path, 'package.json');
-  factory(require(packageJson), path).forEach(project => configurations.push(project));
+  factory(require(packageJson), path).forEach((project) => configurations.push(project));
 });
 
 export default configurations;
@@ -137,8 +137,8 @@ const configure = (packageJson, path) => {
     ].filter(Boolean),
     // We need to explicitly state which modules are external, meaning that
     // they are present at runtime.
-    external: id => {
-      const isExternal = !!deps.find(dep => dep === id || id.startsWith(`${dep}/`));
+    external: (id) => {
+      const isExternal = !!deps.find((dep) => dep === id || id.startsWith(`${dep}/`));
       if (id === '@emotion/core' && !isExternal) {
         throw new Error(
           chalk`{red.bold Invalid configuration for '${packageJson.name}'}: {yellow '@emotion/core' must be declared as a {bold dependency} or {bold peerDependency}.}`,

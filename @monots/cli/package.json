@@ -10,16 +10,17 @@
   },
   "license": "MIT",
   "author": "Ifiok Jr. <ifiokotung@gmail.com>",
-  "files": [
-    "lib",
-    "src"
-  ],
   "sideEffects": false,
-  "main": "src/index.ts",
+  "main": "dist/cli.cjs.js",
+  "module": "dist/cli.esm.js",
   "bin": {
     "monots": "lib/cli.js",
     "mts": "lib/cli.js"
   },
+  "files": [
+    "dist",
+    "src"
+  ],
   "dependencies": {
     "@babel/runtime": "^7.9.6",
     "@monots/core": "^0.0.0",

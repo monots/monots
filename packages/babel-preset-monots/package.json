@@ -6,15 +6,15 @@
   "repository": "https://github.com/monots/monots/tree/master/packages/babel-preset-monots",
   "license": "MIT",
   "author": "Ifiok Jr. <ifiokotung@gmail.com>",
+  "sideEffects": false,
+  "main": "dist/babel-preset-monots.cjs.js",
+  "module": "dist/babel-preset-monots.esm.js",
+  "types": "lib/index.d.ts",
   "files": [
     "internal",
-    "lib",
+    "dist",
     "src"
   ],
-  "sideEffects": false,
-  "main": "lib/index.js",
-  "module": "lib/dist/core.esm.js",
-  "types": "lib/index.d.ts",
   "dependencies": {
     "@types/prettier": "^2.0.0",
     "prettier-plugin-packagejson": "^2.2.3",

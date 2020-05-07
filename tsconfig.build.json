@@ -22,7 +22,7 @@
     }
   ],
   "exclude": [
-    "lib",
+    "dist",
     "**/*.test.{ts,tsx}",
     "**/*.stories.{ts,tsx}",
     "**/*.spec.{ts,tsx}",

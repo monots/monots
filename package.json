@@ -10,11 +10,15 @@
     "packages/*"
   ],
   "scripts": {
-    "build:ts": "tsc -b tsconfig.build.json --verbose",
+    "build": "preconstruct build",
+    "fix": "run-s fix:*",
     "fix:es": "pnpm run:lint:es --fix",
+    "fix:packages": "manypkg fix",
     "fix:prettier": "pnpm run:prettier --write",
     "generate:ts": "pnpm monots generate ts",
+    "lint": "run-s lint:*",
     "lint:es": "pnpm run:lint:es",
+    "lint:packages": "manypkg check",
     "lint:prettier": "pnpm run:prettier --check",
     "monots": "pnpm ts @monots/cli/src/cli",
     "run:lint:es": "eslint --ext=.tsx,.ts,.js .",
@@ -34,7 +38,7 @@
   },
   "eslintIgnore": [
     "**/lib",
-    "lib",
+    "dist",
     "**/dist",
     "dist",
     ".yarn/**",
@@ -47,6 +51,10 @@
   "resolutions": {
     "@types/ink": "^2.0.3",
     "type-fest": ">=0.12.0"
+  },
+  "dependencies": {
+    "@manypkg/cli": "^0.12.0",
+    "@preconstruct/cli": "^1.1.14"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
@@ -65,6 +73,7 @@
     "danger": "^10.1.1",
     "eslint": "^6.8.0",
     "jest": "^26.0.1",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.0.5",
     "ts-jest": "^25.5.0",
     "ts-node": "^8.10.1",
@@ -78,8 +87,11 @@
   "monots": {
     "tsconfigBaseExtends": "./@monots/tsconfig/tsconfig.json"
   },
-  "dependencies": {
-    "@manypkg/cli": "^0.12.0",
-    "@preconstruct/cli": "^1.1.14"
+  "preconstruct": {
+    "packages": [
+      "@monots/*",
+      "packages/*",
+      "!@monots/tsconfig"
+    ]
   }
 }

@@ -6,9 +6,11 @@
   "repository": "https://github.com/monots/monots/tree/master/@monots/templates",
   "license": "MIT",
   "author": "Ifiok Jr. <ifiokotung@gmail.com>",
-  "main": "lib/index.js",
+  "main": "dist/templates.cjs.js",
+  "module": "dist/templates.esm.js",
   "types": "lib/index.d.ts",
   "files": [
+    "dist",
     "monorepos",
     "packages"
   ],

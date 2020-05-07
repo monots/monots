@@ -7,11 +7,11 @@
   "license": "MIT",
   "author": "Ifiok Jr. <ifiokotung@gmail.com>",
   "sideEffects": false,
-  "main": "lib/index.js",
-  "module": "lib/dist/core.esm.js",
+  "main": "dist/jest-preset-monots.cjs.js",
+  "module": "dist/jest-preset-monots.esm.js",
   "types": "lib/index.d.ts",
   "files": [
-    "lib",
+    "dist",
     "src",
     "*.js",
     "*.d.ts"

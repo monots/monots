@@ -8,12 +8,12 @@
   "license": "MIT",
   "author": "Ifiok Jr. <ifiokotung@gmail.com>",
   "sideEffects": false,
-  "main": "lib/index.js",
-  "module": "lib/dist/core.esm.js",
+  "main": "dist/monots.cjs.js",
+  "module": "dist/monots.esm.js",
   "types": "lib/index.d.ts",
   "files": [
     "internal",
-    "lib",
+    "dist",
     "src"
   ],
   "publishConfig": {

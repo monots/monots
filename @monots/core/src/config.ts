@@ -7,19 +7,20 @@ import { PACKAGE_NAME } from './constants';
 import { deepMerge } from './helpers';
 import { ConfigTemplateProperties, MonotsConfig, MonotsPackage, PackageJson } from './types';
 
-Mustache.escape = value => value;
+Mustache.escape = (value) => value;
 
 const defaultConfig: Required<MonotsConfig> = {
   babelConfig: {},
   tsconfigBasePaths: {},
   supportDirectory: 'support',
+  outputDirectory: 'dist',
   tsconfigBasePath: '{{supportDirectory}}/tsconfig.base.json',
   tsconfigBaseExtends: '@monots/tsconfig',
   tsconfigBase: {},
   tsconfigBuildName: 'tsconfig.build.json',
   tsconfigBuild: {
     compilerOptions: {
-      outDir: 'lib',
+      outDir: '{{outputDirectory}}',
       rootDir: 'src',
       composite: true,
       declaration: true,
@@ -28,7 +29,7 @@ const defaultConfig: Required<MonotsConfig> = {
       paths: {},
     },
     exclude: [
-      'lib',
+      '{{outputDirectory}}',
       '**/*.test.{ts,tsx}',
       '**/*.stories.{ts,tsx}',
       '**/*.spec.{ts,tsx}',
@@ -121,7 +122,7 @@ export async function getConfig({
 
   const configFilePath = found.filepath;
   const rootDirectory = dirname(found.filepath);
-  const packageJson = await readPkg({cwd: rootDirectory});
+  const packageJson = await readPkg({ cwd: rootDirectory });
   const mergedConfig = deepMerge<Required<MonotsConfig>>(defaultConfig, found.config ?? {});
   const config: MonotsConfigResult = resolveConfigPaths({
     ...mergedConfig,
@@ -154,7 +155,7 @@ export function getConfigSync({
 
   const configFilePath = found.filepath;
   const rootDirectory = dirname(found.filepath);
-  const packageJson = readPkg.sync({cwd: rootDirectory});
+  const packageJson = readPkg.sync({ cwd: rootDirectory });
   const mergedConfig = deepMerge<Required<MonotsConfig>>(defaultConfig, found.config ?? {});
   const config: MonotsConfigResult = resolveConfigPaths({
     ...mergedConfig,
