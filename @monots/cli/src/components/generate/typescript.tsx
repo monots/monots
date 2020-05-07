@@ -14,7 +14,7 @@ import useSetState from 'react-use/lib/useSetState';
 
 import { BaseCommandProps } from '../../types';
 
-const enum Step {
+enum Step {
   Generate,
   Write,
   Prettify,
@@ -62,16 +62,16 @@ const useGenerateTs = ({ generate, startTime = Date.now() }: GenerateTypeScriptP
 
   useEffect(() => {
     generate()
-      .then(write => {
+      .then((write) => {
         setState({ step: Step.Write });
         return write();
       })
-      .then(data => {
+      .then((data) => {
         setState({ step: Step.Prettify, files: getFileData(data) });
         return prettifyFiles();
       })
       .then(() => setState({ step: Step.Complete, endTime: Date.now() }))
-      .catch(e => setState({ error: e, endTime: Date.now() }));
+      .catch((e) => setState({ error: e, endTime: Date.now() }));
   }, [generate, setState]);
 
   return { ...state, duration: endTime ? endTime - startTime : undefined, completed };

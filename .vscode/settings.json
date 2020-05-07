@@ -1,7 +1,7 @@
 {
   // Editor Settings
   "editor.tabSize": 2,
-  "editor.rulers": [100],
+  "editor.rulers": [80],
   "editor.insertSpaces": true,
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",

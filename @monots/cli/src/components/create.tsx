@@ -15,7 +15,7 @@ import useSetState from 'react-use/lib/useSetState';
 /**
  * The order of steps running.
  */
-const enum Step {
+enum Step {
   CopyTemplate,
   RenameFiles,
   TemplateFiles,

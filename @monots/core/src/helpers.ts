@@ -1,7 +1,7 @@
 import is from '@sindresorhus/is';
 import { all as merge } from 'deepmerge';
 import execa from 'execa';
-import { getPackages, getPackagesSync} from '@manypkg/get-packages';
+import { getPackages, getPackagesSync } from '@manypkg/get-packages';
 import { findRoot, findRootSync } from '@manypkg/find-root';
 import path from 'path';
 
@@ -9,10 +9,20 @@ import { MonotsPackage, MonotsPackageConfig, PackageJson, PackageType } from './
 
 const separator = '__';
 
-export const unmangleScopedPackage = (mangledName: string) => {
+/**
+ * Converts a mangled npm package name `babel__core` into an un-mangled work of
+ * art `@babel/core`.
+ */
+export function unmangleScopedPackage(mangledName: string) {
   return mangledName.includes(separator) ? `@${mangledName.replace(separator, '/')}` : mangledName;
-};
+}
 
+/**
+ * Converts a scoped npm package name to a mangled version which is more
+ * compatible for general use.
+ *
+ * `@babel/core` -> `babel__core`
+ */
 export const mangleScopedPackageName = (packageName: string) => {
   const [scope, name] = packageName.split('/');
 
@@ -33,9 +43,9 @@ interface FormatFilesOptions {
 }
 
 /**
- * Format the files using prettier.
+ * Format the provided files using prettier.
  */
-export const formatFiles = async (files: string[], { silent = false }: FormatFilesOptions = {}) => {
+export async function formatFiles(files: string[], { silent = false }: FormatFilesOptions = {}) {
   const { stderr, stdout } = await execa('prettier', [...files, '--write']);
 
   if (silent) {
@@ -49,7 +59,7 @@ export const formatFiles = async (files: string[], { silent = false }: FormatFil
   if (stdout) {
     console.log(stdout.trim());
   }
-};
+}
 
 /**
  * A deep merge which only merges plain objects and Arrays. It clones the object
@@ -58,9 +68,9 @@ export const formatFiles = async (files: string[], { silent = false }: FormatFil
  * To completely remove a key you can use the `Merge` helper class which
  * replaces it's key with a completely new object
  */
-export const deepMerge = <GType extends object = any>(...objects: Array<Partial<GType>>): GType => {
+export function deepMerge<GType extends object = any>(...objects: Array<Partial<GType>>): GType {
   return merge<GType>(objects as any, { isMergeableObject: is.plainObject });
-};
+}
 
 export interface IsNodeModuleRequireOptions {
   /**
@@ -87,7 +97,7 @@ export interface ParseFilePath {
  * Determine whether the path provided should be resolved from the node modules
  * or directly from the path.
  */
-export const parseFilePath = (file: string, { windows }: IsNodeModuleRequireOptions = {}) => {
+export function parseFilePath(file: string, { windows }: IsNodeModuleRequireOptions = {}) {
   const isWindows = windows ?? process.platform === 'win32';
   const parser = isWindows ? path.win32.parse : path.parse;
   const parsedPath = parser(file);
@@ -97,7 +107,7 @@ export const parseFilePath = (file: string, { windows }: IsNodeModuleRequireOpti
     isAbsolute: Boolean(parsedPath.root),
     isPackage: !file.startsWith('.') && !parsedPath.root,
   };
-};
+}
 
 /**
  * A cached value for the packages to prevent rerunning the command multiple times.
@@ -112,7 +122,7 @@ const defaultMonotsPackage: Required<MonotsPackageConfig> = {
 /**
  * Get all the workspace packages.
  */
-export const getWorkspacePackages = async (cwd = process.cwd()) => {
+export async function getWorkspacePackages(cwd = process.cwd()) {
   if (packages) {
     return packages;
   }
@@ -128,12 +138,12 @@ export const getWorkspacePackages = async (cwd = process.cwd()) => {
   }));
 
   return packages;
-};
+}
 
 /**
  * Get all the workspace packages synchronously.
  */
-export const getWorkspacePackagesSync = (cwd = process.cwd()) => {
+export function getWorkspacePackagesSync(cwd = process.cwd()) {
   if (packages) {
     return packages;
   }
@@ -149,7 +159,7 @@ export const getWorkspacePackagesSync = (cwd = process.cwd()) => {
   }));
 
   return packages;
-};
+}
 
 /**
  * A list of files that will be prettified at the end of the current process.
@@ -163,15 +173,16 @@ let filesToPrettify: string[] = [];
  *
  * These should all resolve exactly to files that we want to be prettified.
  */
-export const addToPrettifyList = (...filePaths: string[]) => filesToPrettify.push(...filePaths);
-
+export function addToPrettifyList(...filePaths: string[]) {
+  return filesToPrettify.push(...filePaths);
+}
 /**
  * Prettify all the files added to the list and then reset the list.
  */
-export const prettifyFiles = async () => {
+export async function prettifyFiles() {
   await formatFiles(filesToPrettify, { silent: true });
   filesToPrettify = [];
-};
+}
 
 /**
  * Get the relative file path and always include the opening dot and forward slash.
@@ -182,7 +193,7 @@ export const prettifyFiles = async () => {
  * derive the relative path from one to the other. This is actually the reverse transform of
  * path.resolve.
  */
-export const relative = (from: string, to: string) => {
-  const relativePath =  path.relative(from, to)
-  return relativePath.startsWith('../') ? relativePath : `./${  relativePath}`;
+export function relative(from: string, to: string) {
+  const relativePath = path.relative(from, to);
+  return relativePath.startsWith('../') ? relativePath : `./${relativePath}`;
 }

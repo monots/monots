@@ -1,8 +1,6 @@
 import { TransformOptions } from '@babel/core';
-import { PackageJson as BasePackageJson } from 'type-fest';
+import { PackageJson as BasePackageJson, TsConfigJson } from 'type-fest';
 import { MapLike } from 'typescript';
-
-import { TsConfigJson } from './tsconfig-json';
 
 /**
  * The configuration object for a sub package within the monots project.
@@ -39,7 +37,7 @@ export interface MonotsPackageConfig {
  *
  * @alpha
  */
-export const enum PackageType {
+export enum PackageType {
   /**
    * This is an app that doesn't need to produce it's own types.
    *

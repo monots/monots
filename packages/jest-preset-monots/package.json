@@ -17,6 +17,7 @@
     "*.d.ts"
   ],
   "dependencies": {
+    "@babel/runtime": "^7",
     "@monots/core": "^0.0.0",
     "babel-jest": "^26.0.1",
     "jest-circus": "^26.0.1",

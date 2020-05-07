@@ -15,7 +15,7 @@ import { coerce, gte } from 'semver';
 import writePkg from 'write-pkg';
 
 // Side effect
-Mustache.escape = value => value;
+Mustache.escape = (value) => value;
 
 /**
  * Get the package directory from this package.
@@ -25,7 +25,7 @@ export const packageDirectory = (...paths: string[]) => resolve(__dirname, '../'
 /**
  * The template types.
  */
-export const enum TemplateType {
+export enum TemplateType {
   Monorepo = 'monorepos',
   Package = 'packages',
 }
@@ -58,7 +58,7 @@ export const renameFiles = async (
 
   for (const [from, to] of Object.entries(renameFiles)) {
     if (Array.isArray(to)) {
-      transformations.push(...to.map(to => move(dest(from), dest(to))));
+      transformations.push(...to.map((to) => move(dest(from), dest(to))));
     } else {
       transformations.push(move(dest(from), dest(to)));
     }
@@ -88,7 +88,7 @@ export const templateFiles = async (
   const updates: Array<Promise<void>> = [];
 
   for (const file of templateFiles) {
-    updates.push(updateFile(dest(file), contents => Mustache.render(contents, context)));
+    updates.push(updateFile(dest(file), (contents) => Mustache.render(contents, context)));
   }
 
   await Promise.all(updates);
@@ -146,7 +146,7 @@ export const addDependencies = async (
   const yarn2 = isYarn2({ cwd: cwd });
   const filteredFlags = filter(
     options,
-    key => Boolean(options[key]) && !(key === 'ignoreWorkspaceRootCheck' && yarn2),
+    (key) => Boolean(options[key]) && !(key === 'ignoreWorkspaceRootCheck' && yarn2),
   ) as Required<AddDependencyFlags>;
 
   await execa('yarn', dargs({ _: dependencies, ...filteredFlags }), { cwd });
@@ -219,7 +219,7 @@ export const defaultMonorepoTemplate: MonorepoTemplate = {
   createPackageJson: () => {
     return { name: 'root' };
   },
-  extraContext: ctx => ctx,
+  extraContext: (ctx) => ctx,
 };
 
 /**
@@ -236,5 +236,5 @@ export const defaultPackageTemplate: PackageTemplate = {
   createPackageJson: () => {
     return { name: 'root' };
   },
-  extraContext: ctx => ctx,
+  extraContext: (ctx) => ctx,
 };

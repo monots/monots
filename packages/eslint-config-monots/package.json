@@ -16,6 +16,7 @@
     "*.js"
   ],
   "dependencies": {
+    "@babel/runtime": "^7",
     "@types/eslint": "^6.8.0",
     "@typescript-eslint/eslint-plugin": "^2.31.0",
     "@typescript-eslint/parser": "^2.31.0",

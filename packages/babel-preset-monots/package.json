@@ -16,10 +16,14 @@
     "src"
   ],
   "dependencies": {
+    "@babel/runtime": "^7",
     "@types/prettier": "^2.0.0",
     "prettier-plugin-packagejson": "^2.2.3",
     "prettier-plugin-sorted": "^2.0.0",
     "tiny-invariant": "^1.1.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.0.5"
   },
   "peerDependencies": {
     "prettier": "^1.19.1"
@@ -27,8 +31,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "cjs": "lib/dist/core.cjs.js",
-  "devDependencies": {
-    "prettier": "^2.0.5"
-  }
+  "cjs": "lib/dist/core.cjs.js"
 }

@@ -15,11 +15,12 @@
     "src"
   ],
   "dependencies": {
-    "@babel/core": "^7.9.6",
-    "@babel/runtime": "^7.9.6",
+    "@babel/core": "^7",
+    "@babel/runtime": "^7",
     "@manypkg/find-root": "1.0.0",
     "@manypkg/get-packages": "^1.0.1",
     "@sindresorhus/is": "^2.1.1",
+    "@types/babel__core": "^7.1.7",
     "@types/fs-extra": "^8.1.0",
     "@types/glob": "^7.1.1",
     "@types/json5": "^0.0.30",
