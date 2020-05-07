@@ -27,5 +27,8 @@
   "publishConfig": {
     "access": "public"
   },
-  "cjs": "lib/dist/core.cjs.js"
+  "cjs": "lib/dist/core.cjs.js",
+  "devDependencies": {
+    "prettier": "^2.0.5"
+  }
 }

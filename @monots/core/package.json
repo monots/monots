@@ -3,11 +3,7 @@
   "version": "0.0.0",
   "description": "The monots cli for creating your next TypeScript monorepo",
   "homepage": "https://github.com/monots/monots/tree/master/@monots/core",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/monots/monots.git",
-    "directory": "@monots/core"
-  },
+  "repository": "https://github.com/monots/monots/tree/master/@monots/core",
   "license": "MIT",
   "author": "Ifiok Jr. <ifiokotung@gmail.com>",
   "main": "dist/core.cjs.js",

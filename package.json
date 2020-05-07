@@ -2,13 +2,9 @@
   "name": "@monots/monorepo",
   "private": true,
   "description": "The monorepo for managing your monots project",
-  "repository": "https://github.com/monots/monots.git",
+  "repository": "https://github.com/monots/monots",
   "license": "MIT",
   "author": "Ifiok Jr.",
-  "workspaces": [
-    "@monots/*",
-    "packages/*"
-  ],
   "scripts": {
     "build": "preconstruct build",
     "fix": "run-s fix:*",
@@ -50,26 +46,29 @@
   },
   "resolutions": {
     "@types/ink": "^2.0.3",
-    "type-fest": ">=0.12.0"
+    "type-fest": ">=0.13.1"
   },
   "dependencies": {
-    "@manypkg/cli": "^0.12.0",
-    "@preconstruct/cli": "^1.1.14"
-  },
-  "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.8.3",
     "@babel/plugin-proposal-object-rest-spread": "^7.9.6",
     "@babel/plugin-proposal-optional-chaining": "^7.9.0",
+    "@babel/plugin-proposal-private-methods": "^7.8.3",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.9.6",
+    "@babel/plugin-transform-typescript": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
-    "@babel/preset-react": "^7.9.4",
     "@changesets/cli": "^2.6.5",
+    "@manypkg/cli": "^0.12.0",
+    "@preconstruct/cli": "^1.1.14",
     "@types/jest": "^25.2.1",
     "@types/node": "^13.13.4",
     "babel-jest": "^26.0.1",
+    "babel-plugin-annotate-pure-calls": "^0.4.0",
+    "babel-plugin-dev-expression": "^0.2.2",
+    "babel-plugin-macros": "^2.8.0",
+    "babel-plugin-module-resolver": "^4.0.0",
     "danger": "^10.1.1",
     "eslint": "^6.8.0",
     "jest": "^26.0.1",
@@ -79,7 +78,7 @@
     "ts-node": "^8.10.1",
     "tsconfig-paths": "^3.9.0",
     "tslib": "^1.11.2",
-    "typescript": "^3.8.3"
+    "typescript": "^3.9.1-rc"
   },
   "engines": {
     "node": ">=10"
