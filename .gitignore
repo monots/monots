@@ -115,6 +115,24 @@ temp/
 */**/lib
 packages/**/lib
 
-# We are using yarn
+# We are using pnpm
 package-lock.json
 **/package-lock.json
+yarn.lock
+
+## Ignore root files
+/.eslintignore
+/.eslintrc.js
+/.size-limit.json
+/.stylelintignore
+/.stylelintrc.json
+/globals.d.ts
+/linaria.config.js
+/lingui.config.js
+/jest.config.js
+/.prettierrc.js
+/.huskyrc
+/.lintstagedrc
+/tsconfig.json
+/tsconfig.references.json
+/.markdownlint.json

@@ -16,8 +16,8 @@
     "src"
   ],
   "dependencies": {
-    "@types/prettier": "^2.0.0",
-    "prettier-plugin-packagejson": "^2.2.3",
+    "@types/prettier": "^2.1.5",
+    "prettier-plugin-packagejson": "^2.2.8",
     "prettier-plugin-sorted": "^2.0.0",
     "tiny-invariant": "^1.1.0"
   },
@@ -29,6 +29,6 @@
   },
   "cjs": "lib/dist/core.cjs.js",
   "devDependencies": {
-    "prettier": "^2.0.5"
+    "prettier": "^2.2.1"
   }
 }

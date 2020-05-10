@@ -1,0 +1,20 @@
+{
+  "**/*.js": [
+    "prettier --write",
+    "eslint --fix"
+  ],
+  "*.{json,yml,yaml}": [
+    "prettier --write"
+  ],
+  "*.{md,mdx}": [
+    "prettier --write",
+    "eslint --fix"
+  ],
+  "{packages,support}/**/*.{ts,tsx,js}": [
+    "prettier --write",
+    "cross-env FULL_ESLINT_CHECK=true eslint --fix"
+  ],
+  "packages/**/*.{ts,tsx}": [
+    "jest --coverage=false --bail --findRelatedTests"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "name": "@monots/templates",
+  "version": "0.0.0",
+  "description": "The monots templates",
+  "homepage": "https://github.com/monots/monots/tree/master/@monots/templates",
+  "repository": "https://github.com/monots/monots/tree/master/@monots/templates",
+  "license": "MIT",
+  "author": "Ifiok Jr. <ifiokotung@gmail.com>",
+  "main": "dist/templates.cjs.js",
+  "module": "dist/templates.esm.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "dist",
+    "monorepos",
+    "packages"
+  ],
+  "dependencies": {
+    "@babel/runtime": "^7",
+    "@monots/core": "0.0.0",
+    "@types/fs-extra": "^9.0.4",
+    "@types/mustache": "^4.1.0",
+    "@types/semver": "^7.3.4",
+    "@types/shelljs": "^0.8.8",
+    "dargs": "^7.0.0",
+    "execa": "^5.0.0",
+    "filter-obj": "^2.0.1",
+    "fs-extra": "^9.0.1",
+    "memfs": "^3.2.0",
+    "mustache": "^4.1.0",
+    "semver": "^7.3.4",
+    "shelljs": "^0.8.4",
+    "unionfs": "^4.4.0",
+    "write-pkg": "^4.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "monotsPackage": {
+    "type": "library"
+  }
+}

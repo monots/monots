@@ -1,0 +1,100 @@
+import chalk from 'chalk';
+import resolveFrom from 'resolve-from';
+
+import { FatalError, FixableError } from './errors';
+import { errors } from './messages';
+import { Package } from './package';
+
+const keys: <Obj>(obj: Obj) => Array<keyof Obj> = Object.keys;
+
+export async function fixPackage(pkg: Package) {
+  if (pkg.entrypoints.length === 0) {
+    throw new FatalError(errors.noEntrypoints, pkg.name);
+  }
+
+  const fields = {
+    main: true,
+    module: pkg.entrypoints.some((x) => x.json.module !== undefined),
+    'umd:main': pkg.entrypoints.some((x) => x.json['umd:main'] !== undefined),
+    browser: pkg.entrypoints.some((x) => x.json.browser !== undefined),
+  };
+
+  keys(fields)
+    .filter((x) => fields[x])
+    .forEach((field) => {
+      pkg.setFieldOnEntrypoints(field);
+    });
+  return (await Promise.all(pkg.entrypoints.map((x) => x.save()))).some((x) => x);
+}
+
+const unsafeRequire = require;
+
+export function validatePackage(pkg: Package) {
+  if (pkg.entrypoints.length === 0) {
+    throw new FatalError(errors.noEntrypoints, pkg.name);
+  }
+
+  const fields = {
+    // main is intentionally not here, since it's always required
+    // it will be validated in validateEntrypoint and the case
+    // which this function validates will never happen
+    module: pkg.entrypoints[0].json.module !== undefined,
+    'umd:main': pkg.entrypoints[0].json['umd:main'] !== undefined,
+    browser: pkg.entrypoints[0].json.browser !== undefined,
+  };
+
+  pkg.entrypoints.forEach((entrypoint) => {
+    keys(fields).forEach((field) => {
+      if (entrypoint.json[field] && !fields[field]) {
+        throw new FixableError(
+          `${entrypoint.name} has a ${field} build but ${pkg.entrypoints[0].name} does not have a ${field} build. Entrypoints in a package must either all have a particular build type or all not have a particular build type.`,
+          pkg.name,
+        );
+      }
+
+      if (!entrypoint.json[field] && fields[field]) {
+        throw new FixableError(
+          `${pkg.entrypoints[0].name} has a ${field} build but ${entrypoint.name} does not have a ${field} build. Entrypoints in a package must either all have a particular build type or all not have a particular build type.`,
+          pkg.name,
+        );
+      }
+    });
+  });
+
+  // TODO: do this well
+  if (fields['umd:main']) {
+    // this is a sorta naive check
+    // but it's handling the most common case
+    // i don't think it's worth implementing this well at this exact moment
+    // because i'm guessing doing it well would cause more problems than it would solve
+    // this will likely change in the future
+
+    const sortaAllDeps = new Set([
+      ...(pkg.json.peerDependencies ? Object.keys(pkg.json.peerDependencies) : []),
+      ...(pkg.json.dependencies ? Object.keys(pkg.json.dependencies) : []),
+    ]);
+
+    for (const depName in pkg.json.dependencies) {
+      const depPkgJson = unsafeRequire(resolveFrom(pkg.directory, `${depName}/package.json`));
+
+      if (depPkgJson.peerDependencies) {
+        for (const pkgName in depPkgJson.peerDependencies) {
+          if (!sortaAllDeps.has(pkgName)) {
+            throw new FatalError(
+              `the package ${chalk.blue(pkg.name)} depends on ${chalk.blue(
+                depName,
+              )} which has a peerDependency on ${chalk.blue(pkgName)} but ${chalk.blue(
+                pkgName,
+              )} is not specified in the dependencies or peerDependencies of ${chalk.blue(
+                pkg.name,
+              )}. please add ${chalk.blue(
+                pkgName,
+              )} to the dependencies or peerDependencies of ${chalk.blue(pkg.name)}`,
+              pkg.name,
+            );
+          }
+        }
+      }
+    }
+  }
+}
