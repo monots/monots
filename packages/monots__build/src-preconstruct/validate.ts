@@ -9,9 +9,8 @@ import { Project } from './project';
 import { validFields } from './utils';
 import { validatePackage } from './validate-package';
 
-// this doesn't offer to fix anything
-// just does validation
-// used in build and watch
+// this doesn't offer to fix anything just does validation used in build and
+// watch
 
 export const isFieldValid = {
   main(entrypoint: Entrypoint) {
