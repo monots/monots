@@ -11,9 +11,8 @@ const unsafeRequire = require;
 
 export function createWorker() {
   worker = shouldUseWorker
-    ? (new Worker(require.resolve('@preconstruct/cli/worker')) as Worker &
-        typeof import('./worker'))
-    : unsafeRequire('@preconstruct/cli/worker');
+    ? (new Worker(require.resolve('@monots/cli/worker')) as Worker & typeof import('./worker'))
+    : unsafeRequire('@monots/cli/worker');
 }
 
 export function destroyWorker() {

@@ -22,7 +22,7 @@ const allSettled = (promises: Array<Promise<any>>) =>
 export class Project extends Item<{
   name?: JSONValue;
   workspaces?: JSONValue;
-  preconstruct: {
+  monots: {
     globals?: Record<string, string>;
     packages?: JSONValue;
     distFilenameStrategy?: JSONValue;
@@ -33,22 +33,22 @@ export class Project extends Item<{
   };
 }> {
   get experimentalFlags() {
-    const config = this.json.preconstruct.___experimentalFlags_WILL_CHANGE_IN_PATCH || {};
+    const config = this.json.monots.___experimentalFlags_WILL_CHANGE_IN_PATCH || {};
     return {
       logCompiledFiles: !!config.logCompiledFiles,
       typeScriptProxyFileWithImportEqualsRequireAndExportEquals: !!config.typeScriptProxyFileWithImportEqualsRequireAndExportEquals,
     };
   }
   get configPackages(): string[] {
-    if (this.json.preconstruct.packages === undefined) {
+    if (this.json.monots.packages === undefined) {
       return ['.'];
     }
 
     if (
-      Array.isArray(this.json.preconstruct.packages) &&
-      this.json.preconstruct.packages.every((x) => typeof x === 'string')
+      Array.isArray(this.json.monots.packages) &&
+      this.json.monots.packages.every((x) => typeof x === 'string')
     ) {
-      return this.json.preconstruct.packages as string[];
+      return this.json.monots.packages as string[];
     }
 
     throw new FatalError(
@@ -78,7 +78,7 @@ export class Project extends Item<{
   async _packages(isFix: boolean): Promise<Package[]> {
     // suport bolt later probably
     // maybe lerna too though probably not
-    if (!this.json.preconstruct.packages && this.json.workspaces) {
+    if (!this.json.monots.packages && this.json.workspaces) {
       let workspaces;
 
       if (Array.isArray(this.json.workspaces)) {
@@ -88,12 +88,12 @@ export class Project extends Item<{
       }
 
       const packages = await promptInput(
-        'what packages should preconstruct build?',
+        'what packages should monots build?',
         this,
         workspaces.join(','),
       );
 
-      this.json.preconstruct.packages = packages.split(',');
+      this.json.monots.packages = packages.split(',');
 
       await this.save();
     }

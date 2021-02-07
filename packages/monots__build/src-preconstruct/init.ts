@@ -62,7 +62,7 @@ async function doInit(pkg: Package) {
 
       for (const entrypoint of pkg.entrypoints) {
         const umdName = await promptInput(inputs.getUmdName, entrypoint);
-        entrypoint.json.preconstruct.umdName = umdName;
+        entrypoint.json.monots.umdName = umdName;
       }
     } else {
       throw new FixableError(

@@ -14,7 +14,7 @@ import { fixPackage } from './validate-package';
 async function fixEntrypoint(entrypoint: Entrypoint) {
   if (entrypoint.json['umd:main'] !== undefined && !isUmdNameSpecified(entrypoint)) {
     const umdName = await promptInput(inputs.getUmdName, entrypoint);
-    entrypoint.json.preconstruct.umdName = umdName;
+    entrypoint.json.monots.umdName = umdName;
     await entrypoint.save();
     return true;
   }
@@ -26,30 +26,25 @@ export default async function fix(directory: string) {
   const project = await Project.create(directory, true);
   let didModifyProject = false;
 
-  if (project.json.preconstruct.___experimentalFlags_WILL_CHANGE_IN_PATCH) {
+  if (project.json.monots.___experimentalFlags_WILL_CHANGE_IN_PATCH) {
     const errors: FatalError[] = [];
-    Object.keys(project.json.preconstruct.___experimentalFlags_WILL_CHANGE_IN_PATCH).forEach(
-      (key) => {
-        if (FORMER_FLAGS_THAT_ARE_ENABLED_NOW.has(key)) {
-          didModifyProject = true;
-          delete (project.json.preconstruct.___experimentalFlags_WILL_CHANGE_IN_PATCH as any)[key];
-        } else if (!EXPERIMENTAL_FLAGS.has(key)) {
-          errors.push(
-            new FatalError(
-              `The experimental flag ${JSON.stringify(key)} in your config does not exist`,
-              project.name,
-            ),
-          );
-        }
-      },
-    );
+    Object.keys(project.json.monots.___experimentalFlags_WILL_CHANGE_IN_PATCH).forEach((key) => {
+      if (FORMER_FLAGS_THAT_ARE_ENABLED_NOW.has(key)) {
+        didModifyProject = true;
+        delete (project.json.monots.___experimentalFlags_WILL_CHANGE_IN_PATCH as any)[key];
+      } else if (!EXPERIMENTAL_FLAGS.has(key)) {
+        errors.push(
+          new FatalError(
+            `The experimental flag ${JSON.stringify(key)} in your config does not exist`,
+            project.name,
+          ),
+        );
+      }
+    });
 
     if (didModifyProject) {
-      if (
-        Object.keys(project.json.preconstruct.___experimentalFlags_WILL_CHANGE_IN_PATCH).length ===
-        0
-      ) {
-        delete (project.json.preconstruct as any).___experimentalFlags_WILL_CHANGE_IN_PATCH;
+      if (Object.keys(project.json.monots.___experimentalFlags_WILL_CHANGE_IN_PATCH).length === 0) {
+        delete (project.json.monots as any).___experimentalFlags_WILL_CHANGE_IN_PATCH;
       }
 
       await project.save();

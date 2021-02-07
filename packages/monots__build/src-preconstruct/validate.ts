@@ -28,7 +28,7 @@ export const isFieldValid = {
 };
 
 export function isUmdNameSpecified(entrypoint: Entrypoint) {
-  return typeof entrypoint.json.preconstruct.umdName === 'string';
+  return typeof entrypoint.json.monots.umdName === 'string';
 }
 
 const projectsShownOldDistNamesInfo = new WeakSet<Project>();
@@ -57,14 +57,14 @@ function validateEntrypoint(entrypoint: Entrypoint, log: boolean) {
         logger.info(
           `it looks like you're using the dist filenames of Preconstruct v1, the default dist filename strategy has changed in v2`,
         );
-        logger.info(`you can run ${chalk.green('preconstruct fix')} to use the new dist filenames`);
+        logger.info(`you can run ${chalk.green('monots fix')} to use the new dist filenames`);
         logger.info(
           'if you want to keep the dist filename strategy of v1, add `"distFilenameStrategy": "unscoped-package-name"` to the Preconstruct config in your root package.json',
         );
       }
 
       fatalErrors.push(
-        // they're both fixable but we don't want the message about running preconstruct fix if they're using the old dist file names since we have a custom message
+        // they're both fixable but we don't want the message about running monots fix if they're using the old dist file names since we have a custom message
         new (isUsingOldDistFilenames ? FatalError : FixableError)(
           errors.invalidField(field, entrypoint.json[field], validFields[field](entrypoint)),
           entrypoint.name,
@@ -100,28 +100,26 @@ export const EXPERIMENTAL_FLAGS = new Set([
 export function validateProject(project: Project, log = false) {
   const errors: FatalError[] = [];
 
-  if (project.json.preconstruct.___experimentalFlags_WILL_CHANGE_IN_PATCH) {
-    Object.keys(project.json.preconstruct.___experimentalFlags_WILL_CHANGE_IN_PATCH).forEach(
-      (key) => {
-        if (FORMER_FLAGS_THAT_ARE_ENABLED_NOW.has(key)) {
-          errors.push(
-            new FixableError(
-              `The behaviour from the experimental flag ${JSON.stringify(
-                key,
-              )} is the current behaviour now, the flag should be removed`,
-              project.name,
-            ),
-          );
-        } else if (!EXPERIMENTAL_FLAGS.has(key)) {
-          errors.push(
-            new FatalError(
-              `The experimental flag ${JSON.stringify(key)} in your config does not exist`,
-              project.name,
-            ),
-          );
-        }
-      },
-    );
+  if (project.json.monots.___experimentalFlags_WILL_CHANGE_IN_PATCH) {
+    Object.keys(project.json.monots.___experimentalFlags_WILL_CHANGE_IN_PATCH).forEach((key) => {
+      if (FORMER_FLAGS_THAT_ARE_ENABLED_NOW.has(key)) {
+        errors.push(
+          new FixableError(
+            `The behaviour from the experimental flag ${JSON.stringify(
+              key,
+            )} is the current behaviour now, the flag should be removed`,
+            project.name,
+          ),
+        );
+      } else if (!EXPERIMENTAL_FLAGS.has(key)) {
+        errors.push(
+          new FatalError(
+            `The experimental flag ${JSON.stringify(key)} in your config does not exist`,
+            project.name,
+          ),
+        );
+      }
+    });
   }
 
   for (const pkg of project.packages) {

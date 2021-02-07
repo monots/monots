@@ -20,7 +20,7 @@ async function getTypeSystem(
   }
 
   // TODO: maybe we should write the flow symlink even if there isn't an @flow
-  // comment so that if someone adds an @flow comment they don't have to run preconstruct dev again
+  // comment so that if someone adds an @flow comment they don't have to run monots dev again
   if (content.includes('@flow')) {
     return ['flow', content];
   }
@@ -76,7 +76,7 @@ export async function writeDevTSFile(entrypoint: Entrypoint, entrypointSourceCon
     : entrypointHasDefaultExport(entrypoint, entrypointSourceContent).then(
         (hasDefaultExport) =>
           `// are you seeing an error that a default export doesn't exist but your source file has a default export?
-// you should run \`yarn\` or \`yarn preconstruct dev\` if preconstruct dev isn't in your postinstall hook
+// you should run \`yarn\` or \`yarn monots dev\` if monots dev isn't in your postinstall hook
 
 // curious why you need to?
 // this file exists so that you can import from the entrypoint normally
@@ -114,9 +114,9 @@ async function writeTypeSystemFile(
     // but flow seems to be
     // then you might ask, if re-exporting the default
     // export isn't necessary, why do it for actual builds?
-    // the reason is is that if preconstruct dev breaks because
+    // the reason is is that if monots dev breaks because
     // of a new version of flow that changes this, that's mostly okay
-    // because preconstruct dev can be fixed, a consumer can upgrade it
+    // because monots dev can be fixed, a consumer can upgrade it
     // and then everything is fine but if a production build is broken
     // a consumer would have to do a new release and that's not ideal
     await fs.writeFile(
@@ -154,7 +154,7 @@ export default async function dev(projectDir: string) {
               `"use strict";
 // this file might look strange and you might be wondering what it's for
 // it's lets you import your source files by importing this entrypoint
-// as you would import it if it was built with preconstruct build
+// as you would import it if it was built with monots build
 // this file is slightly different to some others though
 // it has a require hook which compiles your code with Babel
 // this means that you don't have to set up @babel/register or anything like that
@@ -162,7 +162,7 @@ export default async function dev(projectDir: string) {
 
 // this bit of code imports the require hook and registers it
 let unregister = require(${JSON.stringify(
-                path.relative(distDirectory, path.dirname(require.resolve('@preconstruct/hook'))),
+                path.relative(distDirectory, path.dirname(require.resolve('@monots/hook'))),
               )}).___internalHook(typeof __dirname === 'undefined' ? undefined : __dirname, ${JSON.stringify(
                 path.relative(distDirectory, project.directory),
               )}, ${JSON.stringify(path.relative(distDirectory, pkg.directory))});

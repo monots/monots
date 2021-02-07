@@ -98,7 +98,7 @@ function createEntrypoints(
 
 export class Package extends Item<{
   name?: JSONValue;
-  preconstruct: {
+  monots: {
     entrypoints?: JSONValue;
   };
   dependencies?: Record<string, string>;
@@ -107,15 +107,15 @@ export class Package extends Item<{
   project!: Project;
   entrypoints!: Entrypoint[];
   get configEntrypoints(): string[] {
-    if (this.json.preconstruct.entrypoints === undefined) {
+    if (this.json.monots.entrypoints === undefined) {
       return ['index.{js,jsx,ts,tsx}'];
     }
 
     if (
-      Array.isArray(this.json.preconstruct.entrypoints) &&
-      this.json.preconstruct.entrypoints.every((x) => typeof x === 'string')
+      Array.isArray(this.json.monots.entrypoints) &&
+      this.json.monots.entrypoints.every((x) => typeof x === 'string')
     ) {
-      return this.json.preconstruct.entrypoints as string[];
+      return this.json.monots.entrypoints as string[];
     }
 
     throw new FatalError(
@@ -236,7 +236,7 @@ export class Package extends Item<{
     const entrypointsWithSourcePath = new Map<string, string>();
 
     for (const entrypoint of pkg.entrypoints) {
-      if (entrypoint.json.preconstruct.source !== undefined) {
+      if (entrypoint.json.monots.source !== undefined) {
         throw new FatalError(
           'The source option on entrypoints no longer exists, see the changelog for how to upgrade to the new entrypoints config',
           this.name,

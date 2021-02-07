@@ -8,7 +8,7 @@ import { JSONValue } from './utils';
 type JSONDataByPath = Map<string, { value: JSONValue; stringifiedSaved: string }>;
 
 type BaseConfig = Record<string, JSONValue | undefined> & {
-  preconstruct?: JSONValue;
+  monots?: JSONValue;
 };
 
 export class Item<JSONData extends BaseConfig = BaseConfig> {
@@ -29,8 +29,8 @@ export class Item<JSONData extends BaseConfig = BaseConfig> {
         stringifiedSaved: JSON.stringify(json),
       });
 
-      if (!this.json.preconstruct) {
-        this.json.preconstruct = {};
+      if (!this.json.monots) {
+        this.json.monots = {};
       }
     }
   }
@@ -49,12 +49,12 @@ export class Item<JSONData extends BaseConfig = BaseConfig> {
     const json = { ...this.json };
 
     if (
-      json.preconstruct &&
-      json.preconstruct !== null &&
-      typeof json.preconstruct === 'object' &&
-      !Object.keys(json.preconstruct).length
+      json.monots &&
+      json.monots !== null &&
+      typeof json.monots === 'object' &&
+      !Object.keys(json.monots).length
     ) {
-      delete json.preconstruct;
+      delete json.monots;
     }
 
     const stringified = JSON.stringify(json);

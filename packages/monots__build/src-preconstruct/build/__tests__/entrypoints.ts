@@ -1,42 +1,36 @@
-import build from "../";
-import path from "path";
-import {
-  snapshotDirectory,
-  stripHashes,
-  testdir,
-  js,
-  getFiles,
-} from "../../../test-utils";
+import build from '../';
+import path from 'path';
+import { snapshotDirectory, stripHashes, testdir, js, getFiles } from '../../../test-utils';
 
 jest.setTimeout(10000);
 
-jest.mock("../../prompt");
+jest.mock('../../prompt');
 
-test("multiple entrypoints", async () => {
+test('multiple entrypoints', async () => {
   let dir = await testdir({
-    "package.json": JSON.stringify({
-      name: "multiple-entrypoints",
-      main: "dist/multiple-entrypoints.cjs.js",
-      module: "dist/multiple-entrypoints.esm.js",
-      preconstruct: {
-        entrypoints: ["index.js", "multiply.js"],
+    'package.json': JSON.stringify({
+      name: 'multiple-entrypoints',
+      main: 'dist/multiple-entrypoints.cjs.js',
+      module: 'dist/multiple-entrypoints.esm.js',
+      monots: {
+        entrypoints: ['index.js', 'multiply.js'],
       },
     }),
-    "multiply/package.json": JSON.stringify({
-      main: "dist/multiple-entrypoints-multiply.cjs.js",
-      module: "dist/multiple-entrypoints-multiply.esm.js",
+    'multiply/package.json': JSON.stringify({
+      main: 'dist/multiple-entrypoints-multiply.cjs.js',
+      module: 'dist/multiple-entrypoints-multiply.esm.js',
     }),
-    "src/index.js": js`
+    'src/index.js': js`
                       export let sum = (a, b) => a + b;
                     `,
-    "src/multiply.js": js`
+    'src/multiply.js': js`
                          export let multiply = (a, b) => a * b;
                        `,
   });
 
   await build(dir);
 
-  expect(await getFiles(dir, ["**/dist/**"])).toMatchInlineSnapshot(`
+  expect(await getFiles(dir, ['**/dist/**'])).toMatchInlineSnapshot(`
     ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯ dist/multiple-entrypoints.cjs.dev.js, dist/multiple-entrypoints.cjs.prod.js ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
     'use strict';
 
@@ -86,54 +80,54 @@ test("multiple entrypoints", async () => {
   `);
 });
 
-test("two entrypoints, one module, one not", async () => {
+test('two entrypoints, one module, one not', async () => {
   let dir = await testdir({
-    "package.json": JSON.stringify({
-      name: "two-entrypoints-one-module-one-not",
-      main: "dist/two-entrypoints-one-module-one-not.cjs.js",
-      preconstruct: {
-        entrypoints: ["index.js", "multiply.js"],
+    'package.json': JSON.stringify({
+      name: 'two-entrypoints-one-module-one-not',
+      main: 'dist/two-entrypoints-one-module-one-not.cjs.js',
+      monots: {
+        entrypoints: ['index.js', 'multiply.js'],
       },
     }),
-    "multiply/package.json": JSON.stringify({
-      main: "dist/two-entrypoints-one-module-one-not-multiply.cjs.js",
-      module: "dist/two-entrypoints-one-module-one-not-multiply.esm.js",
+    'multiply/package.json': JSON.stringify({
+      main: 'dist/two-entrypoints-one-module-one-not-multiply.cjs.js',
+      module: 'dist/two-entrypoints-one-module-one-not-multiply.esm.js',
     }),
-    "src/index.js": js`
+    'src/index.js': js`
                       export let sum = (a, b) => a + b;
                     `,
-    "src/multiply.js": js`
+    'src/multiply.js': js`
                          export let multiply = (a, b) => a * b;
                        `,
   });
 
   await expect(build(dir)).rejects.toMatchInlineSnapshot(
-    `[Error: two-entrypoints-one-module-one-not/multiply has a module build but two-entrypoints-one-module-one-not does not have a module build. Entrypoints in a package must either all have a particular build type or all not have a particular build type.]`
+    `[Error: two-entrypoints-one-module-one-not/multiply has a module build but two-entrypoints-one-module-one-not does not have a module build. Entrypoints in a package must either all have a particular build type or all not have a particular build type.]`,
   );
 });
 
-test("two entrypoints with a common dependency", async () => {
+test('two entrypoints with a common dependency', async () => {
   let tmpPath = await testdir({
-    "package.json": JSON.stringify({
-      name: "common-dependency-two-entrypoints",
-      main: "dist/common-dependency-two-entrypoints.cjs.js",
-      module: "dist/common-dependency-two-entrypoints.esm.js",
+    'package.json': JSON.stringify({
+      name: 'common-dependency-two-entrypoints',
+      main: 'dist/common-dependency-two-entrypoints.cjs.js',
+      module: 'dist/common-dependency-two-entrypoints.esm.js',
 
-      preconstruct: {
-        entrypoints: ["index.js", "multiply.js"],
+      monots: {
+        entrypoints: ['index.js', 'multiply.js'],
       },
     }),
 
-    "multiply/package.json": JSON.stringify({
-      main: "dist/common-dependency-two-entrypoints-multiply.cjs.js",
-      module: "dist/common-dependency-two-entrypoints-multiply.esm.js",
+    'multiply/package.json': JSON.stringify({
+      main: 'dist/common-dependency-two-entrypoints-multiply.cjs.js',
+      module: 'dist/common-dependency-two-entrypoints-multiply.esm.js',
     }),
 
-    "src/identity.js": js`
+    'src/identity.js': js`
                          export let identity = (x) => x;
                        `,
 
-    "src/multiply.js": js`
+    'src/multiply.js': js`
                          import { identity } from "./identity";
 
                          export let multiply = (a, b) => identity(a * b);
@@ -141,7 +135,7 @@ test("two entrypoints with a common dependency", async () => {
                          export { identity };
                        `,
 
-    "src/index.js": js`
+    'src/index.js': js`
                       import { identity } from "./identity";
 
                       export let sum = (a, b) => identity(a + b);
@@ -152,33 +146,33 @@ test("two entrypoints with a common dependency", async () => {
 
   await build(tmpPath);
 
-  await snapshotDirectory(tmpPath, await stripHashes("identity"));
+  await snapshotDirectory(tmpPath, await stripHashes('identity'));
   let root = require(tmpPath);
-  let other = require(path.join(tmpPath, "multiply"));
-  expect(typeof root.identity).toBe("function");
+  let other = require(path.join(tmpPath, 'multiply'));
+  expect(typeof root.identity).toBe('function');
   expect(root.identity).toBe(other.identity);
 });
 
-test("two entrypoints where one requires the other entrypoint", async () => {
+test('two entrypoints where one requires the other entrypoint', async () => {
   let tmpPath = await testdir({
-    "package.json": JSON.stringify({
-      name: "importing-another-entrypoint",
-      main: "dist/importing-another-entrypoint.cjs.js",
+    'package.json': JSON.stringify({
+      name: 'importing-another-entrypoint',
+      main: 'dist/importing-another-entrypoint.cjs.js',
 
-      preconstruct: {
-        entrypoints: ["index.js", "multiply.js"],
+      monots: {
+        entrypoints: ['index.js', 'multiply.js'],
       },
     }),
 
-    "multiply/package.json": JSON.stringify({
-      main: "dist/importing-another-entrypoint-multiply.cjs.js",
+    'multiply/package.json': JSON.stringify({
+      main: 'dist/importing-another-entrypoint-multiply.cjs.js',
     }),
 
-    "src/index.js": js`
+    'src/index.js': js`
                       export let identity = (x) => x;
                     `,
 
-    "src/multiply.js": js`
+    'src/multiply.js': js`
                          import { identity } from "./index";
 
                          export let multiply = (a, b) => identity(a * b);
@@ -192,7 +186,7 @@ test("two entrypoints where one requires the other entrypoint", async () => {
   let { identity } = require(tmpPath);
   expect(identity(20)).toBe(20);
 
-  let { multiply } = require(path.join(tmpPath, "multiply"));
+  let { multiply } = require(path.join(tmpPath, 'multiply'));
 
   expect(multiply(2, 3)).toBe(6);
 });

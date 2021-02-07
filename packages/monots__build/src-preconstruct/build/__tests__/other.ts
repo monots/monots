@@ -1,4 +1,4 @@
-import build from "../";
+import build from '../';
 import {
   snapshotDirectory,
   install,
@@ -9,10 +9,10 @@ import {
   ts,
   repoNodeModules,
   typescriptFixture,
-} from "../../../test-utils";
-import { doPromptInput } from "../../prompt";
+} from '../../../test-utils';
+import { doPromptInput } from '../../prompt';
 
-jest.mock("../../prompt");
+jest.mock('../../prompt');
 
 jest.setTimeout(30000);
 
@@ -20,18 +20,18 @@ afterEach(() => {
   jest.resetAllMocks();
 });
 
-test("browser", async () => {
+test('browser', async () => {
   let dir = await testdir({
-    "package.json": JSON.stringify({
-      name: "browser",
-      main: "dist/browser.cjs.js",
-      module: "dist/browser.esm.js",
+    'package.json': JSON.stringify({
+      name: 'browser',
+      main: 'dist/browser.cjs.js',
+      module: 'dist/browser.esm.js',
       browser: {
-        "./dist/browser.cjs.js": "./dist/browser.browser.cjs.js",
-        "./dist/browser.esm.js": "./dist/browser.browser.esm.js",
+        './dist/browser.cjs.js': './dist/browser.browser.cjs.js',
+        './dist/browser.esm.js': './dist/browser.browser.esm.js',
       },
     }),
-    "src/index.js": js`
+    'src/index.js': js`
                       let thing = "wow";
 
                       if (typeof window !== "undefined") {
@@ -128,19 +128,18 @@ test("browser", async () => {
   `);
 });
 
-test("browser no module", async () => {
+test('browser no module', async () => {
   let tmpPath = await testdir({
-    "package.json": JSON.stringify({
-      name: "browser-no-module",
-      main: "dist/browser-no-module.cjs.js",
+    'package.json': JSON.stringify({
+      name: 'browser-no-module',
+      main: 'dist/browser-no-module.cjs.js',
 
       browser: {
-        "./dist/browser-no-module.cjs.js":
-          "./dist/browser-no-module.browser.cjs.js",
+        './dist/browser-no-module.cjs.js': './dist/browser-no-module.browser.cjs.js',
       },
     }),
 
-    "src/index.js": js`
+    'src/index.js': js`
                       let thing = "wow";
 
                       if (typeof window !== "undefined") {
@@ -156,10 +155,10 @@ test("browser no module", async () => {
   });
 
   await build(tmpPath);
-  await snapshotDirectory(tmpPath, { files: "all" });
+  await snapshotDirectory(tmpPath, { files: 'all' });
 });
 
-test("typescript", async () => {
+test('typescript', async () => {
   let dir = await testdir(typescriptFixture);
 
   await build(dir);
@@ -244,35 +243,32 @@ test("typescript", async () => {
   `);
 });
 
-test("typescript with forced dts emit", async () => {
+test('typescript with forced dts emit', async () => {
   let tmpPath = await testdir({
-    "package.json": JSON.stringify({
-      name: "typescript-force-dts-emit",
-      main: "dist/typescript-force-dts-emit.cjs.js",
-      module: "dist/typescript-force-dts-emit.esm.js",
+    'package.json': JSON.stringify({
+      name: 'typescript-force-dts-emit',
+      main: 'dist/typescript-force-dts-emit.cjs.js',
+      module: 'dist/typescript-force-dts-emit.esm.js',
 
       dependencies: {
-        "@babel/runtime": "^7.8.7",
-        "@reduxjs/toolkit": "^1.3.5",
+        '@babel/runtime': '^7.8.7',
+        '@reduxjs/toolkit': '^1.3.5',
       },
 
       devDependencies: {
-        "@types/node": "^12.7.1",
-        "@types/webpack-env": "^1.15.1",
-        typescript: "^3.8.3",
+        '@types/node': '^12.7.1',
+        '@types/webpack-env': '^1.15.1',
+        typescript: '^3.8.3',
       },
     }),
-    ".babelrc": JSON.stringify({
-      presets: [
-        require.resolve("@babel/preset-env"),
-        require.resolve("@babel/preset-typescript"),
-      ],
+    '.babelrc': JSON.stringify({
+      presets: [require.resolve('@babel/preset-env'), require.resolve('@babel/preset-typescript')],
     }),
     node_modules: {
-      kind: "symlink",
+      kind: 'symlink',
       path: repoNodeModules,
     },
-    "tsconfig.json": `{
+    'tsconfig.json': `{
   "compilerOptions": {
     /* Basic Options */
     "target": "esnext" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019' or 'ESNEXT'. */,
@@ -337,7 +333,7 @@ test("typescript with forced dts emit", async () => {
 }
 `,
 
-    "src/create-store.ts": ts`
+    'src/create-store.ts': ts`
                              // @ts-ignore (installed during test)
                              import { configureStore, Action } from "@reduxjs/toolkit";
                              import { ThunkAction } from "redux-thunk";
@@ -352,13 +348,13 @@ test("typescript with forced dts emit", async () => {
                              }
                            `,
 
-    "src/index.ts": ts`
+    'src/index.ts': ts`
                       export { createStore } from "./create-store";
                       export type { AppThunk } from "./create-store";
                       export type { RootState } from "./root-reducer";
                     `,
 
-    "src/root-reducer.ts": ts`
+    'src/root-reducer.ts': ts`
                              // @ts-ignore (installed during test)
                              import { combineReducers } from "@reduxjs/toolkit";
 
@@ -373,23 +369,23 @@ test("typescript with forced dts emit", async () => {
   await build(tmpPath);
 
   await snapshotDirectory(tmpPath, {
-    files: "all",
-    filterPath: (fp) => fp.startsWith("dist/"),
+    files: 'all',
+    filterPath: (fp) => fp.startsWith('dist/'),
   });
 });
 
-test("package resolvable but not in deps", async () => {
+test('package resolvable but not in deps', async () => {
   let tmpPath = await testdir({
-    "package.json": JSON.stringify({
-      name: "package-resolvable-but-not-in-deps",
-      main: "dist/package-resolvable-but-not-in-deps.cjs.js",
+    'package.json': JSON.stringify({
+      name: 'package-resolvable-but-not-in-deps',
+      main: 'dist/package-resolvable-but-not-in-deps.cjs.js',
 
       devDependencies: {
-        react: "16.8.6",
+        react: '16.8.6',
       },
     }),
 
-    "src/index.js": js`
+    'src/index.js': js`
                       import React from "react";
 
                       export default React.createContext("something");
@@ -400,33 +396,33 @@ test("package resolvable but not in deps", async () => {
     await build(tmpPath);
   } catch (err) {
     expect(err.message).toMatchInlineSnapshot(
-      `"🎁  package-resolvable-but-not-in-deps \\"react\\" is imported by \\"src/index.js\\" but the package is not specified in dependencies or peerDependencies"`
+      `"🎁  package-resolvable-but-not-in-deps \\"react\\" is imported by \\"src/index.js\\" but the package is not specified in dependencies or peerDependencies"`,
     );
     return;
   }
   expect(true).toBe(false);
 });
 
-test("entrypoint outside package directory", async () => {
+test('entrypoint outside package directory', async () => {
   let tmpPath = await testdir({
-    "package.json": JSON.stringify({
-      name: "entrypoint-outside-pkg-dir",
+    'package.json': JSON.stringify({
+      name: 'entrypoint-outside-pkg-dir',
 
-      preconstruct: {
-        packages: ["pkg-a"],
+      monots: {
+        packages: ['pkg-a'],
       },
     }),
 
-    "some-file.js": js`
+    'some-file.js': js`
                       export let something = true;
                     `,
 
-    "pkg-a/package.json": JSON.stringify({
-      name: "@entrypoint-outside-pkg-dir/pkg-a",
-      main: "dist/pkg-a.cjs.js",
+    'pkg-a/package.json': JSON.stringify({
+      name: '@entrypoint-outside-pkg-dir/pkg-a',
+      main: 'dist/pkg-a.cjs.js',
 
-      preconstruct: {
-        entrypoints: ["../../some-file.js"],
+      monots: {
+        entrypoints: ['../../some-file.js'],
       },
     }),
   });
@@ -434,33 +430,33 @@ test("entrypoint outside package directory", async () => {
     await build(tmpPath);
   } catch (err) {
     expect(err.message).toMatchInlineSnapshot(
-      `"entrypoint source files must be inside of the src directory of a package but ../some-file.js is not"`
+      `"entrypoint source files must be inside of the src directory of a package but ../some-file.js is not"`,
     );
     return;
   }
   expect(true).toBe(false);
 });
 
-test("module imported outside package directory", async () => {
+test('module imported outside package directory', async () => {
   let tmpPath = await testdir({
-    "package.json": JSON.stringify({
-      name: "imports-outside-pkg-dir",
+    'package.json': JSON.stringify({
+      name: 'imports-outside-pkg-dir',
 
-      preconstruct: {
-        packages: ["pkg-a"],
+      monots: {
+        packages: ['pkg-a'],
       },
     }),
 
-    "some-file.js": js`
+    'some-file.js': js`
                       export let something = true;
                     `,
 
-    "pkg-a/package.json": JSON.stringify({
-      name: "@imports-outside-pkg-dir/pkg-a",
-      main: "dist/imports-outside-pkg-dir-pkg-a.cjs.js",
+    'pkg-a/package.json': JSON.stringify({
+      name: '@imports-outside-pkg-dir/pkg-a',
+      main: 'dist/imports-outside-pkg-dir-pkg-a.cjs.js',
     }),
 
-    "pkg-a/src/index.js": js`
+    'pkg-a/src/index.js': js`
                             export { something } from "../../some-file";
                           `,
   });
@@ -468,29 +464,29 @@ test("module imported outside package directory", async () => {
     await build(tmpPath);
   } catch (err) {
     expect(err.message).toMatchInlineSnapshot(
-      `"🎁  @imports-outside-pkg-dir/pkg-a all relative imports in a package should only import modules inside of their package directory but \\"src/index.js\\" is importing \\"../../some-file\\""`
+      `"🎁  @imports-outside-pkg-dir/pkg-a all relative imports in a package should only import modules inside of their package directory but \\"src/index.js\\" is importing \\"../../some-file\\""`,
     );
     return;
   }
   expect(true).toBe(false);
 });
 
-test("using external @babel/runtime helpers", async () => {
+test('using external @babel/runtime helpers', async () => {
   let tmpPath = await testdir({
-    "package.json": JSON.stringify({
-      name: "external-babel-runtime",
-      main: "dist/external-babel-runtime.cjs.js",
-      module: "dist/external-babel-runtime.esm.js",
+    'package.json': JSON.stringify({
+      name: 'external-babel-runtime',
+      main: 'dist/external-babel-runtime.cjs.js',
+      module: 'dist/external-babel-runtime.esm.js',
 
       dependencies: {
-        "@babel/runtime": "^7.0.0",
+        '@babel/runtime': '^7.0.0',
       },
     }),
-    ".babelrc": JSON.stringify({
-      presets: [require.resolve("@babel/preset-env")],
-      plugins: [require.resolve("@babel/plugin-transform-runtime")],
+    '.babelrc': JSON.stringify({
+      presets: [require.resolve('@babel/preset-env')],
+      plugins: [require.resolve('@babel/plugin-transform-runtime')],
     }),
-    "src/index.js": js`
+    'src/index.js': js`
                       export default class Foo {}
                     `,
   });
@@ -498,81 +494,81 @@ test("using external @babel/runtime helpers", async () => {
   await install(tmpPath);
   await build(tmpPath);
 
-  await snapshotDirectory(tmpPath, { files: "all" });
+  await snapshotDirectory(tmpPath, { files: 'all' });
 });
 
-test("should lazily get globals", async () => {
+test('should lazily get globals', async () => {
   let tmpPath = await testdir({
-    "package.json": JSON.stringify({
-      name: "umd-unused-peer-dep",
-      main: "dist/umd-unused-peer-dep.cjs.js",
-      "umd:main": "dist/umd-unused-peer-dep.umd.min.js",
+    'package.json': JSON.stringify({
+      name: 'umd-unused-peer-dep',
+      main: 'dist/umd-unused-peer-dep.cjs.js',
+      'umd:main': 'dist/umd-unused-peer-dep.umd.min.js',
 
-      preconstruct: {
-        umdName: "validPackage",
+      monots: {
+        umdName: 'validPackage',
       },
 
       peerDependencies: {
-        react: "^16.11.0",
+        react: '^16.11.0',
       },
     }),
 
-    "src/index.js": js`
+    'src/index.js': js`
                       export default "something";
                     `,
   });
 
-  (doPromptInput as jest.MockedFunction<
-    typeof doPromptInput
-  >).mockImplementation((question, { name }, thing) => {
-    console.log("called");
-    throw new Error(
-      `this should never be called: ${JSON.stringify({
-        question,
-        name,
-        thing,
-      })}`
-    );
-  });
+  (doPromptInput as jest.MockedFunction<typeof doPromptInput>).mockImplementation(
+    (question, { name }, thing) => {
+      console.log('called');
+      throw new Error(
+        `this should never be called: ${JSON.stringify({
+          question,
+          name,
+          thing,
+        })}`,
+      );
+    },
+  );
 
   await build(tmpPath);
 
   await snapshotDirectory(tmpPath);
 });
 
-test("batches build errors", async () => {
+test('batches build errors', async () => {
   let tmpPath = await testdir({
-    "package.json": JSON.stringify({
-      name: "errors",
-      main: "index.js",
+    'package.json': JSON.stringify({
+      name: 'errors',
+      main: 'index.js',
 
-      preconstruct: {
-        packages: ["packages/*"],
+      monots: {
+        packages: ['packages/*'],
       },
 
-      workspaces: ["packages/*"],
+      workspaces: ['packages/*'],
     }),
 
-    "packages/package-one/package.json": JSON.stringify({
-      name: "@errors/package-one",
-      main: "dist/errors-package-one.cjs.js",
-      license: "MIT",
+    'packages/package-one/package.json': JSON.stringify({
+      name: '@errors/package-one',
+      main: 'dist/errors-package-one.cjs.js',
+      license: 'MIT',
       private: true,
     }),
 
-    "packages/package-two/package.json": JSON.stringify({
-      name: "@errors/package-two",
-      main: "dist/errors-package-two.cjs.js",
-      license: "MIT",
+    'packages/package-two/package.json': JSON.stringify({
+      name: '@errors/package-two',
+      main: 'dist/errors-package-two.cjs.js',
+      license: 'MIT',
       private: true,
     }),
 
-    "packages/package-one/src/index.js": js`
+    'packages/package-one/src/index.js': js`
                                            import "something";
                                            import "something-2";
                                          `,
 
-    "packages/package-two/src/index.js": js`
+    'packages/package-two/src/index.js': js`
                                            import "something";
                                            import "something-2";
                                          `,
@@ -580,7 +576,7 @@ test("batches build errors", async () => {
   let error;
   try {
     await build(tmpPath);
-    throw new Error("should never happen");
+    throw new Error('should never happen');
   } catch (err) {
     error = err;
   }
@@ -592,10 +588,10 @@ test("batches build errors", async () => {
   `);
 });
 
-test("builds package using eval", async () => {
+test('builds package using eval', async () => {
   let dir = await testdir({
-    "package.json": basicPkgJson(),
-    "src/index.js": js`
+    'package.json': basicPkgJson(),
+    'src/index.js': js`
                       export default function compute(arg) {
                         return eval(arg);
                       }
@@ -628,21 +624,21 @@ test("builds package using eval", async () => {
   `);
 });
 
-test("builds umd with a dependency containing top-level this in ESM", async () => {
+test('builds umd with a dependency containing top-level this in ESM', async () => {
   let dir = await testdir({
-    "package.json": basicPkgJson({
-      umdName: "pkg",
+    'package.json': basicPkgJson({
+      umdName: 'pkg',
       dependencies: {
-        "with-top-level-this-in-esm": "*",
+        'with-top-level-this-in-esm': '*',
       },
     }),
-    "src/index.js": js`
+    'src/index.js': js`
                       export { default } from "with-top-level-this-in-esm";
                     `,
-    "node_modules/with-top-level-this-in-esm/package.json": JSON.stringify({
-      name: "with-top-level-this-in-esm",
+    'node_modules/with-top-level-this-in-esm/package.json': JSON.stringify({
+      name: 'with-top-level-this-in-esm',
     }),
-    "node_modules/with-top-level-this-in-esm/index.js": js`
+    'node_modules/with-top-level-this-in-esm/index.js': js`
                                                           // output transpiled by TS with inlined tslib helper
                                                           var __assign =
                                                             (this && this.__assign) ||
@@ -705,10 +701,10 @@ test("builds umd with a dependency containing top-level this in ESM", async () =
   `);
 });
 
-test("fails for source files containing top-level this", async () => {
+test('fails for source files containing top-level this', async () => {
   let dir = await testdir({
-    "package.json": basicPkgJson(),
-    "src/index.js": js`
+    'package.json': basicPkgJson(),
+    'src/index.js': js`
                       export default this;
                     `,
   });

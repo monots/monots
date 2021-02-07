@@ -8,18 +8,14 @@ import { Package } from './package';
 
 export async function validateIncludedFiles(pkg: Package) {
   try {
-    const rootDistDirectoryTestFilepath = path.join(
-      pkg.directory,
-      'dist',
-      'preconstruct-test-file',
-    );
+    const rootDistDirectoryTestFilepath = path.join(pkg.directory, 'dist', 'monots-test-file');
     const hasNoEntrypointAtRootOfPackage = pkg.entrypoints.every(
       (entrypoint) => entrypoint.directory !== pkg.directory,
     );
     await Promise.all(
       pkg.entrypoints
         .map(async (entrypoint) => {
-          const filename = path.join(entrypoint.directory, 'dist', 'preconstruct-test-file');
+          const filename = path.join(entrypoint.directory, 'dist', 'monots-test-file');
           return fs.outputFile(filename, 'test content');
         })
         .concat(
@@ -32,8 +28,8 @@ export async function validateIncludedFiles(pkg: Package) {
     const packedFilesArr = await packlist({ path: pkg.directory });
 
     // Ensure consistent path separators. Without this, there's a mismatch between this result and the path it
-    // checks on Windows. This value will have a forward slash (dist/preconstruct-test-file), whereas the value
-    // of distFilePath below will have a backslash (dist\preconstruct-test-file). Obviously these two won't match,
+    // checks on Windows. This value will have a forward slash (dist/monots-test-file), whereas the value
+    // of distFilePath below will have a backslash (dist\monots-test-file). Obviously these two won't match,
     // so the distfile check will fail.
     const result = new Set(packedFilesArr.map((p) => path.normalize(p)));
 
@@ -47,7 +43,7 @@ export async function validateIncludedFiles(pkg: Package) {
       );
       const distFilePath = path.relative(
         pkg.directory,
-        path.resolve(entrypoint.directory, 'dist', 'preconstruct-test-file'),
+        path.resolve(entrypoint.directory, 'dist', 'monots-test-file'),
       );
       const entrypointName = path.relative(pkg.directory, entrypoint.directory);
 
@@ -71,7 +67,7 @@ export async function validateIncludedFiles(pkg: Package) {
       !result.has(path.relative(pkg.directory, rootDistDirectoryTestFilepath))
     ) {
       messages.push(
-        "the dist directory in the root of the package isn't included in the published files for this package, please add it to the files field in the package's package.json.\nthough this package does not have an entrypoint at the root of the package, preconstruct will write common chunks to the root dist directory so it must be included.",
+        "the dist directory in the root of the package isn't included in the published files for this package, please add it to the files field in the package's package.json.\nthough this package does not have an entrypoint at the root of the package, monots will write common chunks to the root dist directory so it must be included.",
       );
     }
 
@@ -81,7 +77,7 @@ export async function validateIncludedFiles(pkg: Package) {
   } finally {
     await Promise.all(
       pkg.entrypoints.map((entrypoint) =>
-        fs.remove(path.join(entrypoint.directory, 'dist', 'preconstruct-test-file')),
+        fs.remove(path.join(entrypoint.directory, 'dist', 'monots-test-file')),
       ),
     );
   }

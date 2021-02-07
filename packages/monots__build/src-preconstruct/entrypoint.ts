@@ -9,7 +9,7 @@ export class Entrypoint extends Item<{
   module?: JSONValue;
   'umd:main'?: JSONValue;
   browser?: JSONValue;
-  preconstruct: {
+  monots: {
     source?: JSONValue;
     umdName?: JSONValue;
   };

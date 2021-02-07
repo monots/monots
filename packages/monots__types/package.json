@@ -15,7 +15,7 @@
     "packages"
   ],
   "dependencies": {
-    "clipanion": "^3.0.0-rc.6",
+    "clipanion": "^3.0.0-rc.7",
     "type-fest": "^0.20.2"
   },
   "publishConfig": {

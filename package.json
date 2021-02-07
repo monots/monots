@@ -28,7 +28,7 @@
     "clean:all": "git clean -fdX --exclude='.config.json'",
     "clean:modules": "git clean -fdX packages support",
     "fix": "run-s -c fix:*",
-    "fix:build": "preconstruct fix",
+    "fix:build": "monots fix",
     "fix:config": "pnpm ts -- support/scripts/generate-configs.ts",
     "fix:es": "pnpm lint:es -- --fix",
     "fix:prettier": "pnpm run:prettier -- --write",
@@ -41,7 +41,7 @@
     "postinstall": "run-s build:dev",
     "is-logged-in": "npm whoami",
     "lint": "run-s lint:*",
-    "lint:build": "preconstruct validate",
+    "lint:build": "monots validate",
     "lint:es": "cross-env FULL_ESLINT_CHECK=true eslint -f codeframe --ext=.tsx,.ts,.js .",
     "lint:md": "eslint -f codeframe  --ignore-pattern='*.js' --ignore-pattern='*.ts' --ignore-pattern='*.tsx' .",
     "lint:prettier": "pnpm run:prettier -- --check",
@@ -65,7 +65,7 @@
     "update:workspace": "pnpm up -r --workspace \"@monots/*\""
   },
   "dependencies": {
-    "@changesets/cli": "^2.14.0",
+    "@changesets/cli": "^2.14.1",
     "@jest/types": "^26.6.2",
     "@manypkg/cli": "^0.17.0",
     "@manypkg/get-packages": "^1.1.1",
@@ -75,7 +75,7 @@
     "@types/eslint": "^7.2.6",
     "@types/jest": "^26.0.20",
     "@types/jest-axe": "^3.5.1",
-    "@types/node": "^14.14.24",
+    "@types/node": "^14.14.25",
     "@types/testing-library__jest-dom": "^5.9.5",
     "@typescript-eslint/eslint-plugin": "^4.14.2",
     "@typescript-eslint/parser": "^4.14.2",
@@ -85,8 +85,8 @@
     "babel-plugin-macros": "^3.0.1",
     "cpy-cli": "^3.1.1",
     "cross-env": "^7.0.3",
-    "esbuild": "^0.8.40",
-    "esbuild-jest": "^0.3.0",
+    "esbuild": "^0.8.42",
+    "esbuild-jest": "^0.4.0",
     "esbuild-register": "^2.0.0",
     "eslint": "^7.19.0",
     "eslint-config-prettier": "^7.2.0",
@@ -96,7 +96,7 @@
     "eslint-plugin-jest": "^24.1.3",
     "eslint-plugin-jest-formatting": "^2.0.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-markdown": "^2.0.0-rc.0",
+    "eslint-plugin-markdown": "^2.0.0-rc.2",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-sonarjs": "^0.5.0",
@@ -107,7 +107,7 @@
     "jest-circus": "^26.6.3",
     "jest-extended": "^0.11.5",
     "jest-watch-typeahead": "^0.6.1",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.4",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "prettier-plugin-packagejson": "^2.2.9",
@@ -122,9 +122,6 @@
     "node": ">=10"
   },
   "monots": {
-    "tsconfigBaseExtends": "./@monots/tsconfig/tsconfig.json"
-  },
-  "preconstruct": {
     "packages": [
       "@monots/*",
       "packages/*",

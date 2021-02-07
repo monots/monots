@@ -1,19 +1,12 @@
-import fixturez from "fixturez";
-import path from "path";
-import init from "../init";
-import { confirms as _confirms, errors } from "../messages";
-import {
-  logMock,
-  modifyPkg,
-  getPkg,
-  js,
-  testdir,
-  getFiles,
-} from "../../test-utils";
+import fixturez from 'fixturez';
+import path from 'path';
+import init from '../init';
+import { confirms as _confirms, errors } from '../messages';
+import { logMock, modifyPkg, getPkg, js, testdir, getFiles } from '../../test-utils';
 
 const f = fixturez(__dirname);
 
-jest.mock("../prompt");
+jest.mock('../prompt');
 
 let confirms = _confirms as jest.Mocked<typeof _confirms>;
 
@@ -21,17 +14,17 @@ afterEach(() => {
   jest.resetAllMocks();
 });
 
-test("no entrypoint", async () => {
-  let tmpPath = f.copy("no-entrypoint");
+test('no entrypoint', async () => {
+  let tmpPath = f.copy('no-entrypoint');
   try {
     await init(tmpPath);
   } catch (error) {
-    expect(error.message).toBe(errors.noSource("src/index"));
+    expect(error.message).toBe(errors.noSource('src/index'));
   }
 });
 
-test("do not allow write", async () => {
-  let tmpPath = f.copy("basic-package");
+test('do not allow write', async () => {
+  let tmpPath = f.copy('basic-package');
 
   confirms.writeMainField.mockReturnValue(Promise.resolve(true));
 
@@ -43,8 +36,8 @@ test("do not allow write", async () => {
   expect(confirms.writeMainField).toBeCalledTimes(1);
 });
 
-test("set only main field", async () => {
-  let tmpPath = f.copy("basic-package");
+test('set only main field', async () => {
+  let tmpPath = f.copy('basic-package');
 
   confirms.writeMainField.mockReturnValue(Promise.resolve(true));
   confirms.writeModuleField.mockReturnValue(Promise.resolve(false));
@@ -65,8 +58,8 @@ test("set only main field", async () => {
   `);
 });
 
-test("set main and module field", async () => {
-  let tmpPath = f.copy("basic-package");
+test('set main and module field', async () => {
+  let tmpPath = f.copy('basic-package');
 
   confirms.writeMainField.mockReturnValue(Promise.resolve(true));
   confirms.writeModuleField.mockReturnValue(Promise.resolve(true));
@@ -89,17 +82,17 @@ test("set main and module field", async () => {
   `);
 });
 
-test("scoped package", async () => {
+test('scoped package', async () => {
   let tmpPath = await testdir({
-    "package.json": JSON.stringify({
-      name: "@some-scope/some-package",
-      version: "1.0.0",
-      main: "index.js",
-      license: "MIT",
+    'package.json': JSON.stringify({
+      name: '@some-scope/some-package',
+      version: '1.0.0',
+      main: 'index.js',
+      license: 'MIT',
       private: true,
     }),
 
-    "src/index.js": js`
+    'src/index.js': js`
                       // @flow
 
                       export default "something";
@@ -126,8 +119,8 @@ test("scoped package", async () => {
   `);
 });
 
-test("monorepo", async () => {
-  let tmpPath = f.copy("monorepo");
+test('monorepo', async () => {
+  let tmpPath = f.copy('monorepo');
 
   confirms.writeMainField.mockReturnValue(Promise.resolve(true));
   confirms.writeModuleField.mockReturnValue(Promise.resolve(true));
@@ -136,8 +129,8 @@ test("monorepo", async () => {
   expect(confirms.writeMainField).toBeCalledTimes(2);
   expect(confirms.writeModuleField).toBeCalledTimes(2);
 
-  let pkg1 = await getPkg(path.join(tmpPath, "packages", "package-one"));
-  let pkg2 = await getPkg(path.join(tmpPath, "packages", "package-two"));
+  let pkg1 = await getPkg(path.join(tmpPath, 'packages', 'package-one'));
+  let pkg2 = await getPkg(path.join(tmpPath, 'packages', 'package-two'));
 
   expect(Object.keys(pkg1)).toMatchInlineSnapshot(`
     Array [
@@ -173,8 +166,8 @@ test("monorepo", async () => {
   `);
 });
 
-test("does not prompt or modify if already valid", async () => {
-  let tmpPath = f.copy("valid-package");
+test('does not prompt or modify if already valid', async () => {
+  let tmpPath = f.copy('valid-package');
   let original = await getPkg(tmpPath);
 
   await init(tmpPath);
@@ -195,8 +188,8 @@ test("does not prompt or modify if already valid", async () => {
   `);
 });
 
-test("invalid fields", async () => {
-  let tmpPath = f.copy("invalid-fields");
+test('invalid fields', async () => {
+  let tmpPath = f.copy('invalid-fields');
 
   confirms.writeMainField.mockReturnValue(Promise.resolve(true));
   confirms.writeModuleField.mockReturnValue(Promise.resolve(true));
@@ -220,13 +213,13 @@ test("invalid fields", async () => {
   `);
 });
 
-test("fix browser", async () => {
-  let tmpPath = f.copy("valid-package");
+test('fix browser', async () => {
+  let tmpPath = f.copy('valid-package');
 
   confirms.fixBrowserField.mockReturnValue(Promise.resolve(true));
 
   await modifyPkg(tmpPath, (pkg) => {
-    pkg.browser = "invalid.js";
+    pkg.browser = 'invalid.js';
   });
 
   await init(tmpPath);
@@ -241,7 +234,7 @@ test("fix browser", async () => {
       "main": "dist/valid-package.cjs.js",
       "module": "dist/valid-package.esm.js",
       "name": "valid-package",
-      "preconstruct": Object {
+      "monots": Object {
         "umdName": "validPackage",
       },
       "private": true,
@@ -252,33 +245,33 @@ test("fix browser", async () => {
 });
 
 let basicThreeEntrypoints = {
-  "package.json": JSON.stringify({
-    name: "something",
-    preconstruct: {
-      entrypoints: ["index.js", "one.js", "two.js"],
+  'package.json': JSON.stringify({
+    name: 'something',
+    monots: {
+      entrypoints: ['index.js', 'one.js', 'two.js'],
     },
   }),
-  "src/index.js": js`
+  'src/index.js': js`
                     export let something = true;
                   `,
-  "src/one.js": js`
+  'src/one.js': js`
                   export let something = true;
                 `,
-  "src/two.js": js`
+  'src/two.js': js`
                   export let something = true;
                 `,
-  "one/package.json": JSON.stringify({}),
-  "two/package.json": JSON.stringify({}),
+  'one/package.json': JSON.stringify({}),
+  'two/package.json': JSON.stringify({}),
 };
 
-test("three entrypoints, no main, only add main", async () => {
+test('three entrypoints, no main, only add main', async () => {
   const dir = await testdir(basicThreeEntrypoints);
   confirms.writeMainField.mockReturnValue(Promise.resolve(true));
   confirms.writeModuleField.mockReturnValue(Promise.resolve(false));
 
   await init(dir);
 
-  expect(await getFiles(dir, ["**/package.json"])).toMatchInlineSnapshot(`
+  expect(await getFiles(dir, ['**/package.json'])).toMatchInlineSnapshot(`
     ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯ one/package.json ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
     {
       "main": "dist/something-one.cjs.js"
@@ -287,7 +280,7 @@ test("three entrypoints, no main, only add main", async () => {
     ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯ package.json ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
     {
       "name": "something",
-      "preconstruct": {
+      "monots": {
         "entrypoints": [
           "index.js",
           "one.js",
@@ -305,7 +298,7 @@ test("three entrypoints, no main, only add main", async () => {
   `);
 });
 
-test("three entrypoints, no main, add main and module", async () => {
+test('three entrypoints, no main, add main and module', async () => {
   const dir = await testdir(basicThreeEntrypoints);
 
   confirms.writeMainField.mockReturnValue(Promise.resolve(true));
@@ -313,7 +306,7 @@ test("three entrypoints, no main, add main and module", async () => {
 
   await init(dir);
 
-  expect(await getFiles(dir, ["**/package.json"])).toMatchInlineSnapshot(`
+  expect(await getFiles(dir, ['**/package.json'])).toMatchInlineSnapshot(`
     ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯ one/package.json ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
     {
       "main": "dist/something-one.cjs.js",
@@ -323,7 +316,7 @@ test("three entrypoints, no main, add main and module", async () => {
     ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯ package.json ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
     {
       "name": "something",
-      "preconstruct": {
+      "monots": {
         "entrypoints": [
           "index.js",
           "one.js",
@@ -343,12 +336,12 @@ test("three entrypoints, no main, add main and module", async () => {
   `);
 });
 
-test("three entrypoints, no main, add main and fix browser", async () => {
+test('three entrypoints, no main, add main and fix browser', async () => {
   const dir = await testdir({
     ...basicThreeEntrypoints,
-    "package.json": JSON.stringify({
-      ...JSON.parse(basicThreeEntrypoints["package.json"]),
-      browser: "",
+    'package.json': JSON.stringify({
+      ...JSON.parse(basicThreeEntrypoints['package.json']),
+      browser: '',
     }),
   });
   confirms.writeMainField.mockReturnValue(Promise.resolve(true));
@@ -357,7 +350,7 @@ test("three entrypoints, no main, add main and fix browser", async () => {
 
   await init(dir);
 
-  expect(await getFiles(dir, ["**/package.json"])).toMatchInlineSnapshot(`
+  expect(await getFiles(dir, ['**/package.json'])).toMatchInlineSnapshot(`
     ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯ one/package.json ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
     {
       "main": "dist/something-one.cjs.js",
@@ -369,7 +362,7 @@ test("three entrypoints, no main, add main and fix browser", async () => {
     ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯ package.json ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
     {
       "name": "something",
-      "preconstruct": {
+      "monots": {
         "entrypoints": [
           "index.js",
           "one.js",

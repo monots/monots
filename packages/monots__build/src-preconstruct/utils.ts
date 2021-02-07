@@ -79,20 +79,20 @@ function getDistName(
     return getDistNameWithStrategy(pkg, entrypointName, forceStrategy);
   }
 
-  if ('distFilenameStrategy' in pkg.project.json.preconstruct) {
+  if ('distFilenameStrategy' in pkg.project.json.monots) {
     if (
-      pkg.project.json.preconstruct.distFilenameStrategy !== 'full' &&
-      pkg.project.json.preconstruct.distFilenameStrategy !== 'unscoped-package-name'
+      pkg.project.json.monots.distFilenameStrategy !== 'full' &&
+      pkg.project.json.monots.distFilenameStrategy !== 'unscoped-package-name'
     ) {
       throw new FatalError(
         `distFilenameStrategy is defined in your Preconstruct config as ${JSON.stringify(
-          pkg.project.json.preconstruct.distFilenameStrategy,
+          pkg.project.json.monots.distFilenameStrategy,
         )} but the only accepted values are "full" and "unscoped-package-name"`,
         pkg.project.name,
       );
     }
 
-    if (pkg.project.json.preconstruct.distFilenameStrategy === 'unscoped-package-name') {
+    if (pkg.project.json.monots.distFilenameStrategy === 'unscoped-package-name') {
       return getDistNameWithStrategy(pkg, entrypointName, 'unscoped-package-name');
     }
   }

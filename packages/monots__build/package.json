@@ -6,14 +6,14 @@
   "repository": "https://github.com/monots/monots/tree/master/@monots/build",
   "license": "MIT",
   "author": "Ifiok Jr. <ifiokotung@gmail.com>",
-  "main": "dist/core.cjs.js",
-  "module": "dist/core.esm.js",
-  "types": "lib/index.d.ts",
   "files": [
     "schema.json",
     "dist",
     "src"
   ],
+  "main": "dist/core.cjs.js",
+  "module": "dist/core.esm.js",
+  "types": "lib/index.d.ts",
   "dependencies": {
     "@babel/code-frame": "^7.12.13",
     "@babel/core": "^7.12.13",

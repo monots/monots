@@ -24,7 +24,7 @@ export const errors = {
 
 export const confirms = {
   writeMainField: createPromptConfirmLoader(
-    'preconstruct is going to change the main field in your package.json, are you okay with that?',
+    'monots is going to change the main field in your package.json, are you okay with that?',
   ),
   writeModuleField: createPromptConfirmLoader(
     'would you like to generate module builds? this will write to the module field in your package.json',

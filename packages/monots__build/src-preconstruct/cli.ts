@@ -22,7 +22,7 @@ process['e' + 'nv'].NODE_ENV = 'production';
 const { input } = meow(
   `
 Usage
-  $ preconstruct [command]
+  $ monots [command]
 Commands
   init         initialise a project
   build        build the project
@@ -103,12 +103,12 @@ class CommandNotFoundError extends Error {}
   }
 
   if (hasFixableError) {
-    info('Some of the errors above can be fixed automatically by running preconstruct fix');
+    info('Some of the errors above can be fixed automatically by running monots fix');
   }
 
-  info('If want to learn more about the above error, check https://preconstruct.tools/errors');
+  info('If want to learn more about the above error, check https://monots.tools/errors');
   info(
-    'If the error is not there and you want to learn more about it, open an issue at https://github.com/preconstruct/preconstruct/issues/new',
+    'If the error is not there and you want to learn more about it, open an issue at https://github.com/monots/monots/issues/new',
   );
   process.exit(1);
 });
