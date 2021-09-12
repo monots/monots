@@ -15,7 +15,7 @@
   <a href="#why"><strong>Why?</strong></a> ·
   <a href="#plans"><strong>Plans</strong></a> ·
   <a href="./docs/docs"><strong>Documentation</strong></a> ·
-  <a href="./docs/docs/contributing.md"><strong>Contributing</strong></a>
+  <a href="./.github/contributing.md"><strong>Contributing</strong></a>
 </p>
 
 <br />

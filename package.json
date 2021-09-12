@@ -28,7 +28,7 @@
     "preinstall": "pnpm symlink:root && pnpm check:pnpm",
     "postinstall": "node .monots/enable-cli.js pnpm monots prepare",
     "prerelease": "pnpm build",
-    "release": "pnpm publish -r",
+    "release": "changeset publish",
     "lint": "run-s lint:*",
     "lint:build": "pnpm monots check",
     "lint:es": "eslint -f codeframe --ext=.tsx,.ts,.js .",
