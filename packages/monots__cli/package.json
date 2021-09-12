@@ -1,0 +1,71 @@
+{
+  "name": "@monots/cli",
+  "version": "0.0.0",
+  "description": "Create and manage your TypeScript monorepo with monots",
+  "homepage": "https://github.com/monots/monots/tree/master/@monots/cli",
+  "repository": "https://github.com/monots/monots/tree/master/packages/monots__cli",
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Ifiok Jr.",
+      "email": "ifiokotung@gmail.com",
+      "url": "https://ifiokjr.com"
+    }
+  ],
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json",
+    "./setup": {
+      "import": "./dist/setup.esm.js",
+      "require": "./dist/setup.cjs.js",
+      "types": "./dist/setup.d.ts"
+    },
+    "./types/*": "./dist/*.d.ts"
+  },
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "monots": "bin.js",
+    "mts": "bin.js"
+  },
+  "files": [
+    "bin.js",
+    "dist",
+    "setup"
+  ],
+  "dependencies": {
+    "@monots/core": "^0.0.0",
+    "@monots/types": "^0.0.0",
+    "@swc/helpers": "^0.2.13",
+    "chalk": "^4.1.2",
+    "clipanion": "^3.0.1",
+    "delay": "^5.0.0",
+    "ora": "^6.0.0",
+    "read-pkg-up": "^8.0.0",
+    "update-notifier": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/update-notifier": "^5.1.0",
+    "eta": "^1.12.3",
+    "type-fest": "^2.3.2"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "monots": {
+    "entrypoints": [
+      "index.ts",
+      "setup.ts"
+    ]
+  }
+}

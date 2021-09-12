@@ -1,0 +1,122 @@
+{
+  "name": "monots-monorepo",
+  "private": true,
+  "description": "Manage your next TypeScript project with style.",
+  "repository": "https://github.com/monots/monots",
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Ifiok Jr.",
+      "email": "ifiokotung@gmail.com",
+      "url": "https://ifiokjr.com"
+    }
+  ],
+  "type": "module",
+  "scripts": {
+    "build:packages": "pnpm monots build",
+    "build:types": "tsc -b",
+    "build": "run-p build:packages build:types",
+    "changeset": "changeset",
+    "check:pnpm": "node .monots/check-pnpm.js",
+    "checks": "run-s lint typecheck test",
+    "clean": "git clean -fdX --exclude='.config.json'",
+    "fix": "run-s -c fix:\\*",
+    "fix:build": "pnpm monots fix",
+    "fix:es": "pnpm lint:es -- --fix",
+    "fix:prettier": "pnpm run:prettier -- --write",
+    "fix:repo": "manypkg fix",
+    "preinstall": "pnpm symlink:root && pnpm check:pnpm",
+    "postinstall": "node .monots/enable-cli.js pnpm monots prepare",
+    "prerelease": "pnpm build",
+    "release": "pnpm publish -r",
+    "lint": "run-s lint:*",
+    "lint:build": "pnpm monots check",
+    "lint:es": "eslint -f codeframe --ext=.tsx,.ts,.js .",
+    "lint:md": "eslint -f codeframe  --ignore-pattern='*.js' --ignore-pattern='*.ts' --ignore-pattern='*.tsx' .",
+    "lint:prettier": "pnpm run:prettier -- --check",
+    "lint:repo": "manypkg check",
+    "monots": "pnpm ts packages/monots__cli/src/index.ts",
+    "prepare": "husky install .monots/.husky",
+    "reset": "pnpm clean; rm pnpm-lock.yaml; pnpm symlink:root; pnpm i -r;",
+    "run:prettier": "prettier --ignore-path .eslintignore \"**/*.{js,jsx,ts,tsx,md,mdx,json,html,css,yml,yaml,graphql}\"",
+    "storybook": "manypkg run support/storybook storybook",
+    "symlink:root": "node .monots/symlink-root.js",
+    "test": "ava",
+    "test:watch": "ava --watch",
+    "ts": "node --experimental-specifier-resolution=node --loader ts-node/esm",
+    "typecheck": "tsc -b",
+    "version:changeset": "changeset version",
+    "version:ci": "run-s version:changeset version:date fix:repo update:workspace fix:prettier version:lockfile",
+    "version:date": "node .monots/changelog-dates.js",
+    "version:lockfile": "pnpm install --lockfile-only",
+    "update:deps": "pnpm update --latest --recursive -i",
+    "update:workspace": "pnpm up -r --workspace \"packages/*\""
+  },
+  "ava": {
+    "extensions": {
+      "ts": "module"
+    },
+    "files": [
+      "**/__tests__/*.spec.ts",
+      "**/__tests__/*.spec.tsx"
+    ],
+    "nodeArguments": [
+      "--loader=ts-node/esm",
+      "--experimental-specifier-resolution=node"
+    ],
+    "nonSemVerExperiments": {
+      "configurableModuleFormat": true
+    }
+  },
+  "dependencies": {
+    "@changesets/changelog-github": "^0.4.0",
+    "@changesets/cli": "^2.16.0",
+    "@manypkg/cli": "^0.18.0",
+    "@manypkg/get-packages": "^1.1.1",
+    "@monots/cli": "^0.0.0",
+    "@monots/tsconfig": "^0.0.0",
+    "@types/node": "^16.9.1",
+    "ava": "^3.15.0",
+    "browserslist": "^4.17.0",
+    "cpy-cli": "^3.1.1",
+    "cross-env": "^7.0.3",
+    "del": "^6.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-monots": "^0.0.0",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
+    "load-json-file": "^7.0.0",
+    "monots": "^0.0.0",
+    "nanoid": "^3.1.25",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.4.0",
+    "prettier-config-monots": "^0.0.0",
+    "recursive-copy": "^2.0.13",
+    "snapshot-diff": "^0.9.0",
+    "ts-node": "^10.2.1",
+    "tsconfig-paths": "^3.11.0",
+    "typescript": "^4.4.3",
+    "typescript-snapshots-plugin": "^1.7.0",
+    "write-json-file": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=16",
+    "pnpm": ">=6"
+  },
+  "monots": {
+    "packages": [
+      "packages/*",
+      "!packages/monots__tsconfig",
+      "docs"
+    ],
+    "tsconfig": {
+      "ts-node": {
+        "transpileOnly": true,
+        "compilerOptions": {
+          "esModuleInterop": true,
+          "target": "ESNext"
+        }
+      }
+    }
+  }
+}

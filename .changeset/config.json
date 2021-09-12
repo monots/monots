@@ -1,0 +1,9 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@1.6.1/schema.json",
+  "changelog": ["@changesets/changelog-github", { "repo": "monots/monots" }],
+  "updateInternalDependencies": "patch",
+  "commit": false,
+  "linked": [],
+  "access": "public",
+  "baseBranch": "main"
+}

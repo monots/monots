@@ -1,0 +1,40 @@
+{
+  "name": "@monots/types",
+  "version": "0.0.0",
+  "description": "The monots templates",
+  "homepage": "https://github.com/monots/monots/tree/master/@monots/types",
+  "repository": "https://github.com/monots/monots/tree/master/packages/monots__types",
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Ifiok Jr.",
+      "email": "ifiokotung@gmail.com",
+      "url": "https://ifiokjr.com"
+    }
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json",
+    "./types/*": "./dist/*.d.ts"
+  },
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "monorepos",
+    "packages"
+  ],
+  "dependencies": {
+    "clipanion": "^3.0.1",
+    "type-fest": "^2.3.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

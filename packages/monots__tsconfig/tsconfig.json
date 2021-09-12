@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext",
+    "jsx": "preserve",
+    "lib": ["DOM", "ESNext"],
+    "moduleResolution": "Node",
+    "noImplicitReturns": true,
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowUnreachableCode": false,
+    "experimentalDecorators": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "useDefineForClassFields": true,
+    "importsNotUsedAsValues": "remove",
+
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "pretty": true
+  }
+}
