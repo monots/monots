@@ -45,6 +45,11 @@ jobs:
       - name: build project
         run: pnpm build
 
+      - name: add token
+        run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > $HOME/.npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: create versions
         uses: changesets/action@c3d88279fd9abe11410de073005e34863f735b1c
         if: github.ref == 'refs/heads/main'
@@ -54,5 +59,4 @@ jobs:
           commit: 'chore(changeset): version update'
           title: 'chore(changeset): version update'
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
