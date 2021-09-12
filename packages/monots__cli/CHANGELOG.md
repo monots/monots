@@ -1,5 +1,13 @@
 # @monots/cli
 
+## 0.1.1
+
+> 2021-09-12
+
+### Patch Changes
+
+- [`8a66f2a`](https://github.com/monots/monots/commit/8a66f2ae6ad439e49275cbc75eac875f49e4f507) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Fix `bin` entrypoint to work for `esm` modules which require specific imports.
+
 ## 0.1.0
 
 > 2021-09-12

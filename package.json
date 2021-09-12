@@ -73,7 +73,7 @@
     "@changesets/cli": "^2.16.0",
     "@manypkg/cli": "^0.18.0",
     "@manypkg/get-packages": "^1.1.1",
-    "@monots/cli": "^0.1.0",
+    "@monots/cli": "^0.1.1",
     "@monots/tsconfig": "^0.1.0",
     "@types/node": "^16.9.1",
     "ava": "^3.15.0",
