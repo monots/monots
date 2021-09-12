@@ -14,7 +14,7 @@ on:
       - main
 
 env:
-  PNPM_CACHE_FOLDER: .pnpm-store
+  PNPM_CACHE_FOLDER: '~/.pnpm-store'
 
 jobs:
   # Lint the project

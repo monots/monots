@@ -9,7 +9,7 @@ on:
     types: [completed]
 
 env:
-  PNPM_CACHE_FOLDER: .pnpm-store
+  PNPM_CACHE_FOLDER: '~/.pnpm-store'
 
 jobs:
   # Publish the project to npm
