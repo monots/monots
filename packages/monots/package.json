@@ -29,7 +29,7 @@
     "dist"
   ],
   "dependencies": {
-    "@monots/cli": "^0.1.0",
+    "@monots/cli": "^0.1.1",
     "@monots/core": "^0.1.0"
   },
   "publishConfig": {
