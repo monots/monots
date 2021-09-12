@@ -12,25 +12,18 @@ importers:
       '@types/node': ^16.9.1
       ava: ^3.15.0
       browserslist: ^4.17.0
-      cpy-cli: ^3.1.1
-      cross-env: ^7.0.3
-      del: ^6.0.0
       eslint: ^7.32.0
       eslint-config-monots: ^0.1.1
       husky: ^7.0.2
       lint-staged: ^11.1.2
       load-json-file: ^7.0.0
       monots: ^0.1.0
-      nanoid: ^3.1.25
       npm-run-all: ^4.1.5
       prettier: ^2.4.0
       prettier-config-monots: ^0.1.0
-      recursive-copy: ^2.0.13
       snapshot-diff: ^0.9.0
       ts-node: ^10.2.1
-      tsconfig-paths: ^3.11.0
       typescript: ^4.4.3
-      typescript-snapshots-plugin: ^1.7.0
       write-json-file: ^5.0.0
     dependencies:
       '@changesets/changelog-github': 0.4.1
@@ -42,25 +35,18 @@ importers:
       '@types/node': 16.9.1
       ava: 3.15.0
       browserslist: 4.17.0
-      cpy-cli: 3.1.1
-      cross-env: 7.0.3
-      del: 6.0.0
       eslint: 7.32.0
       eslint-config-monots: link:packages/eslint-config-monots
       husky: 7.0.2
       lint-staged: 11.1.2
       load-json-file: 7.0.0
       monots: link:packages/monots
-      nanoid: 3.1.25
       npm-run-all: 4.1.5
       prettier: 2.4.0
       prettier-config-monots: link:packages/prettier-config-monots
-      recursive-copy: 2.0.13
       snapshot-diff: 0.9.0
       ts-node: 10.2.1_c51a13cfa2c3195bf611f1652e33c9c1
-      tsconfig-paths: 3.11.0
       typescript: 4.4.3
-      typescript-snapshots-plugin: 1.7.0
       write-json-file: 5.0.0
 
   docs:
@@ -161,10 +147,13 @@ importers:
       '@types/update-notifier': ^5.1.0
       chalk: ^4.1.2
       clipanion: ^3.0.1
+      del: ^6.0.0
       delay: ^5.0.0
       eta: ^1.12.3
+      nanoid: ^3.1.25
       ora: ^6.0.0
       read-pkg-up: ^8.0.0
+      recursive-copy: ^2.0.13
       type-fest: ^2.3.2
       update-notifier: ^5.1.0
     dependencies:
@@ -179,7 +168,10 @@ importers:
       update-notifier: 5.1.0
     devDependencies:
       '@types/update-notifier': 5.1.0
+      del: 6.0.0
       eta: 1.12.3
+      nanoid: 3.1.25
+      recursive-copy: 2.0.13
       type-fest: 2.3.2
 
   packages/monots__core:
@@ -4962,7 +4954,7 @@ packages:
   /array-differ/1.0.0:
     resolution: { integrity: sha1-7/UuN1gknTO+QCuLuOVkuytdQDE= }
     engines: { node: '>=0.10.0' }
-    dev: false
+    dev: true
 
   /array-find-index/1.0.2:
     resolution: { integrity: sha1-3wEKoSh+Fku9pvlyOwqWoexBh6E= }
@@ -5049,7 +5041,6 @@ packages:
   /arrify/1.0.1:
     resolution: { integrity: sha1-iYUI2iIm84DfkEcoRWhJwVAaSw0= }
     engines: { node: '>=0.10.0' }
-    dev: false
 
   /arrify/2.0.1:
     resolution:
@@ -5061,7 +5052,6 @@ packages:
 
   /asap/2.0.6:
     resolution: { integrity: sha1-5QNHYR1+aQlDIIu9r+vLwvuGbUY= }
-    dev: false
 
   /assign-symbols/1.0.0:
     resolution: { integrity: sha1-WWZ/QfrdTyDMvCu5a41Pf3jsA2c= }
@@ -6483,65 +6473,11 @@ packages:
       path-type: 4.0.0
       yaml: 1.10.2
 
-  /cp-file/7.0.0:
-    resolution:
-      {
-        integrity: sha512-0Cbj7gyvFVApzpK/uhCtQ/9kE9UnYpxMzaq5nQQC/Dh4iaj5fxp7iEFIullrYwzj8nf0qnsI1Qsx34hAeAebvw==,
-      }
-    engines: { node: '>=8' }
-    dependencies:
-      graceful-fs: 4.2.8
-      make-dir: 3.1.0
-      nested-error-stacks: 2.1.0
-      p-event: 4.2.0
-    dev: false
-
-  /cpy-cli/3.1.1:
-    resolution:
-      {
-        integrity: sha512-HCpNdBkQy3rw+uARLuIf0YurqsMXYzBa9ihhSAuxYJcNIrqrSq3BstPfr0cQN38AdMrQiO9Dp4hYy7GtGJsLPg==,
-      }
-    engines: { node: '>=8' }
-    hasBin: true
-    dependencies:
-      cpy: 8.1.2
-      meow: 6.1.1
-    dev: false
-
-  /cpy/8.1.2:
-    resolution:
-      {
-        integrity: sha512-dmC4mUesv0OYH2kNFEidtf/skUwv4zePmGeepjyyJ0qTo5+8KhA1o99oIAwVVLzQMAeDJml74d6wPPKb6EZUTg==,
-      }
-    engines: { node: '>=8' }
-    dependencies:
-      arrify: 2.0.1
-      cp-file: 7.0.0
-      globby: 9.2.0
-      has-glob: 1.0.0
-      junk: 3.1.0
-      nested-error-stacks: 2.1.0
-      p-all: 2.1.0
-      p-filter: 2.1.0
-      p-map: 3.0.0
-    dev: false
-
   /create-require/1.1.1:
     resolution:
       {
         integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==,
       }
-    dev: false
-
-  /cross-env/7.0.3:
-    resolution:
-      {
-        integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==,
-      }
-    engines: { node: '>=10.14', npm: '>=6', yarn: '>=1' }
-    hasBin: true
-    dependencies:
-      cross-spawn: 7.0.3
     dev: false
 
   /cross-fetch/3.1.4:
@@ -7077,7 +7013,7 @@ packages:
       pify: 2.3.0
       pinkie-promise: 2.0.1
       rimraf: 2.7.1
-    dev: false
+    dev: true
 
   /del/4.1.1:
     resolution:
@@ -8975,7 +8911,7 @@ packages:
       object-assign: 4.1.1
       pify: 2.3.0
       pinkie-promise: 2.0.1
-    dev: false
+    dev: true
 
   /globby/6.1.0:
     resolution: { integrity: sha1-9abXDoOV4hyFj7BInWTfAkJNUGw= }
@@ -9134,13 +9070,6 @@ packages:
         integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==,
       }
     engines: { node: '>=8' }
-
-  /has-glob/1.0.0:
-    resolution: { integrity: sha1-mqqe7b/7G6OZCnsAEPtnjuAIEgc= }
-    engines: { node: '>=0.10.0' }
-    dependencies:
-      is-glob: 3.1.0
-    dev: false
 
   /has-symbols/1.0.2:
     resolution:
@@ -10076,7 +10005,7 @@ packages:
   /is-path-cwd/1.0.0:
     resolution: { integrity: sha1-0iXsIxMuie3Tj9p2dHLmLmXxEG0= }
     engines: { node: '>=0.10.0' }
-    dev: false
+    dev: true
 
   /is-path-cwd/2.2.0:
     resolution:
@@ -10093,7 +10022,7 @@ packages:
     engines: { node: '>=0.10.0' }
     dependencies:
       is-path-inside: 1.0.1
-    dev: false
+    dev: true
 
   /is-path-in-cwd/2.1.0:
     resolution:
@@ -10109,7 +10038,7 @@ packages:
     engines: { node: '>=0.10.0' }
     dependencies:
       path-is-inside: 1.0.2
-    dev: false
+    dev: true
 
   /is-path-inside/2.1.0:
     resolution:
@@ -10706,15 +10635,7 @@ packages:
   /junk/1.0.3:
     resolution: { integrity: sha1-h75jSIZJy9ym9Tqzm+yczSNH9ZI= }
     engines: { node: '>=0.10.0' }
-    dev: false
-
-  /junk/3.1.0:
-    resolution:
-      {
-        integrity: sha512-pBxcB3LFc8QVgdggvZWyeys+hnrNWg4OcZIU/1X59k5jQdLBlCsYGRQaz234SqoRLTCgMH00fY0xRJH+F9METQ==,
-      }
-    engines: { node: '>=8' }
-    dev: false
+    dev: true
 
   /keyv/3.1.0:
     resolution:
@@ -11237,7 +11158,7 @@ packages:
       array-union: 1.0.2
       arrify: 1.0.1
       minimatch: 3.0.4
-    dev: false
+    dev: true
 
   /md5-hex/3.0.1:
     resolution:
@@ -11716,13 +11637,6 @@ packages:
         integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==,
       }
 
-  /nested-error-stacks/2.1.0:
-    resolution:
-      {
-        integrity: sha512-AO81vsIO1k1sM4Zrd6Hu7regmJN1NSiAja10gc4bX3F0wd+9rQmcuHQaHVQCYIEC8iFXnE+mavh23GOt7wBgug==,
-      }
-    dev: false
-
   /nice-try/1.0.5:
     resolution:
       {
@@ -12158,16 +12072,6 @@ packages:
       }
     dev: false
 
-  /p-all/2.1.0:
-    resolution:
-      {
-        integrity: sha512-HbZxz5FONzz/z2gJfk6bFca0BCiSRF8jU3yCsWOen/vR6lZjfPOu/e7L3uFzTW1i0H8TlC3vqQstEJPQL4/uLA==,
-      }
-    engines: { node: '>=6' }
-    dependencies:
-      p-map: 2.1.0
-    dev: false
-
   /p-cancelable/1.1.0:
     resolution:
       {
@@ -12272,16 +12176,6 @@ packages:
         integrity: sha512-y3b8Kpd8OAN444hxfBbFfj1FY/RjtTd8tzYwhUqNYXx0fXx2iX4maP4Qr6qhIKbQXI02wTLAda4fYUbDagTUFw==,
       }
     engines: { node: '>=6' }
-
-  /p-map/3.0.0:
-    resolution:
-      {
-        integrity: sha512-d3qXVTF/s+W+CdJ5A29wywV2n8CQQYahlgz2bFiA+4eVNJbHJodPZ+/gXwPGh0bOqA+j8S+6+ckmvLGPk1QpxQ==,
-      }
-    engines: { node: '>=8' }
-    dependencies:
-      aggregate-error: 3.1.0
-    dev: false
 
   /p-map/4.0.0:
     resolution:
@@ -13286,7 +13180,6 @@ packages:
       }
     dependencies:
       asap: 2.0.6
-    dev: false
 
   /prompts/2.4.0:
     resolution:
@@ -13842,7 +13735,7 @@ packages:
       pify: 2.3.0
       promise: 7.3.1
       slash: 1.0.0
-    dev: false
+    dev: true
 
   /recursive-readdir/2.2.2:
     resolution:
@@ -14654,7 +14547,7 @@ packages:
   /slash/1.0.0:
     resolution: { integrity: sha1-xB8vbDn8FtHNF61LXYlhFK5HDVU= }
     engines: { node: '>=0.10.0' }
-    dev: false
+    dev: true
 
   /slash/2.0.0:
     resolution:
@@ -15869,13 +15762,6 @@ packages:
       }
     dependencies:
       is-typedarray: 1.0.0
-
-  /typescript-snapshots-plugin/1.7.0:
-    resolution:
-      {
-        integrity: sha512-mWoH2E7/LnXy19YaJKKTWQCajRAdyFMNeMpUFN8XqB0zf/cNTM5JiiGpdpXtzjb3iyzwSEWcGqD8WA0XRp5eug==,
-      }
-    dev: false
 
   /typescript/4.4.3:
     resolution:
