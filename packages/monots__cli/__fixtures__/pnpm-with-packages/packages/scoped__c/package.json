@@ -1,0 +1,13 @@
+{
+  "name": "@scoped/c",
+  "version": "1.0.0",
+  "main": "",
+  "module": "",
+  "browser": "",
+  "types": "",
+  "monots": {
+    "entrypoints": [
+      "other.ts"
+    ]
+  }
+}

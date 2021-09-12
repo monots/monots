@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "postinstall": "monots prepare"
+  },
+  "monots": {
+    "packages": [
+      "packages/*"
+    ]
+  }
+}

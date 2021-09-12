@@ -1,0 +1,38 @@
+{
+  "extends": "@monots/tsconfig/tsconfig.json",
+  "include": [],
+  "files": [],
+  "ts-node": {
+    "transpileOnly": true,
+    "compilerOptions": {
+      "esModuleInterop": true,
+      "target": "ESNext"
+    }
+  },
+  "references": [
+    {
+      "path": "docs"
+    },
+    {
+      "path": "packages/eslint-config-monots/src"
+    },
+    {
+      "path": "packages/monots__cli/__tests__"
+    },
+    {
+      "path": "packages/monots__cli/src"
+    },
+    {
+      "path": "packages/monots__core/src"
+    },
+    {
+      "path": "packages/monots__types/src"
+    },
+    {
+      "path": "packages/monots/src"
+    },
+    {
+      "path": "packages/prettier-config-monots/src"
+    }
+  ]
+}
