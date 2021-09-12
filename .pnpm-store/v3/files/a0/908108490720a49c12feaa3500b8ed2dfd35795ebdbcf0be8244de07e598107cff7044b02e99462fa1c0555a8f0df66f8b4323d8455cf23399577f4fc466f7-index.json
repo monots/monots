@@ -1,0 +1,30 @@
+{
+  "name": "prettier-plugin-packagejson",
+  "version": "2.2.11",
+  "files": {
+    "lib/index.js": {
+      "checkedAt": 1631404927657,
+      "integrity": "sha512-yu8bsANq85fGJbyUD6mEiWfcMTy74d91WXDYN+pkJ8UDty5xcMGvP8xElIcYYxDMb4NSJkdJ8LcNHuNUu2IBkw==",
+      "mode": 420,
+      "size": 555
+    },
+    "lib/require.js": {
+      "checkedAt": 1631404927657,
+      "integrity": "sha512-TjWTbE2SdlnG/1b9fgRn8L+ziBI1G2TPO9pYXcMVghglgjaS95OqkPBQQTgp0ptXvHt42jVzBmbSOfTsb8tkug==",
+      "mode": 420,
+      "size": 83
+    },
+    "package.json": {
+      "checkedAt": 1631404927657,
+      "integrity": "sha512-4rvd2hLMiK7f1Z3Am0nwKLk1gJ11qKrsvsas6s7xzw874QtWzkjDGLwd4oYaMfkJIpiJnAe/1Kd1Zu66CC70Qw==",
+      "mode": 420,
+      "size": 976
+    },
+    "README.md": {
+      "checkedAt": 1631404927657,
+      "integrity": "sha512-tHD5yDbfFm5dFvJEJg9XaD5p2e1L8pLXS4ILYcrKaJpCNyJV2R94x8ydxL0I4aCuDTqON8Xly4eVdmp43EptRA==",
+      "mode": 420,
+      "size": 1129
+    }
+  }
+}

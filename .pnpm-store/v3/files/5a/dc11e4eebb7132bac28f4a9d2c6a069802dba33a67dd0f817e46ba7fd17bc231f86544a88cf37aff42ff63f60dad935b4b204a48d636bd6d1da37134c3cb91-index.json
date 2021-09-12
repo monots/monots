@@ -1,0 +1,42 @@
+{
+  "name": "@docusaurus/types",
+  "version": "2.0.0-beta.5",
+  "files": {
+    "LICENSE": {
+      "checkedAt": 1631404909460,
+      "integrity": "sha512-VHYnY2M5ol17+BG5gUMDKrLEPgzMX+I2ZWqYuYoAkxKpq/LwWreomGlbvw0J5ydkA4XD1zaNFUXxNiUhVpYBmw==",
+      "mode": 420,
+      "size": 1086
+    },
+    "src/index.js": {
+      "checkedAt": 1631404912512,
+      "integrity": "sha512-kf/lyvQ4c22q22pQ27B3CpHSU0HOXIp2dQ0isaHLXZa50K45+nNkDNgicF5dJ4JZXHxIN4fXgRPksnzuCZXPog==",
+      "mode": 420,
+      "size": 286
+    },
+    "package.json": {
+      "checkedAt": 1631404912512,
+      "integrity": "sha512-JN1JUWtwZ+YIKyG118zG1NarWCt3GXpAGxzRnFX8o+1C0xIKWdO1T8DX1lZxkD3MDq35wlEYlxGnC3dZXp2Nfw==",
+      "mode": 420,
+      "size": 651
+    },
+    "tsconfig.json": {
+      "checkedAt": 1631404912512,
+      "integrity": "sha512-ORCuFWDcZpW0QoR3PvELcPzZi+021PtAwOXw/FXd/zmCRtgxCHiQX3f5JQHYdVnlr8Qvouw5TzliNh39tPF6Fg==",
+      "mode": 420,
+      "size": 139
+    },
+    "README.md": {
+      "checkedAt": 1631404912512,
+      "integrity": "sha512-RFc+/atc+5nYJMK2YKk6v+oUMbHn3XzHbFn5bP5UpyaQrLJtymlo2gmdDG0fyD0tI7PiPU3MHkjvLCY9QXvYWQ==",
+      "mode": 420,
+      "size": 61
+    },
+    "src/index.d.ts": {
+      "checkedAt": 1631404912545,
+      "integrity": "sha512-6pwA+XQkzIPcDo/vhFxHxCFsdybFVqa/fMeDcAad5pqohhbUYEIoDr0G063AoF/yxWKZBa9dWJB5GqUiGvs1KA==",
+      "mode": 420,
+      "size": 11048
+    }
+  }
+}

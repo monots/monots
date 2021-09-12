@@ -1,0 +1,30 @@
+{
+  "name": "@types/react-helmet",
+  "version": "6.1.2",
+  "files": {
+    "LICENSE": {
+      "checkedAt": 1631404912822,
+      "integrity": "sha512-HQaIQk9pwOcyKutyDk4o2a87WnotwYuLGYFW43emGm4FvIJFKPyg+OYaw5sTegKAKf+C5SKa1ACjzCLivbaHrQ==",
+      "mode": 511,
+      "size": 1141
+    },
+    "README.md": {
+      "checkedAt": 1631404923848,
+      "integrity": "sha512-uarCAHa620yFaQ67Ng13sPhBHo31gmG6IJPbYJnxHkwSosE5PdGv1ribQkmB0A4uuj2gz+68GRI5wj7IAWq9qg==",
+      "mode": 511,
+      "size": 920
+    },
+    "index.d.ts": {
+      "checkedAt": 1631404923848,
+      "integrity": "sha512-WYdWvM/rQ03n3gJmuvnsRBNnnH60YlQHKq3gEa/G6llRVK3HL4xvMH05WZz1F6jmGr1E1zpl+hQhUpg70RV5Og==",
+      "mode": 511,
+      "size": 3324
+    },
+    "package.json": {
+      "checkedAt": 1631404923848,
+      "integrity": "sha512-LDf0gse+NQLiXjccYNCoMKQNMc/grS4gtdX/c3GuUrgaD34CiyQ5+n98O6g1FKIXw7FzupoOcHYqw6iCxg85PA==",
+      "mode": 511,
+      "size": 2027
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "globby",
+  "version": "5.0.0",
+  "files": {
+    "license": {
+      "checkedAt": 1631404908829,
+      "integrity": "sha512-rnnnpCCaRRrva3j3sLiBcOeiIzUSasNFUiv06v4IGNpYZarhUHxdwCJO+FRUjHId+ahDcYIvNtUMvNl/qUbu6Q==",
+      "mode": 438,
+      "size": 1119
+    },
+    "package.json": {
+      "checkedAt": 1631404929990,
+      "integrity": "sha512-bRrfjFImP10yiqLl/z4PKyHMH0H2ORghqL9orgYIpLoSYMzWCHqtfrs2MMTMaFeCho6vZD5uuFo+q5Nxpa+gDQ==",
+      "mode": 438,
+      "size": 1346
+    },
+    "index.js": {
+      "checkedAt": 1631404929990,
+      "integrity": "sha512-ZVXZpUhAUZGJ+o3KO73TrXVoJsIWRC6U4rrFmMWDjQwr+2B8H2RJltxqkX8C2u1MumdPTCxslJ2f9AezcskmGw==",
+      "mode": 438,
+      "size": 1526
+    },
+    "readme.md": {
+      "checkedAt": 1631404929993,
+      "integrity": "sha512-4z1FzvoWCXPRsasSCtbowfJAQpRbsLfuMey1fJ/FAUrPHzwBCrRbipjaFznZ+1W6bWb/FTPbSgSmSJtLXqRKiQ==",
+      "mode": 438,
+      "size": 2197
+    }
+  }
+}

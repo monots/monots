@@ -1,0 +1,30 @@
+{
+  "name": "@babel/helper-skip-transparent-expression-wrappers",
+  "version": "7.15.4",
+  "files": {
+    "LICENSE": {
+      "checkedAt": 1631404908766,
+      "integrity": "sha512-KYRMN3MVTuiy5XkFDHd5PnQmHaQnt3z16nsBDePxZ9YNmq7IFlslpBBlR3UI+zvlbEemzowOYeKil9a0ZkOYxQ==",
+      "mode": 420,
+      "size": 1106
+    },
+    "lib/index.js": {
+      "checkedAt": 1631404909574,
+      "integrity": "sha512-PYMO2TWUSFRQmrABrR2KRAR6001/j1Ftev+wDmXvtfLoLOhjDd20g0cHrj/Iy3EBn4LS7sGkq4CA7XG113gtdA==",
+      "mode": 420,
+      "size": 729
+    },
+    "package.json": {
+      "checkedAt": 1631404909574,
+      "integrity": "sha512-AuuHlVi/mBQH+znD3iUDhdBYqOPXimbGpoe+msxtSrapGYbox5QIUQdujfpXW4H9Y/HNSbN8+YLtyzNEE3sjgg==",
+      "mode": 420,
+      "size": 714
+    },
+    "README.md": {
+      "checkedAt": 1631404909578,
+      "integrity": "sha512-rNo1WvhibNAUSi0ZRlubsGy9pnRHKLv0FzsBclcz98ODgfQBp6XddYvSQwMtJuPaN9F+eKP6VDBV+aIuYO5Cdw==",
+      "mode": 420,
+      "size": 469
+    }
+  }
+}

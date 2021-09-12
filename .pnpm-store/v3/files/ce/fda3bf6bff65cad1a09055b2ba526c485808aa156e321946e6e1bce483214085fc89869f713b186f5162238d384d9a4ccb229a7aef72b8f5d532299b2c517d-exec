@@ -1,0 +1,25 @@
+{
+    "name": "@types/configstore",
+    "version": "5.0.1",
+    "description": "TypeScript definitions for configstore",
+    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/configstore",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "ArcticLight",
+            "url": "https://github.com/ArcticLight",
+            "githubUsername": "ArcticLight"
+        }
+    ],
+    "main": "",
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "directory": "types/configstore"
+    },
+    "scripts": {},
+    "dependencies": {},
+    "typesPublisherContentHash": "22b7339a6c79504ec1103a84f9eaebe05ecafb9580f58c2e84baddbe4dcc8a25",
+    "typeScriptVersion": "3.6"
+}

@@ -1,0 +1,30 @@
+{
+  "name": "@types/update-notifier",
+  "version": "5.1.0",
+  "files": {
+    "LICENSE": {
+      "checkedAt": 1631404912822,
+      "integrity": "sha512-HQaIQk9pwOcyKutyDk4o2a87WnotwYuLGYFW43emGm4FvIJFKPyg+OYaw5sTegKAKf+C5SKa1ACjzCLivbaHrQ==",
+      "mode": 511,
+      "size": 1141
+    },
+    "README.md": {
+      "checkedAt": 1631404928595,
+      "integrity": "sha512-UyqcIadZbSa9gL6ejJ8NjzD0dgbtX9ZkIgJeBuWHuSl9/CZ75nZf8K5ZJM2vHUxiXYiBMszwcUagVKOrjIFEzg==",
+      "mode": 511,
+      "size": 832
+    },
+    "index.d.ts": {
+      "checkedAt": 1631404928595,
+      "integrity": "sha512-TqM0Uw4vEf3RYlljz98CnYfylxE2PTekSn7Z1RckefD1A6ziusSP45DNCbNEcQtmrQiEnLfixeK1yWO205HEaw==",
+      "mode": 511,
+      "size": 2883
+    },
+    "package.json": {
+      "checkedAt": 1631404928595,
+      "integrity": "sha512-bCT8VIrWsskmhcNmbWeJFbrhi9haKOlQ2DxHsIJe47CLtH+LGQwfbBwW+VvesLvhL+DdfhtQd7h3A9g4H3wy9g==",
+      "mode": 511,
+      "size": 1490
+    }
+  }
+}

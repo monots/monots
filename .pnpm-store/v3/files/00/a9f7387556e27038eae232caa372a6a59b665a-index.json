@@ -1,0 +1,30 @@
+{
+  "name": "resolve-cwd",
+  "version": "2.0.0",
+  "files": {
+    "license": {
+      "checkedAt": 1631404908829,
+      "integrity": "sha512-rnnnpCCaRRrva3j3sLiBcOeiIzUSasNFUiv06v4IGNpYZarhUHxdwCJO+FRUjHId+ahDcYIvNtUMvNl/qUbu6Q==",
+      "mode": 420,
+      "size": 1119
+    },
+    "package.json": {
+      "checkedAt": 1631404920978,
+      "integrity": "sha512-MUrKkCKRvfiYirWl2IholIru2F247ENXY74bksY0cQPn/XsdKYi8JlWV+muDqAMrD99AzRlufFyalVOFpET2Kg==",
+      "mode": 420,
+      "size": 743
+    },
+    "index.js": {
+      "checkedAt": 1631404920978,
+      "integrity": "sha512-lxQdsD5GbTiMX95DrnvNCV202dkw/iOyqDcDWh7Wmn2j7X+kufEEQONIZLoNCTibRGko1bMLpPlYsgo2jozT0Q==",
+      "mode": 420,
+      "size": 208
+    },
+    "readme.md": {
+      "checkedAt": 1631404920978,
+      "integrity": "sha512-kOGtcSUEzBTG7Iel8eP1uVIaL4kekQWLiSULyS+8JJSXVbP8CHLoNcXyrhrZkYenrgJHBJG7k2YgKuD1PbSmTw==",
+      "mode": 420,
+      "size": 1474
+    }
+  }
+}

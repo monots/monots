@@ -1,0 +1,217 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tryGetSnapshotForPosition Returns snapshot definition 1`] = `
+Object {
+  "file": "/testsource.ts.snap",
+  "length": 38,
+  "name": "test 1",
+  "position": 684,
+  "snapshot": "
+    first test
+",
+}
+`;
+
+exports[`tryGetSnapshotForPosition Returns snapshot definition 2`] = `
+Object {
+  "file": "/testsource.ts.snap",
+  "length": 40,
+  "name": "test2 1",
+  "position": 725,
+  "snapshot": "
+    second test
+",
+}
+`;
+
+exports[`tryGetSnapshotForPosition Returns snapshot definition 3`] = `
+Object {
+  "file": "/testsource.ts.snap",
+  "length": 44,
+  "name": "a test2 1",
+  "position": 44,
+  "snapshot": "
+    a test2 first
+",
+}
+`;
+
+exports[`tryGetSnapshotForPosition Returns snapshot definition 4`] = `
+Object {
+  "file": "/testsource.ts.snap",
+  "length": 51,
+  "name": "valid test1 1",
+  "position": 902,
+  "snapshot": "
+    valid test first
+",
+}
+`;
+
+exports[`tryGetSnapshotForPosition Returns snapshot definition 5`] = `
+Object {
+  "file": "/testsource.ts.snap",
+  "length": 52,
+  "name": "valid test1 2",
+  "position": 956,
+  "snapshot": "
+    valid test second
+",
+}
+`;
+
+exports[`tryGetSnapshotForPosition Returns snapshot definition 6`] = `
+Object {
+  "file": "/testsource.ts.snap",
+  "length": 51,
+  "name": "valid test1 3",
+  "position": 1011,
+  "snapshot": "
+    valid test third
+",
+}
+`;
+
+exports[`tryGetSnapshotForPosition Returns snapshot definition 7`] = `
+Object {
+  "file": "/testsource.ts.snap",
+  "length": 64,
+  "name": "valid inner test2 1",
+  "position": 768,
+  "snapshot": "
+    valid inner test2 first
+",
+}
+`;
+
+exports[`tryGetSnapshotForPosition Returns snapshot definition 8`] = `
+Object {
+  "file": "/testsource.ts.snap",
+  "length": 64,
+  "name": "valid inner test3 1",
+  "position": 835,
+  "snapshot": "
+    valid inner test3 first
+",
+}
+`;
+
+exports[`tryGetSnapshotForPosition Returns snapshot definition 9`] = `
+Object {
+  "file": "/testsource.ts.snap",
+  "length": 66,
+  "name": "custom with custom names 1",
+  "position": 91,
+  "snapshot": "
+    custom anonymous 1
+",
+}
+`;
+
+exports[`tryGetSnapshotForPosition Returns snapshot definition 10`] = `
+Object {
+  "file": "/testsource.ts.snap",
+  "length": 71,
+  "name": "custom with custom names: custom 1",
+  "position": 298,
+  "snapshot": "
+    custom custom 1
+",
+}
+`;
+
+exports[`tryGetSnapshotForPosition Returns snapshot definition 11`] = `
+Object {
+  "file": "/testsource.ts.snap",
+  "length": 71,
+  "name": "custom with custom names: custom 2",
+  "position": 372,
+  "snapshot": "
+    custom custom 2
+",
+}
+`;
+
+exports[`tryGetSnapshotForPosition Returns snapshot definition 12`] = `
+Object {
+  "file": "/testsource.ts.snap",
+  "length": 66,
+  "name": "custom with custom names 2",
+  "position": 160,
+  "snapshot": "
+    custom anonymous 2
+",
+}
+`;
+
+exports[`tryGetSnapshotForPosition Returns snapshot definition 13`] = `
+Object {
+  "file": "/testsource.ts.snap",
+  "length": 79,
+  "name": "custom with custom names: custom2 1",
+  "position": 520,
+  "snapshot": "
+    custom custom second 1
+",
+}
+`;
+
+exports[`tryGetSnapshotForPosition Returns snapshot definition 14`] = `
+Object {
+  "file": "/testsource.ts.snap",
+  "length": 66,
+  "name": "custom with custom names 3",
+  "position": 229,
+  "snapshot": "
+    custom anonymous 3
+",
+}
+`;
+
+exports[`tryGetSnapshotForPosition Returns snapshot definition 15`] = `
+Object {
+  "file": "/testsource.ts.snap",
+  "length": 71,
+  "name": "custom with custom names: custom 3",
+  "position": 446,
+  "snapshot": "
+    custom custom 3
+",
+}
+`;
+
+exports[`tryGetSnapshotForPosition Returns snapshot definition 16`] = `
+Object {
+  "file": "/testsource.ts.snap",
+  "length": 79,
+  "name": "custom with custom names: custom2 2",
+  "position": 602,
+  "snapshot": "
+    custom custom second 2
+",
+}
+`;
+
+exports[`tryGetSnapshotForPosition Returns snapshot definition 17`] = `
+Object {
+  "file": "/testsource.ts.snap",
+  "length": 51,
+  "name": "property matchers 1",
+  "position": 1065,
+  "snapshot": "
+    property 1
+",
+}
+`;
+
+exports[`tryGetSnapshotForPosition Returns snapshot definition 18`] = `
+Object {
+  "file": "/testsource.ts.snap",
+  "length": 66,
+  "name": "property matchers: Snapshot name 1",
+  "position": 1119,
+  "snapshot": "
+    property 2
+",
+}
+`;

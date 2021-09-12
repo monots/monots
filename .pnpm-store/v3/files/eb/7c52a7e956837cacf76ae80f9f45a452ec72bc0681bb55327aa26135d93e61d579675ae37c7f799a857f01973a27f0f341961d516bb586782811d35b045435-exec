@@ -1,0 +1,25 @@
+{
+    "name": "@types/npm-packlist",
+    "version": "1.1.2",
+    "description": "TypeScript definitions for npm-packlist",
+    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/npm-packlist",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Klaus Meinhardt",
+            "url": "https://github.com/ajafff",
+            "githubUsername": "ajafff"
+        }
+    ],
+    "main": "",
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "directory": "types/npm-packlist"
+    },
+    "scripts": {},
+    "dependencies": {},
+    "typesPublisherContentHash": "fe30d687f1e99c243c6172930b10b73a475606938dfeb29b5bca3804d20710c1",
+    "typeScriptVersion": "3.6"
+}

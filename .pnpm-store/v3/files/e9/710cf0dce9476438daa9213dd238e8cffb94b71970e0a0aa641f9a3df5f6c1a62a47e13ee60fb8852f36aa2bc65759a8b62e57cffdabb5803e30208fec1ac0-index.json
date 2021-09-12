@@ -1,0 +1,474 @@
+{
+  "name": "@docusaurus/theme-common",
+  "version": "2.0.0-beta.5",
+  "files": {
+    "lib/.tsbuildinfo": {
+      "checkedAt": 1631404930765,
+      "integrity": "sha512-iiT8K79EQ7mEnEJRZVtISxau/AUM1TUzkvGlxZmjzxp9FRu0XoO/y6tNrkhT5a1V33TYJQ+rypt8b0YqLvmK7w==",
+      "mode": 420,
+      "size": 60453
+    },
+    "LICENSE": {
+      "checkedAt": 1631404909460,
+      "integrity": "sha512-VHYnY2M5ol17+BG5gUMDKrLEPgzMX+I2ZWqYuYoAkxKpq/LwWreomGlbvw0J5ydkA4XD1zaNFUXxNiUhVpYBmw==",
+      "mode": 420,
+      "size": 1086
+    },
+    "lib/components/Details/styles.module.css": {
+      "checkedAt": 1631404930794,
+      "integrity": "sha512-X5YeTgUN+pwgqu3h/aR3a2MlXUAGp8n7+YLKsSzO80oK1OllcMho6XCK0ZaNn9Pj/4/o5MjS9K129uT0PyuLvg==",
+      "mode": 420,
+      "size": 1592
+    },
+    "src/components/Details/styles.module.css": {
+      "checkedAt": 1631404930794,
+      "integrity": "sha512-X5YeTgUN+pwgqu3h/aR3a2MlXUAGp8n7+YLKsSzO80oK1OllcMho6XCK0ZaNn9Pj/4/o5MjS9K129uT0PyuLvg==",
+      "mode": 420,
+      "size": 1592
+    },
+    "lib/utils/announcementBarUtils.js": {
+      "checkedAt": 1631404930794,
+      "integrity": "sha512-yDWFqkGFI+adjQoR2BqHByRKLR6Pdx36wZlQnuTXy7De9oHmX+SyIZZsEkALCfglsTsNAQYTAph4JnWSlut7cQ==",
+      "mode": 420,
+      "size": 2978
+    },
+    "lib/utils/codeBlockUtils.js": {
+      "checkedAt": 1631404930794,
+      "integrity": "sha512-619XhL1mvbKBFGM/XmQy8JvS1Xl0u05CRds3saYuOjC+aMzcMWWp7Kh2X7NgMDdDgMI4K+EClnkzEgKtcNCKhA==",
+      "mode": 420,
+      "size": 507
+    },
+    "copyUntypedFiles.js": {
+      "checkedAt": 1631404930794,
+      "integrity": "sha512-/xVx5ki2Fp4R6n8J5d+FTxpzYwAuScXogl4AOTA99q3DzjvxWKhHXzw690uuPqjdW0g/Mvt9VPbCLdajx4Eqqg==",
+      "mode": 420,
+      "size": 536
+    },
+    "lib/utils/docsPreferredVersion/DocsPreferredVersionProvider.js": {
+      "checkedAt": 1631404930794,
+      "integrity": "sha512-2xT+peXuf1zKFdw+9D4DAPAnQCC8l9/1tFE18iPZc8CKhV0RR1foIKU9Jj63OgEHbJQN+mVKxjmAYOH0n7oeZQ==",
+      "mode": 420,
+      "size": 3968
+    },
+    "lib/utils/docsPreferredVersion/DocsPreferredVersionStorage.js": {
+      "checkedAt": 1631404930794,
+      "integrity": "sha512-oI10DiijMHgDyYaBcrtmJALXUJxRu6tgNd8aKK8lwcydQLWIHDZVFGscv8ykEXwkBvevI/rZ1aXyEu29+UTh5g==",
+      "mode": 420,
+      "size": 784
+    },
+    "lib/utils/docsUtils.js": {
+      "checkedAt": 1631404930794,
+      "integrity": "sha512-lukcKmjNQO7Mzgi2Qflp60juwY1fs3qSCOCv8lNPiHz+0ChLn35voPVP1E89a7F6UhWiPdCtlWZfLBVDKx01Ow==",
+      "mode": 420,
+      "size": 335
+    },
+    "lib/utils/generalUtils.js": {
+      "checkedAt": 1631404930818,
+      "integrity": "sha512-K4s6rRlMyQoo+9+mruzzjJceOATiIRGoeW2rJjojBy6QaITY0M6antK5Hm0M/7k4gpJy5Uj0Cw8H0TRPdYOQQw==",
+      "mode": 420,
+      "size": 539
+    },
+    "lib/components/Collapsible/index.js": {
+      "checkedAt": 1631404930819,
+      "integrity": "sha512-oak4ueY8NpXlPEa4p8P1NLbujcZZ+SVnVxICWS+t8RpycBmILSMIN/GsOMZdfWDK0yvwc46VZrKhZEKsXZCBwQ==",
+      "mode": 420,
+      "size": 6523
+    },
+    "lib/components/Details/index.js": {
+      "checkedAt": 1631404930819,
+      "integrity": "sha512-41p5ztX5PM+FXpbCWrWWidzHt57Ix3+3i49oB7NzGjd0ZBiJvdTdfpb/AveyQcctgh6/ZqyrdH42zSh7fHTECQ==",
+      "mode": 420,
+      "size": 2627
+    },
+    "lib/index.js": {
+      "checkedAt": 1631404930819,
+      "integrity": "sha512-VFnDC5/vSyFyQN+XBMEM97R/9k5CtdHu5NL7ysHlKs3ST2PFbqVDlazsKfzrhw/Yg/+N7kdwV09ClLI6vznQ4Q==",
+      "mode": 420,
+      "size": 1668
+    },
+    "lib/utils/mobileSecondaryMenu.js": {
+      "checkedAt": 1631404930854,
+      "integrity": "sha512-yHB6Q9d0BnomtEaxyi+jQMrSCMZta785ognREYFE4Iwwd56GT/V5Q9ixTWTeC49kaUJP7QCRBaZPKJlPyR8Zdw==",
+      "mode": 420,
+      "size": 1852
+    },
+    "lib/utils/pathUtils.js": {
+      "checkedAt": 1631404930854,
+      "integrity": "sha512-y7/VGoUguRNBurTPWYR2zfHdFdxAjdznV+/uGnDBHb7cyX2Mj2TE36TGtzDCL5X0PdsODs5UOQN2CAxQSChEqg==",
+      "mode": 420,
+      "size": 511
+    },
+    "lib/utils/searchUtils.js": {
+      "checkedAt": 1631404930854,
+      "integrity": "sha512-OtrlVmkJkDzMeQIEiZpJfMpGJhvQXKRQ1i3EW/veTkAPv8sWt1TIj3OW6xKjNt3T+OXayt0VwTpuguLZ7fynhQ==",
+      "mode": 420,
+      "size": 343
+    },
+    "lib/utils/storageUtils.js": {
+      "checkedAt": 1631404930854,
+      "integrity": "sha512-4rNAnk/seo8HHNCXUYb4MVdFxPQcMG79jhNTc51vMeM5BJQWgz2kvNRosVxolBzS1oSzKORB3nMbhMb9rSzqbA==",
+      "mode": 420,
+      "size": 3193
+    },
+    "lib/utils/tagsUtils.js": {
+      "checkedAt": 1631404930854,
+      "integrity": "sha512-1suhv4rUbt+3EO+eAlQnOioA7hVkAEHHk1Q03oSmtLqxUGUiF7QjJ0sOT4FMI8RW7EEUZ3H2Zo7EVDQr1wnFRw==",
+      "mode": 420,
+      "size": 1154
+    },
+    "lib/utils/ThemeClassNames.js": {
+      "checkedAt": 1631404930854,
+      "integrity": "sha512-zyRv6Re8GpGKMSl1KEq9qZg/LpmhOWH/cTo2AZkPCqR1tsKpbYJmM8elMM5UaG7kFU/h/aU0GB6iVtv+loG6Eg==",
+      "mode": 420,
+      "size": 821
+    },
+    "lib/utils/useAlternatePageUtils.js": {
+      "checkedAt": 1631404930854,
+      "integrity": "sha512-Jx/tGz92hA5eu2SJIFztLgCFhH+hk5YTErcoDqSA5NRXCxHBzg6UVWcv6EjhlTte2plOCdw5m2KD8AP8Dfq+wQ==",
+      "mode": 420,
+      "size": 1347
+    },
+    "lib/utils/docsPreferredVersion/useDocsPreferredVersion.js": {
+      "checkedAt": 1631404930864,
+      "integrity": "sha512-85l/YRx59u5PKg3cLwFt7hV0HA/ZQpgTDEbidDZQ8lcGMKeGenn5XITnmrMgPxNO2EwoNdD3tV5brBnp1H9bMw==",
+      "mode": 420,
+      "size": 1752
+    },
+    "lib/utils/useLocalPathname.js": {
+      "checkedAt": 1631404930870,
+      "integrity": "sha512-+ZMKlTGrdkJEg7//uOMPkUz+KWEfcjbZ/pGyjIddtZc3DtMGX7Sa2ArxjoKUEnnRikrVWCa6dNWZerGjEQuIew==",
+      "mode": 420,
+      "size": 639
+    },
+    "lib/utils/useLocationChange.js": {
+      "checkedAt": 1631404930870,
+      "integrity": "sha512-KGP0GBY9B5B9FUaIMqcxVnxwwbYXCDcu4vTpvaQA802qvrVvd0uniZkO4dTM0oK3DU48BjT9M/RYz6zAwZ3s0w==",
+      "mode": 420,
+      "size": 801
+    },
+    "lib/utils/usePluralForm.js": {
+      "checkedAt": 1631404930870,
+      "integrity": "sha512-Dvcv1MkXIg0QX0wvZ8QUWpWfJllqBE9b0ee6xtrdx0nImsxF3I80H0ljdOFBjlVx7+kPdxdk8JXnwUJYYpzZyQ==",
+      "mode": 420,
+      "size": 3832
+    },
+    "lib/utils/usePrevious.js": {
+      "checkedAt": 1631404930870,
+      "integrity": "sha512-2qBolNxxemThlbzz+cKW4oX/u96Keb2zN97dNqhh26OP+v0Hr7dncK76r4oYH49EiSaF3XL7ob2kL52dNDTukQ==",
+      "mode": 420,
+      "size": 380
+    },
+    "lib/utils/useThemeConfig.js": {
+      "checkedAt": 1631404930870,
+      "integrity": "sha512-K6QKyRAnuXxJ/8ACJil0CR3q3AatSFY4Nt5M0WqE/yC9HmdhySyZCX/MBZSamWXC1gF7X0nbIInb77tsfgZ7Bg==",
+      "mode": 420,
+      "size": 353
+    },
+    "package.json": {
+      "checkedAt": 1631404930870,
+      "integrity": "sha512-Ikj9aL3eG4lew0mKEMkdImgh5lOOim4hTmlgtwLlxIPo+/e4J2aovnW2+Ley0YOhxmhPBMaYGeagJYaWaGxyyA==",
+      "mode": 420,
+      "size": 1219
+    },
+    "tsconfig.json": {
+      "checkedAt": 1631404930870,
+      "integrity": "sha512-z1v2um+l3bCkpnqmTnGR+ErzOl1I1RAnf/HzgwUFEVjRzYl95wjN2K5Z/pYhjExQNdBWYob+eJzNVo8NkdFM3w==",
+      "mode": 420,
+      "size": 203
+    },
+    "README.md": {
+      "checkedAt": 1631404930870,
+      "integrity": "sha512-++A1FbTmIcO086XheI93sThJ1o1mwJUeIk/3I05T18RYKwb+98/oYajyuW8ujmAa5FAb9K3KF9+Aevg923xLpA==",
+      "mode": 420,
+      "size": 65
+    },
+    "lib/utils/announcementBarUtils.d.ts": {
+      "checkedAt": 1631404930870,
+      "integrity": "sha512-639acUJ42MFIio/yXUTTwCDLWNLFGMnhhaaKGsR8AACOMkbgL0FqUcql9L9Xb70HxHnhkj3UdfUOkdrtMcKdVg==",
+      "mode": 420,
+      "size": 604
+    },
+    "lib/utils/codeBlockUtils.d.ts": {
+      "checkedAt": 1631404930870,
+      "integrity": "sha512-PSDXORNtTuGMgcvofSwLBGmZQpfzlLcpbIuDJIVGJdmu5LwBQ7DL/snl04e8QDSFTmkeSCM7KB527wGj3rU7jA==",
+      "mode": 420,
+      "size": 263
+    },
+    "src/utils/__tests__/codeBlockUtils.test.ts": {
+      "checkedAt": 1631404930876,
+      "integrity": "sha512-ZSxMDa2JDabeE1tw7PkQKBRtKdC0sD1Ee3RjvrUlOcZ7nMAtftHiyoazuWaFw87krj9pf1RDgUAOnHKSCmJBDA==",
+      "mode": 420,
+      "size": 1725
+    },
+    "src/utils/codeBlockUtils.ts": {
+      "checkedAt": 1631404930876,
+      "integrity": "sha512-Nv0d38SqEUdIlB/zVXVbN8cuhIMxRSymY01onlE3sWQ7Q+I6hvWmZ+SkYKC9iwAW/3uJkcTXIbw+Ds64KkDHhg==",
+      "mode": 420,
+      "size": 371
+    },
+    "lib/utils/docsPreferredVersion/DocsPreferredVersionProvider.d.ts": {
+      "checkedAt": 1631404930876,
+      "integrity": "sha512-Maz2DutoTT1sec3y/iHcNjTV1zsLUR6CvM95oEJtLR15m6Fa7J/D3qAAHdTGOQ5Kghne8J3ZbLP5zqQUpVLnSQ==",
+      "mode": 420,
+      "size": 933
+    },
+    "lib/utils/docsPreferredVersion/DocsPreferredVersionStorage.d.ts": {
+      "checkedAt": 1631404930876,
+      "integrity": "sha512-cGu/ezAHiUwIpQC5+zm25U30VQmd7+dcsbkMuv8MspjYUmyQNuLkLcBAhWI5sGrJmPt/Zl7qknPelKjETayADA==",
+      "mode": 420,
+      "size": 597
+    },
+    "src/utils/docsPreferredVersion/DocsPreferredVersionStorage.ts": {
+      "checkedAt": 1631404930876,
+      "integrity": "sha512-/Pa24BoSbQvY6I6fbYAcZ1Dp0G2KIh+63VJeiIbd2//4MZcHKp5xQUnOj776dRErg8ptTM8R1Lj96Yy2UCHPWg==",
+      "mode": 420,
+      "size": 985
+    },
+    "lib/utils/docsUtils.d.ts": {
+      "checkedAt": 1631404930876,
+      "integrity": "sha512-szDZs/M2Fitn54op0HmfPZC6nJOp1qLvFUAkXB1DX4/jIGg+FfX16PKW4bdynXXz82Jp8eZ1PEFiIuElT3P/Gw==",
+      "mode": 420,
+      "size": 240
+    },
+    "src/utils/docsUtils.ts": {
+      "checkedAt": 1631404930876,
+      "integrity": "sha512-/hN22pZJczqL7xFn0+moq80LXbACrKF+nqtgkYU/IEIRgMVajUIbBo8IhH2B7Kj4CEZCINcsN3E9CgM5OFuN+A==",
+      "mode": 420,
+      "size": 344
+    },
+    "lib/utils/generalUtils.d.ts": {
+      "checkedAt": 1631404930876,
+      "integrity": "sha512-0d4yFp70XV7ucvnoyuvd8aZej6YpryzRmz0zHXJ6Wm86dDUtxBSh3orI7+sWI/eMRptkOztHMt0KPWxz74aEPQ==",
+      "mode": 420,
+      "size": 80
+    },
+    "src/utils/generalUtils.ts": {
+      "checkedAt": 1631404930876,
+      "integrity": "sha512-v7dRTNrVqGcHU6WYLR7qojM1k6Z95zdqBGDlF/opNtRax6hsjX5uB8/LN8dHOO85AMX8szolHQcAWB8Iltvq3w==",
+      "mode": 420,
+      "size": 551
+    },
+    "lib/components/Collapsible/index.d.ts": {
+      "checkedAt": 1631404930876,
+      "integrity": "sha512-0RFhQVQPnhSJ3FLreM/2YWFyZ6iRS/db/m3VEyHnzCrDCOQKpBFLJjnH/vq5BcimmYnrlgU1F0Z8XGqAABBvjg==",
+      "mode": 420,
+      "size": 1301
+    },
+    "lib/components/Details/index.d.ts": {
+      "checkedAt": 1631404930876,
+      "integrity": "sha512-t0XYv2X7SSaYhEMpmSToR72J+3rKES3WQI2lvs0tMGf69RVYEWfVwuMYJEs8NLCc74Yx1l9gWiNqfNxLVWFmsw==",
+      "mode": 420,
+      "size": 450
+    },
+    "lib/index.d.ts": {
+      "checkedAt": 1631404930880,
+      "integrity": "sha512-qPaCPpfXw+dCYumfbWmOyD1oOj+oT6O4cRzbFbDRomAf/AV9yMARpEmNHmKyyzrf7kKSWBipquZ4ae+NGnlA5A==",
+      "mode": 420,
+      "size": 2087
+    },
+    "src/index.ts": {
+      "checkedAt": 1631404930880,
+      "integrity": "sha512-S3QKoCcOC5WxmXaHIjwh5JiKVVP799UXGApMZIDlDPzJ0uR5yYNrtEHkRRUKCiYCgU+Y2yA4dnmrocYWN9oTGQ==",
+      "mode": 420,
+      "size": 2100
+    },
+    "lib/utils/mobileSecondaryMenu.d.ts": {
+      "checkedAt": 1631404930880,
+      "integrity": "sha512-nIDeoqhUyqQnhp4HwS9CMkjjikKAIDgFFDn5WNXwOYOcJeJH83SO5Cd5rCed1HJ77H8Uk+V1Pn8NJr80W65fIA==",
+      "mode": 420,
+      "size": 862
+    },
+    "lib/utils/pathUtils.d.ts": {
+      "checkedAt": 1631404930880,
+      "integrity": "sha512-ny0F4FZCUpHJjcyKh64+MmDa3rE/p0fZSV9bvrSnkJ3gY1cE0YPec+CzWV8ZligDYuyycjCZoSqJBrbbc/KjNw==",
+      "mode": 420,
+      "size": 289
+    },
+    "src/utils/__tests__/pathUtils.test.ts": {
+      "checkedAt": 1631404930880,
+      "integrity": "sha512-DBe2fIVOVVfzyEsD6EUB2HvHMR3JaIyiUb//m2EwASmxjFQyrS2J2zHaX7GNibUE2xi1yeH3/PiMRuzDW2vQhA==",
+      "mode": 420,
+      "size": 1033
+    },
+    "src/utils/pathUtils.ts": {
+      "checkedAt": 1631404930880,
+      "integrity": "sha512-17l0XHy832ntHw1NhFM7/CKMMe+/ixZPYjCCMrcHtIw5U9Cn7J+1b3jIa/p6N6bssurj/D6MxJBKlVOq0ifANg==",
+      "mode": 420,
+      "size": 525
+    },
+    "lib/utils/searchUtils.d.ts": {
+      "checkedAt": 1631404930880,
+      "integrity": "sha512-PwMgVPdlU8Z5EpfRhQlW+Zdql4jolQR+raDDnjJ5HwLqdCTVLj6YbbfjdH/688McIXi+MvGT+FsrnQzbsWLORQ==",
+      "mode": 420,
+      "size": 334
+    },
+    "src/utils/searchUtils.ts": {
+      "checkedAt": 1631404930880,
+      "integrity": "sha512-j2PVDISoodUSP5N38jIgiH/W6ylF13h9yZFL/dO+zBOPOqyOatQu0bHiueDB97/u14pDycPfsGmkUwD7zVLCog==",
+      "mode": 420,
+      "size": 374
+    },
+    "lib/utils/storageUtils.d.ts": {
+      "checkedAt": 1631404930880,
+      "integrity": "sha512-yENMku/DdP7k9BOIxNkL4YcbzC2Xv44M+TX558x7VVM/QDu3GVDImFR6vQ0n5ZkRxJaU7YjcJdPlgNG2cXWohg==",
+      "mode": 420,
+      "size": 924
+    },
+    "src/utils/storageUtils.ts": {
+      "checkedAt": 1631404930888,
+      "integrity": "sha512-jsP1VXqsuTHcVXO15OI+KqCq1q98Xfn0k/S1pQPexWe+wZkjfM5bBXBosbInpWHAMdSCbyT/n+DkY0Gq4Pn0ZA==",
+      "mode": 420,
+      "size": 3438
+    },
+    "lib/utils/tagsUtils.d.ts": {
+      "checkedAt": 1631404930888,
+      "integrity": "sha512-AFM0X+TYZ2bpIug+PWjw8PXj4Onu1mz08xcMkr+Lex4fSodiAuwPvw07EYwtWDav08QkmJy89lYm4JzP+UqR+w==",
+      "mode": 420,
+      "size": 552
+    },
+    "src/utils/tagsUtils.ts": {
+      "checkedAt": 1631404930888,
+      "integrity": "sha512-Azq4Qwlh6AG6rUF5ZorZ2AuFY4kJ8qR0arhvjlqdjAAPhrd145zd9p07TJ9BBbl0yOHpcC3biecSyYzHBMwhEg==",
+      "mode": 420,
+      "size": 1397
+    },
+    "src/utils/__tests__/tagUtils.test.ts": {
+      "checkedAt": 1631404930888,
+      "integrity": "sha512-0Ooyahvc+4Dy28hx+JEN/9lhGsR7Za32+kjvVljlinzrNuocY5u/OB9waWA+RZ5oc947KK7ybvNtRRbOMCHwKQ==",
+      "mode": 420,
+      "size": 1698
+    },
+    "lib/utils/ThemeClassNames.d.ts": {
+      "checkedAt": 1631404930888,
+      "integrity": "sha512-PVOV7Hw/vA0Yd7h4AYmTFnrGhfK47CKI7YEyh8bBx4Cy2crcx+YdYjwgcNhwcR0gYd/bqBMPHcu5KA5r4hVXaQ==",
+      "mode": 420,
+      "size": 629
+    },
+    "src/utils/ThemeClassNames.ts": {
+      "checkedAt": 1631404930888,
+      "integrity": "sha512-1BOK0thvwO2u65pe0IxtUVcC+GWFGXZvKG+AULqt5aevVMYHUT5+sw8C7IGv6fScCHhbw4r73oCrh60rZGr52Q==",
+      "mode": 420,
+      "size": 802
+    },
+    "src/types.d.ts": {
+      "checkedAt": 1631404930888,
+      "integrity": "sha512-HMBnaBZ48ureQHWoVjVi9gifsSG1pTFMWWw7NkUDLlhFdpA4+up+XREW3esLSBHSMRpJuwlxjAnJZIPjnzyikA==",
+      "mode": 420,
+      "size": 459
+    },
+    "lib/utils/useAlternatePageUtils.d.ts": {
+      "checkedAt": 1631404930888,
+      "integrity": "sha512-XsRly7poVxQRPQEGMrfQ0C/NzWSe3aCJjfCHhulveLV/YxEf/QDXqlb11gCSDfn0maPbAdMtD6IPD81VhNGwJQ==",
+      "mode": 420,
+      "size": 365
+    },
+    "src/utils/useAlternatePageUtils.ts": {
+      "checkedAt": 1631404930888,
+      "integrity": "sha512-rTBjOaw1+A9Z4wXsftPw+l8ehUiDGEk0PuvszaDdXXTwOO/XU56RD+x71Y6YqTEx8PeA6h1ymxlZvLoEGKslgg==",
+      "mode": 420,
+      "size": 1679
+    },
+    "lib/utils/docsPreferredVersion/useDocsPreferredVersion.d.ts": {
+      "checkedAt": 1631404930895,
+      "integrity": "sha512-Zy11Engs9xzS7xEWLCIBPIZWR5H1a1fpxh/zsUDaahmadX67YIMHG1CGvZSGWhX4cWqI9Ro9OVq8giPYfqlzfw==",
+      "mode": 420,
+      "size": 425
+    },
+    "src/utils/docsPreferredVersion/useDocsPreferredVersion.ts": {
+      "checkedAt": 1631404930895,
+      "integrity": "sha512-IpM+5AHqNTemk4maSNakzDLyFNhz0YX7hCfSr63c1PWzpNSDVa6NvYq+xiAVCdclCBYHb3egtDNNxtu8mSPR3g==",
+      "mode": 420,
+      "size": 2005
+    },
+    "lib/utils/useLocalPathname.d.ts": {
+      "checkedAt": 1631404930895,
+      "integrity": "sha512-C6Fm7qKhYQa6gwe9mn1IEr9sHNNZIuhMEu0tyBkopUj7MdEIMZgh0btkojAkD+A+x+1jDBO4PmSM4UIksXUeIQ==",
+      "mode": 420,
+      "size": 241
+    },
+    "src/utils/useLocalPathname.ts": {
+      "checkedAt": 1631404930895,
+      "integrity": "sha512-4fe5kcbXSVXXaBJ2YptDW66aLM//ZD7SWC2vqdeRUMQgq9FoyC88NbZhRgg+kYIRl0CPSmTEZmwjKA5OHqHkpA==",
+      "mode": 420,
+      "size": 643
+    },
+    "lib/utils/useLocationChange.d.ts": {
+      "checkedAt": 1631404930895,
+      "integrity": "sha512-jk0BnqhNmYxzebYwi6RUyFp6dplfGLU0sBQYQHrAE7udNicToKIYd3dlZmnmLtgjKbPyMdrRSpik2WImlcgEMQ==",
+      "mode": 420,
+      "size": 525
+    },
+    "src/utils/useLocationChange.ts": {
+      "checkedAt": 1631404930895,
+      "integrity": "sha512-kEBjmvqFk7wD44Rfz2cnvfrXmSaQ1L9pSCxhf5+YQqT6TfZNIBdfDVzgfXp5CuCh2bYLUMv1HVg19o8rSOtf1w==",
+      "mode": 420,
+      "size": 998
+    },
+    "lib/utils/usePluralForm.d.ts": {
+      "checkedAt": 1631404930895,
+      "integrity": "sha512-8AN87pG4uNfeVlbqMlLtTzcU8aRCzFOuVDvq+i69e+uckmcEVJ3G8+B/9PGbMGwQqMpfrjMqMu+8PH5nQNh0UQ==",
+      "mode": 420,
+      "size": 305
+    },
+    "src/utils/usePluralForm.ts": {
+      "checkedAt": 1631404930895,
+      "integrity": "sha512-8i9Sz+V84x9Mo25I1BxBKXO27kxztY18ABLnmaDAPmsUFOQhlUwsJAA5eRldI6YPwDwj3qb2IVBV7dBxNGxQ4Q==",
+      "mode": 420,
+      "size": 4095
+    },
+    "lib/utils/usePrevious.d.ts": {
+      "checkedAt": 1631404930895,
+      "integrity": "sha512-pRvEwrUweLG9XClTYZIojtfLUFL4uKJm/4lzA8jc1iDAuSIj17/zSGjYoNYg1J1cloli62wj+CWL9mWBjOa+YA==",
+      "mode": 420,
+      "size": 254
+    },
+    "src/utils/usePrevious.ts": {
+      "checkedAt": 1631404930895,
+      "integrity": "sha512-PT55eSKIlqLouuEt/TkUEsC8vUMWc33cBnmQnuj14IPmZo/qu9Wgkw7zH03OgYuJAtDdNhbwXxJWFPS1XNHrgw==",
+      "mode": 420,
+      "size": 394
+    },
+    "lib/utils/useThemeConfig.d.ts": {
+      "checkedAt": 1631404930899,
+      "integrity": "sha512-f3Seb9kZPwwqDwkCncp7aGEmns3aCIjhV83GVquXwPTd7OXOH1daldzyz3d+THJagezSX01CTTLyLowiZh7dRA==",
+      "mode": 420,
+      "size": 2129
+    },
+    "src/utils/announcementBarUtils.tsx": {
+      "checkedAt": 1631404930899,
+      "integrity": "sha512-jUTNZewyULpldj3F40RUQ/NZRGniSWr4p+7s1Qk+KXrsYEe8gOOhAJSDgp5rqE3m+GjgFgViu4IEcs6v49QA+g==",
+      "mode": 420,
+      "size": 3093
+    },
+    "src/utils/docsPreferredVersion/DocsPreferredVersionProvider.tsx": {
+      "checkedAt": 1631404930899,
+      "integrity": "sha512-f8teX0MniT1o3ZshnWs6gXpVwsleJ6zYtaCCEdd+AHEzDX/MB7j3kTO7LRFvTpIYZXy1eUJkmpwVqjM5r90D4g==",
+      "mode": 420,
+      "size": 4888
+    },
+    "src/utils/useThemeConfig.ts": {
+      "checkedAt": 1631404930899,
+      "integrity": "sha512-kFkgutVkfTULe7Lb5A35vljr1bgM+zt6YhsasYNd4SinyJxH+oSeCjhNysK0CKZ2Fc6USf3ru6kNW3B7onbEzA==",
+      "mode": 420,
+      "size": 2455
+    },
+    "src/components/Collapsible/index.tsx": {
+      "checkedAt": 1631404930910,
+      "integrity": "sha512-AJPnVfF6JInsjO2OEfb+aC/jZ7uvoUB5wz5vWzVcIHR0KynZya5GPxZ+RUyPnE0WTpmMRGUuyGmiXXD08FAKtA==",
+      "mode": 420,
+      "size": 7292
+    },
+    "src/components/Details/index.tsx": {
+      "checkedAt": 1631404930919,
+      "integrity": "sha512-sF0lrs/tliSeLeeU8lijV2XGtWXTkkItB8QpiqGvyu+i26qmonSOKGog+rZt/VtRs9wUiOirPUDFAv8dFhSvpQ==",
+      "mode": 420,
+      "size": 2840
+    },
+    "src/utils/mobileSecondaryMenu.tsx": {
+      "checkedAt": 1631404930919,
+      "integrity": "sha512-N5vdghmWz+bj8vHUi+IEk9onJIri/qryMIkrAiX9cY8CpgObkkyjoZ06IIkf8DtCefWzgXFEdIZK1ezHu0ZHmQ==",
+      "mode": 420,
+      "size": 2985
+    }
+  }
+}

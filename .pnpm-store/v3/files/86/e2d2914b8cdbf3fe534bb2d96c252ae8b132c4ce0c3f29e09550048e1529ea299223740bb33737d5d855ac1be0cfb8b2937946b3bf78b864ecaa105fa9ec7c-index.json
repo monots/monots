@@ -1,0 +1,54 @@
+{
+  "name": "@concordance/react",
+  "version": "2.0.0",
+  "files": {
+    "package.json": {
+      "checkedAt": 1631404929642,
+      "integrity": "sha512-SD8gqmUtFqQPKBHuvWu6xiWRpYf3gSpgiBTRB0fPAxORPiygdYZ8cK/HHtCTTQmYURTAGjLQuqps89UgrsakMg==",
+      "mode": 420,
+      "size": 1768
+    },
+    "index.js": {
+      "checkedAt": 1631404929642,
+      "integrity": "sha512-BdJVtB59/uvPzuOTP0YvqTs5o/MEGqNdEiz4MCjRuGTiQVD3KL9PSwBYgXqjNBBf4GrjJJD9UGSW51QBA7ocmA==",
+      "mode": 420,
+      "size": 1956
+    },
+    "LICENSE": {
+      "checkedAt": 1631404929642,
+      "integrity": "sha512-ozuZsB2Qg7I4EPnSiwA2XlseEya6dcInY/o11yWNwWagwCgdE/taTq+O5D6GGx5y3VOJ3DEluP99ZtdRbcyvkw==",
+      "mode": 420,
+      "size": 791
+    },
+    "README.md": {
+      "checkedAt": 1631404929642,
+      "integrity": "sha512-odvqY/mpV75Zh4zxkjqgT6UeCxEZuTlqXNj7N87Gfr9TxwsqKzyiC5jdBkXNgJMc8H5kAyaIxUAjtUGO3zes+w==",
+      "mode": 420,
+      "size": 841
+    },
+    "lib/diffShallow.js": {
+      "checkedAt": 1631404929647,
+      "integrity": "sha512-mMFf6RyZ40jIH1TLDWzNlQEOvzAhiB1CfH+LYbqKDftZOc6e/2DoqxTkdRfI4EttxedGAq6B18XqvQpi7VyqnQ==",
+      "mode": 420,
+      "size": 12237
+    },
+    "lib/elementFactory.js": {
+      "checkedAt": 1631404929647,
+      "integrity": "sha512-iKzc2eWo+StgJ0hXQ5UVEcAGZe/k2gH6IqffFW90v2/H8/0MaC7AaBimQiEyniZefAarhMSb6gw54EWYDac4Jg==",
+      "mode": 420,
+      "size": 10519
+    },
+    "lib/escapeText.js": {
+      "checkedAt": 1631404929651,
+      "integrity": "sha512-O3HxWnnE5H/FN4H4gul10lix5ik2TnLvlQdHb6dQ/nC5hpp1Nk/6MhDVlnFyMXbUqLMaYZsdOCZ8tYVpwKRkaA==",
+      "mode": 420,
+      "size": 239
+    },
+    "lib/testJsonFactory.js": {
+      "checkedAt": 1631404929651,
+      "integrity": "sha512-6P2CZXccmnvMFVWKQK2b8qERhvD9Mgsnb1i5CjV98HE44YItiGU1l0ckgLFrfO7o9EIActux5T7GD1k44u5m+Q==",
+      "mode": 420,
+      "size": 1551
+    }
+  }
+}

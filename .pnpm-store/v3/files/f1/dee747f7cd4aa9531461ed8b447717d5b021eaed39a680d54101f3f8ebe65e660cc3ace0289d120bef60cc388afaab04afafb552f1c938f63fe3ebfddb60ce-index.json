@@ -1,0 +1,36 @@
+{
+  "name": "@types/react-router",
+  "version": "5.1.16",
+  "files": {
+    "LICENSE": {
+      "checkedAt": 1631404912822,
+      "integrity": "sha512-HQaIQk9pwOcyKutyDk4o2a87WnotwYuLGYFW43emGm4FvIJFKPyg+OYaw5sTegKAKf+C5SKa1ACjzCLivbaHrQ==",
+      "mode": 511,
+      "size": 1141
+    },
+    "README.md": {
+      "checkedAt": 1631404923909,
+      "integrity": "sha512-NA1PbtPQQap31wyGGFelDQHloYxsc3MUx0wTufGz9cWt3h1HYKjweVCKAfx1mpvQrNUldpRjtn4fdkIoLN6U9A==",
+      "mode": 511,
+      "size": 1521
+    },
+    "index.d.ts": {
+      "checkedAt": 1631404923909,
+      "integrity": "sha512-u9yx9NvBTDZ7yzL+StVtpTcjIfji9aiw4GjW7DOZkTRhn+DQEmMrsRzK+fJIkNgaQZsGuDd2JLD2zVfPrRrUuQ==",
+      "mode": 511,
+      "size": 8160
+    },
+    "package.json": {
+      "checkedAt": 1631404923922,
+      "integrity": "sha512-RrQbCgCgIsqFHcWUqx99bxYUtUgEeb9cjZcX/UR29FdgBgmM8pafGo1EJHg4nCsMkBc1h2zWXSMmrS69zny8Ag==",
+      "mode": 511,
+      "size": 3855
+    },
+    "ts4.0/index.d.ts": {
+      "checkedAt": 1631404923922,
+      "integrity": "sha512-VY7VOmkp6/Pe4QpyhQrbuAL4zSUOATrkQv0sLBJ4vVtgLRQr5vbM2jOYLyeVSi5Cv/X8FijgCAEo0D9y5ociqg==",
+      "mode": 511,
+      "size": 4974
+    }
+  }
+}

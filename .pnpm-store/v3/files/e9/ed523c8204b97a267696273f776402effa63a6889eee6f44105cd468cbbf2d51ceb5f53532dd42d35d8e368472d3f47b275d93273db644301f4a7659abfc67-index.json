@@ -1,0 +1,348 @@
+{
+  "name": "@docusaurus/mdx-loader",
+  "version": "2.0.0-beta.5",
+  "files": {
+    "lib/.tsbuildinfo": {
+      "checkedAt": 1631404930665,
+      "integrity": "sha512-jqg6eovfIRUir0rsxRcLySx6g4TdXGpCpZA389EtxHoW2S7+4fwEGZg3tvJ30IjQHqgMIl4Dx+4H5yB3Vfbwyg==",
+      "mode": 420,
+      "size": 57050
+    },
+    "LICENSE": {
+      "checkedAt": 1631404909460,
+      "integrity": "sha512-VHYnY2M5ol17+BG5gUMDKrLEPgzMX+I2ZWqYuYoAkxKpq/LwWreomGlbvw0J5ydkA4XD1zaNFUXxNiUhVpYBmw==",
+      "mode": 420,
+      "size": 1086
+    },
+    "lib/index.js": {
+      "checkedAt": 1631404930672,
+      "integrity": "sha512-ZHcCpanb8FXucX4CXQRVHRbGeep14kXHvtpUCF3a/JfxE4x857lKLGH1toqq0c/i4y2YEfcBuCb9hBW1wzsO1A==",
+      "mode": 420,
+      "size": 7317
+    },
+    "lib/remark/headings/index.js": {
+      "checkedAt": 1631404930672,
+      "integrity": "sha512-Zns/CBlRzpcr+1I1S1D5/1/eFLQvVmJtibxnfA+7/q6f7pWI7meMgHxx64uL8PQ1A1Oy98Qe6HZwtGlIfUNm1A==",
+      "mode": 420,
+      "size": 3005
+    },
+    "lib/remark/toc/index.js": {
+      "checkedAt": 1631404930672,
+      "integrity": "sha512-QFIlS2I5x4u1kW6fMvUxRtsPIotUnz26NYrZPnp+h7wU5MgE22n554eOFugq44z212ep53AD+Cb+ohn0d2+q9Q==",
+      "mode": 420,
+      "size": 2258
+    },
+    "lib/remark/transformImage/index.js": {
+      "checkedAt": 1631404930672,
+      "integrity": "sha512-b0uOApFRYc1MQsJCICcQhVSk5VZF9PGaWIUVIKZAkWxXhL99uqvnHBFloWpdr6nfZH0cj1aPijiZ2XaEawpPqw==",
+      "mode": 420,
+      "size": 3586
+    },
+    "lib/remark/transformLinks/index.js": {
+      "checkedAt": 1631404930679,
+      "integrity": "sha512-/mcow6SUrHTS3Q0wNWn6Dk04t7L1JtXLC8PiGQlffPpBCiPJvLDEp2XS7f0i9/JFZ7lZJ18B3fO7w8d1aDiQ/A==",
+      "mode": 420,
+      "size": 4881
+    },
+    "lib/remark/unwrapMdxCodeBlocks/index.js": {
+      "checkedAt": 1631404930679,
+      "integrity": "sha512-/VSrWge0bAGJXifP2UQrcsJVQE+qSDVpv+HrW6Wr/z6UGGQ8e6EkqjE1O+LUoJRy8sbNhx8Z9mtYr+xIzAW0Pg==",
+      "mode": 420,
+      "size": 1250
+    },
+    "lib/remark/utils/index.js": {
+      "checkedAt": 1631404930679,
+      "integrity": "sha512-Ee1569Zckis1+2CXb8/MTmvhPRgvAEi/er8D5BaKf/VeyO4D7GFxHECulM9zT22ncQVoiTFgZE9AIa5Ug/wrvg==",
+      "mode": 420,
+      "size": 1407
+    },
+    "lib/remark/toc/search.js": {
+      "checkedAt": 1631404930679,
+      "integrity": "sha512-G2AcERuROYlrBtpLmnGDUTobC63/9detD8rr0NSXNOfBLAxH0zFgYHOsEvUVCXiYgoIzs6li8sSqOrMghyKUhQ==",
+      "mode": 420,
+      "size": 1434
+    },
+    "package.json": {
+      "checkedAt": 1631404930679,
+      "integrity": "sha512-3y7aQ/G4OoHcP1ZOcmw8IsyZnk4C0RFYKTnSnHqNKOcEz5zNZKPTZrJN3mNwv80mdfSielgAPkhlnE4AW9mJwg==",
+      "mode": 420,
+      "size": 1611
+    },
+    "tsconfig.json": {
+      "checkedAt": 1631404930679,
+      "integrity": "sha512-O3/o13ePepb1fpHXP3t/oNP9tHqVR2ccUFS9N+RbBlG6cW2RRlm2jNs4rYyAjGB5Wvy43qBioqR9opiMQ1tZmw==",
+      "mode": 420,
+      "size": 202
+    },
+    "src/remark/transformLinks/__tests__/fixtures/asset.md": {
+      "checkedAt": 1631404930679,
+      "integrity": "sha512-2NX+nFXlwFeZ49Z2kntZU1hz19zBjzqm1Ll/q/OzG7/GrYUG5H0WW99YZ7uxhMoixgyTaHwBqg21URNlVWLjUA==",
+      "mode": 420,
+      "size": 693
+    },
+    "src/remark/toc/__tests__/fixtures/empty-headings.md": {
+      "checkedAt": 1631404930679,
+      "integrity": "sha512-g0vmFxUHQkloTj9QInSLHfrWiUa4YJyRQ7scZP+Z4pI7873tIayNOZOjz//MiHe7UY6rX5SXjozJCNj81/v3eg==",
+      "mode": 420,
+      "size": 40
+    },
+    "src/remark/transformImage/__tests__/fixtures/fail.md": {
+      "checkedAt": 1631404930679,
+      "integrity": "sha512-tnJYlNPiJi1gqW49Dw5U+9ot6/zpXHBHoEwfg3AEjWcxDqQv8rHkWBp2oYMz+ym+IFsxjtjaiYSgGlEX+BKSjA==",
+      "mode": 420,
+      "size": 30
+    },
+    "src/remark/transformImage/__tests__/fixtures/img.md": {
+      "checkedAt": 1631404930686,
+      "integrity": "sha512-5xxxSXfJWfbJIGQaACn3jmlWbYkdN14xBconHSxyIWdEwYXKhE31lHnIm3Zh3dkuDzr9/37UdbgrA86TkCb1xg==",
+      "mode": 420,
+      "size": 223
+    },
+    "src/remark/toc/__tests__/fixtures/inline-code.md": {
+      "checkedAt": 1631404930686,
+      "integrity": "sha512-rp9AjLGgFkjxzi1WIovZWT1ddx9VtaiDJzP8e+XCS8Ytv8bz9r/NQpGlkuQ0ZzUkSg6Mis2mxomlvNa0A14aDw==",
+      "mode": 420,
+      "size": 106
+    },
+    "src/remark/toc/__tests__/fixtures/insert-below-imports.md": {
+      "checkedAt": 1631404930686,
+      "integrity": "sha512-6RQGbd1iuvB8yHH2plmPOQP9RzQE+Suii1AsykAvEsipmyrYX5fQwz0yCX4ek7GPbplVCsCGkLxnqtwb9tBCRg==",
+      "mode": 420,
+      "size": 120
+    },
+    "src/remark/toc/__tests__/fixtures/just-content.md": {
+      "checkedAt": 1631404930686,
+      "integrity": "sha512-K3wkhyE+4V81UfWPORCT8wTj+ksQf226A91kxFRC5oPimi7JU4z7WCgEvapsAZ4JFHDV0kHJ/4S7UOkxkoIdWQ==",
+      "mode": 420,
+      "size": 113
+    },
+    "src/remark/toc/__tests__/fixtures/name-exist.md": {
+      "checkedAt": 1631404930686,
+      "integrity": "sha512-ehJbXgrwgFzP7aw4E0HwO6Ve82QPi8prwoiAoTTZDDGXcpMHwRYiZjKDzIa9jidaiyklTMPM3igzvHOtxgO9sw==",
+      "mode": 420,
+      "size": 74
+    },
+    "src/remark/toc/__tests__/fixtures/non-text-content.md": {
+      "checkedAt": 1631404930686,
+      "integrity": "sha512-FX4cLU4BDqIvt3cuYpEtgJzvxKApEJ9HAYm7fTbe82AO3Jb546qg19UKPxpkq0s+5+pKAF6mx1K+JYNwXjoCuA==",
+      "mode": 420,
+      "size": 92
+    },
+    "src/remark/transformImage/__tests__/fixtures/noUrl.md": {
+      "checkedAt": 1631404930686,
+      "integrity": "sha512-zx+rtumwHbzlAVKeVbCseZQWx6/KvDMNC2NgMAAX3cBrIW97JJwtgfhcqpyRVIQ+iHzQPSYAMEUWK5fqYr9QuQ==",
+      "mode": 420,
+      "size": 9
+    },
+    "src/remark/transformLinks/__tests__/fixtures/noUrl.md": {
+      "checkedAt": 1631404930686,
+      "integrity": "sha512-JmT7G7QZt7EEcw89kJF5Kn2igz++NFF3ytRCZzKOSxJwVGa7612+Y/MaTwYKfjfvCc4B+C0yQZjLItzsoPelVA==",
+      "mode": 420,
+      "size": 10
+    },
+    "src/remark/transformImage/__tests__/fixtures/pathname.md": {
+      "checkedAt": 1631404930686,
+      "integrity": "sha512-f1iCu6tkojvabjiLGh+3pCQfFrmKugEFNjrXjiu28zDLE34SyV3196UbW6+4I2kpSqH10TbNBN6GfkybbiJA1w==",
+      "mode": 420,
+      "size": 38
+    },
+    "src/remark/transformLinks/__tests__/fixtures/pathname.md": {
+      "checkedAt": 1631404930686,
+      "integrity": "sha512-V63ayxU71r+lBh2SVW0VMv868IcaDMN7rwL471Z93MxmeSuhSa4po+V5T3m9dKE59qtx7Nwo4k+9I2cu26Ow2Q==",
+      "mode": 420,
+      "size": 41
+    },
+    "README.md": {
+      "checkedAt": 1631404930686,
+      "integrity": "sha512-ViJq7ucMYi56aQzhbj86ZFCLKU4YJ0/YAuSsJ7fxScNAyqoPK2QEbSo6MhDoUYpfyBUuUM4rD6WxGd0+GRfWKg==",
+      "mode": 420,
+      "size": 729
+    },
+    "src/remark/unwrapMdxCodeBlocks/__tests__/fixtures/has-mdx-code-blocks.mdx": {
+      "checkedAt": 1631404930686,
+      "integrity": "sha512-KFJu23L6vVK1aVR2kCii5A4aRvVAnNKVEb+vE2M5YY3pkw+ZQiqsyezhCHrxUyCpoWfF4w8mk+xwqpQhJaVT5Q==",
+      "mode": 420,
+      "size": 1586
+    },
+    "src/remark/transformLinks/__tests__/fixtures/asset.pdf": {
+      "checkedAt": 1631404908766,
+      "integrity": "sha512-z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXcg/SpIdNs6c5H0NE8XYXysP+DGNKHfuwvY7kxvUdBeoGlODJ6+SfaPg==",
+      "mode": 420,
+      "size": 0
+    },
+    "src/remark/transformLinks/__tests__/fixtures/static/staticAsset.pdf": {
+      "checkedAt": 1631404908766,
+      "integrity": "sha512-z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXcg/SpIdNs6c5H0NE8XYXysP+DGNKHfuwvY7kxvUdBeoGlODJ6+SfaPg==",
+      "mode": 420,
+      "size": 0
+    },
+    "src/remark/transformImage/__tests__/fixtures/img.png": {
+      "checkedAt": 1631404908766,
+      "integrity": "sha512-z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXcg/SpIdNs6c5H0NE8XYXysP+DGNKHfuwvY7kxvUdBeoGlODJ6+SfaPg==",
+      "mode": 420,
+      "size": 0
+    },
+    "src/remark/transformLinks/__tests__/fixtures/static/staticAssetImage.png": {
+      "checkedAt": 1631404930696,
+      "integrity": "sha512-LvfYVy2RrRVuWxyKdYIrP8IY5GYq9QoXxlXB2bqd2XgoQAl1sLbFFAT+KUTNilrdvz22FsfBUqqpAmV1Sz4z0w==",
+      "mode": 420,
+      "size": 8722
+    },
+    "src/remark/toc/__tests__/__snapshots__/index.test.ts.snap": {
+      "checkedAt": 1631404930696,
+      "integrity": "sha512-uQX47o1xnlnk3gKtBcimFw3dofWVDmgVV4CbECQUyBEATQqiS0egz/cItPCD+ulLM1SFa2iuh0qWBpRzXHFuIg==",
+      "mode": 420,
+      "size": 1270
+    },
+    "src/remark/transformImage/__tests__/__snapshots__/index.test.ts.snap": {
+      "checkedAt": 1631404930696,
+      "integrity": "sha512-SA9zAPX2NJk0VrQ/VHM1InvmPiB0vEuQDjJxgdhlYBTnZf4jtD4PfBvyoMQDTxfWXwWgz0U0N9bjfiAyvRMqIw==",
+      "mode": 420,
+      "size": 1796
+    },
+    "src/remark/transformLinks/__tests__/__snapshots__/index.test.ts.snap": {
+      "checkedAt": 1631404930703,
+      "integrity": "sha512-1+fS40tmfdYkAnaxF8UBj1cUfKrXlzD4RwATBBml7qbBFRuICnKyjGcMSCrxzNFqSw2wj7Zoko4yu479kzM9GQ==",
+      "mode": 420,
+      "size": 2482
+    },
+    "src/remark/unwrapMdxCodeBlocks/__tests__/__snapshots__/index.test.ts.snap": {
+      "checkedAt": 1631404930713,
+      "integrity": "sha512-BKbOpJpho6NGm10JuBhmQz+eEFzZTRlZstRsrnkMCtGPidAFgD1alcwe6K7ORqfuVhUksEqXt1de9uihUx4Z4A==",
+      "mode": 420,
+      "size": 17175
+    },
+    "lib/index.d.ts": {
+      "checkedAt": 1631404930713,
+      "integrity": "sha512-FB8vvG+fBHlyvQUfCrG4bSwTriUtAS2EhXnfVG4pewZh/kYRnESp3dHcoqStJJLtewN03KkTgTgwvwU0gze/DA==",
+      "mode": 420,
+      "size": 415
+    },
+    "lib/remark/headings/index.d.ts": {
+      "checkedAt": 1631404930713,
+      "integrity": "sha512-2UjyEMi92MikCwsvJsTXRtI7P0g63mZODRA8RyWwpMNvqlL5dSsPGOn5wohUi75IXPrzUL3az3dSq3Am+65dzA==",
+      "mode": 420,
+      "size": 300
+    },
+    "lib/remark/toc/index.d.ts": {
+      "checkedAt": 1631404930713,
+      "integrity": "sha512-Khv3zuN2+qoKQjwjQrk7yYpJf2RtH12wgt6NE3rMz+av6WJAqyjP1eWeM9qgbg0LiZAm8N5thOB/YWcUhxwk/A==",
+      "mode": 420,
+      "size": 346
+    },
+    "lib/remark/transformImage/index.d.ts": {
+      "checkedAt": 1631404930713,
+      "integrity": "sha512-hHOE2bq8TjZDdgT7CMKZPM2alvR49bvgJc4/aB9Y4pZinANrdeFnWxFsnfRsCZo4WLwQuVo7YjINTif6o55HSg==",
+      "mode": 420,
+      "size": 371
+    },
+    "lib/remark/transformLinks/index.d.ts": {
+      "checkedAt": 1631404930713,
+      "integrity": "sha512-hHOE2bq8TjZDdgT7CMKZPM2alvR49bvgJc4/aB9Y4pZinANrdeFnWxFsnfRsCZo4WLwQuVo7YjINTif6o55HSg==",
+      "mode": 420,
+      "size": 371
+    },
+    "lib/remark/unwrapMdxCodeBlocks/index.d.ts": {
+      "checkedAt": 1631404930713,
+      "integrity": "sha512-H1jEbg5IC54ZjLaeXfDVd9+qBNgKjbFFOGlFy2beBD2uhBzd+sMjkTqJv3ndGGQxuk3v4hb8qc3MHjntS/UmLg==",
+      "mode": 420,
+      "size": 322
+    },
+    "lib/remark/utils/index.d.ts": {
+      "checkedAt": 1631404930713,
+      "integrity": "sha512-rpXX6qnyEhJ34B8mMabUTiBiqD5SEylJ9Nff6OosY4vWcQp/WqY0Eegifx3bCdzCVNsPxHS4pkUeYlTHLx4dhg==",
+      "mode": 420,
+      "size": 431
+    },
+    "src/remark/headings/__tests__/index.test.ts": {
+      "checkedAt": 1631404930754,
+      "integrity": "sha512-omYsVTm2/3gqsefrMqXGbfiRhJJlAf5syWuLmYzWIiu7q1/miB7n7gP9f136mL0c4htYEyoXkleBN1OSJ98Grg==",
+      "mode": 420,
+      "size": 7904
+    },
+    "src/remark/toc/__tests__/index.test.ts": {
+      "checkedAt": 1631404930754,
+      "integrity": "sha512-mGIR8ly+e+jduDYQi4STX1D04CD4nYAsDNAFJ/7ho/G26HxYz+dTWViX5OrQ0T4OTod2qaQolHgExULLORlW0Q==",
+      "mode": 420,
+      "size": 3726
+    },
+    "src/remark/transformImage/__tests__/index.test.ts": {
+      "checkedAt": 1631404930754,
+      "integrity": "sha512-5j97zMueTy2C5UiERAt7FVoFWAiucEn0DB29B1MsfJCFoLxB4QRHuDP90n/s3lnBE86VLcT5X404OGd1R92L9Q==",
+      "mode": 420,
+      "size": 1566
+    },
+    "src/remark/transformLinks/__tests__/index.test.ts": {
+      "checkedAt": 1631404930754,
+      "integrity": "sha512-gJHlz9B7mRyPBuTMRqLN98NTb0slBFY2Jhkfw8IEcvgJnMVJBwAyhUjQml9b74mK575jzj3SZCXj+f+CZ0qBGA==",
+      "mode": 420,
+      "size": 1298
+    },
+    "src/remark/unwrapMdxCodeBlocks/__tests__/index.test.ts": {
+      "checkedAt": 1631404930754,
+      "integrity": "sha512-7sE/W5IGjxCP7wiQAQjJ9Y9tqxS544HFoGhtc/Wl6IKgWDfj3OGkKvEf8VShEU2SgS1gEYddelJnpInG4CL1eA==",
+      "mode": 420,
+      "size": 1220
+    },
+    "src/index.ts": {
+      "checkedAt": 1631404930816,
+      "integrity": "sha512-43KDzEL3MsdvL18NxcH9fI1r4POBNyrDh5jhXRF/ImIA0lApUI/VkQMoSi72+ticD3/GZCm4PjRz1blG5wVeeA==",
+      "mode": 420,
+      "size": 6826
+    },
+    "src/remark/headings/index.ts": {
+      "checkedAt": 1631404930816,
+      "integrity": "sha512-QW/fBYas/IXojMqXrQs9A8Hepc30OENUdca8Jxg2VhJqHpfCXydr9qVLfkzpLM/U/BUtcFC3pB+sYIn4KmrrNA==",
+      "mode": 420,
+      "size": 2626
+    },
+    "src/remark/toc/index.ts": {
+      "checkedAt": 1631404930816,
+      "integrity": "sha512-tsYNfZF5D32H2jzGNKS8gl2MDSrP8ZRg6i8KcK9fc9OqejHx7KkEFsXG4eJX8XYqdGBRsoiBPmpgEbYebLeOTw==",
+      "mode": 420,
+      "size": 2286
+    },
+    "src/remark/transformImage/index.ts": {
+      "checkedAt": 1631404930816,
+      "integrity": "sha512-7MMxfBp+sX9La30vq4X13NYQ/M2MfMhaytbyXmQVU8x2G1gNVdMtRZ5NLf6GZGhVEe1jqhwFXcMXcUCiFA4X9w==",
+      "mode": 420,
+      "size": 3491
+    },
+    "src/remark/transformLinks/index.ts": {
+      "checkedAt": 1631404930851,
+      "integrity": "sha512-PuxE0JkrpTCPSOxHTKF61CxjIWpO4tlD2vg3PWMKO51LeE7FylQgNXdcsOi0lAjQjfgSfL8YWO+jG5Do7PSOBg==",
+      "mode": 420,
+      "size": 4575
+    },
+    "src/remark/unwrapMdxCodeBlocks/index.ts": {
+      "checkedAt": 1631404930851,
+      "integrity": "sha512-0Vt4FkZ6463nZYCpT0OcspocffbyoAekibRwKSH4JZn6TAoyXOBP8UFLDdxnBsYgJaNzMn/mmcnxkYyi3VVk2g==",
+      "mode": 420,
+      "size": 1224
+    },
+    "src/remark/utils/index.ts": {
+      "checkedAt": 1631404930851,
+      "integrity": "sha512-i3+eOPHO3GAGi7hRaDY8FEx0kkQjF+uXf2HIslszibxMrRM4YQ1KnjaKGQYFqYLMBGPm0gWdWNQ8ATJM1vfCfw==",
+      "mode": 420,
+      "size": 1134
+    },
+    "lib/remark/toc/search.d.ts": {
+      "checkedAt": 1631404930851,
+      "integrity": "sha512-sfL86pJ6X0SeAPDwUzVJdIsu6tam7RqOg4ewOJCQZoe7BA5gzQ1mpkLhKxQSOqsrrFwG4caGenqRIujRIzmY4w==",
+      "mode": 420,
+      "size": 332
+    },
+    "src/remark/toc/search.ts": {
+      "checkedAt": 1631404930851,
+      "integrity": "sha512-C4Fby1MFg6SkMHyEQFFZAVomPd8lM4oVSCgI2IOooCX6v06WA8SdVU6HBZKE9wMVnIg0aMZIAnG+Im5GmU5glA==",
+      "mode": 420,
+      "size": 1266
+    },
+    "src/types.d.ts": {
+      "checkedAt": 1631404930851,
+      "integrity": "sha512-qCMfVy0fe0c7FjFlvBuvUDjDowJUTKhCbqmvPBj3TgNNYb5zgRAQ7XoddZli92Juri+PxweXFfojdDl/t9QEWw==",
+      "mode": 420,
+      "size": 1153
+    }
+  }
+}

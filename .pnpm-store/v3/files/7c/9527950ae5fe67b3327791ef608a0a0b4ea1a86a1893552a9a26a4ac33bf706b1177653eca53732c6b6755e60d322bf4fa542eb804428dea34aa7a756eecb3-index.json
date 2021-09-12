@@ -1,0 +1,30 @@
+{
+  "name": "@babel/plugin-transform-modules-systemjs",
+  "version": "7.15.4",
+  "files": {
+    "LICENSE": {
+      "checkedAt": 1631404908766,
+      "integrity": "sha512-KYRMN3MVTuiy5XkFDHd5PnQmHaQnt3z16nsBDePxZ9YNmq7IFlslpBBlR3UI+zvlbEemzowOYeKil9a0ZkOYxQ==",
+      "mode": 420,
+      "size": 1106
+    },
+    "README.md": {
+      "checkedAt": 1631404910506,
+      "integrity": "sha512-IB73W4KJ2Porlo/dUTW6y2Myu0oALvNSEuzdgnJ9MO4wsvn9mY+P7ituPMyO1riq2nw++jaU9Q+Lnsi7VlA69w==",
+      "mode": 420,
+      "size": 428
+    },
+    "lib/index.js": {
+      "checkedAt": 1631404910527,
+      "integrity": "sha512-mzjw3TzfItFdKz3BerGybajdp1GvzHgGedQridqlqJMJ4xQ7noCHmbRp2WsDnib34dpx7iHk22/tdk6ZE1SLrw==",
+      "mode": 420,
+      "size": 18066
+    },
+    "package.json": {
+      "checkedAt": 1631404910527,
+      "integrity": "sha512-M45llOa8/4FMw18TDzdLp/ccOMprlBXoT37utL1d2DGrDXTCg1nNgoLF1cjh/VAG9v7vAOqqXFTd5/VbBCNPfg==",
+      "mode": 420,
+      "size": 1118
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "@types/normalize-path",
+  "version": "3.0.0",
+  "files": {
+    "LICENSE": {
+      "checkedAt": 1631404915959,
+      "integrity": "sha512-OA1NKix/qrKxxfRisVCbGmX70dPqjsRn88PFfBoDRzStaYjo80MtZWn8vDOnalp8LU4MLPJBnqCFq/O/53Wd/w==",
+      "mode": 438,
+      "size": 1183
+    },
+    "README.md": {
+      "checkedAt": 1631404928200,
+      "integrity": "sha512-iZDUKBhy8bRkfNGsSz0eXxPa3MMMA2FMcbEpaSTcRUkUpQONR410O5PXR9vMxxhQZzYUOljNQNjmDpVFLsolkg==",
+      "mode": 438,
+      "size": 523
+    },
+    "package.json": {
+      "checkedAt": 1631404928211,
+      "integrity": "sha512-Uih6w8ZTYslpTSz9t5OSkMWX5YY5kyAu9mKgpKPL9QPGMubkk7hUFemNE3bwQn6CNsMHqiwZJonFn2bVK3JvPQ==",
+      "mode": 438,
+      "size": 672
+    },
+    "index.d.ts": {
+      "checkedAt": 1631404928211,
+      "integrity": "sha512-Hi2g8UilVaScowMqm7Z4mw+pmzETcvPiRwU1RxqomEnGWpdPRSAqzG/jawa5Jw7OlSnHzgjP/3T0MPNDjx9yIA==",
+      "mode": 438,
+      "size": 343
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "ci-parallel-vars",
+  "version": "1.0.1",
+  "files": {
+    "LICENSE": {
+      "checkedAt": 1631404929634,
+      "integrity": "sha512-f2ZYAuTOjTDWjMDczXWTVp4YW32lMeNKyuZY1jZ/gNvMFQASeXoIZwrytffS4S75pXhBjKR+9jSZnqCWyve/vg==",
+      "mode": 420,
+      "size": 1084
+    },
+    "index.js": {
+      "checkedAt": 1631404929634,
+      "integrity": "sha512-CCnoh/sBfMqZi6BMo/1V7CMwfxaqd03fhdJMAnfv3xP2tcOMIKde6CONEARAB7izrAZY/9TLvKjkifNkIKZLRA==",
+      "mode": 420,
+      "size": 1037
+    },
+    "package.json": {
+      "checkedAt": 1631404929634,
+      "integrity": "sha512-ucemZMG05bTyCfsWDPWjhwkONVRBUwnW0b9bO59eIBZzGUZjzjVyR154f1EA1mcr3I2lUJ9WwOXRLWNkHwhsvA==",
+      "mode": 420,
+      "size": 679
+    },
+    "README.md": {
+      "checkedAt": 1631404929634,
+      "integrity": "sha512-iKDcdVneOdN6pVRD6Cf5KJAEtxoEGQC4dJDS+KvVdYmPWAagrNB1of8BTpNS1spmB20bTPnT479eyJLFeVisDQ==",
+      "mode": 420,
+      "size": 1466
+    }
+  }
+}

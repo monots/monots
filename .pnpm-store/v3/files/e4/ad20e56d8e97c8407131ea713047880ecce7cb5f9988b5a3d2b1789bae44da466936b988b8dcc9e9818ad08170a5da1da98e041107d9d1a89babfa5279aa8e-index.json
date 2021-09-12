@@ -1,0 +1,60 @@
+{
+  "name": "@rollup/plugin-commonjs",
+  "version": "20.0.0",
+  "files": {
+    "LICENSE": {
+      "checkedAt": 1631404927966,
+      "integrity": "sha512-+MNMf6Un82mOjt6EL3mKgq094wsLdm3KbCSStF8EU7VRzI9wDsofMWGddLacEU23NCrQfFAH5RjWjg4Ubw9Ppw==",
+      "mode": 420,
+      "size": 1151
+    },
+    "dist/index.es.js": {
+      "checkedAt": 1631404927997,
+      "integrity": "sha512-tV6yIUN942dsjnNJMXnZRi7hYB747MvB3KB//GUrXNp2OKmN0TKsCsOmKOBU0NSZ9+KgThrHP2tPNGQQaInkOw==",
+      "mode": 420,
+      "size": 59541
+    },
+    "dist/index.js": {
+      "checkedAt": 1631404928043,
+      "integrity": "sha512-j2oW2/kpQfQrpGCYvPhc8pbaKuhbPm4xjW5da4wR2m1+poBHMPF65KfN+CMZTZs7BV/8juOe2tol7qQafCAXSQ==",
+      "mode": 420,
+      "size": 60170
+    },
+    "package.json": {
+      "checkedAt": 1631404928043,
+      "integrity": "sha512-fUlPLkimEyrSy+iAZdQI6gxzl3NwxRoZ3RPr5zFahbSn4/+eiV8bYLqMU5VYDF6DH4aAmW14jCu1FD9UGgjDSA==",
+      "mode": 420,
+      "size": 2198
+    },
+    "dist/index.es.js.map": {
+      "checkedAt": 1631404928160,
+      "integrity": "sha512-hSUlGTJ/luxvhSIkf6WcxgX/dbKB+0fNrmwxzFGgJ8MSbKZvgPlR6mGvdNJS0KsSaFmTSxdzPmJVeCNg2puE2A==",
+      "mode": 420,
+      "size": 119485
+    },
+    "dist/index.js.map": {
+      "checkedAt": 1631404928235,
+      "integrity": "sha512-0wZVAh+2Mi2TGENq1oU+mfyo5KDIQIDi5pkrleDZKlnWiYzP+4WKe0kBHTY47yqtYir9BWvDA4JBUtQbulYIWw==",
+      "mode": 420,
+      "size": 119775
+    },
+    "CHANGELOG.md": {
+      "checkedAt": 1631404928246,
+      "integrity": "sha512-arcIJwhIUBRZBBcQZKO2jfeKMX8skg9r6CPDtGDF/D4078rdg7xMrygzCPAK9PKZxMJf2iher/kiKUwsfpZcvw==",
+      "mode": 420,
+      "size": 15665
+    },
+    "README.md": {
+      "checkedAt": 1631404928262,
+      "integrity": "sha512-SzIAacLAdVjo6O7spspPWWVgBh8D/2p5y1NB9Le5101ghfFoaG5WxXTJKlwA9XR6Rh6ryaM1BF9QXjJ/a0pjWA==",
+      "mode": 420,
+      "size": 15676
+    },
+    "types/index.d.ts": {
+      "checkedAt": 1631404928262,
+      "integrity": "sha512-iFKdlEuWdenlaTupFWYRXfdqnL0SfN0YXmghC9geGCp3hsyT51mjAurmasAcURLudLDvvlEDiWjbKWFqLn+mHQ==",
+      "mode": 420,
+      "size": 8654
+    }
+  }
+}

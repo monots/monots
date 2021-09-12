@@ -1,0 +1,30 @@
+{
+  "name": "junk",
+  "version": "1.0.3",
+  "files": {
+    "license": {
+      "checkedAt": 1631404908829,
+      "integrity": "sha512-rnnnpCCaRRrva3j3sLiBcOeiIzUSasNFUiv06v4IGNpYZarhUHxdwCJO+FRUjHId+ahDcYIvNtUMvNl/qUbu6Q==",
+      "mode": 420,
+      "size": 1119
+    },
+    "package.json": {
+      "checkedAt": 1631404931108,
+      "integrity": "sha512-R6shThxbFCS9XxQ+Ptxw4LlARghHQoEmvVqE03m9tQQF6PW/7kQVzF58cqUdNfMdMi3g+h/t85jDVq72Wrh+Mw==",
+      "mode": 420,
+      "size": 618
+    },
+    "index.js": {
+      "checkedAt": 1631404931108,
+      "integrity": "sha512-dO2n9VnpOcYcfHmeAwksbTafnLJwy4hyctzEeOKehBKh7RO+aROBk/GQaby34zpbz4evn6RBQwIA+/kSf1aYBg==",
+      "mode": 420,
+      "size": 1214
+    },
+    "readme.md": {
+      "checkedAt": 1631404931108,
+      "integrity": "sha512-dKvn0Wu8W0EpplRCOlsv4hA/an/nnxKDBSo8F69v0TaHWFo645mbfZ8nI3HhEf3UYo1/TTyaL3cj6ykHLYoszQ==",
+      "mode": 420,
+      "size": 745
+    }
+  }
+}

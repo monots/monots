@@ -1,0 +1,30 @@
+{
+  "name": "@types/js-yaml",
+  "version": "4.0.3",
+  "files": {
+    "LICENSE": {
+      "checkedAt": 1631404912822,
+      "integrity": "sha512-HQaIQk9pwOcyKutyDk4o2a87WnotwYuLGYFW43emGm4FvIJFKPyg+OYaw5sTegKAKf+C5SKa1ACjzCLivbaHrQ==",
+      "mode": 511,
+      "size": 1141
+    },
+    "README.md": {
+      "checkedAt": 1631404928200,
+      "integrity": "sha512-Szm1+RqEJZJGIswvZUIHAlPzUhKB3+0gMuWhBeDlmgzlC1Opwon+0RgDGfgRZD3d019oMi2HIsStY1kNiEMPZQ==",
+      "mode": 511,
+      "size": 690
+    },
+    "index.d.ts": {
+      "checkedAt": 1631404928200,
+      "integrity": "sha512-VzPA0xulVCbetYTAZnfo7CO9ojUI7xdJrdmRl5yYOQHdDNXbBRVkC0daJf6vvZ5cDLRlDvTg6ZzRbn9x1RDPVg==",
+      "mode": 511,
+      "size": 5918
+    },
+    "package.json": {
+      "checkedAt": 1631404928200,
+      "integrity": "sha512-0Ntx4SPw/Rag8N6s4NtbHCjefCpGkXHoaKriavzbt95JgCxCl+C3b2INAYqjy5uGd3CYhFOUuCJcAzK2K+hOHA==",
+      "mode": 511,
+      "size": 1388
+    }
+  }
+}

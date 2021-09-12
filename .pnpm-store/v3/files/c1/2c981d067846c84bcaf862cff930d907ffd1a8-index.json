@@ -1,0 +1,30 @@
+{
+  "name": "del",
+  "version": "2.2.2",
+  "files": {
+    "license": {
+      "checkedAt": 1631404908829,
+      "integrity": "sha512-rnnnpCCaRRrva3j3sLiBcOeiIzUSasNFUiv06v4IGNpYZarhUHxdwCJO+FRUjHId+ahDcYIvNtUMvNl/qUbu6Q==",
+      "mode": 420,
+      "size": 1119
+    },
+    "package.json": {
+      "checkedAt": 1631404929986,
+      "integrity": "sha512-E5IoEedZiwKjv8Bdc0Mju0S/cP7n3tAcdubpqtxqmn7yzEwU6skdKF0kVfBj/eHUr+zoqbuy5mvAsFYoiPJ/gA==",
+      "mode": 420,
+      "size": 1059
+    },
+    "index.js": {
+      "checkedAt": 1631404929986,
+      "integrity": "sha512-8w7O0wy/1haC1JkzCpcC7tJAjzBpJ/fFT+tvqTe3HGW9YwcSrCI2hxZ9s2iwKocOeBiRFgaS+dkPRWO1LDJ5UA==",
+      "mode": 420,
+      "size": 1570
+    },
+    "readme.md": {
+      "checkedAt": 1631404929986,
+      "integrity": "sha512-fGAHTCa1b7s5VWi9SI2tNVn8a7FihVe8jyEicTyzfXbWpJ6x2uJcu9xBOrroY0PTJ5uAk1ny1XmqJEx9i2bbVA==",
+      "mode": 420,
+      "size": 2422
+    }
+  }
+}

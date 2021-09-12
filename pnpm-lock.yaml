@@ -7,8 +7,8 @@ importers:
       '@changesets/cli': ^2.16.0
       '@manypkg/cli': ^0.18.0
       '@manypkg/get-packages': ^1.1.1
-      '@monots/cli': ^0.0.0
-      '@monots/tsconfig': ^0.0.0
+      '@monots/cli': ^0.1.0
+      '@monots/tsconfig': ^0.1.0
       '@types/node': ^16.9.1
       ava: ^3.15.0
       browserslist: ^4.17.0
@@ -16,15 +16,15 @@ importers:
       cross-env: ^7.0.3
       del: ^6.0.0
       eslint: ^7.32.0
-      eslint-config-monots: ^0.0.0
+      eslint-config-monots: ^0.1.0
       husky: ^7.0.2
       lint-staged: ^11.1.2
       load-json-file: ^7.0.0
-      monots: ^0.0.0
+      monots: ^0.1.0
       nanoid: ^3.1.25
       npm-run-all: ^4.1.5
       prettier: ^2.4.0
-      prettier-config-monots: ^0.0.0
+      prettier-config-monots: ^0.1.0
       recursive-copy: ^2.0.13
       snapshot-diff: ^0.9.0
       ts-node: ^10.2.1
@@ -147,16 +147,16 @@ importers:
 
   packages/monots:
     specifiers:
-      '@monots/cli': ^0.0.0
-      '@monots/core': ^0.0.0
+      '@monots/cli': ^0.1.0
+      '@monots/core': ^0.1.0
     dependencies:
       '@monots/cli': link:../monots__cli
       '@monots/core': link:../monots__core
 
   packages/monots__cli:
     specifiers:
-      '@monots/core': ^0.0.0
-      '@monots/types': ^0.0.0
+      '@monots/core': ^0.1.0
+      '@monots/types': ^0.1.0
       '@swc/helpers': ^0.2.13
       '@types/update-notifier': ^5.1.0
       chalk: ^4.1.2
@@ -185,7 +185,7 @@ importers:
   packages/monots__core:
     specifiers:
       '@manypkg/get-packages': ^1.1.1
-      '@monots/types': ^0.0.0
+      '@monots/types': ^0.1.0
       '@rollup/plugin-alias': ^3.1.5
       '@rollup/plugin-commonjs': ^20.0.0
       '@rollup/plugin-json': ^4.1.0

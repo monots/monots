@@ -1,0 +1,30 @@
+{
+  "name": "supertap",
+  "version": "2.0.0",
+  "files": {
+    "license": {
+      "checkedAt": 1631404929862,
+      "integrity": "sha512-kfmEdFxt0ENEouIY8ifAVF1SR/j6JRNmluLlQczMaPqkpEYcYLhZCKb5K8D/1Z+ja62yGKHzw5/Eaykd0D3JVg==",
+      "mode": 420,
+      "size": 1112
+    },
+    "index.js": {
+      "checkedAt": 1631404929862,
+      "integrity": "sha512-QzlM3Pnud8C2OUp7wypICJKwDbQN5h91lEevTd0pJp1xnJI3Jvw3R0OWlsGYbqoLzCrbFmFULG+7cKtog4eJFg==",
+      "mode": 420,
+      "size": 1730
+    },
+    "package.json": {
+      "checkedAt": 1631404929862,
+      "integrity": "sha512-q4i+FFxcj3BGttVZor4Z6RiaDQ1kHE+IAOUhjMB+IbtOc4eyPacqyP4aE50iF5ev2S7mkJQhWB/ZTAwG1uk7mQ==",
+      "mode": 420,
+      "size": 1063
+    },
+    "readme.md": {
+      "checkedAt": 1631404929862,
+      "integrity": "sha512-18HCCzo5PNPAklR4e+mzc/efAxPy5dXwLUM+J6GkGbepVreM5DWSOJJHQMFQPRKVGdMVQfL0g6IvBeS8qG8Mmg==",
+      "mode": 420,
+      "size": 1812
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "name": "typescript-snapshots-plugin",
+  "version": "1.7.0",
+  "description": "Snapshots language service support for Typescript",
+  "main": "out/index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asvetliakov/typescript-snapshots-plugin.git"
+  },
+  "keywords": [
+    "Jest",
+    "snapshots",
+    "Typescript",
+    "plugin"
+  ],
+  "author": "Alexey Svetliakov <asvetliakov@teledini.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/asvetliakov/typescript-snapshots-plugin/issues"
+  },
+  "homepage": "https://github.com/asvetliakov/typescript-snapshots-plugin#readme",
+  "devDependencies": {
+    "@types/jest": "^23.3.5",
+    "@types/mock-fs": "^3.6.30",
+    "@types/node": "^10.11.7",
+    "jest": "^23.6.0",
+    "mock-fs": "^4.7.0",
+    "ts-jest": "^23.10.4",
+    "typescript": "^3.1.3",
+    "typescript-snapshots-plugin": "^1.5.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "resetMocks": true,
+    "transform": {
+      "\\.(ts|tsx)": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|.*\\.[Ff]?[Ss]pec)\\.(ts|tsx|js)$",
+    "testPathIgnorePatterns": [
+      "/fixtures/",
+      "/testsource/"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "ts",
+      "tsx"
+    ],
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsConfig": {
+          "sourceMap": false,
+          "inlineSourceMap": true
+        }
+      }
+    }
+  },
+  "dependencies": {}
+}

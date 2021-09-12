@@ -1,0 +1,30 @@
+{
+  "name": "@types/react-router-dom",
+  "version": "5.1.8",
+  "files": {
+    "LICENSE": {
+      "checkedAt": 1631404912822,
+      "integrity": "sha512-HQaIQk9pwOcyKutyDk4o2a87WnotwYuLGYFW43emGm4FvIJFKPyg+OYaw5sTegKAKf+C5SKa1ACjzCLivbaHrQ==",
+      "mode": 511,
+      "size": 1141
+    },
+    "README.md": {
+      "checkedAt": 1631404923869,
+      "integrity": "sha512-aZZ2gi/5fqo2hjqL/vBvhlMjFW2teYvGCOv75EOOMOgSj9ZIRsEm7mh3FtA6CQhja1XaZwdhneQJ27UGGrwdzQ==",
+      "mode": 511,
+      "size": 945
+    },
+    "index.d.ts": {
+      "checkedAt": 1631404923869,
+      "integrity": "sha512-Kv/wwMyaAw4xYO5K/z6fNJRcXoGamNokuYWx4QwtFIlIoxIuUeDBx+XZnmJgDoFKC5wlrsPgHUjoIzXGz2e37w==",
+      "mode": 511,
+      "size": 3275
+    },
+    "package.json": {
+      "checkedAt": 1631404923869,
+      "integrity": "sha512-KRPGBaQedeBKGth+HzmX72Z50auNOroLlrjxUIh4aNzzeKzkzPEpYoehJpZ3zcteYrxp4TtPSqrlzUGVYah7wA==",
+      "mode": 511,
+      "size": 1680
+    }
+  }
+}

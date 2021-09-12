@@ -1,0 +1,48 @@
+{
+    "name": "@types/update-notifier",
+    "version": "5.1.0",
+    "description": "TypeScript definitions for update-notifier",
+    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/update-notifier",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "vvakame",
+            "url": "https://github.com/vvakame",
+            "githubUsername": "vvakame"
+        },
+        {
+            "name": "Noah Chen",
+            "url": "https://github.com/nchen63",
+            "githubUsername": "nchen63"
+        },
+        {
+            "name": "Jason Dreyzehner",
+            "url": "https://github.com/bitjson",
+            "githubUsername": "bitjson"
+        },
+        {
+            "name": "Michael Grinich",
+            "url": "https://github.com/grinich",
+            "githubUsername": "grinich"
+        },
+        {
+            "name": "Piotr Błażejewicz",
+            "url": "https://github.com/peterblazejewicz",
+            "githubUsername": "peterblazejewicz"
+        }
+    ],
+    "main": "",
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "directory": "types/update-notifier"
+    },
+    "scripts": {},
+    "dependencies": {
+        "@types/configstore": "*",
+        "boxen": "^4.2.0"
+    },
+    "typesPublisherContentHash": "720dcc08e5cea0b4f91c471fe0173c2dcadc2b6c9bbb3032f7c07f1966e69b61",
+    "typeScriptVersion": "3.6"
+}

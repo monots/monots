@@ -1,0 +1,30 @@
+{
+  "name": "@docusaurus/module-type-aliases",
+  "version": "2.0.0-beta.5",
+  "files": {
+    "LICENSE": {
+      "checkedAt": 1631404909460,
+      "integrity": "sha512-VHYnY2M5ol17+BG5gUMDKrLEPgzMX+I2ZWqYuYoAkxKpq/LwWreomGlbvw0J5ydkA4XD1zaNFUXxNiUhVpYBmw==",
+      "mode": 420,
+      "size": 1086
+    },
+    "package.json": {
+      "checkedAt": 1631404923649,
+      "integrity": "sha512-pPv6zjw3cM7vTo5CqbCFRsHP3C44Hwc87Wfm5KM242bkc7P8HcsDUEAoyA2CTwouSgjMuJw4bu2PfufqT5IDZA==",
+      "mode": 420,
+      "size": 637
+    },
+    "README.md": {
+      "checkedAt": 1631404923649,
+      "integrity": "sha512-vu5HzHB3CC0u/8vakU9aiWkMTYx370KkBfkDLAw1thUPPMr6NponiEkg3dZdWPgrECy5p2F/fh0S0EekcgFh+A==",
+      "mode": 420,
+      "size": 69
+    },
+    "src/index.d.ts": {
+      "checkedAt": 1631404923649,
+      "integrity": "sha512-82lpY+j/VPMjALE43ogGc/NC5IIRBsgkpbiNZ+gcvfnzxnL66dcxgPBZpynTPZG45660ncpoxNjbqMHkSqlzzg==",
+      "mode": 420,
+      "size": 7158
+    }
+  }
+}

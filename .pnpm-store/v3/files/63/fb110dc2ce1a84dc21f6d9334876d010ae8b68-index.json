@@ -1,0 +1,30 @@
+{
+  "name": "clean-yaml-object",
+  "version": "0.1.0",
+  "files": {
+    "package.json": {
+      "checkedAt": 1631404930937,
+      "integrity": "sha512-q2Oj1xmUAVIz7dg1tKqvUtDhbczdxL0WfKutHnf65Qp63lF9fpj0QM+TKKHGbYWUNuELtgj3IED19a7YYDhlLQ==",
+      "mode": 420,
+      "size": 721
+    },
+    "index.js": {
+      "checkedAt": 1631404930937,
+      "integrity": "sha512-MN55fSYaoXijAYqKW4zYWwqc9jISW/ZEjzMuAyfXflkNID0hH/HCoey/KAlktEBlE29641jt/vkR1gP3SvgdRw==",
+      "mode": 420,
+      "size": 2176
+    },
+    "license": {
+      "checkedAt": 1631404930937,
+      "integrity": "sha512-EiVN5Gmp4aUmk1MExhD576dV7/TjxiLUxA6zyNarrdMgY8M0D+qOkP9goP1z6nEDG/rh2yqY9vm2BpaHw2f1oQ==",
+      "mode": 420,
+      "size": 1227
+    },
+    "readme.md": {
+      "checkedAt": 1631404930937,
+      "integrity": "sha512-rruL6BBQelZkGIAXAGXp+wPPzq8crGp2KGH0Z7FiUMEk61tKF1cr08Ean+tNdNnLrhp9B/ABi8V6WB6iSjwnMQ==",
+      "mode": 420,
+      "size": 1505
+    }
+  }
+}

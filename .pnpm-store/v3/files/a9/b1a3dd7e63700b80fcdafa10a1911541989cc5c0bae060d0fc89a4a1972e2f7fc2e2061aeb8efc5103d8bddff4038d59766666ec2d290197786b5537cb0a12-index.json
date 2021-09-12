@@ -1,0 +1,60 @@
+{
+  "name": "@docusaurus/cssnano-preset",
+  "version": "2.0.0-beta.5",
+  "files": {
+    "LICENSE": {
+      "checkedAt": 1631404909460,
+      "integrity": "sha512-VHYnY2M5ol17+BG5gUMDKrLEPgzMX+I2ZWqYuYoAkxKpq/LwWreomGlbvw0J5ydkA4XD1zaNFUXxNiUhVpYBmw==",
+      "mode": 420,
+      "size": 1086
+    },
+    "src/remove-overridden-custom-properties/__tests__/fixtures/important_rule.css": {
+      "checkedAt": 1631404911041,
+      "integrity": "sha512-jieRxq4kSwBWvSMkw0ihTUKmrcHYrL22Fekv+tFNWuYfpyx8aP7hIne4YvBhRyck09RI5OK+Iv+fIY/SoIm8xg==",
+      "mode": 420,
+      "size": 187
+    },
+    "src/remove-overridden-custom-properties/__tests__/fixtures/normal.css": {
+      "checkedAt": 1631404911041,
+      "integrity": "sha512-3tNC0ntqwyhAZwwx9Cd9+j9Z3TqdoLbr29ALbFoUg8hw8faxTIKiqugm+8E1SgMsMaBIqSR7TK1dt/uFWzC/Wg==",
+      "mode": 420,
+      "size": 135
+    },
+    "index.js": {
+      "checkedAt": 1631404911041,
+      "integrity": "sha512-lJnWreLKm2H5HYmV2SLbJhFKfHCzEjaVsgrStbaDvyLruDnEUNhvDHnYNZweS06ANdYGBM2AdSi4XJkFHavhmg==",
+      "mode": 420,
+      "size": 769
+    },
+    "src/remove-overridden-custom-properties/index.js": {
+      "checkedAt": 1631404911041,
+      "integrity": "sha512-K3ad2ttSbnXyB/a5+qBhT3lP4yV8K3nZ2LMkTao3Z9POzYNa9f7bAFj9uK80RyA/AIdDRlxVFmsG2TB7liHJ2g==",
+      "mode": 420,
+      "size": 1564
+    },
+    "src/remove-overridden-custom-properties/__tests__/index.test.js": {
+      "checkedAt": 1631404911041,
+      "integrity": "sha512-iBaPXdXxHyBN4Z19o+ba+jmml0r6RZXpneBuek6aTogOuH58IwE+Huz/8R4+lk01sk+YqL6idLT9YDnZLhK0Ag==",
+      "mode": 420,
+      "size": 967
+    },
+    "package.json": {
+      "checkedAt": 1631404911041,
+      "integrity": "sha512-TZB4cgIjXRfe41rrJpYDQGfGiRVeh6Mbni/WapiP9xO4YnfL17+PE0Klg3CgCJOvA/AY3AlwoO6d4pc4EXFr7A==",
+      "mode": 420,
+      "size": 633
+    },
+    "README.md": {
+      "checkedAt": 1631404911041,
+      "integrity": "sha512-8iJBBG4uN23GFV81fjTAUoV2vFVppTT1Va1yRC6KEmkpg1D2R/1moP1KrAqe3jWvNlISSApe+RlZocoRnUJOUw==",
+      "mode": 420,
+      "size": 85
+    },
+    "src/remove-overridden-custom-properties/__tests__/__snapshots__/index.test.js.snap": {
+      "checkedAt": 1631404911041,
+      "integrity": "sha512-+f5R0EiqQm5PTPNF8lXcTyrEh3WVEi0kJqGkDaBWZZFkfcJY10Y7lEwbNYcx5WMGuQmfc932W9PzPjB6zu59kg==",
+      "mode": 420,
+      "size": 483
+    }
+  }
+}

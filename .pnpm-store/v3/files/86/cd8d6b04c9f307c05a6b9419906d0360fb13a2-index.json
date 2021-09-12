@@ -1,0 +1,30 @@
+{
+  "name": "maximatch",
+  "version": "0.1.0",
+  "files": {
+    "package.json": {
+      "checkedAt": 1631404930061,
+      "integrity": "sha512-agjA8lZobhJ++5VHQT+vHQkjYi5E5lEfLHsY9LA6dv1S8GvDk2oyqDLaWE5NmwhvmaJnQVfN5aR7EGCiNo/SNA==",
+      "mode": 420,
+      "size": 806
+    },
+    "index.js": {
+      "checkedAt": 1631404930061,
+      "integrity": "sha512-nmwhIf6LQkoKIGHjBbyMfyR7cfP+AyaaPqZx9uQyykStiHPxh+k0+R6eWS9fJWn3bNoZLq9KEDrH+xi7P4OkKw==",
+      "mode": 420,
+      "size": 865
+    },
+    "license": {
+      "checkedAt": 1631404930061,
+      "integrity": "sha512-odv5NUDzdeqzDGs1wyBEBPQDkkybzDFOTK8Tmhk60e0rGM+uhq1kwrwQU9owR5kYbbSEAUEDz8DLhVVAxwZ4VQ==",
+      "mode": 420,
+      "size": 1106
+    },
+    "readme.md": {
+      "checkedAt": 1631404930061,
+      "integrity": "sha512-MPiXA/Vj8uDCxNPYtUA2Y82SbOrqDHSL8qrGgKJBtcGkwFNYHJbL7OPcGaFjSG2Txyn1M/cRGpjQ+QZbkFDvuA==",
+      "mode": 420,
+      "size": 2223
+    }
+  }
+}

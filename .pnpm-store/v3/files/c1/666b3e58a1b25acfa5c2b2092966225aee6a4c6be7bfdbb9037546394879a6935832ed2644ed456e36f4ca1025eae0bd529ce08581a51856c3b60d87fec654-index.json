@@ -1,0 +1,60 @@
+{
+  "name": "@types/react",
+  "version": "17.0.20",
+  "files": {
+    "LICENSE": {
+      "checkedAt": 1631404912822,
+      "integrity": "sha512-HQaIQk9pwOcyKutyDk4o2a87WnotwYuLGYFW43emGm4FvIJFKPyg+OYaw5sTegKAKf+C5SKa1ACjzCLivbaHrQ==",
+      "mode": 511,
+      "size": 1141
+    },
+    "README.md": {
+      "checkedAt": 1631404923620,
+      "integrity": "sha512-UehOPflF6kNv3LES2yxGEN2vRBYA/6JcT/H/3uLXK5yLhkmm4DxrZYsinKpaE9V0iHtmybK0Mu/NAKIbASbg7g==",
+      "mode": 511,
+      "size": 1876
+    },
+    "experimental.d.ts": {
+      "checkedAt": 1631404923620,
+      "integrity": "sha512-W2L7vZJV5ijEEVqQdMeyRPZYQf7QAYWjh4pGnBCCwGxy5gwbKTpOli2r/v9F3/an/PlMtYATDT1d1GYwj1seAQ==",
+      "mode": 511,
+      "size": 1695
+    },
+    "global.d.ts": {
+      "checkedAt": 1631404923637,
+      "integrity": "sha512-Cqj0jkrtO6q679VMuIfJP/DKSYgxnD0niPxXHGP3QwInwoSB+TX3ir05C3QB1RaUzFdO4aW9+B9+nCUaR66oqw==",
+      "mode": 511,
+      "size": 7176
+    },
+    "index.d.ts": {
+      "checkedAt": 1631404923921,
+      "integrity": "sha512-XqBRMROIqYUFshearUmGKARCc6Yh/nszaS/617Yfmd6F2XkF23V7vzn8w/EB/Lpd9ZpZciXDEvGJcAAnns5bog==",
+      "mode": 511,
+      "size": 151452
+    },
+    "jsx-dev-runtime.d.ts": {
+      "checkedAt": 1631404923921,
+      "integrity": "sha512-3+5ZZpGnKbJmf83U9SfXREAMLx9O3QBqUJhq8at3gCOiYzm4Ub8dYVBMUk5pClPGPYsr0m71J6IdY59clUhL8w==",
+      "mode": 511,
+      "size": 61
+    },
+    "jsx-runtime.d.ts": {
+      "checkedAt": 1631404923921,
+      "integrity": "sha512-3+5ZZpGnKbJmf83U9SfXREAMLx9O3QBqUJhq8at3gCOiYzm4Ub8dYVBMUk5pClPGPYsr0m71J6IdY59clUhL8w==",
+      "mode": 511,
+      "size": 61
+    },
+    "next.d.ts": {
+      "checkedAt": 1631404923921,
+      "integrity": "sha512-5x5NonhAsaBOnKWwHdqb7vPEoHkNNyUuBjPOa42OeaUDr+YDGtu+8C/cFBqSuGX6uLML8dMg864xPEhHJl4Png==",
+      "mode": 511,
+      "size": 8645
+    },
+    "package.json": {
+      "checkedAt": 1631404923938,
+      "integrity": "sha512-I7eQyjMs+JLG9LNZRMdP/BQCPHMa6OeT3/vklgHytfW17gClcyaTIpIHxABKDr4uLkjjyCWE6y0wFbkZt8vz6g==",
+      "mode": 511,
+      "size": 4582
+    }
+  }
+}

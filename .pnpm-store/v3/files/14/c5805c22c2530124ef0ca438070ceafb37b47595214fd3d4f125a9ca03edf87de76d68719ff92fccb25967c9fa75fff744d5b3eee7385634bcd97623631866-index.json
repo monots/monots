@@ -1,0 +1,36 @@
+{
+  "name": "@docusaurus/plugin-google-gtag",
+  "version": "2.0.0-beta.5",
+  "files": {
+    "LICENSE": {
+      "checkedAt": 1631404909460,
+      "integrity": "sha512-VHYnY2M5ol17+BG5gUMDKrLEPgzMX+I2ZWqYuYoAkxKpq/LwWreomGlbvw0J5ydkA4XD1zaNFUXxNiUhVpYBmw==",
+      "mode": 420,
+      "size": 1086
+    },
+    "src/gtag.js": {
+      "checkedAt": 1631404922885,
+      "integrity": "sha512-20hD9WPfdFCQBZqX5Kc43k8Kd2DyGR0HwdPn+cWgvw4sAd0WKyar2TlHnD+TrgTPEJpfuEDxgxrqd4roHg8WsQ==",
+      "mode": 420,
+      "size": 926
+    },
+    "src/index.js": {
+      "checkedAt": 1631404922885,
+      "integrity": "sha512-5nmQ1vLfZUXT6hjYtSUcTU3HC1d4RAkoiPn3pKkusFxDCY1Q7o1NiWzOLqpygQm4/Q7kSswhL1lza5ZY4i/6Nw==",
+      "mode": 420,
+      "size": 2261
+    },
+    "package.json": {
+      "checkedAt": 1631404922885,
+      "integrity": "sha512-bMCRQmQ9Ag20ovjQbvjjeuKlupypiGl/8rZbNLDnpBzl+yKmqUlcXsI1fLN0/Blc6Ep+H7J/lX1R38iNE/rd9A==",
+      "mode": 420,
+      "size": 664
+    },
+    "README.md": {
+      "checkedAt": 1631404922885,
+      "integrity": "sha512-2MARH0bnlh3udXxvCerO84JT5neXleMjnu9ufK5IWMIA+Dgvv2qlDfv+sDvdCF15TxvWmzSLGxWRAjk6wnDLBA==",
+      "mode": 420,
+      "size": 207
+    }
+  }
+}

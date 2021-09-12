@@ -1,0 +1,30 @@
+{
+  "name": "@docusaurus/preset-classic",
+  "version": "2.0.0-beta.5",
+  "files": {
+    "LICENSE": {
+      "checkedAt": 1631404909460,
+      "integrity": "sha512-VHYnY2M5ol17+BG5gUMDKrLEPgzMX+I2ZWqYuYoAkxKpq/LwWreomGlbvw0J5ydkA4XD1zaNFUXxNiUhVpYBmw==",
+      "mode": 420,
+      "size": 1086
+    },
+    "src/index.js": {
+      "checkedAt": 1631404921829,
+      "integrity": "sha512-4EY6Ht7K7xHsG26ZlFIZqfhRXgXgEkoeJgpIRZadR9ILMeFOv0kkgxgZsAc0jIxDQHO9QRbiQY9rZK1EGl671w==",
+      "mode": 420,
+      "size": 1521
+    },
+    "package.json": {
+      "checkedAt": 1631404921829,
+      "integrity": "sha512-4V94mrrclVpWTQZDYOlj3Be25+TWx/1ZIVN6qC5i0rVKJW1LFkrGHYEZwJmTps4hi5tv+WZ4Feqg5tvq+rrqGg==",
+      "mode": 420,
+      "size": 1120
+    },
+    "README.md": {
+      "checkedAt": 1631404921829,
+      "integrity": "sha512-f3vmjGpE2E+ZR3UDkX0yJ62wd6Lljm9TAoAxkwymGPGSMaKbSPKncr7xGu5ALFYiHry5zp4eV99Fjr8LXDHrYw==",
+      "mode": 420,
+      "size": 139
+    }
+  }
+}

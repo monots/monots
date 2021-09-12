@@ -1,0 +1,30 @@
+{
+  "name": "cpy-cli",
+  "version": "3.1.1",
+  "files": {
+    "license": {
+      "checkedAt": 1631404908762,
+      "integrity": "sha512-nIst73auX/5NY2Fmv5Y116vWnNrEv4GaIUX3lpZG05rpXJY2S8EX+fpUS5hRjClCM0VdT2Za9DDHXXB5jdSrEw==",
+      "mode": 420,
+      "size": 1109
+    },
+    "cli.js": {
+      "checkedAt": 1631404929893,
+      "integrity": "sha512-RzVKCZF0m32Pqoh2775kYPK7yRkWU18HKIoXB3qjNSLnvpT9gb9i7MIFJftiJCQtDEqdvNWb4xk+o8RW4zEsrA==",
+      "mode": 493,
+      "size": 1405
+    },
+    "package.json": {
+      "checkedAt": 1631404929893,
+      "integrity": "sha512-3NXiED/67shp9wgyFsjdz3BBr9toyru+Blc/d7X1eEW4kcl4CK4rL+x/nWC6mKuzLTroFxpzo4kEEiZi/TdW3A==",
+      "mode": 420,
+      "size": 966
+    },
+    "readme.md": {
+      "checkedAt": 1631404929893,
+      "integrity": "sha512-AwRSkcgXQ9pgzFsHMFMKvNjsU866R0gc/V9FCVBuF9DSnu+I3TthGkXNm0WEiPmt8mGX9CISUsKSwVcfXd+oxQ==",
+      "mode": 420,
+      "size": 1273
+    }
+  }
+}

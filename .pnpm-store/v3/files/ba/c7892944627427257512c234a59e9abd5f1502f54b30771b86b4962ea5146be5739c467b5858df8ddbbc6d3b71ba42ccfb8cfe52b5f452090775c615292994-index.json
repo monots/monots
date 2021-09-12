@@ -1,0 +1,60 @@
+{
+  "name": "eslint-import-resolver-typescript",
+  "version": "2.4.0",
+  "files": {
+    "lib/cjs.js": {
+      "checkedAt": 1631404930678,
+      "integrity": "sha512-xyWVl7TQUr6Z2ApRUY2tTuof2U81ccbmxkeCUrcSIqnrC8H0ee87P1vZG639RCTFJjspF+wBbPazlcHdLtqJrQ==",
+      "mode": 420,
+      "size": 8205
+    },
+    "lib/es2015.js": {
+      "checkedAt": 1631404930678,
+      "integrity": "sha512-z4djrT+40lfNTYqrT3rOvBAQ2u1LT6qD+OBKZ8QsdSW6WVP6N1XiBwbtyMP0omBwC1KjuQA5btm63wjci0yrRg==",
+      "mode": 420,
+      "size": 6408
+    },
+    "lib/esm.js": {
+      "checkedAt": 1631404930683,
+      "integrity": "sha512-gLw7gC7wKj0dqia2GdZbeObt2H/ZMSsuqiQVNN80Y8JTADEphp2SM/+HEBCwMzlsX8fLaGE58hk/YVZag0ATyw==",
+      "mode": 420,
+      "size": 7885
+    },
+    "lib/index.js": {
+      "checkedAt": 1631404930683,
+      "integrity": "sha512-4lx9QzV5Yj0UThrge7q+arQdLFnF50WoimTYnD1ZL7BBiVML7M0Gt+DWxkiY1e/RJ7FCKhtTA3vAsiCFpL8o5A==",
+      "mode": 420,
+      "size": 6819
+    },
+    "lib/index.js.map": {
+      "checkedAt": 1631404930690,
+      "integrity": "sha512-Zh4cpbi+Xee15IaOHWq8P/LZV2sKpflmxKDrJZL6HEeJRaxmBojIkxUmy8UoxRCdSU91kXTALhOBx8rXBcbQ4w==",
+      "mode": 420,
+      "size": 5320
+    },
+    "CHANGELOG.md": {
+      "checkedAt": 1631404930690,
+      "integrity": "sha512-w0uFyLEU47o3S6Yi7ltWC10hLl5DJnX26VFBvOgO8aM7uR5aWGawaknqK842WKXGlde6t7bcdXW1qqzJwd79Lg==",
+      "mode": 420,
+      "size": 5309
+    },
+    "package.json": {
+      "checkedAt": 1631404930690,
+      "integrity": "sha512-qLurL7NtIIyAhMrwGLK1XS8tdQ7xdddzYjguxYNi6mvnf+9oAyrUQaHsvSdlbsiLoVr9asWKQV4AahN/9awUCw==",
+      "mode": 420,
+      "size": 2638
+    },
+    "lib/index.d.ts": {
+      "checkedAt": 1631404930695,
+      "integrity": "sha512-KPSsNzlSg4AWAgYzS7J6TNScmTomhPCaeFNUO5ixiP5zxKWHZ60NKGoAL45crpS78NZKwwT7L4Rfc2CoF/hBzQ==",
+      "mode": 420,
+      "size": 726
+    },
+    "README.md": {
+      "checkedAt": 1631404930695,
+      "integrity": "sha512-ug6ecYjT+2XkIHHgVh5ii7X7L0i46fIqhJt+VN1S/zmBq342s2v5y4Tjj4EzqWEIqdRqcoAxxrEDPofdJSEkMQ==",
+      "mode": 420,
+      "size": 5109
+    }
+  }
+}

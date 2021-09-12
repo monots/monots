@@ -1,0 +1,126 @@
+{
+  "name": "ua-parser-js",
+  "version": "0.7.28",
+  "files": {
+    "dist/ua-parser.html": {
+      "checkedAt": 1631404922664,
+      "integrity": "sha512-M2lENPBJdik3FHt4QAox0ISzFuT38ylEXwXk8cHH2TkyyKtx0YxkHcHCkzAYXXDVB/uVLkUfG16rnxZBbdt2kA==",
+      "mode": 420,
+      "size": 43
+    },
+    "package.js": {
+      "checkedAt": 1631404922664,
+      "integrity": "sha512-qKe+oGgvd8Frki4+yWyKt/eRcPyGVZ/ggXm75WbZyV8aCNPj04A8USuFppDYWu+a5+sqmOiQodUPHnGI5ByFmg==",
+      "mode": 420,
+      "size": 329
+    },
+    "test/test.js": {
+      "checkedAt": 1631404922664,
+      "integrity": "sha512-FyF7TFPgEKk74rxiGkdNhQSDSrJk+fm+sJ8i/XKOahYDp/fCJmg5k8AXT9xAPXOVTlKItYTlQfcYFWIb92to5A==",
+      "mode": 420,
+      "size": 13747
+    },
+    "src/ua-parser.js": {
+      "checkedAt": 1631404922734,
+      "integrity": "sha512-BBBXn66qsdNPsNyiKEuFFjE9g2GRJKtBgj3KZU46AQbJgblIYKPt52WsGXOPQIEuOs2imhUrNbGWwIpYfFaKlQ==",
+      "mode": 493,
+      "size": 44444
+    },
+    "dist/ua-parser.min.js": {
+      "checkedAt": 1631404922806,
+      "integrity": "sha512-+nH41GxbmS6jnZEINszszubX5tdEsnLnOheHCVH/r483zyr4ZMMmB+8nJ/kJ5EUXunHyL52Z25cbbpMtbRH72A==",
+      "mode": 420,
+      "size": 20032
+    },
+    "dist/ua-parser.pack.js": {
+      "checkedAt": 1631404922822,
+      "integrity": "sha512-J2A8dNTyYO1r0blp1oz8L8eCz6l/8wcfnwJx6m/05+4OoUd3wYuG9PFDr8/IhoQ8pFfUtK5AxD848TQINX7tGA==",
+      "mode": 420,
+      "size": 16487
+    },
+    "bower.json": {
+      "checkedAt": 1631404922822,
+      "integrity": "sha512-ulNCy00LKZRsDg+WtqcRotrwJ3KoKNrbKKu4Zxk5CSotQkRb9BzouNBYJmgAdffySi6QmlDM0Naazmde8M2ffg==",
+      "mode": 420,
+      "size": 282
+    },
+    "test/browser-test.json": {
+      "checkedAt": 1631404922848,
+      "integrity": "sha512-JhNIkIO+LrDsID6oZcLDemjnAt3Sn1j96lxCNTW1wWDnMcEMW6ORTA7lD+RrqRVCcFKbrXZAajUTISSSJNM9Jw==",
+      "mode": 420,
+      "size": 45861
+    },
+    "test/cpu-test.json": {
+      "checkedAt": 1631404922863,
+      "integrity": "sha512-r+JRQ1cC6PmKHZ1tvy/oirKBPC6U3KsYx92GSXYaEdbMG7F1rgko2OxEh7DAsEB3mDzfsu5cCRvveR3JOm28eA==",
+      "mode": 420,
+      "size": 5123
+    },
+    "test/device-test.json": {
+      "checkedAt": 1631404922982,
+      "integrity": "sha512-wBwAApa1gh5qsADtJPk2UsqZ+9UHT2H5L7D40ebr1kuv7o1Kdr9WFmQ5eg+cmuxfeRpvkrsmlFVl4gO+k6ph4w==",
+      "mode": 420,
+      "size": 87735
+    },
+    "test/engine-test.json": {
+      "checkedAt": 1631404923013,
+      "integrity": "sha512-hiVzwML4lVjA29RT3Y0w/8p4gxkXT3Q8naZPoiRx+KLOrDS4zKFIbloicAH7XpFXxVXiXHDAbDkdIkFxojwv/g==",
+      "mode": 420,
+      "size": 4769
+    },
+    "test/mediaplayer-test.json": {
+      "checkedAt": 1631404923033,
+      "integrity": "sha512-ug0jQF5n6XsRTvIS6LWTmUPw5uLg7Pc90j+KLl/FoRY5nQ8JphjrgBgD0SNw1E+ZBoXChz2d0vOTkr+7kOe/4A==",
+      "mode": 420,
+      "size": 14318
+    },
+    "test/os-test.json": {
+      "checkedAt": 1631404923053,
+      "integrity": "sha512-A7LfeszSN+Z9cQT4sHVxsAO9SGzYFnyrwsYXPBpxOjS7MMyj4ogUgzxzmr3VfAs6j0ACvKsXvpEpf8sxHQy80A==",
+      "mode": 420,
+      "size": 25905
+    },
+    "package.json": {
+      "checkedAt": 1631404923086,
+      "integrity": "sha512-UUaaQc3Og30D6wIDXMLnDQ5r5FR6epr/b408vzzC965wxSNmjLBGp5aohq9l08IcU9ZAw9DLUZkkpEbIwQxpCA==",
+      "mode": 420,
+      "size": 7348
+    },
+    "changelog.md": {
+      "checkedAt": 1631404923086,
+      "integrity": "sha512-Bp+KI1a5TSTg55dccyUsPbBZvpEi6+pmDrj/4TnSldjy6n6NIBCh7gTF7or5XAOw2ce4xmef152THdkV6oxIwA==",
+      "mode": 420,
+      "size": 41
+    },
+    "license.md": {
+      "checkedAt": 1631404923086,
+      "integrity": "sha512-+NlAakFjx7PwoPdPgh+QoB+vAEhWDErfu6qgI0t4mO1FirzVn22HHx9savNn61Ae7ZYM2Nf7Nu0eyTGH5Ws5DQ==",
+      "mode": 420,
+      "size": 1095
+    },
+    "readme.md": {
+      "checkedAt": 1631404923117,
+      "integrity": "sha512-pSCg8UhtH0aBkYEWLdLtsxkOPeQaPyOwm3iY+ZLWkO8dIXtIi5XjDpfhVzL20vlkCQwwVsGg0S3+qZPkEQZnBg==",
+      "mode": 420,
+      "size": 11796
+    },
+    ".travis.yml": {
+      "checkedAt": 1631404923117,
+      "integrity": "sha512-evixoJBjkhmboTVWiMzKtLBzQpS/Jw/7HPl9+wzO72gZTsqPrlLgMHR4QOVoPldzfgyqWkMs9eyJhKgmYQlsBg==",
+      "mode": 420,
+      "size": 194
+    },
+    ".github/FUNDING.yml": {
+      "checkedAt": 1631404923117,
+      "integrity": "sha512-8kQDumyK2uzMiMBVCt7bzjT3Q0qcaSALpCmp5WZJ4RfeI3Ee1eXmT22alF3wPzyCz1TpNFgl5piJX4hwbnho4A==",
+      "mode": 420,
+      "size": 640
+    },
+    ".github/workflows/run-test.yml": {
+      "checkedAt": 1631404923117,
+      "integrity": "sha512-KPCD6T05NesekSth5qhDK9tHh2aShV/YonZmPeKnYXmmMF1Q/7hnbYavLxNE3TiJq+RdzmM7jA6/Ukote7vESA==",
+      "mode": 420,
+      "size": 330
+    }
+  }
+}

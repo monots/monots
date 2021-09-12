@@ -1,0 +1,30 @@
+{
+  "name": "@babel/helper-wrap-function",
+  "version": "7.15.4",
+  "files": {
+    "LICENSE": {
+      "checkedAt": 1631404908766,
+      "integrity": "sha512-KYRMN3MVTuiy5XkFDHd5PnQmHaQnt3z16nsBDePxZ9YNmq7IFlslpBBlR3UI+zvlbEemzowOYeKil9a0ZkOYxQ==",
+      "mode": 420,
+      "size": 1106
+    },
+    "README.md": {
+      "checkedAt": 1631404909695,
+      "integrity": "sha512-K9L/TAxnuxPEgsZSg778No7z1YB9DD9rpfeKZPV6OpdCya1iljCXCUNucz43jkyTTRmvR53SsGIuiJ2Dc9SIbg==",
+      "mode": 420,
+      "size": 362
+    },
+    "lib/index.js": {
+      "checkedAt": 1631404909695,
+      "integrity": "sha512-ks21Gwx92RNiyxCJN+llIoqY1ukDru1AGUCdpg7nrcuhwkOrU10/m5U7pQkVARhbolqL6ioH+3Ne+xrZT8x/fw==",
+      "mode": 420,
+      "size": 3112
+    },
+    "package.json": {
+      "checkedAt": 1631404909695,
+      "integrity": "sha512-7CFdXtM+JHmdC48cgyA+Fxdfu1SqNrJhU4BRNNd3yyMK1mCYyrs2Se3PGtDdOg7zg/t2qZM3OLvRJ1Ii/MG0NA==",
+      "mode": 420,
+      "size": 719
+    }
+  }
+}

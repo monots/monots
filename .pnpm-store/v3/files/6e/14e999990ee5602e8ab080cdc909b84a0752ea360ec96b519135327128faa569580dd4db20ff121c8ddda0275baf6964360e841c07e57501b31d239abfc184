@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getParentTestBlocks Returns last test block and all parent names 1`] = `
+"it(\\"test\\", () => {
+    expect(a).toMatchSnapshot();
+})"
+`;
+
+exports[`getParentTestBlocks Returns last test block and all parent names 2`] = `
+"it.only(\\"test2\\", () => {
+    expect(a).toMatchSnapshot();
+})"
+`;
+
+exports[`getParentTestBlocks Returns last test block and all parent names 3`] = `
+"it(\\"test2\\", () => {
+        expect(b).toMatchSnapshot();
+        // invalid
+        expect(c).toMatchSnapshot(
+    })"
+`;
+
+exports[`getParentTestBlocks Returns last test block and all parent names 4`] = `
+"it(\\"test2\\", () => {
+            expect(b).toMatchSnapshot();
+        })"
+`;
+
+exports[`getParentTestBlocks Returns last test block and all parent names 5`] = `
+"it(\\"test3\\", () => {
+            expect(b).toMatchSnapshot();
+        })"
+`;
+
+exports[`getParentTestBlocks Returns last test block and all parent names 6`] = `
+"it(\\"test1\\", () => {
+        expect(a).toMatchSnapshot();
+        expect(a).toMatchSnapshot();
+        expect(a).toMatchSnapshot();
+    })"
+`;
+
+exports[`getParentTestBlocks Returns last test block and all parent names 7`] = `
+"it(a, () => {
+    expect(a).toBe(1);
+})"
+`;
+
+exports[`getParentTestBlocks Returns last test block and all parent names 8`] = `
+"it(\`substitution \${a}\`, () => {
+    expect(a).toBe(1);
+})"
+`;
+
+exports[`getParentTestBlocks Returns last test block and all parent names 9`] = `
+"it(\`another \${a}, \${b}, \${c}\`, () => {
+    expect(a).toBe(1);
+})"
+`;
+
+exports[`getParentTestBlocks Returns last test block and all parent names 10`] = `
+"it(Test, () => {
+    expect(a).toBe(1);
+})"
+`;
+
+exports[`getParentTestBlocks Returns last test block and all parent names 11`] = `
+"it(\`imported \${Test}\`, () => {
+    expect(a).toBe(1);
+})"
+`;
+
+exports[`getParentTestBlocks Returns last test block and all parent names 12`] = `
+"it(\`Import star: \${Constants.Test}\`, () => {
+    expect(a).toBe(1);
+})"
+`;
+
+exports[`getParentTestBlocks Returns last test block and all parent names 13`] = `
+"it(\\"exp\\" + \\"a\\" + 5, () => {
+    expect(a).toBe(1);
+})"
+`;
+
+exports[`getParentTestBlocks Returns last test block and all parent names 14`] = `
+"it(\\"exp multiline \\" +
+    \`abc \` +
+    'def', () => {
+        expect(a).toBe(1);
+    }
+)"
+`;
+
+exports[`getParentTestBlocks Returns last test block and all parent names 15`] = `
+"it(\`exp \${Test} \` +
+    a,
+    () => {
+        expect(a).toBe(1);
+    }
+)"
+`;
+
+exports[`parseSnapshotFile Returns snapshot definitions 1`] = `
+Array [
+  Object {
+    "file": "test",
+    "length": 22,
+    "name": "abc",
+    "position": 9,
+    "snapshot": "abc",
+  },
+  Object {
+    "file": "test",
+    "length": 53,
+    "name": "abc",
+    "position": 42,
+    "snapshot": "
+        abc,
+        def
+        ",
+  },
+  Object {
+    "file": "test",
+    "length": 28,
+    "name": "bb",
+    "position": 106,
+    "snapshot": "abc",
+  },
+  Object {
+    "file": "test",
+    "length": 19,
+    "name": "def",
+    "position": 145,
+    "snapshot": "",
+  },
+]
+`;

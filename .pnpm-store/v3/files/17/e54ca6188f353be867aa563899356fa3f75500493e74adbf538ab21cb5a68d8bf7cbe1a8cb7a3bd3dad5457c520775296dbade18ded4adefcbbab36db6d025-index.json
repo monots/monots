@@ -1,0 +1,24 @@
+{
+  "name": "@swc/core-linux-x64-musl",
+  "version": "1.2.85",
+  "files": {
+    "package.json": {
+      "checkedAt": 1631404928110,
+      "integrity": "sha512-vXzwCBjSkUnWjtnswGeClqYgVXCmtKyORNO4cxwMEgANavuwuNrFI5j8h2dANJEprOLTPDq/KFbAbAjGPsf4aA==",
+      "mode": 420,
+      "size": 773
+    },
+    "README.md": {
+      "checkedAt": 1631404928110,
+      "integrity": "sha512-hgKjWRUzzyu13iuyr1hAT8fIzJANWNwWSCKsEFjSSlgbYGa7RUxCbYvqXsRHKpmexPZB+tMSwxGlkrlH/5wAAg==",
+      "mode": 420,
+      "size": 95
+    },
+    "swc.linux-x64-musl.node": {
+      "checkedAt": 1631404932508,
+      "integrity": "sha512-93AHj848EX4PoPVo/lDYHsKtDewxMmQVPZj8eFWusstkuBWL8SlrKVr3+EcZkgBhLVY3I/jp/MyOZcVPevC0ag==",
+      "mode": 420,
+      "size": 29975480
+    }
+  }
+}

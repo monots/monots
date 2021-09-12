@@ -1,0 +1,36 @@
+{
+  "name": "@algolia/client-common",
+  "version": "4.10.5",
+  "files": {
+    "index.js": {
+      "checkedAt": 1631404923433,
+      "integrity": "sha512-5Vg77eqOuFS87Qapl4wbWjcnyErcZwN6qcnENe9Ar9SW/SI8ulTC55f3ZUxv049jd6ZwPgtsQwv60O5CA/+iPQ==",
+      "mode": 420,
+      "size": 131
+    },
+    "package.json": {
+      "checkedAt": 1631404923433,
+      "integrity": "sha512-VJQSt27qfjk0uPMU4Lvcn7u7kw1JW3rSLb7NIGEEP4I/Tbb9VdlP0tGrHHcZB2rQ8jGt1iNyx3GABe1BPzcCFw==",
+      "mode": 420,
+      "size": 493
+    },
+    "dist/client-common.cjs.js": {
+      "checkedAt": 1631404923433,
+      "integrity": "sha512-zrZFrMSa7tHtiS5hGgVhGmGt3Tyth+LLjyJ0Qg+3xrat4rSlpuEHN5aZz5Pdm8UZ4swlRTD0pGp9riNPnKGidw==",
+      "mode": 420,
+      "size": 3059
+    },
+    "dist/client-common.d.ts": {
+      "checkedAt": 1631404923433,
+      "integrity": "sha512-BVdK57vvU8VhINcWMRDCgXkgJrTZbFtIfmSSKoOPkR0W7CAyWRNKrJkL4TXMMvMN6ssI0f1758wJGXbtiYZL3Q==",
+      "mode": 420,
+      "size": 4083
+    },
+    "dist/client-common.esm.js": {
+      "checkedAt": 1631404923433,
+      "integrity": "sha512-XESn/gTae418S63aOmGMI9SHzOeqfPx3N6VKmDtrRp/td3QmyvK2khK3Faavy68bCUyfjKVq6swpCY/0bJoj8Q==",
+      "mode": 420,
+      "size": 2794
+    }
+  }
+}

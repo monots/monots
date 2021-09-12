@@ -1,0 +1,24 @@
+{
+  "name": "array-differ",
+  "version": "1.0.0",
+  "files": {
+    "package.json": {
+      "checkedAt": 1631404930041,
+      "integrity": "sha512-fEa81hP2glwFWu8GnW4wyx+0M55PamHSxqSxJeA1dbmFzxlSw9e5gOPO8bNRFdCVsbvknfzu924NdDdvWwVf+w==",
+      "mode": 420,
+      "size": 621
+    },
+    "index.js": {
+      "checkedAt": 1631404930041,
+      "integrity": "sha512-DHv7KDG+r4DKnbPssc7ZrmpkrVMP9PAG5vaQScm1O0CPaxWCdgl6EljKHl2r3P5wlAFLsDDGoQhNkF06iiNOJw==",
+      "mode": 420,
+      "size": 187
+    },
+    "readme.md": {
+      "checkedAt": 1631404930041,
+      "integrity": "sha512-Z3trM0pUFeNr1lefbCIF5BqkSAGD20OrCWgOEpe69GypNwzhtn9tkg4FD7lf37sGh3SMGgXp9iDRujtNQzDZpg==",
+      "mode": 420,
+      "size": 641
+    }
+  }
+}

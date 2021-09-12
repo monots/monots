@@ -1,6 +1,6 @@
 {
   "name": "monots",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "description": "monots",
   "homepage": "https://github.com/monots/monots/tree/master/packages/monots",
@@ -29,8 +29,8 @@
     "dist"
   ],
   "dependencies": {
-    "@monots/cli": "^0.0.0",
-    "@monots/core": "^0.0.0"
+    "@monots/cli": "^0.1.0",
+    "@monots/core": "^0.1.0"
   },
   "publishConfig": {
     "access": "public"

@@ -1,0 +1,30 @@
+{
+  "name": "equal-length",
+  "version": "1.0.1",
+  "files": {
+    "license": {
+      "checkedAt": 1631404929681,
+      "integrity": "sha512-bRbgdC6/7jbFCYrE/eJVQfwT7hM3Kj9/SPtwJjCckqVUi0IcodQEH+QOZXgS+jrLQac1/3pXCBTeii/RijpVhQ==",
+      "mode": 420,
+      "size": 1122
+    },
+    "package.json": {
+      "checkedAt": 1631404929759,
+      "integrity": "sha512-xK4DXiulAdf11rTcLlnYbsyyyto9x0vPz+L6VCA0MzWXQDnLtoDloepL+IByoUNXHLPmdjG6pjCT/OCUVoiXTw==",
+      "mode": 420,
+      "size": 544
+    },
+    "index.js": {
+      "checkedAt": 1631404929759,
+      "integrity": "sha512-jmeXNR+c8sEgpBXVDfSxjpas2tJjPyK/VXfcgAZJ0MbdAMVgt0VMB8HI3aej9zfi1XgE3HB8Gh5XpryXVX/SGA==",
+      "mode": 420,
+      "size": 425
+    },
+    "readme.md": {
+      "checkedAt": 1631404929759,
+      "integrity": "sha512-nwiqq9Rz2jpV0UxRmC8a2tvYI2w1oCkmDxupVZqhdBuVi1JwC0my0ZcZBYnhtWw52elBsti+FrDSbRbgzTbCsg==",
+      "mode": 420,
+      "size": 599
+    }
+  }
+}
