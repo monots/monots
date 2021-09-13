@@ -7,17 +7,17 @@ importers:
       '@changesets/cli': ^2.16.0
       '@manypkg/cli': ^0.18.0
       '@manypkg/get-packages': ^1.1.1
-      '@monots/cli': ^0.1.1
+      '@monots/cli': ^0.2.0
       '@monots/tsconfig': ^0.1.0
       '@types/node': ^16.9.1
       ava: ^3.15.0
       browserslist: ^4.17.0
       eslint: ^7.32.0
-      eslint-config-monots: ^0.1.1
+      eslint-config-monots: ^0.2.0
       husky: ^7.0.2
       lint-staged: ^11.1.2
       load-json-file: ^7.0.0
-      monots: ^0.1.0
+      monots: ^0.1.1
       npm-run-all: ^4.1.5
       prettier: ^2.4.0
       prettier-config-monots: ^0.1.0
@@ -133,15 +133,15 @@ importers:
 
   packages/monots:
     specifiers:
-      '@monots/cli': ^0.1.1
-      '@monots/core': ^0.1.0
+      '@monots/cli': ^0.2.0
+      '@monots/core': ^0.2.0
     dependencies:
       '@monots/cli': link:../monots__cli
       '@monots/core': link:../monots__core
 
   packages/monots__cli:
     specifiers:
-      '@monots/core': ^0.1.0
+      '@monots/core': ^0.2.0
       '@monots/types': ^0.1.0
       '@swc/helpers': ^0.2.13
       '@types/lodash-es': ^4.14.172

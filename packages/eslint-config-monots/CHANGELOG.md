@@ -1,5 +1,13 @@
 # eslint-config-monots
 
+## 0.2.0
+
+> 2021-09-13
+
+### Minor Changes
+
+- [`afe1fa5`](https://github.com/monots/monots/commit/afe1fa5e1a19e89e12a2f2a4215de83d68cc6452) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Turn off `unicorn/no-null` rule.
+
 ## 0.1.1
 
 > 2021-09-12
