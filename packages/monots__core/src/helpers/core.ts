@@ -13,12 +13,24 @@ export function keys<Type extends object, Key extends Extract<keyof Type, string
 }
 
 /**
- * Check if a file exists for the provide `filePath` the provided target.
+ * Check if a file exists for the provided `filePath` the provided target.
  */
 export async function fileExists(filePath: string): Promise<boolean> {
   try {
     const stat = await fs.lstat(filePath);
     return stat.isFile();
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Check if a folder exists for the provided `folderPath` the provided target.
+ */
+export async function folderExists(folderPath: string): Promise<boolean> {
+  try {
+    const stat = await fs.lstat(folderPath);
+    return stat.isDirectory();
   } catch {
     return false;
   }

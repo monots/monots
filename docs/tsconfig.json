@@ -18,6 +18,5 @@
     },
     "skipLibCheck": true
   },
-  "include": ["src", "sidebars.js", "docusaurus.config.js"],
-  "exclude": ["./node_modules/.pnpm/@docusaurus*"]
+  "include": ["src", "sidebars.js", "docusaurus.config.js"]
 }

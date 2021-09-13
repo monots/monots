@@ -64,6 +64,13 @@ export const ProjectMonotsConfigStruct = t.type({
   tsconfigPath: t.optional(t.string()),
 
   /**
+   * The packages folder.
+   *
+   * @default `./packages`
+   */
+  packagesFolder: t.optional(t.string()),
+
+  /**
    * The structure for the root tsconfig.
    *
    * This is useful for adding settings to the `ts-node` property.

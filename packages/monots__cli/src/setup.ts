@@ -2,7 +2,14 @@ import { NAME } from '@monots/core';
 import type { CommandContext } from '@monots/types';
 import { Builtins, Cli } from 'clipanion';
 
-import { BuildCommand, CheckCommand, FixCommand, InitCommand, PrepareCommand } from './commands';
+import {
+  BuildCommand,
+  CheckCommand,
+  CreateCommand,
+  FixCommand,
+  InitCommand,
+  PrepareCommand,
+} from './commands';
 import { getPackageJson } from './helpers';
 
 const { version, description = '', name } = getPackageJson();
@@ -20,6 +27,7 @@ cli.register(PrepareCommand);
 cli.register(FixCommand);
 cli.register(BuildCommand);
 cli.register(CheckCommand);
+cli.register(CreateCommand);
 
 export const context: CommandContext = {
   internal: false,

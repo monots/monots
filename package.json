@@ -35,6 +35,7 @@
     "lint:md": "eslint -f codeframe  --ignore-pattern='*.js' --ignore-pattern='*.ts' --ignore-pattern='*.tsx' .",
     "lint:prettier": "pnpm run:prettier -- --check",
     "lint:repo": "manypkg check",
+    "create:test": "monots create @monots/awesome --description=\"An amazing package\" --interactive",
     "monots": "pnpm ts packages/monots__cli/src/index.ts",
     "prepare": "husky install .monots/.husky",
     "reset": "pnpm clean; rm pnpm-lock.yaml; pnpm symlink:root; pnpm i -r;",

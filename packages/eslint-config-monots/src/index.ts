@@ -46,6 +46,7 @@ const config: Linter.Config = {
     'unicorn/empty-brace-spaces': 'off',
     'unicorn/prevent-abbreviations': 'off',
     'unicorn/no-nested-ternary': 'off',
+    'unicorn/no-null': 'off',
     'no-nested-ternary': 'off',
 
     'sort-imports': 'off',

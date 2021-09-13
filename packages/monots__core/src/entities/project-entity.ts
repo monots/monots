@@ -102,6 +102,10 @@ export class ProjectEntity extends BaseEntity<ProjectData> {
     return path.join(this.directory, this.monots.tsconfigPath);
   }
 
+  get packagesFolder(): string {
+    return path.join(this.directory, this.monots.packagesFolder);
+  }
+
   #packagePaths: Record<string, string> | undefined;
 
   /**
@@ -406,5 +410,6 @@ const DEFAULT_MONOTS_PROJECT_OPTIONS: Required<ProjectMonots> = {
     },
   },
   tsconfigPath: './tsconfig.json',
+  packagesFolder: 'packages',
   tsconfig: {},
 };

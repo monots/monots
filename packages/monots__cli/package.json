@@ -38,25 +38,28 @@
   "files": [
     "bin.js",
     "dist",
-    "setup"
+    "setup",
+    "templates"
   ],
   "dependencies": {
     "@monots/core": "^0.1.0",
     "@monots/types": "^0.1.0",
     "@swc/helpers": "^0.2.13",
+    "@types/through2": "^2.0.36",
     "chalk": "^4.1.2",
     "clipanion": "^3.0.1",
     "delay": "^5.0.0",
+    "lodash-es": "^4.17.21",
     "ora": "^6.0.0",
     "read-pkg-up": "^8.0.0",
+    "recursive-copy": "^2.0.13",
     "update-notifier": "^5.1.0"
   },
   "devDependencies": {
+    "@types/lodash-es": "^4.14.172",
     "@types/update-notifier": "^5.1.0",
     "del": "^6.0.0",
-    "eta": "^1.12.3",
     "nanoid": "^3.1.25",
-    "recursive-copy": "^2.0.13",
     "type-fest": "^2.3.2"
   },
   "engines": {
