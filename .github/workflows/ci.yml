@@ -57,37 +57,6 @@ jobs:
       - name: check build
         run: pnpm lint:build
 
-  # Typecheck the project
-  typecheck:
-    timeout-minutes: 15
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout code repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: setup caching
-        uses: actions/cache@v2
-        with:
-          path: ${{ env.PNPM_CACHE_FOLDER }}
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-
-
-      - name: setup node.js
-        uses: actions/setup-node@v2-beta
-        with:
-          node-version: 16
-
-      - name: install and audit
-        uses: ./.github/actions/pnpm
-        with:
-          cache: ${{ env.PNPM_CACHE_FOLDER }}
-
-      - name: typecheck project
-        run: pnpm typecheck
-
   # Unit test and update coverage report
   unit_test:
     timeout-minutes: 15
