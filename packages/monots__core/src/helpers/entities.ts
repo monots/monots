@@ -16,9 +16,9 @@ interface GenerateFieldProps {
   directory: string;
 
   /**
-   * The absolute path to the source file.
+   * The filename of the source file.
    */
-  source: string;
+  name: string;
 
   /**
    * The type of field being generated.
@@ -30,15 +30,10 @@ interface GenerateFieldProps {
  * Generate the field value for the provided field.
  */
 export function generateField(props: GenerateFieldProps): string {
-  const { directory, dist, source, type } = props;
+  const { directory, dist, name, type } = props;
 
   return prefixRelativePath(
-    normalizePath(
-      path.join(
-        path.relative(directory, dist),
-        path.basename(source).replace(/.tsx?$/, FIELD_EXTENSIONS[type]),
-      ),
-    ),
+    normalizePath(path.join(path.relative(directory, dist), `${name}${FIELD_EXTENSIONS[type]}`)),
   );
 }
 

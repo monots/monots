@@ -7,7 +7,9 @@
   "types": "",
   "monots": {
     "entrypoints": [
-      "other.ts"
+      "index.ts",
+      "other.ts",
+      "and-another/index.ts"
     ]
   }
 }

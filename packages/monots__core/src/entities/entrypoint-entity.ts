@@ -102,23 +102,24 @@ export class EntrypointEntity extends BaseEntity<EntrypointData> {
     );
 
     this.fields = Object.create({ package: {}, exports: {} });
+    const name = this.isRoot ? 'index' : path.basename(this.name);
 
     for (const field of this.package.fields) {
       this.fields.package[field] = generateField({
+        name,
         type: field,
         dist: this.package.dist,
         directory: this.directory,
-        source: this.source,
       });
     }
 
     for (const field of this.package.exportFields) {
       this.fields.exports[field] = generateField({
+        name,
         type: exportFieldToPackageField[field],
         dist: this.package.dist,
         // The directory is relative to the package for the exports object.
         directory: this.package.directory,
-        source: this.source,
       });
     }
   }
@@ -211,8 +212,7 @@ export class EntrypointEntity extends BaseEntity<EntrypointData> {
       }
 
       if (['module', 'browser'].includes(field)) {
-        // Symlink the field.
-        fs.symlink(this.source, target);
+        promises.push(fs.symlink(this.source, target));
       }
 
       if (field === 'main') {
