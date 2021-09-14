@@ -25,6 +25,9 @@
     "./full": {
       "require": "./dist/full.cjs.js"
     },
+    "./full-off": {
+      "require": "./dist/full-off.cjs.js"
+    },
     "./markdown": {
       "require": "./dist/markdown.cjs.js"
     },
@@ -37,6 +40,7 @@
   "files": [
     "dist",
     "full",
+    "full-off",
     "markdown",
     "react"
   ],
@@ -75,7 +79,8 @@
       "index.ts",
       "full.ts",
       "markdown.ts",
-      "react.ts"
+      "react.ts",
+      "full-off.ts"
     ],
     "tsconfigs": {
       "src": {

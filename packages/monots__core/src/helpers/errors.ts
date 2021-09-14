@@ -4,7 +4,7 @@ import { BaseError } from 'make-error';
 import util from 'node:util';
 import * as t from 'superstruct';
 
-import { format } from './logger';
+import { format } from './logger.js';
 
 export class FatalError extends BaseError {
   scope: string;

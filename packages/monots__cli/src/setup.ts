@@ -9,8 +9,8 @@ import {
   FixCommand,
   InitCommand,
   PrepareCommand,
-} from './commands';
-import { getPackageJson } from './helpers';
+} from './commands/index.js';
+import { getPackageJson } from './helpers.js';
 
 const { version, description = '', name } = getPackageJson();
 

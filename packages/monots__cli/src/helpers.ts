@@ -4,7 +4,7 @@ import url from 'node:url';
 import { readPackageUpSync } from 'read-pkg-up';
 import updateNotifier from 'update-notifier';
 
-import type { CommandContext } from './types';
+import type { CommandContext } from './types.js';
 
 const SEPARATOR = '__';
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));

@@ -1,16 +1,13 @@
 import type { Linter } from 'eslint';
 
 const config: Linter.Config = {
-  // Apply the markdown plugin
-  plugins: ['markdown'],
-
   // Only apply markdown rules when not in TypeScript mode, since they are
   // currently incompatible.
   overrides: [
-    { files: ['*.mdx', '*.md'], processor: 'markdown/markdown' },
+    { plugins: ['markdown'], files: ['*.mdx', '*.md'], processor: 'markdown/markdown' },
     {
       // Lint code blocks in markdown
-      files: ['**/*.{md,mdx}/*.{ts,tsx,js}'],
+      files: ['**/*.{md,mdx}/*.{ts,tsx,js,jsx}'],
 
       // Set up rules to be excluded in the markdown blocks.
       rules: {

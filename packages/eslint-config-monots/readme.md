@@ -27,7 +27,17 @@ In your `package.json` files add the following configuration
   "name": "my-cool-library",
   "version": "0.0.0",
   "eslintConfig": {
-    "extends": ["eslint-config-monots"]
+    "extends": ["monots"],
+    "overrides": [
+      {
+        "files": ["*.ts", "*.tsx"],
+        "extends": ["monots/full"],
+        "parserOptions": {
+          "project": ["./path/to/tsconfig.lint.json"]
+        }
+      },
+      { "files": ["*.tsx"], "extends": ["monots/react"] }
+    ]
   }
 }
 ```
@@ -36,7 +46,7 @@ If you don't want to use your `package.json` file, you can use any of the [suppo
 
 ```json
 {
-  "extends": ["eslint-config-monots"]
+  "extends": ["monots"]
 }
 ```
 
@@ -44,10 +54,52 @@ You can always add your own rules and disable any rules you don't like by adding
 
 ```js
 module.exports = {
-  ...require('eslint-config-monots'),
+  extends: ['monots'],
 };
 ```
 
 ## Motivation
 
-This config is primarily for use within a monots repo. At the moment it is very strict and aims to allow multiple people working on a project to all conform to the same standard.
+This config is primarily for use within a **`monots`** repo. Rules are strict but they do allow multiple people working on a project to conform to the same standard.
+
+## Entrypoints
+
+### `monots`
+
+Provides the default rules and sets the parser to use `@typescript-eslint/parser`.
+
+### `monots/full`
+
+Provides stricter rules and the cpu intensive `@typescript-eslint/eslint-plugin` / `eslint-plugin-import` which should be scoped to `*.ts` files in your project.
+
+### `monots/react`
+
+Rules for a react codebase.
+
+### `monots/markdown`
+
+Experimental rules for markdown files. This currently doesn't interop well with `@typescript-eslint/parser` when the project option is set.
+
+### `monots/full-off`
+
+Can be used to disable the `full` rule for certain groups of files.
+
+```js
+module.exports = {
+  extends: ['monots'],
+  "overrides": [
+      {
+        "files": ["*.ts", "*.tsx"],
+        "extends": ["monots/full"],
+        "parserOptions": {
+          "project": ["./path/to/tsconfig.lint.json"]
+        }
+      },
+      { "files": ["*.tsx"], "extends": ["monots/react"] },
+
+      // Disable the `full` rules for certain matching files.
+      {"files": ["*.d.ts"], extends: ['monots/full-off'] }
+    ]
+  }
+};
+```

@@ -1,1 +1,1 @@
-export * from './shared-cli-types';
+export * from './shared-cli-types.js';

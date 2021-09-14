@@ -22,19 +22,6 @@ const config: Linter.Config = {
     browser: true,
     node: true,
   },
-  settings: {
-    'import/parsers': {
-      ['@typescript-eslint/parser']: ['.ts', '.tsx', '.d.ts', '.cjs', '.mjs'],
-    },
-    'import/resolver': {
-      ['eslint-import-resolver-node']: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx', '.cjs', '.mjs'],
-      },
-      ['eslint-import-resolver-typescript']: {
-        alwaysTryTypes: true,
-      },
-    },
-  },
   rules: {
     'prefer-const': ['error', { destructuring: 'all' }],
 

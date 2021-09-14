@@ -8,8 +8,8 @@ import { Transform } from 'node:stream';
 import ora from 'ora';
 import copy from 'recursive-copy';
 
-import { getPackagePath, mangleScopedPackageName } from '../helpers';
-import { BaseCommand } from './base-command';
+import { getPackagePath, mangleScopedPackageName } from '../helpers.js';
+import { BaseCommand } from './base-command.js';
 
 /**
  * Create a package for the project.

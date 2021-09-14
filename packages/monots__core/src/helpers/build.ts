@@ -2,7 +2,7 @@ import { bundle } from '@swc/core';
 import type { BundleOptions } from '@swc/core/spack';
 import fs from 'node:fs/promises';
 
-import { builtins } from './rollup';
+import { builtins } from './rollup.js';
 
 export interface BundleItem {
   /**

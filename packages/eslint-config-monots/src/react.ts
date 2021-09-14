@@ -1,7 +1,6 @@
 import type { Linter } from 'eslint';
 
 const config: Linter.Config = {
-  parser: '@typescript-eslint/parser',
   ignorePatterns: ['*.d.ts'],
   plugins: ['react-hooks', 'react', 'jsx-a11y', '@kyleshevlin'],
   extends: ['plugin:react/recommended'],

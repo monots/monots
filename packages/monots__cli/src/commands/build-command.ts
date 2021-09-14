@@ -3,7 +3,7 @@ import type { Usage } from '@monots/types';
 import chalk from 'chalk';
 import ora from 'ora';
 
-import { BaseCommand } from './base-command';
+import { BaseCommand } from './base-command.js';
 
 /**
  * This command is used to prepare the project by setting up all the entrypoints
