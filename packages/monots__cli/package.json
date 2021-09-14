@@ -1,6 +1,6 @@
 {
   "name": "@monots/cli",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Create and manage your TypeScript monorepo with monots",
   "homepage": "https://github.com/monots/monots/tree/master/@monots/cli",
   "repository": "https://github.com/monots/monots/tree/master/packages/monots__cli",
