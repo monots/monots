@@ -1,5 +1,15 @@
 # eslint-config-monots
 
+## 0.3.0
+
+> 2021-09-14
+
+### Minor Changes
+
+- [`e7dee52`](https://github.com/monots/monots/commit/e7dee523fd6f5764ad64c127cdce4ea6c971ddea) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Add `monots/full-off` eslint configuration which disables the full (machine intensive) linting rules.
+
+  Improve the composability of the other lint rules.
+
 ## 0.2.0
 
 > 2021-09-13

@@ -1,5 +1,13 @@
 # @monots/cli
 
+## 0.2.1
+
+> 2021-09-14
+
+### Patch Changes
+
+- [`19579f1`](https://github.com/monots/monots/commit/19579f1ae8a39539c8930069fb95c7ffaec0c667) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Remove unused dependency `@types/through2`.
+
 ## 0.2.0
 
 > 2021-09-13
