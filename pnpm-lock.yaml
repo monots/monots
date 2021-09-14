@@ -145,7 +145,6 @@ importers:
       '@monots/types': ^0.1.0
       '@swc/helpers': ^0.2.13
       '@types/lodash-es': ^4.14.172
-      '@types/through2': ^2.0.36
       '@types/update-notifier': ^5.1.0
       chalk: ^4.1.2
       clipanion: ^3.0.1
@@ -162,7 +161,6 @@ importers:
       '@monots/core': link:../monots__core
       '@monots/types': link:../monots__types
       '@swc/helpers': 0.2.13
-      '@types/through2': 2.0.36
       chalk: 4.1.2
       clipanion: 3.0.1
       delay: 5.0.0
@@ -4321,15 +4319,6 @@ packages:
       {
         integrity: sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==,
       }
-    dev: false
-
-  /@types/through2/2.0.36:
-    resolution:
-      {
-        integrity: sha512-vuifQksQHJXhV9McpVsXKuhnf3lsoX70PnhcqIAbs9dqLH2NgrGz0DzZPDY3+Yh6eaRqcE1gnCQ6QhBn1/PT5A==,
-      }
-    dependencies:
-      '@types/node': 16.9.1
     dev: false
 
   /@types/unist/2.0.6:
