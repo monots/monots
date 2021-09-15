@@ -102,7 +102,7 @@ export class EntrypointEntity extends BaseEntity<EntrypointData> {
     );
 
     this.fields = Object.create({ package: {}, exports: {} });
-    const name = this.isRoot ? 'index' : path.basename(this.name);
+    const name = this.isRoot ? 'index' : path.relative(this.package.name, this.name);
 
     for (const field of this.package.fields) {
       this.fields.package[field] = generateField({
@@ -203,38 +203,49 @@ export class EntrypointEntity extends BaseEntity<EntrypointData> {
 
         promises.push(
           this.hasDefaultExport().then((hasDefaultExport) =>
-            fs.writeFile(
-              target,
-              createTypeScriptContent(hasDefaultExport, relativePath.replace(/.tsx?$/, '')),
-            ),
+            fs
+              .mkdir(path.dirname(target), { recursive: true })
+              .then(() =>
+                fs.writeFile(
+                  target,
+                  createTypeScriptContent(hasDefaultExport, relativePath.replace(/.tsx?$/, '')),
+                ),
+              ),
           ),
         );
       }
 
       if (['module', 'browser'].includes(field)) {
-        promises.push(fs.symlink(this.source, target));
+        promises.push(
+          fs
+            .mkdir(path.dirname(target), { recursive: true })
+            .then(() => fs.symlink(this.source, target)),
+        );
       }
 
       if (field === 'main') {
         const config: InputOptions = {
-          // filename: target,
           rootMode: 'upward-optional',
           module: { type: 'commonjs' },
           jsc: { target: 'es2015' },
         };
 
         promises.push(
-          fs.writeFile(
-            target,
-            `// Allow the project to be used for commonjs environments \nconst register = require('${path.relative(
-              path.dirname(target),
-              _require.resolve('@swc/register'),
-            )}');\n\nregister(${JSON.stringify(
-              config,
-              undefined,
-              2,
-            )})\nmodule.exports = require('${relativePath}');\nregister.revert();`,
-          ),
+          fs
+            .mkdir(path.dirname(target), { recursive: true })
+            .then(() =>
+              fs.writeFile(
+                target,
+                `// Allow the project to be used for commonjs environments \nconst register = require('${path.relative(
+                  path.dirname(target),
+                  _require.resolve('@swc/register'),
+                )}');\n\nregister(${JSON.stringify(
+                  config,
+                  undefined,
+                  2,
+                )})\nmodule.exports = require('${relativePath}');\nregister.revert();`,
+              ),
+            ),
         );
       }
     }

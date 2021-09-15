@@ -22,6 +22,9 @@ test('`monots prepare` should create development dist files', async (t) => {
     [
       getPath('packages/scoped__a/dist/index.esm.js'),
       getPath('packages/scoped__a/dist/index.browser.esm.js'),
+      getPath('packages/scoped__c/dist/and-another.esm.js'),
+      getPath('packages/scoped__c/dist/and-another/nested.esm.js'),
+      getPath('packages/scoped__c/dist/and-another/nested/cool.esm.js'),
     ].map((file) => fs.readlink(file)),
   );
 

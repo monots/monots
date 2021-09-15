@@ -9,7 +9,9 @@
     "entrypoints": [
       "index.ts",
       "other.ts",
-      "and-another/index.ts"
+      "and-another/index.ts",
+      "and-another/nested/cool.ts",
+      "and-another/nested/index.ts"
     ]
   }
 }
