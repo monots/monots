@@ -114,7 +114,7 @@ async function copyTemplate(props: CopyTemplateProps) {
   const { input, output, variables } = props;
 
   await copy(input, output, {
-    rename: (filename) => filename.replace(/.template$/, ''),
+    rename: (filename) => template(filename)(variables).replace(/.template$/, ''),
     transform: (filename) => {
       if (path.extname(filename) !== '.template') {
         // eslint-disable-next-line unicorn/no-null
