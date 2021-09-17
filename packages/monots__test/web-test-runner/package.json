@@ -1,0 +1,5 @@
+{
+  "module": "../dist/web-test-runner.esm.js",
+  "browser": "../dist/web-test-runner.browser.esm.js",
+  "types": "../dist/web-test-runner.d.ts"
+}

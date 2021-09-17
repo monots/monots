@@ -28,7 +28,7 @@
     "dist"
   ],
   "dependencies": {
-    "prettier-plugin-packagejson": "^2.2.11"
+    "prettier-plugin-packagejson": "^2.2.13"
   },
   "devDependencies": {
     "@types/node": "^16.10.9",

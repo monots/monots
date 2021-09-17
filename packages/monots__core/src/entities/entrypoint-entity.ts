@@ -168,7 +168,7 @@ export class EntrypointEntity extends BaseEntity<Entrypoint> {
             (specifier) =>
               (specifier.type === 'ExportDefaultSpecifier' ||
                 specifier.type === 'ExportSpecifier') &&
-              specifier.exported.value === 'default',
+              specifier.exported?.value === 'default',
           ))
       ) {
         return true;
