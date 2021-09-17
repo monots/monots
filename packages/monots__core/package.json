@@ -19,6 +19,11 @@
       "require": "./dist/index.cjs.js",
       "types": "./dist/index.d.ts"
     },
+    "./index.js": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
+    },
     "./package.json": "./package.json",
     "./types/*": "./dist/*.d.ts"
   },
@@ -67,7 +72,7 @@
     "sort-keys": "^5.0.0",
     "superstruct": "^0.15.2",
     "typanion": "^3.4.1",
-    "type-fest": "^2.3.2",
+    "type-fest": "^2.3.3",
     "write-json-file": "^5.0.0"
   },
   "engines": {

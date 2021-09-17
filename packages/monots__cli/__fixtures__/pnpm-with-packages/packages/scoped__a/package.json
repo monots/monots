@@ -4,5 +4,8 @@
   "main": "",
   "module": "",
   "browser": "",
-  "types": ""
+  "types": "",
+  "dependencies": {
+    "@scoped/b": "^2.0.0"
+  }
 }

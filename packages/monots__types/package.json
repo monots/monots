@@ -19,6 +19,11 @@
       "require": "./dist/index.cjs.js",
       "types": "./dist/index.d.ts"
     },
+    "./index.js": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
+    },
     "./package.json": "./package.json",
     "./types/*": "./dist/*.d.ts"
   },
@@ -32,7 +37,7 @@
   ],
   "dependencies": {
     "clipanion": "^3.0.1",
-    "type-fest": "^2.3.2"
+    "type-fest": "^2.3.3"
   },
   "publishConfig": {
     "access": "public"

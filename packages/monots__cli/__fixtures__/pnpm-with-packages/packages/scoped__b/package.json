@@ -3,5 +3,8 @@
   "version": "2.0.0",
   "main": "",
   "module": "",
-  "browser": ""
+  "browser": "",
+  "dependencies": {
+    "@scoped/c": "^1.0.0"
+  }
 }

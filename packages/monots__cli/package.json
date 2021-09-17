@@ -20,8 +20,18 @@
       "require": "./dist/index.cjs.js",
       "types": "./dist/index.d.ts"
     },
+    "./index.js": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
+    },
     "./package.json": "./package.json",
     "./setup": {
+      "import": "./dist/setup.esm.js",
+      "require": "./dist/setup.cjs.js",
+      "types": "./dist/setup.d.ts"
+    },
+    "./setup.js": {
       "import": "./dist/setup.esm.js",
       "require": "./dist/setup.cjs.js",
       "types": "./dist/setup.d.ts"
@@ -59,7 +69,7 @@
     "@types/update-notifier": "^5.1.0",
     "del": "^6.0.0",
     "nanoid": "^3.1.25",
-    "type-fest": "^2.3.2"
+    "type-fest": "^2.3.3"
   },
   "engines": {
     "node": ">=16"

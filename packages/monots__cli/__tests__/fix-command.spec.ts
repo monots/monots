@@ -7,10 +7,14 @@ import { setupFixtures } from './helpers';
 test('`monots fix` should update the package.json files', async (t) => {
   const { cleanup, context, getPath } = await setupFixtures('pnpm-with-packages');
   const result = await cli.run(['fix'], context);
-  const json = await loadJsonFile(getPath('packages/scoped__b/package.json'));
+  const jsonA = await loadJsonFile(getPath('packages/scoped__a/package.json'));
+  const jsonB = await loadJsonFile(getPath('packages/scoped__b/package.json'));
+  const jsonC = await loadJsonFile(getPath('packages/scoped__c/package.json'));
 
   t.is(result, 0, 'The result is successful');
-  t.snapshot(json);
+  t.snapshot(jsonA);
+  t.snapshot(jsonB);
+  t.snapshot(jsonC);
 
   await cleanup();
 });
@@ -18,10 +22,14 @@ test('`monots fix` should update the package.json files', async (t) => {
 test('`monots fix` should update the tsconfig files', async (t) => {
   const { cleanup, context, getPath } = await setupFixtures('pnpm-with-packages');
   const result = await cli.run(['fix'], context);
-  const json = await loadJsonFile(getPath('packages/scoped__b/src/tsconfig.json'));
+  const jsonA = await loadJsonFile(getPath('packages/scoped__a/src/tsconfig.json'));
+  const jsonB = await loadJsonFile(getPath('packages/scoped__b/src/tsconfig.json'));
+  const jsonC = await loadJsonFile(getPath('packages/scoped__c/src/tsconfig.json'));
 
   t.is(result, 0, 'The result is successful');
-  t.snapshot(json);
+  t.snapshot(jsonA);
+  t.snapshot(jsonB);
+  t.snapshot(jsonC);
 
   await cleanup();
 });

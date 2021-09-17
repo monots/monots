@@ -18,6 +18,11 @@ test('`monots create` should create package with a description', async (t) => {
       import: './dist/index.esm.js',
       types: './dist/index.d.ts',
     },
+    './index.js': {
+      browser: './dist/index.browser.esm.js',
+      import: './dist/index.esm.js',
+      types: './dist/index.d.ts',
+    },
     './package.json': './package.json',
     './types/*': './dist/*.d.ts',
   });

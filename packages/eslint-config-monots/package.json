@@ -28,11 +28,26 @@
     "./full-off": {
       "require": "./dist/full-off.cjs.js"
     },
+    "./full-off.js": {
+      "require": "./dist/full-off.cjs.js"
+    },
+    "./full.js": {
+      "require": "./dist/full.cjs.js"
+    },
+    "./index.js": {
+      "require": "./dist/index.cjs.js"
+    },
     "./markdown": {
+      "require": "./dist/markdown.cjs.js"
+    },
+    "./markdown.js": {
       "require": "./dist/markdown.cjs.js"
     },
     "./package.json": "./package.json",
     "./react": {
+      "require": "./dist/react.cjs.js"
+    },
+    "./react.js": {
       "require": "./dist/react.cjs.js"
     }
   },
@@ -58,14 +73,14 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-markdown": "^2.2.1",
     "eslint-plugin-promise": "^5.1.0",
-    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react": "^7.25.2",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-unicorn": "^36.0.0"
   },
   "devDependencies": {
     "@types/eslint": "^7.28.0",
-    "@types/node": "^16.9.1",
+    "@types/node": "^16.9.2",
     "eslint": "^7.32.0"
   },
   "peerDependencies": {

@@ -448,8 +448,13 @@ export class PackageEntity extends BaseEntity<PackageData> {
     }
 
     for (const entrypoint of this.entrypoints) {
-      const name = entrypoint.isRoot ? '.' : prefixRelativePath(path.basename(entrypoint.name));
-      exportsObject[name] = { ...entrypoint.fields.exports };
+      const name = entrypoint.isRoot
+        ? '.'
+        : prefixRelativePath(path.relative(this.name, entrypoint.name));
+      const nameWithExtension = entrypoint.isRoot ? './index.js' : `${name}.js`;
+      const value = { ...entrypoint.fields.exports };
+      exportsObject[name] = value;
+      exportsObject[nameWithExtension] = value;
     }
 
     return sortKeys(exportsObject, { deep: true });
