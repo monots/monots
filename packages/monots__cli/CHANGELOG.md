@@ -1,5 +1,34 @@
 # @monots/cli
 
+## 0.4.0
+
+> 2021-09-17
+
+### Minor Changes
+
+- [`ee663e3`](https://github.com/monots/monots/commit/ee663e31b24a6e3cd80aa83fc24fe50f0ebe23c1) Thanks [@ifiokjr](https://github.com/ifiokjr)! - The `exports` field in the `package.json` generated when running `monots fix` now also generates paths ending with `.js`.
+
+  - This means you can now choose between the following statements:
+
+    ```js
+    import exportWithExtension from '@scoped/pkg/index.js';
+    import sameExportWithoutExtension from '@scoped/pkg';
+    ```
+
+  - The same applies to entrypoints:
+
+    ```js
+    import exportWithExtension from '@scoped/pkg/entrypoint.js';
+    import sameExportWithoutExtension from '@scoped/pkg/entrypoint';
+    ```
+
+* [`bab8691`](https://github.com/monots/monots/commit/bab8691c3765bab0fb8853cf3fd663959049b3ca) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Support using template syntax in filenames. You can now create dynamically named template files with `<%= _.kebabCase(name) %>.ts`
+
+### Patch Changes
+
+- Updated dependencies [[`ee663e3`](https://github.com/monots/monots/commit/ee663e31b24a6e3cd80aa83fc24fe50f0ebe23c1)]:
+  - @monots/core@0.4.0
+
 ## 0.3.0
 
 > 2021-09-15
