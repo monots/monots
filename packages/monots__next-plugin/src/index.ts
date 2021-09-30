@@ -1,6 +1,6 @@
 import { getDependentsGraph } from '@changesets/get-dependents-graph';
 import { getPackagesSync } from '@manypkg/get-packages';
-import next, { NextConfig } from 'next';
+import type { NextConfig } from 'next';
 import withNextTranspile from 'next-transpile-modules';
 import { readPackageUpSync } from 'read-pkg-up';
 
