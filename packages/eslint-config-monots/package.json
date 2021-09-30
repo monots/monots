@@ -96,16 +96,6 @@
       "markdown.ts",
       "react.ts",
       "full-off.ts"
-    ],
-    "tsconfigs": {
-      "src": {
-        "compilerOptions": {
-          "types": [
-            "node"
-          ],
-          "module": "CommonJS"
-        }
-      }
-    }
+    ]
   }
 }

@@ -252,15 +252,18 @@ export class PackageEntity extends BaseEntity<PackageData> {
         continue;
       }
 
+      // Set the module type to CommonJS for `commonjs` repos
+      const baseCompilerOptions = this.json.type === 'commonjs' ? { module: 'CommonJS' } : {};
       const compilerOptionsOverride = this.publicTypes
         ? {
+            ...baseCompilerOptions,
             declaration: true,
             noEmit: false,
             composite: true,
             emitDeclarationOnly: true,
             outDir: path.join('..', OUTPUT_FOLDER),
           }
-        : {};
+        : { ...baseCompilerOptions };
       const dependencies = {
         ...this.json.dependencies,
         ...this.json.devDependencies,

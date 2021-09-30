@@ -9,7 +9,8 @@
   "compilerOptions": {
     "types": ["node"],
     "noEmit": true,
-    "outDir": "../dist"
+    "outDir": "../dist",
+    "module": "CommonJS"
   },
   "references": []
 }
