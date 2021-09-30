@@ -26,6 +26,9 @@
       "path": "packages/monots__core/src"
     },
     {
+      "path": "packages/monots__next-plugin/src"
+    },
+    {
       "path": "packages/monots__types/src"
     },
     {

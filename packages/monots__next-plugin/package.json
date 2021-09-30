@@ -1,0 +1,67 @@
+{
+  "name": "@monots/next-plugin",
+  "version": "0.0.0",
+  "private": true,
+  "description": "A Next.js plugin to make Next sites work with monots",
+  "keywords": [],
+  "repository": "https://github.com/monots/monots/tree/master/packages/monots__next-plugin",
+  "license": "MIT",
+  "contributors": [],
+  "sideEffects": false,
+  "type": "commonjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./index.js": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json",
+    "./types/*": "./dist/*.d.ts"
+  },
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@changesets/get-dependents-graph": "^1.2.2",
+    "@manypkg/get-packages": "^1.1.1",
+    "@swc/helpers": "^0.2.13",
+    "next-transpile-modules": "^8.0.0",
+    "read-pkg-up": "^8.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.10.2",
+    "next": "^11.1.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "peerDependencies": {
+    "next": "^11",
+    "react": "*",
+    "react-dom": "*"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "monots": {
+    "entrypoints": [
+      "index.ts"
+    ],
+    "tsconfigs": {
+      "src": {
+        "compilerOptions": {
+          "types": [
+            "node"
+          ]
+        }
+      }
+    }
+  }
+}

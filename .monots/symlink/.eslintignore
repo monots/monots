@@ -18,6 +18,7 @@ lerna.json
 **/temp/**
 
 pnpm-lock.yaml
+/pnpm-lock.yaml
 .pnpm-store/
 
 packages/monots__cli/__fixtures__/**

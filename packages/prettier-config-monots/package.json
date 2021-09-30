@@ -31,7 +31,7 @@
     "prettier-plugin-packagejson": "^2.2.11"
   },
   "devDependencies": {
-    "@types/node": "^16.9.2",
+    "@types/node": "^16.10.2",
     "@types/prettier": "^2.3.2",
     "prettier": "^2.4.1"
   },
