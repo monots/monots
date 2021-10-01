@@ -10,6 +10,7 @@
     "types": ["node"],
     "noEmit": false,
     "outDir": "../dist",
+    "skipLibCheck": true,
     "module": "CommonJS",
     "declaration": true,
     "composite": true,
