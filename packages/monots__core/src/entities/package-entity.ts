@@ -151,8 +151,8 @@ export class PackageEntity extends BaseEntity<PackageData> {
   }
 
   private constructor(props: PackageEntityProps) {
-    const { json, map, path, project } = props;
-    super({ json, map, path, struct: PackageDataStruct });
+    const { project, ...rest } = props;
+    super({ ...rest, struct: PackageDataStruct });
     this.project = project;
   }
 
