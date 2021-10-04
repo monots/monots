@@ -1,0 +1,57 @@
+{
+  "name": "superstruct-extra",
+  "version": "0.0.0",
+  "description": "Extra types, refinements and coersions for superstruct.",
+  "keywords": [],
+  "repository": "https://github.com/monots/monots/tree/master/packages/superstruct-extra",
+  "license": "MIT",
+  "contributors": [],
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "browser": "./dist/index.browser.esm.js",
+      "import": "./dist/index.esm.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./index.js": {
+      "browser": "./dist/index.browser.esm.js",
+      "import": "./dist/index.esm.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json",
+    "./types/*": "./dist/*.d.ts"
+  },
+  "module": "./dist/index.esm.js",
+  "browser": "./dist/index.browser.esm.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@monots/types": "^0.1.0",
+    "@swc/helpers": "^0.2.13",
+    "@types/is-uuid": "^1.0.0",
+    "email-validator": "^2.0.4",
+    "is-uuid": "^1.0.2",
+    "type-fest": "^2.3.4"
+  },
+  "devDependencies": {
+    "is-promise": "^4.0.0",
+    "superstruct": "^0.15.2"
+  },
+  "peerDependencies": {
+    "superstruct": "*"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "monots": {
+    "entrypoints": [
+      "index.ts"
+    ],
+    "mode": "library",
+    "tsconfigs": {},
+    "externalModules": []
+  }
+}

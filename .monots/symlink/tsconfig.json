@@ -36,6 +36,9 @@
     },
     {
       "path": "packages/prettier-config-monots/src"
+    },
+    {
+      "path": "packages/superstruct-extra/src"
     }
   ]
 }

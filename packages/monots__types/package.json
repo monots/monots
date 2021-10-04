@@ -36,8 +36,8 @@
     "packages"
   ],
   "dependencies": {
-    "clipanion": "^3.0.1",
-    "type-fest": "^2.3.3"
+    "clipanion": "^3.1.0",
+    "type-fest": "^2.3.4"
   },
   "publishConfig": {
     "access": "public"
