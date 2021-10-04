@@ -81,6 +81,9 @@
     "entrypoints": [
       "index.ts",
       "setup.ts"
-    ]
+    ],
+    "mode": "library",
+    "tsconfigs": {},
+    "externalModules": []
   }
 }

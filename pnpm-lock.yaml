@@ -357,6 +357,7 @@ importers:
       ky: ^0.28.5
       ky-universal: ^0.9.1
       superstruct: ^0.15.2
+      superstruct-converter: ^0.0.0
       superstruct-extra: ^0.0.0
       type-fest: ^2.3.4
     dependencies:
@@ -368,6 +369,7 @@ importers:
       json-schema-to-typescript: 10.1.5
       ky: 0.28.5
       ky-universal: 0.9.1_ky@0.28.5
+      superstruct-converter: link:../superstruct-converter
 
 packages:
   /@algolia/autocomplete-core/1.2.2:

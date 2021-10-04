@@ -21,7 +21,7 @@
     "checks": "run-s lint typecheck test",
     "clean": "git clean -fdX --exclude='.config.json'",
     "create:test": "monots create @monots/awesome --description=\"An amazing package\" --interactive",
-    "fix": "run-s -c fix:\\*",
+    "fix": "run-s -c fix:repo fix:build fix:es fix:prettier",
     "fix:build": "pnpm monots fix",
     "fix:es": "pnpm lint:es -- --fix",
     "fix:prettier": "pnpm run:prettier -- --write",

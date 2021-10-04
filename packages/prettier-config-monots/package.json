@@ -54,6 +54,8 @@
           ]
         }
       }
-    }
+    },
+    "mode": "library",
+    "externalModules": []
   }
 }

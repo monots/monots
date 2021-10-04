@@ -5,7 +5,7 @@
   "editor.insertSpaces": true,
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  // "editor.codeActionsOnSaveTimeout": 1000,
+  "prettier.ignorePath": ".eslintignore",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
