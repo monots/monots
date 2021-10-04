@@ -187,7 +187,7 @@ const config: Linter.Config = {
       },
     },
     {
-      files: ['*.(spec|test).{ts,tsx}*', '**/__dts__/**'],
+      files: ['*.(spec|test).{ts,tsx}*', '**/__types__/**'],
       rules: {
         'unicorn/consistent-destructuring': 'off',
         '@typescript-eslint/await-thenable': 'off',
