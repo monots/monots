@@ -56,7 +56,7 @@
     "@monots/types": "^0.1.0",
     "@swc/helpers": "^0.2.13",
     "chalk": "^4.1.2",
-    "clipanion": "^3.0.1",
+    "clipanion": "^3.1.0",
     "delay": "^5.0.0",
     "lodash-es": "^4.17.21",
     "ora": "^6.0.0",
@@ -65,11 +65,11 @@
     "update-notifier": "^5.1.0"
   },
   "devDependencies": {
-    "@types/lodash-es": "^4.14.172",
+    "@types/lodash-es": "^4.17.5",
     "@types/update-notifier": "^5.1.0",
     "del": "^6.0.0",
     "nanoid": "^3.1.25",
-    "type-fest": "^2.3.3"
+    "type-fest": "^2.3.4"
   },
   "engines": {
     "node": ">=16"

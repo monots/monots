@@ -56,7 +56,7 @@ export function unmangleScopedPackage(mangledName: string): string {
  */
 export function mangleScopedPackageName(packageName: string): string {
   const [scope, name] = packageName.split('/');
-  assert.ok(scope, `Invalid package name provided: ${packageName}`);
+  assert(scope, `Invalid package name provided: ${packageName}`);
 
   if (name) {
     return [scope.replace('@', ''), name].join(SEPARATOR);

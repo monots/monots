@@ -37,7 +37,7 @@ export class FixCommand extends BaseCommand {
       spinner.succeed('boom! your project is up to date!');
       return 0;
     } catch (error: any) {
-      spinner.fail(`oops, something went wrong: ${error.message}`);
+      spinner.fail(`oops, something went wrong: ${chalk.red(error.message)}`);
       return 1;
     }
   }
