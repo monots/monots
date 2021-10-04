@@ -21,7 +21,7 @@ export type JsonArray = JsonValue[];
  *
  * @category Basic
  */
-export type JsonPrimitive = string | number | boolean | null | undefined;
+export type JsonPrimitive = string | number | boolean | null;
 
 /**
  * Matches any valid JSON value.

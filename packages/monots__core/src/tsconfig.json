@@ -17,6 +17,9 @@
   "references": [
     {
       "path": "../../monots__types/src"
+    },
+    {
+      "path": "../../superstruct-extra/src"
     }
   ]
 }

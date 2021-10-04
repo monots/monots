@@ -2,7 +2,7 @@ import is from '@sindresorhus/is';
 import chalk from 'chalk';
 import { BaseError } from 'make-error';
 import util from 'node:util';
-import * as t from 'superstruct';
+import * as t from 'superstruct-extra';
 
 import { format } from './logger.js';
 

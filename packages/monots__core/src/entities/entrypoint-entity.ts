@@ -7,12 +7,12 @@ import normalizePath from 'normalize-path';
 
 import { createTypeScriptContent, entries, generateField } from '../helpers/index.js';
 import {
-  EntrypointData,
-  EntrypointDataStruct,
+  Entrypoint,
   EntrypointField,
   entrypointFields,
+  entrypointSchema,
   ExportsField,
-} from '../structs.js';
+} from '../schema.js';
 import { BaseEntity, BaseEntityProps } from './base-entity.js';
 import type { PackageEntity } from './package-entity.js';
 
@@ -21,7 +21,7 @@ import type { PackageEntity } from './package-entity.js';
  */
 export const _require = createRequire(import.meta.url);
 
-interface EntrypointEntityProps extends BaseEntityProps<EntrypointData> {
+interface EntrypointEntityProps extends BaseEntityProps<Entrypoint> {
   /**
    * The parent package entity.
    */
@@ -42,7 +42,7 @@ interface EntrypointEntityProps extends BaseEntityProps<EntrypointData> {
  * Each package can have multiple entities and this is the representation of the
  * entrypoint.
  */
-export class EntrypointEntity extends BaseEntity<EntrypointData> {
+export class EntrypointEntity extends BaseEntity<Entrypoint> {
   /**
    * The parent package entity.
    */
@@ -92,7 +92,7 @@ export class EntrypointEntity extends BaseEntity<EntrypointData> {
       json,
       map,
       path: jsonPath,
-      struct: EntrypointDataStruct,
+      struct: entrypointSchema,
     });
     this.package = props.package;
     this.source = source;
@@ -127,7 +127,7 @@ export class EntrypointEntity extends BaseEntity<EntrypointData> {
   /**
    * Create the json for the entrypoint
    */
-  createJson(): EntrypointData {
+  createJson(): Entrypoint {
     const json = { ...this.json };
 
     for (const key of entrypointFields) {

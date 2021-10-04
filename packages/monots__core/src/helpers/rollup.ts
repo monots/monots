@@ -13,7 +13,7 @@ import { OutputAsset, OutputChunk, OutputOptions, Plugin, rollup, RollupOptions 
 
 import { FIELD_EXTENSIONS, OUTPUT_FOLDER } from '../constants.js';
 import type { PackageEntity } from '../entities/index.js';
-import type { EntrypointField } from '../structs.js';
+import type { EntrypointField } from '../schema.js';
 import { BatchError, FatalError, ScopelessError, UnexpectedBuildError } from './errors.js';
 
 export const builtins = [...builtinModules, ...builtinModules.map((name) => `node:${name}`)];
@@ -21,8 +21,8 @@ export const builtins = [...builtinModules, ...builtinModules.map((name) => `nod
 function createConfig(properties: GetRollupConfigProperties): RollupOptions {
   const { pkg, type } = properties;
   const externalModules = Object.keys({
-    ...pkg.json.peerDependencies,
-    ...pkg.json.dependencies,
+    ...pkg.populatedJson.peerDependencies,
+    ...pkg.populatedJson.dependencies,
     ...pkg.monots.externalModules,
   });
 
@@ -115,7 +115,7 @@ function createConfig(properties: GetRollupConfigProperties): RollupOptions {
       swc({
         cwd: pkg.project.directory,
         env: { targets: pkg.browserslist },
-        jsc: { externalHelpers: !!pkg.json.dependencies?.['@swc/helpers'] },
+        jsc: { externalHelpers: !!pkg.populatedJson.dependencies?.['@swc/helpers'] },
       }),
       json({ namedExports: false }),
       resolve({ extensions: ['.js', '.jsx', '.ts', '.tsx', '.cjs', '.mjs'] }),

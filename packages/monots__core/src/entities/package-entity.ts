@@ -20,20 +20,20 @@ import {
   prefixRelativePath,
 } from '../helpers/index.js';
 import {
-  BaseEntrypointStruct,
-  EntrypointData,
+  Entrypoint,
   EntrypointField,
+  entrypointSchema,
   ExportsField,
-  PackageData,
-  PackageDataStruct,
+  Package,
   PackageMonots,
-} from '../structs.js';
+  packageSchema,
+} from '../schema.js';
 import type { References } from '../types.js';
 import { BaseEntity, BaseEntityProps, SaveJsonProps } from './base-entity.js';
 import { EntrypointEntity } from './entrypoint-entity.js';
 import type { ProjectEntity } from './project-entity.js';
 
-interface PackageEntityProps extends BaseEntityProps<PackageData> {
+interface PackageEntityProps extends BaseEntityProps<Package> {
   project: ProjectEntity;
 }
 
@@ -49,18 +49,13 @@ interface CreatePackageEntityProps {
   project: ProjectEntity;
 }
 
-export class PackageEntity extends BaseEntity<PackageData> {
+export class PackageEntity extends BaseEntity<Package> {
   static async create(props: CreatePackageEntityProps): Promise<PackageEntity> {
     const { directory, project } = props;
     const jsonPath = path.join(directory, 'package.json');
     const json = parseJson(await fs.readFile(jsonPath, 'utf-8'));
     const map = project.sharedMap;
-    const packageEntity = new PackageEntity({
-      path: jsonPath,
-      map,
-      json,
-      project,
-    });
+    const packageEntity = new PackageEntity({ path: jsonPath, map, json, project });
     await packageEntity.createEntrypoints();
 
     return packageEntity;
@@ -84,7 +79,7 @@ export class PackageEntity extends BaseEntity<PackageData> {
    * a cached private variable for fields.
    */
   get fields(): EntrypointField[] {
-    return (this.#fields ??= keys(BaseEntrypointStruct.schema).filter(
+    return (this.#fields ??= keys(entrypointSchema.schema).filter(
       (field) => !is.nullOrUndefined(this.json[field]),
     ));
   }
@@ -115,7 +110,7 @@ export class PackageEntity extends BaseEntity<PackageData> {
   }
 
   get name(): string {
-    return this.json.name;
+    return this.populatedJson.name;
   }
 
   /**
@@ -126,13 +121,23 @@ export class PackageEntity extends BaseEntity<PackageData> {
   }
 
   get monots(): Required<PackageMonots> {
-    const monots = { ...DEFAULT_MONOTS_PACKAGE_OPTIONS, ...this.json.monots };
-
-    // Make sure the tsconfigs are properly merged together.
-    monots.tsconfigs =
-      monots.tsconfigs === false
+    const monots = { ...DEFAULT_MONOTS_PACKAGE_OPTIONS, ...this.populatedJson.monots };
+    const packageTsConfigs =
+      this.project.monots.packageTsConfigs === false
         ? false
-        : deepMerge(this.project.monots.packageTsConfigs || {}, monots.tsconfigs);
+        : { ...this.project.monots.packageTsConfigs };
+
+    if (monots.tsconfigs === false) {
+      return monots;
+    }
+
+    if (!monots.tsconfigs) {
+      monots.tsconfigs = packageTsConfigs;
+      return monots;
+    }
+
+    monots.tsconfigs =
+      packageTsConfigs === false ? monots.tsconfigs : deepMerge(packageTsConfigs, monots.tsconfigs);
 
     return monots;
   }
@@ -152,7 +157,7 @@ export class PackageEntity extends BaseEntity<PackageData> {
 
   private constructor(props: PackageEntityProps) {
     const { project, ...rest } = props;
-    super({ ...rest, struct: PackageDataStruct });
+    super({ ...rest, struct: packageSchema });
     this.project = project;
   }
 
@@ -194,8 +199,8 @@ export class PackageEntity extends BaseEntity<PackageData> {
     await Promise.all(promises);
   }
 
-  createJson(): PackageData {
-    const json: PackageData = { ...this.json };
+  createJson(): Package {
+    const json: Package = { ...this.json };
 
     if (!json.type) {
       json.type = 'module';
@@ -253,7 +258,8 @@ export class PackageEntity extends BaseEntity<PackageData> {
       }
 
       // Set the module type to CommonJS for `commonjs` repos
-      const baseCompilerOptions = this.json.type === 'commonjs' ? { module: 'CommonJS' } : {};
+      const baseCompilerOptions =
+        this.populatedJson.type === 'commonjs' ? { module: 'CommonJS' } : {};
       const compilerOptionsOverride = this.publicTypes
         ? {
             ...baseCompilerOptions,
@@ -265,9 +271,9 @@ export class PackageEntity extends BaseEntity<PackageData> {
           }
         : { ...baseCompilerOptions };
       const dependencies = {
-        ...this.json.dependencies,
-        ...this.json.devDependencies,
-        ...this.json.peerDependencies,
+        ...this.populatedJson.dependencies,
+        ...this.populatedJson.devDependencies,
+        ...this.populatedJson.peerDependencies,
       };
       const references: References[] = [];
 
@@ -421,7 +427,7 @@ export class PackageEntity extends BaseEntity<PackageData> {
 
     for (const item of items) {
       const { jsonContents, jsonFile, sourceFile: source, sourceContents } = item;
-      const json: EntrypointData = jsonContents ? parseJson(jsonContents) : {};
+      const json: Entrypoint = jsonContents ? parseJson(jsonContents) : {};
 
       entrypoints.push(
         new EntrypointEntity({
@@ -464,7 +470,7 @@ export class PackageEntity extends BaseEntity<PackageData> {
   }
 
   #getRequiredFiles() {
-    const files = new Set(this.json.files ?? []);
+    const files = new Set(this.populatedJson.files ?? []);
 
     if (!files.has(OUTPUT_FOLDER)) {
       files.add(OUTPUT_FOLDER);
@@ -520,5 +526,4 @@ const DEFAULT_MONOTS_PACKAGE_OPTIONS: Required<PackageMonots> = {
   tsconfigs: {},
   mode: 'library',
   externalModules: [],
-  noDefaultInCommonJs: false,
 };

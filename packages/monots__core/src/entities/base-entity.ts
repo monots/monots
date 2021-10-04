@@ -1,10 +1,13 @@
 import is from '@sindresorhus/is';
 import path from 'node:path';
-import * as t from 'superstruct';
+import * as t from 'superstruct-extra';
 import { writeJsonFile } from 'write-json-file';
 
 import { compareOutput, FatalError } from '../helpers/index.js';
-import type { BaseData } from '../structs.js';
+
+interface BaseData {
+  [key: string]: unknown;
+}
 
 export interface BaseEntityProps<JsonData extends BaseData> {
   /**
@@ -46,19 +49,17 @@ export abstract class BaseEntity<JsonData extends BaseData> {
   directory: string;
   abstract get name(): string;
 
-  get json(): JsonData {
+  get populatedJson(): JsonData {
     const json = this.sharedMap.get(this.path);
 
-    // TODO format the error that is thrown when invalid.
-    t.assert(json, this.struct);
-
-    return json;
+    return t.create(json, this.struct);
   }
 
-  set json(json: JsonData) {
-    // TODO format the error that is thrown when data is used.
-    t.assert(json, this.struct);
-    this.sharedMap.set(this.path, json);
+  get json(): JsonData {
+    const json = this.sharedMap.get(this.path);
+    this.struct.assert(json);
+
+    return json;
   }
 
   constructor(props: WithStruct<BaseEntityProps<JsonData>>) {
@@ -84,8 +85,8 @@ export abstract class BaseEntity<JsonData extends BaseData> {
    */
   async saveJson(props: SaveJsonProps = {}): Promise<boolean> {
     const { fix = true, errors = [] } = props;
-    const actual = this.json;
-    const expected = this.createJson();
+    const actual = removeUndefined(this.json);
+    const expected = removeUndefined(this.createJson());
 
     if (is.emptyObject(expected.monots)) {
       // Remove empty `monots` configuration object.
@@ -111,4 +112,19 @@ export abstract class BaseEntity<JsonData extends BaseData> {
 export interface SaveJsonProps {
   fix?: boolean;
   errors?: FatalError[];
+}
+
+/**
+ * Removes all undefined values from an object. Neither Firestore nor the RealtimeDB allow `undefined` as a value.
+ *
+ * @param data The object to clean
+ */
+export function removeUndefined<T extends {}>(data: T) {
+  return Object.entries(data).reduce(
+    (current, [key, val]) => ({
+      ...current,
+      ...(val !== undefined ? { [key]: val } : {}),
+    }),
+    Object.create({}),
+  );
 }

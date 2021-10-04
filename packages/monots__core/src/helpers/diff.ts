@@ -42,7 +42,7 @@ export function compareOutput(props: CompareOutputProps) {
   if (!isEqual(actualKeys, expectedKeys)) {
     return [
       new FatalError(
-        chalk`\n{yellow The package.json file needs to be updated.}\n\n${
+        chalk`\n{yellow The package.json file has unexpected keys.}\n\n${
           diff(actualKeys, expectedKeys, diffOptions) || ''
         }`,
         name,

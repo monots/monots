@@ -22,12 +22,12 @@ import {
   getInstaller,
   InstallerType,
 } from '../helpers/index.js';
-import { BaseData, ProjectData, ProjectDataStruct, ProjectMonots } from '../structs.js';
+import { Project, ProjectMonots, projectSchema } from '../schema.js';
 import type { References, TsConfigJson } from '../types.js';
 import { BaseEntity, BaseEntityProps } from './base-entity.js';
 import { PackageEntity } from './package-entity.js';
 
-interface ProjectEntityProps extends BaseEntityProps<ProjectData> {
+interface ProjectEntityProps extends BaseEntityProps<Project> {
   /**
    * The indentation to use for all the package.json files. The project root is
    * used to determine this for all entities.
@@ -58,15 +58,14 @@ interface CreateProjectEntityProps {
   skipPackages?: boolean;
 }
 
-export class ProjectEntity extends BaseEntity<ProjectData> {
+export class ProjectEntity extends BaseEntity<Project> {
   static async create(props: CreateProjectEntityProps): Promise<ProjectEntity> {
     const { cwd, skipPackages = false, version = '0.0.0' } = props;
     const packageJsonPath = path.join(cwd, 'package.json');
     const contents = await fs.readFile(packageJsonPath, 'utf-8');
     const indent = detectIndent(contents).indent || '  ';
     const json = parseJson(contents, packageJsonPath);
-    const map = new Map<string, BaseData>();
-    const project = new ProjectEntity({ map, indent, json, path: packageJsonPath });
+    const project = new ProjectEntity({ map: new Map(), indent, json, path: packageJsonPath });
     project.version = version;
 
     if (!skipPackages) {
@@ -133,7 +132,7 @@ export class ProjectEntity extends BaseEntity<ProjectData> {
 
   private constructor(props: ProjectEntityProps) {
     const { json, map, path, indent } = props;
-    super({ json, map, path, struct: ProjectDataStruct });
+    super({ json, map, path, struct: projectSchema });
     this.#initialized = !!this.json.monots?.packages;
     this.indent = indent;
   }
@@ -227,7 +226,7 @@ export class ProjectEntity extends BaseEntity<ProjectData> {
   /**
    * This just returns the current `json`.
    */
-  createJson(): ProjectData {
+  createJson(): Project {
     return this.json;
   }
 
@@ -394,6 +393,7 @@ export class ProjectEntity extends BaseEntity<ProjectData> {
 }
 
 const DEFAULT_MONOTS_PROJECT_OPTIONS: Required<ProjectMonots> = {
+  tool: 'rollup-swc',
   packages: [],
   baseTsconfig: '@monots/tsconfig/tsconfig.json',
   packageTsConfigs: {
