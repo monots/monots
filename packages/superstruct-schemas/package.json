@@ -1,6 +1,6 @@
 {
   "name": "superstruct-schemas",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "description": "A collection of commonly used superstruct schema.",
   "keywords": [],
@@ -43,7 +43,7 @@
   "dependencies": {
     "@swc/helpers": "^0.2.13",
     "superstruct": "^0.15.2",
-    "superstruct-extra": "^0.0.0",
+    "superstruct-extra": "^0.1.0",
     "type-fest": "^2.3.4"
   },
   "devDependencies": {

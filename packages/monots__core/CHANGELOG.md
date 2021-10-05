@@ -1,5 +1,20 @@
 # @monots/core
 
+## 0.5.0
+
+> 2021-10-05
+
+### Minor Changes
+
+- [`3ab8df5`](https://github.com/monots/monots/commit/3ab8df5588e9998370a70c2af41117f2a5554d0b) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Automatically set the TypeScript module type to `CommonJS` when the package.json has the property `"type": "commonjs"`.
+
+* [`ce50bad`](https://github.com/monots/monots/commit/ce50badfe7cdb4509c73f489a8f40fcd3d56229b) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Use `superstruct-extra` instead of `superstruct` for additional types.
+
+### Patch Changes
+
+- Updated dependencies [[`1184b76`](https://github.com/monots/monots/commit/1184b76a9b45fe72126bc16f49f9997fca62b67b)]:
+  - superstruct-extra@0.1.0
+
 ## 0.4.0
 
 > 2021-09-17

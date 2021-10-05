@@ -12,7 +12,7 @@ importers:
       ava: ^3.15.0
       browserslist: ^4.17.0
       eslint: ^7.32.0
-      eslint-config-monots: ^0.3.0
+      eslint-config-monots: ^0.3.1
       husky: ^7.0.2
       lint-staged: ^11.1.2
       load-json-file: ^7.0.0
@@ -129,15 +129,15 @@ importers:
 
   packages/monots:
     specifiers:
-      '@monots/cli': ^0.4.0
-      '@monots/core': ^0.4.0
+      '@monots/cli': ^0.4.1
+      '@monots/core': ^0.5.0
     dependencies:
       '@monots/cli': link:../monots__cli
       '@monots/core': link:../monots__core
 
   packages/monots__cli:
     specifiers:
-      '@monots/core': ^0.4.0
+      '@monots/core': ^0.5.0
       '@monots/types': ^0.1.0
       '@swc/helpers': ^0.2.13
       '@types/lodash-es': ^4.17.5
@@ -211,7 +211,7 @@ importers:
       rollup: ^2.58.0
       sort-keys: ^5.0.0
       superstruct: ^0.15.2
-      superstruct-extra: ^0.0.0
+      superstruct-extra: ^0.1.0
       typanion: ^3.4.1
       type-fest: ^2.3.4
       write-json-file: ^5.0.0
@@ -358,7 +358,7 @@ importers:
       ky-universal: ^0.9.1
       superstruct: ^0.15.2
       superstruct-converter: ^0.0.0
-      superstruct-extra: ^0.0.0
+      superstruct-extra: ^0.1.0
       type-fest: ^2.3.4
     dependencies:
       '@swc/helpers': 0.2.13

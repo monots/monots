@@ -1,6 +1,6 @@
 {
   "name": "superstruct-extra",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Extra types, refinements and coersions for superstruct.",
   "keywords": [],
   "repository": "https://github.com/monots/monots/tree/master/packages/superstruct-extra",
