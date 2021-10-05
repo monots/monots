@@ -3,7 +3,7 @@ import path from 'node:path';
 import * as t from 'superstruct-extra';
 import { writeJsonFile } from 'write-json-file';
 
-import { compareOutput, FatalError } from '../helpers/index.js';
+import { compareOutput, FatalError, removeUndefined } from '../helpers/index.js';
 
 interface BaseData {
   [key: string]: unknown;
@@ -112,19 +112,4 @@ export abstract class BaseEntity<JsonData extends BaseData> {
 export interface SaveJsonProps {
   fix?: boolean;
   errors?: FatalError[];
-}
-
-/**
- * Removes all undefined values from an object. Neither Firestore nor the RealtimeDB allow `undefined` as a value.
- *
- * @param data The object to clean
- */
-export function removeUndefined<T extends {}>(data: T) {
-  return Object.entries(data).reduce(
-    (current, [key, val]) => ({
-      ...current,
-      ...(val !== undefined ? { [key]: val } : {}),
-    }),
-    Object.create({}),
-  );
 }

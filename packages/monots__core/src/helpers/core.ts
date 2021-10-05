@@ -13,6 +13,25 @@ export function keys<Type extends object, Key extends Extract<keyof Type, string
 }
 
 /**
+ * Removes all undefined values from an object. Neither Firestore nor the RealtimeDB allow `undefined` as a value.
+ *
+ * @param data The object to clean
+ */
+export function removeUndefined<Shape extends object>(data: Shape) {
+  const transformed = Object.create({});
+
+  for (const [key, value] of Object.entries(data)) {
+    if (value === undefined) {
+      continue;
+    }
+
+    transformed[key] = value;
+  }
+
+  return transformed;
+}
+
+/**
  * Check if a file exists for the provided `filePath` the provided target.
  */
 export async function fileExists(filePath: string): Promise<boolean> {

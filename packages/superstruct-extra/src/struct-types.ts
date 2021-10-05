@@ -16,6 +16,7 @@ import { ObjectSchema } from 'superstruct/lib/utils';
 import { FunctionStruct } from './function-struct.js';
 import { PromiseStruct } from './promise-struct.js';
 import {
+  AnyFunction,
   AnyStruct,
   AnyStructConstructor,
   Email,
@@ -92,7 +93,7 @@ const fnArgs = args(instance<AnyStructConstructor>(Struct), instance<AnyStructCo
  * fnSchema.call(myFunction, 1, 'a') // => throws `StructError`
  * ```
  */
-export function fn(): Struct<Function, null>;
+export function fn(): Struct<AnyFunction, null>;
 export function fn<Arguments extends any[], Returns, ArgumentsStruct = any, ReturnsStruct = any>(
   args: Struct<Arguments, ArgumentsStruct>,
   returns: Struct<Returns, ReturnsStruct>,
