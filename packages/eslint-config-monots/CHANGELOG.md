@@ -1,5 +1,13 @@
 # eslint-config-monots
 
+## 0.3.1
+
+> 2021-10-05
+
+### Patch Changes
+
+- [`4f31031`](https://github.com/monots/monots/commit/4f31031ae27ef1b10154f5dde4a5f673a42cea00) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Match `__types__` folder for TypeScript EsLint checks.
+
 ## 0.3.0
 
 > 2021-09-14
