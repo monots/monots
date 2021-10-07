@@ -258,6 +258,24 @@ importers:
       type-fest: 2.3.4
       write-json-file: 5.0.0
 
+  packages/monots__docgen:
+    specifiers:
+      '@microsoft/tsdoc': ^0.13.2
+      '@microsoft/tsdoc-config': ^0.15.2
+      '@swc/helpers': ^0.2.13
+      read-pkg-up: ^8.0.0
+      superstruct-extra: ^0.1.0
+      ts-morph: ^12.0.0
+      tslog: ^3.2.2
+    dependencies:
+      '@microsoft/tsdoc': 0.13.2
+      '@microsoft/tsdoc-config': 0.15.2
+      '@swc/helpers': 0.2.13
+      read-pkg-up: 8.0.0
+      superstruct-extra: link:../superstruct-extra
+      ts-morph: 12.0.0
+      tslog: 3.2.2
+
   packages/monots__next-plugin:
     specifiers:
       '@changesets/get-dependents-graph': ^1.2.2
@@ -3564,6 +3582,25 @@ packages:
       }
     dev: false
 
+  /@microsoft/tsdoc-config/0.15.2:
+    resolution:
+      {
+        integrity: sha512-mK19b2wJHSdNf8znXSMYVShAHktVr/ib0Ck2FA3lsVBSEhSI/TfXT7DJQkAYgcztTuwazGcg58ZjYdk0hTCVrA==,
+      }
+    dependencies:
+      '@microsoft/tsdoc': 0.13.2
+      ajv: 6.12.6
+      jju: 1.4.0
+      resolve: 1.19.0
+    dev: false
+
+  /@microsoft/tsdoc/0.13.2:
+    resolution:
+      {
+        integrity: sha512-WrHvO8PDL8wd8T2+zBGKrMwVL5IyzR3ryWUsl0PXgEV0QHup4mTLi0QcATefGI6Gx9Anu7vthPyyyLpY0EpiQg==,
+      }
+    dev: false
+
   /@mrmlnc/readdir-enhanced/2.2.1:
     resolution:
       {
@@ -4217,6 +4254,18 @@ packages:
         integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==,
       }
     engines: { node: '>=10.13.0' }
+
+  /@ts-morph/common/0.11.0:
+    resolution:
+      {
+        integrity: sha512-Ti2tpROSVHlBoNiJKVUYPNk/yCPb1Bcly4RsSwC2F9a8PMMYfEYovRcghTu6N5o66Jq0yvPXN3uNaO4a3zskTA==,
+      }
+    dependencies:
+      fast-glob: 3.2.7
+      minimatch: 3.0.4
+      mkdirp: 1.0.4
+      path-browserify: 1.0.1
+    dev: false
 
   /@tsconfig/node10/1.0.8:
     resolution:
@@ -6676,6 +6725,13 @@ packages:
       '@types/q': 1.5.5
       chalk: 2.4.2
       q: 1.5.1
+
+  /code-block-writer/10.1.1:
+    resolution:
+      {
+        integrity: sha512-67ueh2IRGst/51p0n6FvPrnRjAGHY5F8xdjkgrYE7DDzpJe6qA07RYQ9VcoUeo5ATOjSOiWpSL3SWBRRbempMw==,
+      }
+    dev: false
 
   /code-excerpt/3.0.0:
     resolution:
@@ -11486,6 +11542,10 @@ packages:
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
+  /jju/1.4.0:
+    resolution: { integrity: sha1-o6vicYryQaKykE+EpiWXDzia4yo= }
+    dev: false
+
   /joi/17.4.2:
     resolution:
       {
@@ -13699,7 +13759,6 @@ packages:
       {
         integrity: sha512-b7uo2UCUOYZcnF/3ID0lulOJi/bafxa1xPe7ZPsammBSpjSWQkjNxlt635YGS2MiR9GjvuXCtz2emr3jbsz98g==,
       }
-    dev: true
 
   /path-dirname/1.0.2:
     resolution: { integrity: sha1-zDPSTVJeCZpTiMAzbG4yuRYGCeA= }
@@ -15542,6 +15601,16 @@ packages:
     resolution: { integrity: sha1-LGN/53yJOv0qZj/iGqkIAGjiBSo= }
     deprecated: https://github.com/lydell/resolve-url#deprecated
 
+  /resolve/1.19.0:
+    resolution:
+      {
+        integrity: sha512-rArEXAgsBG4UgRGcynxWIWKFvh/XZCcS8UJdHhwy91zwAvCZIbcs+vAbflgBnNjYMs/i/i+/Ux6IZhML1yPvxg==,
+      }
+    dependencies:
+      is-core-module: 2.7.0
+      path-parse: 1.0.7
+    dev: false
+
   /resolve/1.20.0:
     resolution:
       {
@@ -17228,6 +17297,16 @@ packages:
       }
     dev: false
 
+  /ts-morph/12.0.0:
+    resolution:
+      {
+        integrity: sha512-VHC8XgU2fFW7yO1f/b3mxKDje1vmyzFXHWzOYmKEkCEwcLjDtbdLgBQviqj4ZwP4MJkQtRo6Ha2I29lq/B+VxA==,
+      }
+    dependencies:
+      '@ts-morph/common': 0.11.0
+      code-block-writer: 10.1.1
+    dev: false
+
   /ts-node/10.2.1_0088345bf6ed8e5566f4f4a984ba8f5e:
     resolution:
       {
@@ -17340,6 +17419,16 @@ packages:
       {
         integrity: sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==,
       }
+
+  /tslog/3.2.2:
+    resolution:
+      {
+        integrity: sha512-8dwb1cYpj3/w/MZTrSkPrdlA44loUodGT8N6ULMojqV4YByVM7ynhvVs9JwcIYxhhHf4bz1C5O3NKIPehnGp/w==,
+      }
+    engines: { node: '>=10' }
+    dependencies:
+      source-map-support: 0.5.20
+    dev: false
 
   /tsutils/3.21.0_typescript@4.4.3:
     resolution:
