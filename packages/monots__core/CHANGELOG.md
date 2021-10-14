@@ -1,5 +1,17 @@
 # @monots/core
 
+## 0.5.1
+
+> 2021-10-14
+
+### Patch Changes
+
+- [`d356f30`](https://github.com/monots/monots/commit/d356f30bb990cbdfb5f84b39c85dbc4fe632ac60) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Minor dependency version upgrades.
+
+- Updated dependencies [[`d356f30`](https://github.com/monots/monots/commit/d356f30bb990cbdfb5f84b39c85dbc4fe632ac60), [`d356f30`](https://github.com/monots/monots/commit/d356f30bb990cbdfb5f84b39c85dbc4fe632ac60)]:
+  - superstruct-extra@0.1.1
+  - @monots/types@0.1.1
+
 ## 0.5.0
 
 > 2021-10-05

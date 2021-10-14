@@ -52,8 +52,8 @@
     "templates"
   ],
   "dependencies": {
-    "@monots/core": "^0.5.0",
-    "@monots/types": "^0.1.0",
+    "@monots/core": "^0.5.1",
+    "@monots/types": "^0.1.1",
     "@swc/helpers": "^0.2.13",
     "chalk": "^4.1.2",
     "clipanion": "^3.1.0",

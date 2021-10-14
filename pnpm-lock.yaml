@@ -12,7 +12,7 @@ importers:
       ava: ^3.15.0
       browserslist: ^4.17.0
       eslint: ^8.0.1
-      eslint-config-monots: ^0.3.1
+      eslint-config-monots: ^0.4.0
       eslint-formatter-codeframe: ^7.32.1
       husky: ^7.0.2
       lint-staged: ^11.2.3
@@ -132,15 +132,15 @@ importers:
   packages/monots:
     specifiers:
       '@monots/cli': ^0.4.1
-      '@monots/core': ^0.5.0
+      '@monots/core': ^0.5.1
     dependencies:
       '@monots/cli': link:../monots__cli
       '@monots/core': link:../monots__core
 
   packages/monots__cli:
     specifiers:
-      '@monots/core': ^0.5.0
-      '@monots/types': ^0.1.0
+      '@monots/core': ^0.5.1
+      '@monots/types': ^0.1.1
       '@swc/helpers': ^0.2.13
       '@types/lodash-es': ^4.17.5
       '@types/update-notifier': ^5.1.0
@@ -177,7 +177,7 @@ importers:
   packages/monots__core:
     specifiers:
       '@manypkg/get-packages': ^1.1.1
-      '@monots/types': ^0.1.0
+      '@monots/types': ^0.1.1
       '@rollup/plugin-alias': ^3.1.5
       '@rollup/plugin-commonjs': ^21.0.0
       '@rollup/plugin-json': ^4.1.0
@@ -213,7 +213,7 @@ importers:
       rollup: ^2.58.0
       sort-keys: ^5.0.0
       superstruct: ^0.15.3
-      superstruct-extra: ^0.1.0
+      superstruct-extra: ^0.1.1
       typanion: ^3.4.1
       type-fest: ^2.5.0
       write-json-file: ^5.0.0
@@ -333,7 +333,7 @@ importers:
 
   packages/superstruct-extra:
     specifiers:
-      '@monots/types': ^0.1.0
+      '@monots/types': ^0.1.1
       '@swc/helpers': ^0.2.13
       '@types/is-uuid': ^1.0.0
       email-validator: ^2.0.4
@@ -360,7 +360,7 @@ importers:
       ky-universal: ^0.9.1
       superstruct: ^0.15.3
       superstruct-converter: ^0.0.0
-      superstruct-extra: ^0.1.0
+      superstruct-extra: ^0.1.1
       type-fest: ^2.5.0
     dependencies:
       '@swc/helpers': 0.2.13

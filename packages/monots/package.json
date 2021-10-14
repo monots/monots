@@ -34,7 +34,7 @@
   ],
   "dependencies": {
     "@monots/cli": "^0.4.1",
-    "@monots/core": "^0.5.0"
+    "@monots/core": "^0.5.1"
   },
   "publishConfig": {
     "access": "public"
