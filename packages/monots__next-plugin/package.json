@@ -34,11 +34,11 @@
     "@manypkg/get-packages": "^1.1.1",
     "@swc/helpers": "^0.2.13",
     "next-transpile-modules": "^8.0.0",
-    "read-pkg-up": "^8.0.0"
+    "read-pkg-up": "^9.0.0"
   },
   "devDependencies": {
-    "@types/node": "^16.10.2",
-    "@types/react": "^17.0.26",
+    "@types/node": "^16.10.9",
+    "@types/react": "^17.0.29",
     "@types/react-dom": "^17.0.9",
     "next": "^11.1.2",
     "react": "^17.0.2",

@@ -26,15 +26,6 @@ import {
 } from './types.js';
 
 /**
- * Ensure that a value is a bigint.
- */
-export function bigint(): Struct<bigint, null> {
-  return define('bigint', (value) => {
-    return typeof value === 'bigint';
-  });
-}
-
-/**
  * Create args which can be used with `fn`. This is wrapper around the builtin
  * `tuple` struct with some added features.
  *
@@ -218,26 +209,6 @@ export function uuid(version: keyof typeof isUuid = 'v4'): Struct<Uuid, null> {
  */
 export function email(): Struct<Email, null> {
   return refine<Email, null>(string(), 'email', (value) => emailValidator.validate(value));
-}
-
-/**
- * Ensure that a string, array, map, or set is not empty.
- */
-export function nonempty<Type extends Map<any, any> | Set<any> | any[], ChildStruct>(
-  struct: Struct<Type, ChildStruct>,
-): Struct<Type, ChildStruct> {
-  const expected = `Expected a nonempty ${struct.type}`;
-
-  return refine(struct, 'nonempty', (value) => {
-    if (Array.isArray(value)) {
-      const { length } = value;
-      return length > 0 || `${expected} but received one with a length of \`${length}\``;
-    }
-
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
-    const { size } = value as Set<any> | Map<any, any>;
-    return size > 0 || `${expected} but received one with a size of \`${size}\``;
-  });
 }
 
 /**

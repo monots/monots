@@ -42,13 +42,13 @@
   ],
   "dependencies": {
     "@swc/helpers": "^0.2.13",
-    "superstruct": "^0.15.2",
+    "superstruct": "^0.15.3",
     "superstruct-extra": "^0.1.0",
-    "type-fest": "^2.3.4"
+    "type-fest": "^2.5.0"
   },
   "devDependencies": {
     "json-schema-to-typescript": "^10.1.5",
-    "ky": "^0.28.5",
+    "ky": "^0.28.6",
     "ky-universal": "^0.9.1",
     "superstruct-converter": "^0.0.0"
   },
