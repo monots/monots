@@ -1,5 +1,13 @@
 # eslint-config-monots
 
+## 0.4.0
+
+> 2021-10-14
+
+### Minor Changes
+
+- [`d356f30`](https://github.com/monots/monots/commit/d356f30bb990cbdfb5f84b39c85dbc4fe632ac60) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Add support for `eslint@8`
+
 ## 0.3.1
 
 > 2021-10-05
