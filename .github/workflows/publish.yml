@@ -35,7 +35,7 @@ jobs:
       - name: setup node.js
         uses: actions/setup-node@v2-beta
         with:
-          node-version: 16
+          node-version: 16.x
 
       - name: install and audit
         uses: ./.github/actions/pnpm

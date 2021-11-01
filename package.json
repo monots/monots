@@ -94,7 +94,7 @@
     "write-json-file": "^5.0.0"
   },
   "engines": {
-    "node": ">=16",
+    "node": ">=16.9",
     "pnpm": ">=6"
   },
   "monots": {
@@ -112,5 +112,6 @@
         }
       }
     }
-  }
+  },
+  "packageManager": "pnpm@6.20.0"
 }
