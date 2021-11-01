@@ -1,5 +1,0 @@
-{
-  "module": "../dist/tsconfig.esm.js",
-  "browser": "../dist/tsconfig.browser.esm.js",
-  "types": "../dist/tsconfig.d.ts"
-}
