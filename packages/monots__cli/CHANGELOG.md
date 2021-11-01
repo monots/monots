@@ -1,5 +1,19 @@
 # @monots/cli
 
+## 0.5.0
+
+> 2021-11-01
+
+### Minor Changes
+
+- [#14](https://github.com/monots/monots/pull/14) [`a4fb71d`](https://github.com/monots/monots/commit/a4fb71d409367c1c80df8e8a7ba5bbfbd0826418) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Add `extraExports` and `sourceFolderName` to the `package.json` configuration object.
+
+### Patch Changes
+
+- Updated dependencies [[`a4fb71d`](https://github.com/monots/monots/commit/a4fb71d409367c1c80df8e8a7ba5bbfbd0826418), [`a4fb71d`](https://github.com/monots/monots/commit/a4fb71d409367c1c80df8e8a7ba5bbfbd0826418)]:
+  - @monots/core@0.6.0
+  - @monots/types@0.1.2
+
 ## 0.4.1
 
 > 2021-10-05
