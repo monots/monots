@@ -323,7 +323,6 @@ importers:
       json-schema-to-typescript: ^10.1.5
       lodash-es: ^4.17.21
       tsutils: ^3.21.0
-      typescript: ^4.5.0-beta
     dependencies:
       '@swc/helpers': 0.2.13
       '@types/lodash-es': 4.17.5
@@ -331,8 +330,7 @@ importers:
       case-anything: 1.1.3
       json-schema-to-typescript: 10.1.5
       lodash-es: 4.17.21
-      tsutils: 3.21.0_typescript@4.5.0-dev.20211101
-      typescript: 4.5.0-dev.20211101
+      tsutils: 3.21.0_typescript@4.5.0-beta
 
   packages/superstruct-extra:
     specifiers:
@@ -13026,16 +13024,6 @@ packages:
       typescript: 4.5.0-beta
     dev: false
 
-  /tsutils/3.21.0_typescript@4.5.0-dev.20211101:
-    resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}
-    engines: {node: '>= 6'}
-    peerDependencies:
-      typescript: '>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta'
-    dependencies:
-      tslib: 1.14.1
-      typescript: 4.5.0-dev.20211101
-    dev: false
-
   /tty-browserify/0.0.1:
     resolution: {integrity: sha512-C3TaO7K81YvjCgQH9Q1S3R3P3BtN3RIM8n+OvX4il1K1zgE8ZhI0op7kClgkxtutIE8hQrcrHBXvIheqKUUCxw==}
     dev: true
@@ -13119,12 +13107,6 @@ packages:
 
   /typescript/4.5.0-beta:
     resolution: {integrity: sha512-7PvWhki2lwukaR9osVhFnNzxaE4LM+gC94dlwcvS+Tqz8+U65va7FbKo02bT+/MFlnMPM8bsPUXvHiMD/Mg3Jg==}
-    engines: {node: '>=4.2.0'}
-    hasBin: true
-    dev: false
-
-  /typescript/4.5.0-dev.20211101:
-    resolution: {integrity: sha512-hghclbWgoJn85Ygh7JY2Sumh0BeJ3cermrmRdBaOorPdoufi4dr4XYwm8hjgNIFV6JROu6MWEpo5qjfJ0a/92w==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: false
