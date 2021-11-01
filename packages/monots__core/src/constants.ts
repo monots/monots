@@ -9,11 +9,6 @@ export const OUTPUT_FOLDER = 'dist';
 export const SOURCE_FOLDER_NAME = 'src';
 
 /**
- * Identifier for the default source folder.
- */
-export const SOURCE_FOLDER_IDENTIFIER = '__source__';
-
-/**
  * The name of the command.
  */
 export const NAME = 'monots';

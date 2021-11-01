@@ -8,10 +8,10 @@
   "extends": "@monots/tsconfig/tsconfig.json",
   "compilerOptions": {
     "types": ["node"],
+    "noEmit": false,
     "skipLibCheck": true,
     "module": "CommonJS",
     "declaration": true,
-    "noEmit": false,
     "composite": true,
     "emitDeclarationOnly": true,
     "outDir": "../dist"

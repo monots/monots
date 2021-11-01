@@ -90,7 +90,7 @@
     "prettier-config-monots": "^0.1.0",
     "snapshot-diff": "^0.9.0",
     "ts-node": "^10.4.0",
-    "typescript": "4.5.0-beta",
+    "typescript": "^4.4.4",
     "write-json-file": "^5.0.0"
   },
   "engines": {

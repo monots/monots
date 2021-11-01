@@ -43,8 +43,7 @@
   },
   "monots": {
     "entrypoints": [
-      "index.ts",
-      "setup.ts"
+      "index.ts"
     ],
     "tsconfigs": {
       "src": {

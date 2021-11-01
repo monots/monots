@@ -13,14 +13,7 @@ import parseJson from 'parse-json';
 import type { JsonObject } from 'type-fest';
 import { writeJsonFile } from 'write-json-file';
 
-import {
-  DEFAULT_BROWSERSLIST,
-  NAME,
-  OUTPUT_FOLDER,
-  SOURCE_FOLDER_IDENTIFIER,
-  SOURCE_FOLDER_NAME,
-  TYPESCRIPT_VERSION,
-} from '../constants.js';
+import { DEFAULT_BROWSERSLIST, NAME, TYPESCRIPT_VERSION } from '../constants.js';
 import {
   BatchError,
   buildPackageWithRollup,
@@ -403,19 +396,7 @@ const DEFAULT_MONOTS_PROJECT_OPTIONS: Required<ProjectMonots> = {
   tool: 'rollup-swc',
   packages: [],
   baseTsconfig: '@monots/tsconfig/tsconfig.json',
-  packageTsConfigs: {
-    /**
-     * the empty string is used to reference the package directory.
-     */
-    '': false,
-    [SOURCE_FOLDER_IDENTIFIER]: {
-      compilerOptions: { types: [], noEmit: true, outDir: path.join('..', OUTPUT_FOLDER) },
-    },
-    __tests__: {
-      compilerOptions: { declaration: false, noEmit: true },
-      include: ['./'],
-    },
-  },
+  packageTsConfigs: {},
   tsconfigPath: './tsconfig.json',
   packagesFolder: 'packages',
   tsconfig: {},

@@ -9,10 +9,10 @@
   "compilerOptions": {
     "types": [],
     "noEmit": false,
-    "outDir": "../dist",
     "declaration": true,
     "composite": true,
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "outDir": "../dist"
   },
   "references": []
 }
