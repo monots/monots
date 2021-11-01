@@ -7,13 +7,14 @@
   ],
   "extends": "@monots/tsconfig/tsconfig.json",
   "compilerOptions": {
-    "types": [],
-    "noEmit": false,
-    "outDir": "../dist",
+    "types": ["node"],
+    "skipLibCheck": true,
     "module": "CommonJS",
     "declaration": true,
+    "noEmit": false,
     "composite": true,
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "outDir": "../dist"
   },
   "references": []
 }

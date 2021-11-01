@@ -47,19 +47,7 @@
       "path": "packages/prettier-config-monots/src"
     },
     {
-      "path": "packages/superstruct-converter/src"
-    },
-    {
-      "path": "packages/superstruct-converter/src"
-    },
-    {
       "path": "packages/superstruct-extra/src"
-    },
-    {
-      "path": "packages/superstruct-schemas"
-    },
-    {
-      "path": "packages/superstruct-schemas/src"
     }
   ]
 }

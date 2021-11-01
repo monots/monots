@@ -22,7 +22,6 @@ const files = [
   baseDir('packages/monots__types/package.json'),
   baseDir('packages/monots__cli/package.json'),
   baseDir('packages/superstruct-extra/package.json'),
-  baseDir('packages/superstruct-converter/package.json'),
 ];
 
 async function run() {

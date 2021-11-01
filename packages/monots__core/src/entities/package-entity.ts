@@ -276,7 +276,7 @@ export class PackageEntity extends BaseEntity<Package> {
         ...this.populatedJson.devDependencies,
         ...this.populatedJson.peerDependencies,
       };
-      const references: References[] = [];
+      const referencePaths = new Set<string>();
 
       for (const dependency of keys(dependencies)) {
         const dependencyFolder = this.project.packagePaths[dependency];
@@ -285,13 +285,12 @@ export class PackageEntity extends BaseEntity<Package> {
           continue;
         }
 
-        references.push({
-          path: path.relative(
-            path.dirname(absolutePath),
-            path.join(dependencyFolder, sourceFolderName),
-          ),
-        });
+        referencePaths.add(
+          path.relative(path.dirname(absolutePath), path.join(dependencyFolder, sourceFolderName)),
+        );
       }
+
+      const references: References[] = [...referencePaths].map((path) => ({ path }));
 
       const json = {
         ...initialTsConfig,
