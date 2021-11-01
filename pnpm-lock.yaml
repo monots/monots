@@ -15,6 +15,7 @@ importers:
       eslint: ^8.1.0
       eslint-config-monots: ^0.4.0
       eslint-formatter-codeframe: ^7.32.1
+      eslint-plugin-file-progress: ^1.2.0
       husky: ^7.0.4
       lint-staged: ^11.2.6
       load-json-file: ^7.0.0
@@ -37,6 +38,7 @@ importers:
       eslint: 8.1.0
       eslint-config-monots: link:packages/eslint-config-monots
       eslint-formatter-codeframe: 7.32.1
+      eslint-plugin-file-progress: 1.2.0_eslint@8.1.0
       husky: 7.0.4
       lint-staged: 11.2.6
       load-json-file: 7.0.1
@@ -6443,6 +6445,16 @@ packages:
       escape-string-regexp: 1.0.5
       eslint: 8.1.0
       ignore: 5.1.8
+    dev: false
+
+  /eslint-plugin-file-progress/1.2.0_eslint@8.1.0:
+    resolution: {integrity: sha512-A2qwYqFI+w0XVHm0DUZ7gH+2/0SBbfoLWHtN+85jcl7tXalyi8qDGouuQ4PZ3H4VsD/4rER18J0sZMuoP0yPSQ==}
+    peerDependencies:
+      eslint: ^7.0.0 || ^8.0.0
+    dependencies:
+      chalk: 4.1.2
+      eslint: 8.1.0
+      ora: 5.4.1
     dev: false
 
   /eslint-plugin-graphql/4.0.0_652861fbfa2cb3c6a4de8fb19a00dc65:
