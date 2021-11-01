@@ -12,6 +12,9 @@
       "and-another/index.ts",
       "and-another/nested/cool.ts",
       "and-another/nested/index.ts"
-    ]
+    ],
+    "extraExports": {
+      "./extra": "./extra.js"
+    }
   }
 }

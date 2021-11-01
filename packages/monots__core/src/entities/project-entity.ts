@@ -13,7 +13,14 @@ import parseJson from 'parse-json';
 import type { JsonObject } from 'type-fest';
 import { writeJsonFile } from 'write-json-file';
 
-import { DEFAULT_BROWSERSLIST, NAME, OUTPUT_FOLDER, TYPESCRIPT_VERSION } from '../constants.js';
+import {
+  DEFAULT_BROWSERSLIST,
+  NAME,
+  OUTPUT_FOLDER,
+  SOURCE_FOLDER_IDENTIFIER,
+  SOURCE_FOLDER_NAME,
+  TYPESCRIPT_VERSION,
+} from '../constants.js';
 import {
   BatchError,
   buildPackageWithRollup,
@@ -22,7 +29,7 @@ import {
   getInstaller,
   InstallerType,
 } from '../helpers/index.js';
-import { Project, ProjectMonots, projectSchema } from '../schema.js';
+import { Project, ProjectMonots } from '../schema.js';
 import type { References, TsConfigJson } from '../types.js';
 import { BaseEntity, BaseEntityProps } from './base-entity.js';
 import { PackageEntity } from './package-entity.js';
@@ -132,7 +139,7 @@ export class ProjectEntity extends BaseEntity<Project> {
 
   private constructor(props: ProjectEntityProps) {
     const { json, map, path, indent } = props;
-    super({ json, map, path, struct: projectSchema });
+    super({ json, map, path, struct: Project });
     this.#initialized = !!this.json.monots?.packages;
     this.indent = indent;
   }
@@ -401,7 +408,7 @@ const DEFAULT_MONOTS_PROJECT_OPTIONS: Required<ProjectMonots> = {
      * the empty string is used to reference the package directory.
      */
     '': false,
-    src: {
+    [SOURCE_FOLDER_IDENTIFIER]: {
       compilerOptions: { types: [], noEmit: true, outDir: path.join('..', OUTPUT_FOLDER) },
     },
     __tests__: {

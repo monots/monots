@@ -2,7 +2,7 @@
   "name": "@monots/next-plugin",
   "version": "0.1.0",
   "private": true,
-  "description": "A Next.js plugin to make Next sites work with monots",
+  "description": "A Next.js plugin to make NextJS sites work with monots",
   "keywords": [],
   "repository": "https://github.com/monots/monots/tree/master/packages/monots__next-plugin",
   "license": "MIT",
@@ -31,21 +31,21 @@
   ],
   "dependencies": {
     "@changesets/get-dependents-graph": "^1.2.2",
-    "@manypkg/get-packages": "^1.1.1",
+    "@manypkg/get-packages": "^1.1.2",
     "@swc/helpers": "^0.2.13",
-    "next-transpile-modules": "^8.0.0",
+    "next-transpile-modules": "^9.0.0",
     "read-pkg-up": "^9.0.0"
   },
   "devDependencies": {
     "@types/node": "^16.10.9",
     "@types/react": "^17.0.29",
     "@types/react-dom": "^17.0.9",
-    "next": "^11.1.2",
+    "next": "^12.0.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "peerDependencies": {
-    "next": "^11",
+    "next": "^12",
     "react": "*",
     "react-dom": "*"
   },

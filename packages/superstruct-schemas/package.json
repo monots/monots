@@ -44,7 +44,7 @@
     "@swc/helpers": "^0.2.13",
     "superstruct": "^0.15.3",
     "superstruct-extra": "^0.1.1",
-    "type-fest": "^2.5.0"
+    "type-fest": "^2.5.2"
   },
   "devDependencies": {
     "json-schema-to-typescript": "^10.1.5",

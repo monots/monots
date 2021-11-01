@@ -14,6 +14,9 @@
       "path": "docs"
     },
     {
+      "path": "docs/src"
+    },
+    {
       "path": "packages/eslint-config-monots/src"
     },
     {
@@ -29,6 +32,9 @@
       "path": "packages/monots__next-plugin/src"
     },
     {
+      "path": "packages/monots__next-plugin/src"
+    },
+    {
       "path": "packages/monots__types/src"
     },
     {
@@ -36,6 +42,12 @@
     },
     {
       "path": "packages/prettier-config-monots/src"
+    },
+    {
+      "path": "packages/prettier-config-monots/src"
+    },
+    {
+      "path": "packages/superstruct-converter/src"
     },
     {
       "path": "packages/superstruct-converter/src"

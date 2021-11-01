@@ -8,9 +8,9 @@ import normalizePath from 'normalize-path';
 import { createTypeScriptContent, entries, generateField } from '../helpers/index.js';
 import {
   Entrypoint,
+  Entrypoint,
   EntrypointField,
   entrypointFields,
-  entrypointSchema,
   ExportsField,
 } from '../schema.js';
 import { BaseEntity, BaseEntityProps } from './base-entity.js';
@@ -92,7 +92,7 @@ export class EntrypointEntity extends BaseEntity<Entrypoint> {
       json,
       map,
       path: jsonPath,
-      struct: entrypointSchema,
+      struct: Entrypoint,
     });
     this.package = props.package;
     this.source = source;

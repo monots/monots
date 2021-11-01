@@ -1,6 +1,7 @@
 import { getDependentsGraph } from '@changesets/get-dependents-graph';
 import { getPackagesSync } from '@manypkg/get-packages';
 import type { NextConfig } from 'next';
+import { PHASE_DEVELOPMENT_SERVER } from 'next/constants';
 import withNextTranspile from 'next-transpile-modules';
 import { readPackageUpSync } from 'read-pkg-up';
 
