@@ -6,7 +6,7 @@ export const OUTPUT_FOLDER = 'dist';
 /**
  * The default source folder.
  */
-export const SOURCE_FOLDER = 'src';
+export const SOURCE_FOLDER_NAME = 'src';
 
 /**
  * The name of the command.

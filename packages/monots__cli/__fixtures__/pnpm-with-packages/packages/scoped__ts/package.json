@@ -1,0 +1,15 @@
+{
+  "name": "@scoped/a",
+  "version": "1.0.0",
+  "main": "",
+  "module": "",
+  "browser": "",
+  "types": "",
+  "dependencies": {
+    "@scoped/b": "^2.0.0"
+  },
+  "monots": {
+    "entrypoints": [],
+    "sourceFolderName": ""
+  }
+}

@@ -9,12 +9,12 @@
   "compilerOptions": {
     "types": ["node"],
     "noEmit": false,
-    "outDir": "../dist",
     "skipLibCheck": true,
     "module": "CommonJS",
     "declaration": true,
     "composite": true,
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "outDir": "../dist"
   },
   "references": []
 }

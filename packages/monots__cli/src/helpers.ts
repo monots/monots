@@ -1,4 +1,3 @@
-import assert from 'node:assert';
 import path from 'node:path';
 import url from 'node:url';
 import { readPackageUpSync } from 'read-pkg-up';
@@ -55,12 +54,11 @@ export function unmangleScopedPackage(mangledName: string): string {
  * `@babel/types` => `babel__types`
  */
 export function mangleScopedPackageName(packageName: string): string {
-  const [scope, name] = packageName.split('/');
-  assert(scope, `Invalid package name provided: ${packageName}`);
-
-  if (name) {
-    return [scope.replace('@', ''), name].join(SEPARATOR);
+  if (packageName.indexOf('@') === 0 && packageName.includes('/')) {
+    // we have a scoped module, e.g. @bla/foo
+    // which should be converted to   bla__foo
+    packageName = packageName.slice(1).replace('/', '__');
   }
 
-  return scope;
+  return packageName;
 }

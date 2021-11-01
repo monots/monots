@@ -1,14 +1,14 @@
 {
   "**/*.js": [
-    "prettier --write"
+    "prettier --write --ignore-path .eslintignore"
   ],
   "*.{json,yml,yaml}": [
-    "prettier --write"
+    "prettier --write --ignore-path .eslintignore"
   ],
   "*.{md,mdx}": [
-    "prettier --write"
+    "prettier --write --ignore-path .eslintignore"
   ],
   "{packages,support}/**/*.{ts,tsx,js}": [
-    "prettier --write"
+    "prettier --write --ignore-path .eslintignore"
   ]
 }

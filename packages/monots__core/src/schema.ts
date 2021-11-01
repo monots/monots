@@ -4,21 +4,21 @@ import * as s from 'superstruct-extra';
 import { OUTPUT_FOLDER } from './constants.js';
 import { keys } from './helpers/index.js';
 
-const tsConfigSchema = s.record(s.string(), s.any());
-const tsConfigsSchema = s.union([
+const TsConfig = s.record(s.string(), s.any());
+const TsConfigs = s.union([
   s.literal(false),
-  s.record(s.string(), s.union([tsConfigSchema, s.literal(false)])),
+  s.record(s.string(), s.union([TsConfig, s.literal(false)])),
 ]);
 
 /**
  * The supported build tools.
  */
-const buildToolEnum = s.enums(['rollup-swc', 'rollup-esbuild', 'swc', 'esbuild']);
+const BuildToolEnum = s.enums(['rollup-swc', 'rollup-esbuild', 'swc', 'esbuild']);
 
 /**
  * A valid yarn workspace configuration.
  */
-const workspacesSchema = s.union([
+const Workspaces = s.union([
   s.array(s.string()),
   s.object({
     packages: s.optional(s.array(s.string())),
@@ -26,10 +26,11 @@ const workspacesSchema = s.union([
   }),
 ]);
 
+export type Entrypoint = s.Infer<typeof Entrypoint>;
 /**
  * The entrypoint object values.
  */
-export const entrypointSchema = s.type({
+export const Entrypoint = s.type({
   /**
    * The path to the TypeScript types within the package.
    */
@@ -41,8 +42,8 @@ export const entrypointSchema = s.type({
   main: s.optional(s.string()),
 
   /**
-   * The module field to use for backward compatibility. We always prefer to
-   * use `exports`.
+   * The module field to use for backward compatibility. We always prefer to use
+   * `exports`.
    */
   module: s.optional(s.string()),
 
@@ -57,9 +58,10 @@ export const entrypointSchema = s.type({
 /**
  * The support modules in a package.json file
  */
-const moduleEnum = s.enums(['module', 'commonjs']);
+const ModuleEnum = s.enums(['module', 'commonjs']);
 
-export const packageMonotsSchema = s.type({
+export type PackageMonots = s.Infer<typeof PackageMonots>;
+export const PackageMonots = s.type({
   /**
    * The entry points from the `src` directory.
    */
@@ -68,7 +70,7 @@ export const packageMonotsSchema = s.type({
   /**
    * Custom tsconfig settings for the package.
    */
-  tsconfigs: s.defaulted(s.optional(tsConfigsSchema), {}),
+  tsconfigs: s.defaulted(s.optional(TsConfigs), {}),
 
   /**
    * The mode of the `package.json`
@@ -84,13 +86,31 @@ export const packageMonotsSchema = s.type({
    * `optionalDependencies` are bundled.
    */
   externalModules: s.defaulted(s.optional(s.array(s.string())), []),
+
+  /**
+   * The name of the source folder. Set to an empty string to use the root of
+   * the package as the source folder.
+   *
+   * This can be useful if exporting only TypeScript files from a package.
+   *
+   * @default `./src`
+   */
+  sourceFolderName: s.optional(s.string()),
+
+  /**
+   * Additional exports to make from this package.
+   */
+  extraExports: s.optional(
+    s.record(s.string(), s.union([s.record(s.string(), s.string()), s.string()])),
+  ),
 });
 
+export type Package = s.Infer<typeof Package>;
 /**
  * A struct to validate the fields entered into the package level package.json.
  */
-export const packageSchema = s.assign(
-  entrypointSchema,
+export const Package = s.assign(
+  Entrypoint,
   s.type({
     /**
      * The name of the package.
@@ -102,7 +122,7 @@ export const packageSchema = s.assign(
      *
      * @default `module`
      */
-    type: s.optional(moduleEnum),
+    type: s.optional(ModuleEnum),
 
     /**
      * The files that are included within the distribution.
@@ -126,15 +146,16 @@ export const packageSchema = s.assign(
     /**
      * The monots configuration object for packages.
      */
-    monots: s.optional(packageMonotsSchema),
+    monots: s.optional(PackageMonots),
   }),
 );
 
+export type ProjectMonots = s.Infer<typeof ProjectMonots>;
 /**
  * The configuration object for the monots project. This is placed within the
  * root `package.json` file under the
  */
-export const projectMonotsSchema = s.type({
+export const ProjectMonots = s.type({
   /**
    * The array of glob patterns for the packages to search through in the
    * current monorepo.
@@ -148,7 +169,7 @@ export const projectMonotsSchema = s.type({
    *
    * @default 'rollup-swc'
    */
-  tool: s.defaulted(s.optional(buildToolEnum), 'rollup-swc'),
+  tool: s.defaulted(s.optional(BuildToolEnum), 'rollup-swc'),
 
   /**
    * The base tsconfig that all tsconfigs will extend.
@@ -162,7 +183,7 @@ export const projectMonotsSchema = s.type({
    *
    * Set to false to not disable the automated creation of tsconfig files.
    */
-  packageTsConfigs: s.defaulted(s.optional(tsConfigsSchema), {
+  packageTsConfigs: s.defaulted(s.optional(TsConfigs), {
     '': false,
     src: {
       compilerOptions: { types: [], noEmit: true, outDir: path.join('..', OUTPUT_FOLDER) },
@@ -201,10 +222,11 @@ export const projectMonotsSchema = s.type({
    *
    * This is useful for adding settings to the `ts-node` property.
    */
-  tsconfig: s.defaulted(s.optional(tsConfigSchema), {}),
+  tsconfig: s.defaulted(s.optional(TsConfig), {}),
 });
 
-export const projectSchema = s.type({
+export type Project = s.Infer<typeof Project>;
+export const Project = s.type({
   /**
    * The name of the package.json file.
    */
@@ -213,12 +235,12 @@ export const projectSchema = s.type({
   /**
    * The workspaces to use.
    */
-  workspaces: s.optional(workspacesSchema),
+  workspaces: s.optional(Workspaces),
 
   /**
    * The monots configuration.
    */
-  monots: s.optional(projectMonotsSchema),
+  monots: s.optional(ProjectMonots),
 
   /**
    * The browserslist configuration.
@@ -230,7 +252,7 @@ export const projectSchema = s.type({
    *
    * @default 'module'
    */
-  type: s.optional(moduleEnum),
+  type: s.optional(ModuleEnum),
 
   /**
    * The scripts.
@@ -246,14 +268,7 @@ export const projectSchema = s.type({
 });
 
 export const exportFields = ['import', 'require', 'browser', 'types', 'default'] as const;
-export const entrypointFields = keys(entrypointSchema.schema);
+export const entrypointFields = keys(Entrypoint.schema);
 
 export type ExportsField = typeof exportFields[number];
 export type EntrypointField = keyof Entrypoint;
-export type Entrypoint = s.Infer<typeof entrypointSchema>;
-
-export type PackageMonots = s.Infer<typeof packageMonotsSchema>;
-export type Package = s.Infer<typeof packageSchema>;
-
-export type ProjectMonots = s.Infer<typeof projectMonotsSchema>;
-export type Project = s.Infer<typeof projectSchema>;
