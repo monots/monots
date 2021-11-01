@@ -1,5 +1,15 @@
 # monots
 
+## 0.2.3
+
+> 2021-11-01
+
+### Patch Changes
+
+- Updated dependencies [[`a4fb71d`](https://github.com/monots/monots/commit/a4fb71d409367c1c80df8e8a7ba5bbfbd0826418), [`a4fb71d`](https://github.com/monots/monots/commit/a4fb71d409367c1c80df8e8a7ba5bbfbd0826418)]:
+  - @monots/cli@0.5.0
+  - @monots/core@0.6.0
+
 ## 0.2.2
 
 > 2021-10-05
