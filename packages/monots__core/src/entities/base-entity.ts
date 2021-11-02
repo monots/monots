@@ -49,16 +49,29 @@ export abstract class BaseEntity<JsonData extends BaseData> {
   directory: string;
   abstract get name(): string;
 
+  #populatedJson?: JsonData;
   get populatedJson(): JsonData {
+    if (this.#populatedJson) {
+      return this.#populatedJson;
+    }
+
     const json = this.sharedMap.get(this.path);
 
-    return t.create(json, this.struct);
+    this.#populatedJson = t.create(json, this.struct);
+
+    return this.#populatedJson;
   }
 
+  #json?: JsonData;
   get json(): JsonData {
+    if (this.#json) {
+      return this.#json;
+    }
+
     const json = this.sharedMap.get(this.path);
     this.struct.assert(json);
 
+    this.#json = json;
     return json;
   }
 
