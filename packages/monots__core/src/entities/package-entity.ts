@@ -113,31 +113,35 @@ export class PackageEntity extends BaseEntity<Package> {
     return this.isLibrary && this.fields.includes('types');
   }
 
+  #monots?: Required<PackageMonots>;
+
   get monots(): Required<PackageMonots> {
+    if (this.#monots) {
+      return this.#monots;
+    }
+
     const monots = {
       ...DEFAULT_MONOTS_PACKAGE_OPTIONS,
       ...removeUndefined(this.populatedJson.monots ?? {}),
     };
-    const packageTsConfigs =
-      this.project.monots.packageTsConfigs === false
-        ? false
-        : { ...this.project.monots.packageTsConfigs };
 
     if (monots.tsconfigs === false) {
+      this.#monots = monots;
       return monots;
     }
 
     const compilerOptions = { types: [], noEmit: true };
 
-    if (!monots.tsconfigs && monots.tsconfigs !== false) {
+    if (is.emptyObject(monots.tsconfigs)) {
       monots.tsconfigs = {
         [monots.sourceFolderName]: { compilerOptions },
       };
 
+      this.#monots = monots;
       return monots;
     }
 
-    if (monots.tsconfigs !== false && monots.tsconfigs[monots.sourceFolderName] !== false) {
+    if (monots.tsconfigs[monots.sourceFolderName] !== false) {
       const sourceConfig = deepMerge(
         { compilerOptions },
         monots.tsconfigs[monots.sourceFolderName] ?? {},
@@ -145,9 +149,7 @@ export class PackageEntity extends BaseEntity<Package> {
       monots.tsconfigs[monots.sourceFolderName] = sourceConfig;
     }
 
-    monots.tsconfigs =
-      packageTsConfigs === false ? false : deepMerge(packageTsConfigs, monots.tsconfigs);
-
+    this.#monots = monots;
     return monots;
   }
 
@@ -176,7 +178,7 @@ export class PackageEntity extends BaseEntity<Package> {
       return;
     }
 
-    const cwd = path.join(this.directory, SOURCE_FOLDER_NAME);
+    const cwd = path.join(this.directory, this.monots.sourceFolderName);
     const sourceFiles = await glob(this.monots.entrypoints, {
       cwd,
       onlyFiles: true,
@@ -234,10 +236,7 @@ export class PackageEntity extends BaseEntity<Package> {
     const isSourceFolder = (name: string) => [sourceFolderName].includes(name);
 
     for (const [folder, content] of entries(tsconfigs)) {
-      if (
-        !content ||
-        !(['', './'].includes(folder) || folders.includes(folder) || isSourceFolder(folder))
-      ) {
+      if (!content || !(folder === '' || folders.includes(folder) || isSourceFolder(folder))) {
         continue;
       }
 
@@ -287,14 +286,17 @@ export class PackageEntity extends BaseEntity<Package> {
       const referencePaths = new Set<string>();
 
       for (const dependency of keys(dependencies)) {
-        const dependencyFolder = this.project.packagePaths[dependency];
+        const pkg = this.project.packageMap.get(dependency);
 
-        if (!dependencyFolder) {
+        if (!pkg) {
           continue;
         }
 
         referencePaths.add(
-          path.relative(path.dirname(absolutePath), path.join(dependencyFolder, sourceFolderName)),
+          path.relative(
+            path.dirname(absolutePath),
+            path.join(pkg.directory, pkg.monots.sourceFolderName),
+          ),
         );
       }
 
@@ -364,9 +366,13 @@ export class PackageEntity extends BaseEntity<Package> {
       );
     }
 
-    if (!normalizePath(sourceFile).includes(normalizePath(path.join(this.directory, 'src')))) {
+    if (
+      !normalizePath(sourceFile).includes(
+        normalizePath(path.join(this.directory, this.monots.sourceFolderName)),
+      )
+    ) {
       throw new FatalError(
-        chalk`Entrypoint source files must be inside of the src directory of a package but ${path.relative(
+        chalk`Entrypoint source files must be inside of the source directory of a package but ${path.relative(
           this.directory,
           sourceFile,
         )} is not`,
@@ -404,7 +410,7 @@ export class PackageEntity extends BaseEntity<Package> {
     let directory = path.join(
       this.directory,
       sourceFile
-        .replace(path.join(this.directory, SOURCE_FOLDER_NAME), '')
+        .replace(path.join(this.directory, this.monots.sourceFolderName), '')
         .replace(/\.[jt]sx?$/, ''),
     );
 

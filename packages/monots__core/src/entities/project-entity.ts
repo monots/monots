@@ -105,25 +105,23 @@ export class ProjectEntity extends BaseEntity<Project> {
     return path.join(this.directory, this.monots.packagesFolder);
   }
 
-  #packagePaths: Record<string, string> | undefined;
+  #packageMap?: Map<string, PackageEntity>;
 
   /**
-   * An object containing the package name -> absolute path.
-   *
-   * This is used to created tsconfig references.
+   * A map of all the packages by their name.
    */
-  get packagePaths(): Record<string, string> {
-    if (this.#packagePaths) {
-      return this.#packagePaths;
+  get packageMap(): Map<string, PackageEntity> {
+    if (this.#packageMap) {
+      return this.#packageMap;
     }
 
-    this.#packagePaths = {};
+    this.#packageMap = new Map();
 
     for (const pkg of this.packages) {
-      this.#packagePaths[pkg.name] = pkg.directory;
+      this.#packageMap.set(pkg.name, pkg);
     }
 
-    return this.#packagePaths;
+    return this.#packageMap;
   }
 
   get monots(): Required<ProjectMonots> {
