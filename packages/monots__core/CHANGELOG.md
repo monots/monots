@@ -1,5 +1,13 @@
 # @monots/core
 
+## 0.6.1
+
+> 2021-11-02
+
+### Patch Changes
+
+- [#17](https://github.com/monots/monots/pull/17) [`efdf1d2`](https://github.com/monots/monots/commit/efdf1d27f953fcdb94cf02a9b54463d2fb7de6b4) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Fix broken tsconfig generator when running the `monots fix` command.
+
 ## 0.6.0
 
 > 2021-11-01
