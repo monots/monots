@@ -211,6 +211,10 @@ export class PackageEntity extends BaseEntity<Package> {
   }
 
   createJson(): Package {
+    if (!this.isLibrary) {
+      return this.json;
+    }
+
     const json: Package = { ...this.json };
 
     if (!json.type) {
@@ -288,7 +292,7 @@ export class PackageEntity extends BaseEntity<Package> {
       for (const dependency of keys(dependencies)) {
         const pkg = this.project.packageMap.get(dependency);
 
-        if (!pkg) {
+        if (!pkg || !pkg.isLibrary) {
           continue;
         }
 
