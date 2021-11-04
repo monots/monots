@@ -1,5 +1,16 @@
 # @monots/cli
 
+## 0.6.1
+
+> 2021-11-04
+
+### Patch Changes
+
+- [`6792284`](https://github.com/monots/monots/commit/67922843517993d1cd08a23e57065eb2a2835763) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Only build a package if it has `mode: "library"`.
+
+- Updated dependencies [[`6792284`](https://github.com/monots/monots/commit/67922843517993d1cd08a23e57065eb2a2835763)]:
+  - @monots/core@0.7.1
+
 ## 0.6.0
 
 > 2021-11-04
