@@ -114,7 +114,6 @@ export class PackageEntity extends BaseEntity<Package> {
   }
 
   #monots?: Required<PackageMonots>;
-
   get monots(): Required<PackageMonots> {
     if (this.#monots) {
       return this.#monots;

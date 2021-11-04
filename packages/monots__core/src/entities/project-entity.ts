@@ -179,6 +179,10 @@ export class ProjectEntity extends BaseEntity<Project> {
     const promises: Array<Promise<void>> = [];
 
     for (const pkg of this.packages) {
+      if (!pkg.isLibrary) {
+        continue;
+      }
+
       const promise = buildPackageWithRollup(pkg).catch((error) => {
         if (error instanceof BatchError) {
           errors.push(...error.errors);
