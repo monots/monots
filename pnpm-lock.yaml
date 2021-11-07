@@ -97,15 +97,15 @@ importers:
 
   packages/monots:
     specifiers:
-      '@monots/cli': ^0.6.1
-      '@monots/core': ^0.7.1
+      '@monots/cli': ^0.7.0
+      '@monots/core': ^0.8.0
     dependencies:
       '@monots/cli': link:../monots__cli
       '@monots/core': link:../monots__core
 
   packages/monots__cli:
     specifiers:
-      '@monots/core': ^0.7.1
+      '@monots/core': ^0.8.0
       '@monots/types': ^0.1.2
       '@swc/helpers': ^0.2.13
       '@types/lodash-es': ^4.17.5
