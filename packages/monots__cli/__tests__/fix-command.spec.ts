@@ -37,3 +37,16 @@ test('`monots fix` should update the tsconfig files', async (t) => {
 
   await cleanup();
 });
+
+test('`monots fix` should update the relative baseTsconfig files', async (t) => {
+  const { cleanup, context, getPath } = await setupFixtures('pnpm-with-packages-relative');
+  const result = await cli.run(['fix'], context);
+  const jsonA = await loadJsonFile(getPath('packages/scoped__a/src/tsconfig.json'));
+  const jsonB = await loadJsonFile(getPath('packages/scoped__b/src/tsconfig.json'));
+
+  t.is(result, 0, 'The result is successful');
+  t.snapshot(jsonA);
+  t.snapshot(jsonB);
+
+  await cleanup();
+});

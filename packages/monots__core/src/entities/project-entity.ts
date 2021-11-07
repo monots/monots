@@ -97,7 +97,7 @@ export class ProjectEntity extends BaseEntity<Project> {
     return this.json.name;
   }
 
-  get rootTsConfigPath(): string {
+  get rootTsconfigPath(): string {
     return path.join(this.directory, this.monots.tsconfigPath);
   }
 
@@ -124,8 +124,9 @@ export class ProjectEntity extends BaseEntity<Project> {
     return this.#packageMap;
   }
 
+  #monots?: Required<ProjectMonots>;
   get monots(): Required<ProjectMonots> {
-    return { ...DEFAULT_MONOTS_PROJECT_OPTIONS, ...this.json.monots };
+    return (this.#monots ??= { ...DEFAULT_MONOTS_PROJECT_OPTIONS, ...this.json.monots });
   }
 
   private constructor(props: ProjectEntityProps) {
@@ -365,12 +366,12 @@ export class ProjectEntity extends BaseEntity<Project> {
   /**
    * Create the tsconfig files for the project.
    */
-  async saveTsConfigFiles(): Promise<void> {
+  async saveTsconfigFiles(): Promise<void> {
     // Store all the references to the individual tsconfig files.
     const references: References[] = [];
 
     // Top level tsconfig.json which is a reference json file.
-    const rootTsConfig: TsConfigJson = {
+    const rootTsconfig: TsConfigJson = {
       extends: this.monots.baseTsconfig,
       include: [],
       files: [],
@@ -382,7 +383,7 @@ export class ProjectEntity extends BaseEntity<Project> {
 
     for (const pkg of this.packages) {
       promises.push(
-        pkg.createTsConfigs().then((paths) => {
+        pkg.createTsconfigs().then((paths) => {
           references.push(...paths.map((path) => ({ path })));
         }),
       );
@@ -390,7 +391,7 @@ export class ProjectEntity extends BaseEntity<Project> {
 
     await Promise.all(promises);
     references.sort((a, z) => a.path.localeCompare(z.path));
-    await writeJsonFile(this.rootTsConfigPath, rootTsConfig, { detectIndent: true });
+    await writeJsonFile(this.rootTsconfigPath, rootTsconfig, { detectIndent: true });
   }
 }
 
@@ -398,7 +399,7 @@ const DEFAULT_MONOTS_PROJECT_OPTIONS: Required<ProjectMonots> = {
   tool: 'rollup-swc',
   packages: [],
   baseTsconfig: '@monots/tsconfig/tsconfig.json',
-  packageTsConfigs: {},
+  packageTsconfigs: {},
   tsconfigPath: './tsconfig.json',
   packagesFolder: 'packages',
   tsconfig: {},

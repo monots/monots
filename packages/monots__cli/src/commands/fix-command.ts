@@ -32,7 +32,7 @@ export class FixCommand extends BaseCommand {
       await project.savePackagesJson();
 
       spinner.info('saving tsconfig files');
-      await project.saveTsConfigFiles();
+      await project.saveTsconfigFiles();
 
       spinner.succeed('boom! your project is up to date!');
       return 0;

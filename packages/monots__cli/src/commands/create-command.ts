@@ -88,7 +88,7 @@ export class CreateCommand extends BaseCommand {
       spinner.text = 'reloading project and fixing files';
       await project.loadPackages();
       await project.savePackagesJson();
-      await project.saveTsConfigFiles();
+      await project.saveTsconfigFiles();
 
       spinner.succeed(chalk`{bold amazing!} your package was created!`);
       return 0;

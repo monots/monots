@@ -1,0 +1,13 @@
+{
+  "name": "root",
+  "scripts": {
+    "postinstall": "monots prepare"
+  },
+  "dependencies": {},
+  "monots": {
+    "baseTsconfig": "./relative/tsconfig.json",
+    "packages": [
+      "packages/*"
+    ]
+  }
+}

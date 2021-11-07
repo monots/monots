@@ -4,10 +4,10 @@ import * as s from 'superstruct-extra';
 import { OUTPUT_FOLDER } from './constants.js';
 import { keys } from './helpers/index.js';
 
-const TsConfig = s.record(s.string(), s.any());
-const TsConfigs = s.union([
+const Tsconfig = s.record(s.string(), s.any());
+const Tsconfigs = s.union([
   s.literal(false),
-  s.record(s.string(), s.union([TsConfig, s.literal(false)])),
+  s.record(s.string(), s.union([Tsconfig, s.literal(false)])),
 ]);
 
 /**
@@ -70,7 +70,7 @@ export const PackageMonots = s.type({
   /**
    * Custom tsconfig settings for the package.
    */
-  tsconfigs: s.defaulted(s.optional(TsConfigs), {}),
+  tsconfigs: s.defaulted(s.optional(Tsconfigs), {}),
 
   /**
    * The mode of the `package.json`
@@ -174,6 +174,9 @@ export const ProjectMonots = s.type({
   /**
    * The base tsconfig that all tsconfigs will extend.
    *
+   * This also supports relative paths to a local file. In order for a path to
+   * be considered as relative, it must start with `./` or `../`.
+   *
    * @default `@monots/tsconfig/tsconfig.json`
    */
   baseTsconfig: s.defaulted(s.optional(s.string()), '@monots/tsconfig/tsconfig.json'),
@@ -183,7 +186,7 @@ export const ProjectMonots = s.type({
    *
    * Set to false to not disable the automated creation of tsconfig files.
    */
-  packageTsConfigs: s.defaulted(s.optional(TsConfigs), {
+  packageTsconfigs: s.defaulted(s.optional(Tsconfigs), {
     '': false,
     src: {
       compilerOptions: { types: [], noEmit: true, outDir: path.join('..', OUTPUT_FOLDER) },
@@ -222,7 +225,7 @@ export const ProjectMonots = s.type({
    *
    * This is useful for adding settings to the `ts-node` property.
    */
-  tsconfig: s.defaulted(s.optional(TsConfig), {}),
+  tsconfig: s.defaulted(s.optional(Tsconfig), {}),
 });
 
 export type Project = s.Infer<typeof Project>;
