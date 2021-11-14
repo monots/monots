@@ -50,6 +50,12 @@ importers:
       typescript: 4.4.4
       write-json-file: 5.0.0
 
+  packages/create-monots:
+    specifiers:
+      '@swc/helpers': ^0.2.13
+    dependencies:
+      '@swc/helpers': 0.2.13
+
   packages/eslint-config-monots:
     specifiers:
       '@kyleshevlin/eslint-plugin': ^1.3.0
