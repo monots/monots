@@ -1,8 +1,7 @@
 {
   "name": "monots",
   "version": "0.2.5",
-  "private": true,
-  "description": "monots",
+  "description": "This is a placeholder package. Use `@monots/cli` instead.",
   "homepage": "https://github.com/monots/monots/tree/master/packages/monots",
   "repository": "https://github.com/monots/monots/tree/master/packages/monots",
   "license": "MIT",
@@ -32,10 +31,6 @@
   "files": [
     "dist"
   ],
-  "dependencies": {
-    "@monots/cli": "^0.7.0",
-    "@monots/core": "^0.8.0"
-  },
   "publishConfig": {
     "access": "public"
   }

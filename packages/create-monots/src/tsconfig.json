@@ -10,5 +10,9 @@
     "types": [],
     "noEmit": true
   },
-  "references": []
+  "references": [
+    {
+      "path": "../../monots__core/src"
+    }
+  ]
 }
