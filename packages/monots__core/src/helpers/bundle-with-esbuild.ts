@@ -16,7 +16,7 @@ export async function bundleWithEsbuild(pkg: PackageEntity) {
     promises.push(async () => {
       await build({
         entryPoints: [entrypoint.source],
-        outfile: path.join(pkg.output, `${entrypoint.baseName ?? 'index'}.js`),
+        outfile: path.join(pkg.output, `${entrypoint.baseName || 'index'}.js`),
         minify: true,
         sourcemap: false,
         bundle: true,
