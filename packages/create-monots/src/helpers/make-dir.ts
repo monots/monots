@@ -1,5 +1,5 @@
-import fs from 'node:fs';
+import fs from 'node:fs/promises';
 
-export function makeDir(root: string, options = { recursive: true }): Promise<void> {
-  return fs.promises.mkdir(root, options);
+export async function makeDir(root: string): Promise<void> {
+  await fs.mkdir(root, { recursive: true });
 }

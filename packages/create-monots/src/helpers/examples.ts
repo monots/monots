@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import got from 'got';
 import { Stream } from 'node:stream';
 import { promisify } from 'node:util';
@@ -19,7 +18,7 @@ export async function isUrlOk(url: string): Promise<boolean> {
 }
 
 export async function getRepoInfo(url: URL, examplePath?: string): Promise<RepoInfo | undefined> {
-  const [, username, name, t, _branch, ...file] = url.pathname.split('/');
+  const [, username = '', name = '', t, _branch, ...file] = url.pathname.split('/');
   const filePath = examplePath ? examplePath.replace(/^\//, '') : file.join('/');
 
   // Support repos whose entire purpose is to be a NextJS example, e.g.
@@ -45,6 +44,8 @@ export async function getRepoInfo(url: URL, examplePath?: string): Promise<RepoI
   if (username && name && branch && t === 'tree') {
     return { username, name, branch, filePath };
   }
+
+  return;
 }
 
 export function hasRepo({ username, name, branch, filePath }: RepoInfo): Promise<boolean> {
@@ -56,7 +57,7 @@ export function hasRepo({ username, name, branch, filePath }: RepoInfo): Promise
 
 export function hasExample(name: string): Promise<boolean> {
   return isUrlOk(
-    `https://api.github.com/repos/vercel/next.js/contents/examples/${encodeURIComponent(
+    `https://api.github.com/repos/monots/monots/contents/examples/${encodeURIComponent(
       name,
     )}/package.json`,
   );
@@ -80,7 +81,7 @@ export function downloadAndExtractExample(root: string, name: string): Promise<v
   }
 
   return pipeline(
-    got.stream('https://codeload.github.com/vercel/next.js/tar.gz/canary'),
+    got.stream('https://codeload.github.com/monots/monots/tar.gz/canary'),
     tar.extract({ cwd: root, strip: 3 }, [`next.js-canary/examples/${name}`]),
   );
 }

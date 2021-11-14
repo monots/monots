@@ -1,62 +1,50 @@
 #!/usr/bin/env node
 
-import { getPackageJson, notifyUpdate } from '@monots/core';
+import { notifyUpdate } from '@monots/core';
 import chalk from 'chalk';
-import Commander from 'commander';
+import meow from 'meow';
 import path from 'node:path';
 import prompts from 'prompts';
 
-import { createApp, DownloadError } from './create-monots';
+import { createMonotsProject, DownloadError } from './create-monots';
 import { validateNpmName } from './helpers/validate-pkg';
 
-let projectPath = '';
+const cli = meow(
+  `
+        Usage
+          $ create-monots <input>
 
-const packageJson = getPackageJson();
+        Options
+          --example, -e [name]|[github-url]
 
-const program = new Commander.Command(packageJson.name)
-  .version(packageJson.version)
-  .arguments('<project-directory>')
-  .usage(`${chalk.green('<project-directory>')} [options]`)
-  .action((name) => {
-    projectPath = name;
-  })
-  .option(
-    '--ts, --typescript',
-    `
+          An example to bootstrap the app with. You can use an example name
+          from the official monots repo or a GitHub URL. The URL can use
+          any branch and/or subdirectory.
 
-  Initialize as a TypeScript project.
+          --example-path <path-to-example>
+
+          In a rare case, your GitHub URL might contain a branch name with
+          a slash (e.g. bug/fix-1) and the path to the example (e.g. foo/bar).
+          In this case, you must specify the path to the example separately:
+          --example-path foo/bar.
+
+        Examples
+          $ create-monots my-awesome-package
 `,
-  )
-  .option(
-    '--use-npm',
-    `
-
-  Explicitly tell the CLI to bootstrap the app using npm
-`,
-  )
-  .option(
-    '-e, --example [name]|[github-url]',
-    `
-
-  An example to bootstrap the app with. You can use an example name
-  from the official Next.js repo or a GitHub URL. The URL can use
-  any branch and/or subdirectory
-`,
-  )
-  .option(
-    '--example-path <path-to-example>',
-    `
-
-  In a rare case, your GitHub URL might contain a branch name with
-  a slash (e.g. bug/fix-1) and the path to the example (e.g. foo/bar).
-  In this case, you must specify the path to the example separately:
-  --example-path foo/bar
-`,
-  )
-  .allowUnknownOption()
-  .parse(process.argv);
+  {
+    autoHelp: true,
+    autoVersion: true,
+    importMeta: import.meta,
+    flags: {
+      example: { alias: 'e', type: 'string' },
+      examplePath: { type: 'string' },
+    },
+  },
+);
 
 async function run(): Promise<void> {
+  let projectPath = cli.input[0];
+
   if (typeof projectPath === 'string') {
     projectPath = projectPath.trim();
   }
@@ -66,7 +54,7 @@ async function run(): Promise<void> {
       type: 'text',
       name: 'path',
       message: 'What is your project named?',
-      initial: 'my-app',
+      initial: 'awesome-project',
       validate: (name) => {
         const validation = validateNpmName(path.basename(path.resolve(name)));
 
@@ -74,7 +62,7 @@ async function run(): Promise<void> {
           return true;
         }
 
-        return `Invalid project name: ${validation.problems![0]}`;
+        return `Invalid project name: ${validation.problems?.[0]}`;
       },
     });
 
@@ -86,12 +74,12 @@ async function run(): Promise<void> {
   if (!projectPath) {
     console.log();
     console.log('Please specify the project directory:');
-    console.log(`  ${chalk.cyan(program.name())} ${chalk.green('<project-directory>')}`);
+    console.log(`  ${chalk.cyan(cli.pkg.name)} ${chalk.green('<project-directory>')}`);
     console.log();
     console.log('For example:');
-    console.log(`  ${chalk.cyan(program.name())} ${chalk.green('my-next-app')}`);
+    console.log(`  ${chalk.cyan(cli.pkg.name)} ${chalk.green('my-awesome-package')}`);
     console.log();
-    console.log(`Run ${chalk.cyan(`${program.name()} --help`)} to see all options.`);
+    console.log(`Run ${chalk.cyan(`${cli.pkg.name} --help`)} to see all options.`);
     process.exit(1);
   }
 
@@ -107,34 +95,32 @@ async function run(): Promise<void> {
       )} because of npm naming restrictions:`,
     );
 
-    for (const p of problems!) {
-      console.error(`    ${chalk.red.bold('*')} ${p}`);
+    for (const problem of problems ?? []) {
+      console.error(`    ${chalk.red.bold('*')} ${problem}`);
     }
 
     process.exit(1);
   }
 
-  if (program.example === true) {
+  if (typeof cli.flags.example !== 'string') {
     console.error('Please provide an example name or url, otherwise remove the example option.');
     process.exit(1);
-    return;
   }
 
-  const example = typeof program.example === 'string' && program.example.trim();
+  const example = cli.flags.example;
+
   try {
-    await createApp({
+    await createMonotsProject({
       appPath: resolvedProjectPath,
-      useNpm: !!program.useNpm,
       example: example && example !== 'default' ? example : undefined,
-      examplePath: program.examplePath,
-      typescript: program.typescript,
+      examplePath: cli.flags.examplePath,
     });
   } catch (error) {
     if (!(error instanceof DownloadError)) {
       throw error;
     }
 
-    const res = await prompts({
+    const response = await prompts({
       type: 'confirm',
       name: 'builtin',
       message:
@@ -143,21 +129,19 @@ async function run(): Promise<void> {
       initial: true,
     });
 
-    if (!res.builtin) {
+    if (!response.builtin) {
       throw error;
     }
 
-    await createApp({
+    await createMonotsProject({
       appPath: resolvedProjectPath,
-      useNpm: !!program.useNpm,
-      typescript: program.typescript,
     });
   }
 }
 
 run()
   .then(() =>
-    notifyUpdate({ name: packageJson.name, version: packageJson.version, internal: false }),
+    notifyUpdate({ name: cli.pkg.name ?? '', version: cli.pkg.version ?? '', internal: false }),
   )
   .catch(async (error) => {
     console.log();
@@ -172,7 +156,11 @@ run()
 
     console.log();
 
-    await notifyUpdate();
+    notifyUpdate({
+      name: cli.pkg.name ?? '',
+      version: cli.pkg.version ?? '',
+      internal: false,
+    });
 
     process.exit(1);
   });

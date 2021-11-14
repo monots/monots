@@ -1,0 +1,28 @@
+{
+  "name": "<%= name %>",
+  "version": "0.0.0",
+  "private": true,
+  "description": "<%= description %>",
+  "keywords": [],
+  "license": "MIT",
+  "contributors": [],
+  "sideEffects": false,
+  "type": "module",
+  "module": "",
+  "browser": "",
+  "types": "",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@swc/helpers": "^0.2.13"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "monots": {
+    "entrypoints": [
+      "index.ts"
+    ]
+  }
+}

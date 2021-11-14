@@ -1,0 +1,82 @@
+{
+  "name": "<%= name %>-monorepo",
+  "private": true,
+  "description": "Manage your next TypeScript project with style.",
+  "license": "MIT",
+  "contributors": [],
+  "type": "module",
+  "scripts": {
+    "build": "run-p build:packages typecheck",
+    "build:packages": "pnpm monots build",
+    "changeset": "changeset",
+    "check:pnpm": "node .monots/check-pnpm.js",
+    "checks": "run-s lint typecheck test",
+    "clean": "git clean -fdX --exclude='.config.json'",
+    "fix": "run-s -c fix:repo fix:build fix:es fix:prettier",
+    "fix:build": "pnpm monots fix",
+    "fix:es": "pnpm lint:es -- --fix",
+    "fix:prettier": "pnpm run:prettier -- --write",
+    "fix:repo": "manypkg fix",
+    "preinstall": "pnpm symlink:root && pnpm check:pnpm",
+    "postinstall": "node .monots/enable-cli.js pnpm monots prepare",
+    "lint": "run-s lint:\\*",
+    "lint:build": "pnpm monots check",
+    "lint:es": "eslint --ext=.tsx,.ts,.js .",
+    "lint:md": "eslint --ignore-pattern='*.js' --ignore-pattern='*.ts' --ignore-pattern='*.tsx' .",
+    "lint:prettier": "pnpm run:prettier -- --check",
+    "lint:repo": "manypkg check",
+    "monots": "monots",
+    "prepare": "husky install .monots/.husky",
+    "prerelease": "pnpm build",
+    "release": "changeset publish",
+    "reset": "pnpm clean; rm pnpm-lock.yaml; pnpm symlink:root; pnpm i -r;",
+    "run:prettier": "prettier --ignore-path .eslintignore \"**/*.{js,jsx,ts,tsx,md,mdx,json,html,css,yml,yaml,graphql}\"",
+    "symlink:root": "node .monots/symlink-root.js",
+    "ts": "node --experimental-specifier-resolution=node --loader ts-node/esm",
+    "typecheck": "tsc -b",
+    "update:deps": "pnpm update --latest --recursive -i",
+    "update:workspace": "pnpm up -r --workspace \"packages/*\"",
+    "version:changeset": "changeset version",
+    "version:ci": "run-s version:changeset version:date fix:repo update:workspace fix:prettier version:lockfile",
+    "version:date": "node .monots/changelog-dates.js",
+    "version:lockfile": "pnpm install --lockfile-only"
+  },
+  "dependencies": {
+    "@changesets/changelog-github": "^0.4.0",
+    "@changesets/cli": "^2.16.0",
+    "@manypkg/cli": "^0.19.0",
+    "@manypkg/get-packages": "^1.1.2",
+    "@monots/cli": "^0.7.0",
+    "@monots/tsconfig": "^0.1.0",
+    "@types/node": "^16.10.9",
+    "eslint": "^8.1.0",
+    "eslint-config-monots": "^0.4.1",
+    "husky": "^7.0.4",
+    "lint-staged": "^11.2.6",
+    "load-json-file": "^7.0.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.4.1",
+    "prettier-config-monots": "^0.1.0",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
+  },
+  "engines": {
+    "node": ">=16.9",
+    "pnpm": ">=6"
+  },
+  "monots": {
+    "packages": [
+      "packages/*"
+    ],
+    "tsconfig": {
+      "ts-node": {
+        "transpileOnly": true,
+        "compilerOptions": {
+          "esModuleInterop": true,
+          "target": "ESNext"
+        }
+      }
+    }
+  },
+  "packageManager": "pnpm@6.21.1"
+}

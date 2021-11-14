@@ -14,6 +14,20 @@ To create a new project with a specific name, you can send a name as an argument
 npx create-monots awesome
 ```
 
+Currently `create-monots` requires either a global installation of [`pnpm`](https://pnpm.io/installation) or [corepack](https://github.com/nodejs/corepack) to be installed and enabled.
+
+If you are using a version of node lower than `16.9` then you will need to install it manually.
+
+```bash
+npm i -g corepack
+```
+
+And then enable corepack.
+
+```bash
+corepack enable
+```
+
 ## Options
 
 `create-monots` comes with the following options:
