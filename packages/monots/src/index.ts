@@ -1,1 +1,1 @@
-export * from '@monots/core';
+export function noop() {}
