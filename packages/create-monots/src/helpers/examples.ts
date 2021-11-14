@@ -1,20 +1,20 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import got from 'got';
+import { Stream } from 'node:stream';
+import { promisify } from 'node:util';
 import tar from 'tar';
-import { Stream } from 'stream';
-import { promisify } from 'util';
 
 const pipeline = promisify(Stream.pipeline);
 
-export type RepoInfo = {
+export interface RepoInfo {
   username: string;
   name: string;
   branch: string;
   filePath: string;
-};
+}
 
 export async function isUrlOk(url: string): Promise<boolean> {
-  const res = await got.head(url).catch((e) => e);
+  const res = await got.head(url).catch((error) => error);
   return res.statusCode === 200;
 }
 
@@ -26,11 +26,13 @@ export async function getRepoInfo(url: URL, examplePath?: string): Promise<RepoI
   // https://github.com/:username/:my-cool-nextjs-example-repo-name.
   if (t === undefined) {
     const infoResponse = await got(`https://api.github.com/repos/${username}/${name}`).catch(
-      (e) => e,
+      (error) => error,
     );
+
     if (infoResponse.statusCode !== 200) {
       return;
     }
+
     const info = JSON.parse(infoResponse.body);
     return { username, name, branch: info['default_branch'], filePath };
   }
@@ -49,7 +51,7 @@ export function hasRepo({ username, name, branch, filePath }: RepoInfo): Promise
   const contentsUrl = `https://api.github.com/repos/${username}/${name}/contents`;
   const packagePath = `${filePath ? `/${filePath}` : ''}/package.json`;
 
-  return isUrlOk(contentsUrl + packagePath + `?ref=${branch}`);
+  return isUrlOk(`${contentsUrl + packagePath}?ref=${branch}`);
 }
 
 export function hasExample(name: string): Promise<boolean> {

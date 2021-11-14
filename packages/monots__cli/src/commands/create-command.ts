@@ -1,11 +1,17 @@
-import { copyTemplate, FatalError, folderExists, ProjectEntity } from '@monots/core';
+import {
+  copyTemplate,
+  FatalError,
+  folderExists,
+  getPackagePath,
+  mangleScopedPackageName,
+  ProjectEntity,
+} from '@monots/core';
 import type { CommandBoolean, CommandString, Usage } from '@monots/types';
 import chalk from 'chalk';
 import { Option } from 'clipanion';
 import path from 'node:path';
 import ora from 'ora';
 
-import { getPackagePath, mangleScopedPackageName } from '../helpers.js';
 import { BaseCommand } from './base-command.js';
 
 /**

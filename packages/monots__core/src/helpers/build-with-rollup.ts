@@ -2,7 +2,6 @@ import alias from '@rollup/plugin-alias';
 import json from '@rollup/plugin-json';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
-import is from '@sindresorhus/is';
 import { Options, transform } from '@swc/core';
 import chalk from 'chalk';
 import fs from 'node:fs/promises';
@@ -163,24 +162,24 @@ interface Config {
   outputs: OutputOptions[];
 }
 
-export function createConfigs(package_: PackageEntity): Config[] {
+export function createConfigs(pkg: PackageEntity): Config[] {
   const configs: Config[] = [];
 
-  const hasBrowserField = package_.fields.includes('browser');
-  const hasModuleField = package_.fields.includes('module');
-  const hasMainField = package_.fields.includes('main');
+  const hasBrowserField = pkg.fields.includes('browser');
+  const hasModuleField = pkg.fields.includes('module');
+  const hasMainField = pkg.fields.includes('main');
 
   if (hasMainField || hasModuleField) {
     const config: Config = {
-      config: createConfig({ pkg: package_, type: 'module' }),
+      config: createConfig({ pkg, type: 'module' }),
       outputs: [],
     };
 
     const mainOutput: OutputOptions = {
       format: 'cjs',
       entryFileNames: `[name]${FIELD_EXTENSIONS['main']}`,
-      chunkFileNames: `dist/[name]-[hash]${FIELD_EXTENSIONS['main']}`,
-      dir: package_.directory,
+      chunkFileNames: `${OUTPUT_FOLDER}/[name]-[hash]${FIELD_EXTENSIONS['main']}`,
+      dir: pkg.directory,
       exports: 'named',
       interop: 'auto',
     };
@@ -189,7 +188,7 @@ export function createConfigs(package_: PackageEntity): Config[] {
       format: 'es',
       entryFileNames: `[name]${FIELD_EXTENSIONS['module']}`,
       chunkFileNames: `${OUTPUT_FOLDER}/[name]-[hash]${FIELD_EXTENSIONS['module']}`,
-      dir: package_.directory,
+      dir: pkg.directory,
     };
 
     if (hasMainField) {
@@ -208,11 +207,11 @@ export function createConfigs(package_: PackageEntity): Config[] {
       format: 'es',
       entryFileNames: `[name]${FIELD_EXTENSIONS['browser']}`,
       chunkFileNames: `${OUTPUT_FOLDER}/[name]-[hash]${FIELD_EXTENSIONS['browser']}`,
-      dir: package_.directory,
+      dir: pkg.directory,
     };
 
     configs.push({
-      config: createConfig({ pkg: package_, type: 'browser' }),
+      config: createConfig({ pkg, type: 'browser' }),
       outputs: [browserOutput],
     });
   }
@@ -262,8 +261,8 @@ async function writeOutputFile(
   await Promise.all([fs.writeFile(fileName, source), writeSourceMapPromise]);
 }
 
-async function buildPackage(package_: PackageEntity) {
-  const configs = createConfigs(package_);
+async function buildPackage(pkg: PackageEntity) {
+  const configs = createConfigs(pkg);
   const promises: Array<Promise<void>> = [];
 
   for (const { config, outputs } of configs) {
@@ -294,13 +293,16 @@ async function buildPackage(package_: PackageEntity) {
   await Promise.all(promises);
 }
 
-export async function buildPackageWithRollup(package_: PackageEntity): Promise<void> {
+/**
+ * Build a package using rollup.
+ */
+export async function buildPackageWithRollup(pkg: PackageEntity): Promise<void> {
   try {
-    await buildPackage(package_);
+    await buildPackage(pkg);
   } catch (error) {
     if (error instanceof Promise) {
       await error;
-      await buildPackageWithRollup(package_);
+      await buildPackageWithRollup(pkg);
       return;
     }
 
@@ -312,10 +314,6 @@ export async function buildPackageWithRollup(package_: PackageEntity): Promise<v
       throw error;
     }
 
-    if (is.plainObject(error) && is.error(error) && error.pluginCode === 'BABEL_PARSE_ERROR') {
-      throw new ScopelessError(error.message);
-    }
-
-    throw new UnexpectedBuildError(error as Error, package_.name);
+    throw new UnexpectedBuildError(error as Error, pkg.name);
   }
 }

@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 
+import { getPackageJson, notifyUpdate } from '@monots/core';
 import chalk from 'chalk';
 import Commander from 'commander';
 import path from 'node:path';
 import prompts from 'prompts';
-import checkForUpdate from 'update-check';
 
 import { createApp, DownloadError } from './create-monots';
-import { shouldUseYarn } from './helpers/should-use-yarn';
 import { validateNpmName } from './helpers/validate-pkg';
-import packageJson from './package.json';
 
 let projectPath = '';
+
+const packageJson = getPackageJson();
 
 const program = new Commander.Command(packageJson.name)
   .version(packageJson.version)
@@ -155,33 +155,10 @@ async function run(): Promise<void> {
   }
 }
 
-const update = checkForUpdate(packageJson).catch(() => null);
-
-async function notifyUpdate(): Promise<void> {
-  try {
-    const res = await update;
-
-    if (res?.latest) {
-      const isYarn = shouldUseYarn();
-
-      console.log();
-      console.log(chalk.yellow.bold('A new version of `create-next-app` is available!'));
-      console.log(
-        `You can update by running: ${chalk.cyan(
-          isYarn ? 'yarn global add create-next-app' : 'npm i -g create-next-app',
-        )}`,
-      );
-      console.log();
-    }
-
-    process.exit();
-  } catch {
-    // ignore error
-  }
-}
-
 run()
-  .then(notifyUpdate)
+  .then(() =>
+    notifyUpdate({ name: packageJson.name, version: packageJson.version, internal: false }),
+  )
   .catch(async (error) => {
     console.log();
     console.log('Aborting installation.');

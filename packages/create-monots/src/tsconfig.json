@@ -8,11 +8,7 @@
   "extends": "@monots/tsconfig/tsconfig.json",
   "compilerOptions": {
     "types": [],
-    "noEmit": false,
-    "outDir": "../dist",
-    "declaration": true,
-    "composite": true,
-    "emitDeclarationOnly": true
+    "noEmit": true
   },
   "references": []
 }

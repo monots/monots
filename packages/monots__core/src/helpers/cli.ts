@@ -1,17 +1,22 @@
+import type { CommandContext } from '@monots/types';
 import path from 'node:path';
 import url from 'node:url';
 import { readPackageUpSync } from 'read-pkg-up';
 import updateNotifier from 'update-notifier';
 
-import type { CommandContext } from './types.js';
-
 const SEPARATOR = '__';
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+
+interface NotifyUpdate {
+  name: string;
+  version: string;
+  internal?: boolean;
+}
 
 /**
  * Notify the user of available updates to the CLI.
  */
-export function notifyUpdate(context: CommandContext) {
+export function notifyUpdate(context: NotifyUpdate) {
   const { name, internal, version } = context;
 
   if (internal) {

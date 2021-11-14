@@ -96,10 +96,17 @@ export class PackageEntity extends BaseEntity<Package> {
   }
 
   /**
+   * True when this is a command line interface package (CLI).
+   */
+  get isCli(): boolean {
+    return this.monots.mode === 'cli';
+  }
+
+  /**
    * The dist directory which is used for all entrypoint files.
    */
-  get dist(): string {
-    return path.join(this.directory, 'dist');
+  get output(): string {
+    return path.join(this.directory, OUTPUT_FOLDER);
   }
 
   get name(): string {
@@ -173,7 +180,7 @@ export class PackageEntity extends BaseEntity<Package> {
 
   async createEntrypoints(): Promise<void> {
     // Only create entrypoint for library packages.
-    if (!this.isLibrary) {
+    if (!(this.isLibrary || this.isCli)) {
       return;
     }
 
@@ -195,7 +202,7 @@ export class PackageEntity extends BaseEntity<Package> {
    * Prepare the package for usages in development.
    */
   async prepare(): Promise<void> {
-    if (!this.isLibrary) {
+    if (!(this.isLibrary || this.isCli)) {
       return;
     }
 
@@ -360,8 +367,8 @@ export class PackageEntity extends BaseEntity<Package> {
    * Ensure that the dist file is created.
    */
   async #ensureDist() {
-    await del(this.dist);
-    await fs.mkdir(this.dist, { recursive: true });
+    await del(this.output);
+    await fs.mkdir(this.output, { recursive: true });
   }
 
   /**
@@ -472,6 +479,7 @@ export class PackageEntity extends BaseEntity<Package> {
    * Create the JSON for the exports field.
    */
   #generateExportsField() {
+    let extraExports = this.monots.extraExports;
     const exportsObject: Record<string, string | Record<string, any>> = {
       './package.json': './package.json',
     };
@@ -480,17 +488,23 @@ export class PackageEntity extends BaseEntity<Package> {
       exportsObject['./types/*'] = `./${OUTPUT_FOLDER}/*.d.ts`;
     }
 
-    for (const entrypoint of this.entrypoints) {
-      const name = entrypoint.isRoot
-        ? '.'
-        : prefixRelativePath(path.relative(this.name, entrypoint.name));
-      const nameWithExtension = entrypoint.isRoot ? './index.js' : `${name}.js`;
-      const value = { ...entrypoint.fields.exports };
-      exportsObject[name] = value;
-      exportsObject[nameWithExtension] = value;
+    if (this.isLibrary) {
+      // Only add entrypoints for libraries.
+      for (const entrypoint of this.entrypoints) {
+        const name = entrypoint.isRoot
+          ? '.'
+          : prefixRelativePath(path.relative(this.name, entrypoint.name));
+        const nameWithExtension = entrypoint.isRoot ? './index.js' : `${name}.js`;
+        const value = { ...entrypoint.fields.exports };
+        exportsObject[name] = value;
+        exportsObject[nameWithExtension] = value;
+      }
+    } else {
+      // Preserve the extra exports for non-libraries.
+      extraExports = { ...this.json.exports, ...extraExports };
     }
 
-    return sortKeys({ ...exportsObject, ...this.monots.extraExports }, { deep: true });
+    return sortKeys({ ...exportsObject, ...extraExports }, { deep: true });
   }
 
   #getRequiredFiles() {

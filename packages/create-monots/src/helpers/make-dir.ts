@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
 export function makeDir(root: string, options = { recursive: true }): Promise<void> {
   return fs.promises.mkdir(root, options);

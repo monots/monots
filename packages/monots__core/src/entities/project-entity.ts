@@ -14,6 +14,7 @@ import type { JsonObject } from 'type-fest';
 import { writeJsonFile } from 'write-json-file';
 
 import { DEFAULT_BROWSERSLIST, NAME, TYPESCRIPT_VERSION } from '../constants.js';
+import { bundleWithEsbuild } from '../helpers/bundle-with-esbuild.js';
 import {
   BatchError,
   buildPackageWithRollup,
@@ -178,8 +179,19 @@ export class ProjectEntity extends BaseEntity<Project> {
   async build(): Promise<void> {
     const errors: FatalError[] = [];
     const promises: Array<Promise<void>> = [];
+    const cliBuilds: Array<() => Promise<void>> = [];
 
     for (const pkg of this.packages) {
+      if (pkg.isCli) {
+        const cliBuild = () =>
+          bundleWithEsbuild(pkg).catch((error) => {
+            errors.push(error);
+          });
+
+        cliBuilds.push(cliBuild);
+        continue;
+      }
+
       if (!pkg.isLibrary) {
         continue;
       }
@@ -196,6 +208,7 @@ export class ProjectEntity extends BaseEntity<Project> {
     }
 
     await Promise.all(promises);
+    await Promise.all(cliBuilds.map((cliBuild) => cliBuild()));
 
     if (errors.length > 0) {
       throw new BatchError(
@@ -220,7 +233,7 @@ export class ProjectEntity extends BaseEntity<Project> {
     const promises: Array<Promise<unknown>> = [];
 
     for (const pkg of this.packages) {
-      promises.push(del(`${path.join(pkg.dist, pattern)}`));
+      promises.push(del(`${path.join(pkg.output, pattern)}`));
     }
 
     await Promise.all(promises);

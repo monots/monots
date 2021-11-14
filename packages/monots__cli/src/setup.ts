@@ -1,4 +1,4 @@
-import { NAME } from '@monots/core';
+import { NAME, getPackageJson } from '@monots/core';
 import type { CommandContext } from '@monots/types';
 import { Builtins, Cli } from 'clipanion';
 
@@ -10,7 +10,6 @@ import {
   InitCommand,
   PrepareCommand,
 } from './commands/index.js';
-import { getPackageJson } from './helpers.js';
 
 const { version, description = '', name } = getPackageJson();
 

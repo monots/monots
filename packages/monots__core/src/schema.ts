@@ -77,7 +77,7 @@ export const PackageMonots = s.type({
    *
    * @default `library`
    */
-  mode: s.defaulted(s.optional(s.enums(['library', 'app'] as const)), 'library'),
+  mode: s.defaulted(s.optional(s.enums(['library', 'app', 'cli'] as const)), 'library'),
 
   /**
    * A list of external modules which should not be bundled.
@@ -190,19 +190,6 @@ export const ProjectMonots = s.type({
     '': false,
     src: {
       compilerOptions: { types: [], noEmit: true, outDir: path.join('..', OUTPUT_FOLDER) },
-    },
-    __tests__: {
-      compilerOptions: { declaration: false, noEmit: true },
-      include: ['./'],
-    },
-    __types__: {
-      compilerOptions: {
-        declaration: false,
-        noEmit: true,
-        noUnusedParameters: false,
-        noUnusedLocals: false,
-      },
-      include: ['./'],
     },
   }),
 

@@ -6,6 +6,7 @@ export function validateNpmName(name: string): {
   problems?: string[];
 } {
   const nameValidation = validateProjectName(name);
+
   if (nameValidation.validForNewPackages) {
     return { valid: true };
   }

@@ -6,9 +6,9 @@ import type { EntrypointField } from '../schema.js';
 
 interface GenerateFieldProps {
   /**
-   * The absolute path to the dist folder.
+   * The absolute path to the output folder.
    */
-  dist: string;
+  output: string;
 
   /**
    * The absolute path to the current directory
@@ -30,10 +30,10 @@ interface GenerateFieldProps {
  * Generate the field value for the provided field.
  */
 export function generateField(props: GenerateFieldProps): string {
-  const { directory, dist, name, type } = props;
+  const { directory, output, name, type } = props;
 
   return prefixRelativePath(
-    normalizePath(path.join(path.relative(directory, dist), `${name}${FIELD_EXTENSIONS[type]}`)),
+    normalizePath(path.join(path.relative(directory, output), `${name}${FIELD_EXTENSIONS[type]}`)),
   );
 }
 

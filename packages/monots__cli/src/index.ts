@@ -1,4 +1,6 @@
-import { notifyUpdate } from './helpers.js';
+#!/usr/bin/env node
+
+import { notifyUpdate } from '@monots/core';
 import { cli, context } from './setup.js';
 
 cli.runExit(process.argv.slice(2), context).then(() => {

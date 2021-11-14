@@ -1,13 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { execSync } from 'child_process';
-import path from 'path';
+import { execSync } from 'node:child_process';
+import path from 'node:path';
 import rimraf from 'rimraf';
 
 function isInGitRepository(): boolean {
   try {
     execSync('git rev-parse --is-inside-work-tree', { stdio: 'ignore' });
     return true;
-  } catch (_) {}
+  } catch {}
   return false;
 }
 
@@ -15,7 +15,7 @@ function isInMercurialRepository(): boolean {
   try {
     execSync('hg --cwd . root', { stdio: 'ignore' });
     return true;
-  } catch (_) {}
+  } catch {}
   return false;
 }
 
@@ -23,6 +23,7 @@ export function tryGitInit(root: string): boolean {
   let didInit = false;
   try {
     execSync('git --version', { stdio: 'ignore' });
+
     if (isInGitRepository() || isInMercurialRepository()) {
       return false;
     }
@@ -37,12 +38,13 @@ export function tryGitInit(root: string): boolean {
       stdio: 'ignore',
     });
     return true;
-  } catch (e) {
+  } catch {
     if (didInit) {
       try {
         rimraf.sync(path.join(root, '.git'));
-      } catch (_) {}
+      } catch {}
     }
+
     return false;
   }
 }

@@ -40,9 +40,9 @@ export function install(
    */
   return new Promise((resolve, reject) => {
     let args: string[];
-    let command: string = useYarn ? 'yarnpkg' : 'npm';
+    const command: string = useYarn ? 'yarnpkg' : 'npm';
 
-    if (dependencies && dependencies.length) {
+    if (dependencies && dependencies.length > 0) {
       /**
        * If there are dependencies, run a variation of `{displayCommand} add`.
        */
@@ -51,17 +51,24 @@ export function install(
          * Call `yarn add --exact (--offline)? (-D)? ...`.
          */
         args = ['add', '--exact'];
-        if (!isOnline) args.push('--offline');
+
+        if (!isOnline) {
+          args.push('--offline');
+        }
+
         args.push('--cwd', root);
-        if (devDependencies) args.push('--dev');
+
+        if (devDependencies) {
+          args.push('--dev');
+        }
+
         args.push(...dependencies);
       } else {
         /**
          * Call `npm install [--save|--save-dev] ...`.
          */
         args = ['install', '--save-exact'];
-        args.push(devDependencies ? '--save-dev' : '--save');
-        args.push(...dependencies);
+        args.push(devDependencies ? '--save-dev' : '--save', ...dependencies);
       }
     } else {
       /**
@@ -69,6 +76,7 @@ export function install(
        * install`.
        */
       args = ['install'];
+
       if (useYarn) {
         if (!isOnline) {
           console.log(chalk.yellow('You appear to be offline.'));
@@ -83,6 +91,7 @@ export function install(
         }
       }
     }
+
     /**
      * Add any package manager-specific flags.
      */
@@ -91,6 +100,7 @@ export function install(
     } else {
       args.push(...npmFlags);
     }
+
     /**
      * Spawn the installation process.
      */
@@ -103,6 +113,7 @@ export function install(
         reject({ command: `${command} ${args.join(' ')}` });
         return;
       }
+
       resolve();
     });
   });

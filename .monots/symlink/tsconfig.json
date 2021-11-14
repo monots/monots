@@ -17,9 +17,6 @@
       "path": "packages/eslint-config-monots/src"
     },
     {
-      "path": "packages/monots__cli/__tests__"
-    },
-    {
       "path": "packages/monots__cli/src"
     },
     {

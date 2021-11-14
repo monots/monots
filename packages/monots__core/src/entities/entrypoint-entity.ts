@@ -102,7 +102,7 @@ export class EntrypointEntity extends BaseEntity<Entrypoint> {
       this.fields.package[field] = generateField({
         name,
         type: field,
-        dist: this.package.dist,
+        output: this.package.output,
         directory: this.directory,
       });
     }
@@ -111,7 +111,7 @@ export class EntrypointEntity extends BaseEntity<Entrypoint> {
       this.fields.exports[field] = generateField({
         name,
         type: exportFieldToPackageField[field],
-        dist: this.package.dist,
+        output: this.package.output,
         // The directory is relative to the package for the exports object.
         directory: this.package.directory,
       });
@@ -184,6 +184,52 @@ export class EntrypointEntity extends BaseEntity<Entrypoint> {
   async generateDevFiles(): Promise<void> {
     const promises: Array<Promise<void>> = [];
 
+    const generateTypesDevFile = (target: string, relativePath: string) => {
+      const promise = this.hasDefaultExport().then(async (hasDefaultExport) => {
+        await fs.mkdir(path.dirname(target), { recursive: true });
+        await fs.writeFile(
+          target,
+          createTypeScriptContent(hasDefaultExport, relativePath.replace(/.tsx?$/, '')),
+        );
+      });
+
+      promises.push(promise);
+    };
+
+    const generateEsModuleDevFile = (target: string) => {
+      const promise = fs
+        .mkdir(path.dirname(target), { recursive: true })
+        .then(() => fs.symlink(this.source, target));
+
+      promises.push(promise);
+    };
+
+    const generateCommonJsDevFile = (target: string, relativePath: string) => {
+      const config: InputOptions = {
+        rootMode: 'upward-optional',
+        module: { type: 'commonjs' },
+        jsc: { target: 'es2015' },
+      };
+
+      const promise = fs
+        .mkdir(path.dirname(target), { recursive: true })
+        .then(() =>
+          fs.writeFile(
+            target,
+            `// Allow the project to be used for commonjs environments \nconst register = require('${path.relative(
+              path.dirname(target),
+              _require.resolve('@swc/register'),
+            )}');\n\nregister(${JSON.stringify(
+              config,
+              undefined,
+              2,
+            )})\nmodule.exports = require('${relativePath}');\nregister.revert();`,
+          ),
+        );
+
+      promises.push(promise);
+    };
+
     for (const [field, fieldPath] of entries(this.fields.package)) {
       if (!fieldPath) {
         continue;
@@ -195,52 +241,29 @@ export class EntrypointEntity extends BaseEntity<Entrypoint> {
       if (field === 'types') {
         // Create the TypeScript types when applicable.
 
-        promises.push(
-          this.hasDefaultExport().then((hasDefaultExport) =>
-            fs
-              .mkdir(path.dirname(target), { recursive: true })
-              .then(() =>
-                fs.writeFile(
-                  target,
-                  createTypeScriptContent(hasDefaultExport, relativePath.replace(/.tsx?$/, '')),
-                ),
-              ),
-          ),
-        );
+        generateTypesDevFile(target, relativePath);
       }
 
       if (['module', 'browser'].includes(field)) {
-        promises.push(
-          fs
-            .mkdir(path.dirname(target), { recursive: true })
-            .then(() => fs.symlink(this.source, target)),
-        );
+        generateEsModuleDevFile(target);
       }
 
       if (field === 'main') {
-        const config: InputOptions = {
-          rootMode: 'upward-optional',
-          module: { type: 'commonjs' },
-          jsc: { target: 'es2015' },
-        };
+        generateCommonJsDevFile(target, relativePath);
+      }
+    }
 
-        promises.push(
-          fs
-            .mkdir(path.dirname(target), { recursive: true })
-            .then(() =>
-              fs.writeFile(
-                target,
-                `// Allow the project to be used for commonjs environments \nconst register = require('${path.relative(
-                  path.dirname(target),
-                  _require.resolve('@swc/register'),
-                )}');\n\nregister(${JSON.stringify(
-                  config,
-                  undefined,
-                  2,
-                )})\nmodule.exports = require('${relativePath}');\nregister.revert();`,
-              ),
-            ),
-        );
+    // Packages with `mode` "cli" don't have a `main`, `browser`, `module` or
+    // `types` field. They are placed within the `dist/index.js` file.
+    if (this.package.isCli) {
+      console.log({ NAME: this.name });
+      const target = path.join(this.package.output, 'index.js');
+      const relativePath = path.relative(path.dirname(target), this.source);
+
+      if (this.package.json.type === 'commonjs') {
+        generateCommonJsDevFile(target, relativePath);
+      } else {
+        generateEsModuleDevFile(target);
       }
     }
 
