@@ -1,12 +1,9 @@
-import { FatalError, folderExists, ProjectEntity } from '@monots/core';
+import { copyTemplate, FatalError, folderExists, ProjectEntity } from '@monots/core';
 import type { CommandBoolean, CommandString, Usage } from '@monots/types';
 import chalk from 'chalk';
 import { Option } from 'clipanion';
-import { template } from 'lodash-es';
 import path from 'node:path';
-import { Transform } from 'node:stream';
 import ora from 'ora';
-import copy from 'recursive-copy';
 
 import { getPackagePath, mangleScopedPackageName } from '../helpers.js';
 import { BaseCommand } from './base-command.js';
@@ -97,38 +94,4 @@ export class CreateCommand extends BaseCommand {
       return 1;
     }
   }
-}
-
-interface TemplateVariables {
-  description?: string;
-  name: string;
-}
-
-interface CopyTemplateProps {
-  input: string;
-  output: string;
-  variables: TemplateVariables;
-}
-
-async function copyTemplate(props: CopyTemplateProps) {
-  const { input, output, variables } = props;
-
-  await copy(input, output, {
-    rename: (filename) => template(filename)(variables).replace(/.template$/, ''),
-    transform: (filename) => {
-      if (path.extname(filename) !== '.template') {
-        // eslint-disable-next-line unicorn/no-null
-        return null as any;
-      }
-
-      return new Transform({
-        transform: (chunk, _encoding, done) => {
-          const output = template(chunk.toString())(variables);
-          done(undefined, output);
-          // render(chunk.toString(), variables, {}, (error, ouput) => {
-          // });
-        },
-      });
-    },
-  });
 }
