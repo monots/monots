@@ -1,5 +1,15 @@
 # @monots/core
 
+## 0.11.0
+
+> 2021-11-15
+
+### Minor Changes
+
+- [#30](https://github.com/monots/monots/pull/30) [`c23a07e`](https://github.com/monots/monots/commit/c23a07ed658b3769f2f3c8174f1993bc0c4c8d3a) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Make sure to minify the build output for packages with `"mode": "cli"`. This will speed up `create-monots` and `@monots/cli`.
+
+* [#30](https://github.com/monots/monots/pull/30) [`c23a07e`](https://github.com/monots/monots/commit/c23a07ed658b3769f2f3c8174f1993bc0c4c8d3a) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Copy over `.` (dot) files when working with templates.
+
 ## 0.10.0
 
 > 2021-11-15

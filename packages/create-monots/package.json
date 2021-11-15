@@ -1,6 +1,6 @@
 {
   "name": "create-monots",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Create a project with monots.",
   "keywords": [],
   "repository": "https://github.com/monots/monots/tree/master/packages/create-monots",
@@ -24,7 +24,7 @@
     "esbuild": "^0.13.13"
   },
   "devDependencies": {
-    "@monots/core": "^0.10.0",
+    "@monots/core": "^0.11.0",
     "@types/async-retry": "^1.4.3",
     "@types/cross-spawn": "^6.0.2",
     "@types/node": "^16.11.7",
