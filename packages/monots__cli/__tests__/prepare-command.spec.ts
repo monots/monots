@@ -1,12 +1,20 @@
-import test from 'ava';
+import { afterAll, expect, test } from '@jest/globals';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import { cli } from '../src/setup';
 import { setupFixtures } from './helpers';
 
-test('`monots prepare` should create development dist files', async (t) => {
+const cleanupItems: Array<() => Promise<string[]>> = [];
+
+afterAll(async () => {
+  await Promise.all(cleanupItems.map((cleanup) => cleanup()));
+});
+
+test('`monots prepare` should create development dist files', async () => {
   const { cleanup, context, getPath } = await setupFixtures('pnpm-with-packages');
+  cleanupItems.push(cleanup);
+
   const result = await cli.run(['prepare'], context);
   const options = { encoding: 'utf-8' } as const;
 
@@ -28,11 +36,9 @@ test('`monots prepare` should create development dist files', async (t) => {
     ].map((file) => fs.readlink(file)),
   );
 
-  t.is(result, 0, 'The result is successful');
-  t.snapshot(main);
-  t.snapshot(types);
-  t.snapshot(typesWithDefault);
-  t.snapshot(symlinkTargets.map((file) => path.relative(getPath(), file)));
-
-  await cleanup();
+  expect(result).toBe(0);
+  expect(main).toMatchSnapshot();
+  expect(types).toMatchSnapshot();
+  expect(typesWithDefault).toMatchSnapshot();
+  expect(symlinkTargets.map((file) => path.relative(getPath(), file))).toMatchSnapshot();
 });

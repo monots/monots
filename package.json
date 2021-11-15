@@ -43,8 +43,9 @@
     "reset": "pnpm clean; rm pnpm-lock.yaml; pnpm symlink:root; pnpm i -r;",
     "run:prettier": "prettier --ignore-path .eslintignore \"**/*.{js,jsx,ts,tsx,md,mdx,json,html,css,yml,yaml,graphql}\"",
     "symlink:root": "node .monots/symlink-root.js",
-    "test": "ava",
-    "test:watch": "ava --watch",
+    "test": "pnpm test:esm -- --verbose",
+    "test:esm": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js",
+    "test:watch": "pnpm test:esm -- --watch --coverage=false",
     "ts": "node --experimental-specifier-resolution=node --loader ts-node/esm",
     "typecheck": "tsc -b",
     "update:deps": "pnpm update --latest --recursive -i",
@@ -54,38 +55,28 @@
     "version:date": "node .monots/changelog-dates.js",
     "version:lockfile": "pnpm install --lockfile-only"
   },
-  "ava": {
-    "extensions": {
-      "ts": "module"
-    },
-    "files": [
-      "**/__tests__/*.spec.ts",
-      "**/__tests__/*.spec.tsx"
-    ],
-    "nodeArguments": [
-      "--loader=ts-node/esm",
-      "--experimental-specifier-resolution=node"
-    ],
-    "nonSemVerExperiments": {
-      "configurableModuleFormat": true
-    }
-  },
   "dependencies": {
-    "@changesets/changelog-github": "^0.4.0",
+    "@changesets/changelog-github": "^0.4.1",
     "@changesets/cli": "^2.18.0",
+    "@jest/globals": "^27.3.1",
     "@manypkg/cli": "^0.19.1",
     "@manypkg/get-packages": "^1.1.3",
     "@monots/tsconfig": "^0.1.0",
+    "@swc/jest": "^0.2.5",
     "@types/node": "^16.11.7",
-    "ava": "^3.15.0",
     "browserslist": "^4.18.0",
     "eslint": "^8.2.0",
     "eslint-config-monots": "^0.4.2",
     "eslint-formatter-codeframe": "^7.32.1",
     "eslint-plugin-file-progress": "^1.2.0",
+    "eslint-plugin-jest": "^25.2.4",
     "husky": "^7.0.4",
+    "jest": "^27.3.1",
+    "jest-circus": "^27.3.1",
+    "jest-extended": "^1.1.0",
+    "jest-watch-typeahead": "^1.0.0",
     "lint-staged": "^12.0.2",
-    "load-json-file": "^7.0.0",
+    "load-json-file": "^7.0.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.4.1",
     "prettier-config-monots": "^0.1.1",

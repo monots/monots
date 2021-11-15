@@ -1,41 +1,45 @@
-import test from 'ava';
+import { afterAll, expect, test } from '@jest/globals';
 import { loadJsonFile } from 'load-json-file';
 
 import { cli } from '../src/setup';
 import { setupFixtures } from './helpers';
 
-test('`monots init` should run without error in a pnpm project', async (t) => {
+const cleanupItems: Array<() => Promise<string[]>> = [];
+
+afterAll(async () => {
+  await Promise.all(cleanupItems.map((cleanup) => cleanup()));
+});
+
+test('`monots init` should run without error in a pnpm project', async () => {
   const { cleanup, context, getPath } = await setupFixtures('init-pnpm-with-package-json');
+  cleanupItems.push(cleanup);
+
   const result = await cli.run(['init'], context);
   const json = await loadJsonFile(getPath('package.json'));
 
-  t.is(result, 0, 'exit with 0 when running `monots init`');
-  t.snapshot(json);
-
-  await cleanup();
+  expect(result).toBe(0);
+  expect(json).toMatchSnapshot();
 });
 
-test('`monots init` errors when no package.json file available', async (t) => {
+test('`monots init` errors when no package.json file available', async () => {
   const { cleanup, context, getPath } = await setupFixtures('init-without-package-json');
+  cleanupItems.push(cleanup);
+
   const result = await cli.run(['init'], context);
 
-  t.is(result, 1, 'The result should be a failure');
-  await t.throwsAsync(
-    loadJsonFile(getPath('package.json')),
-    undefined,
+  expect(result).toBe(1);
+  await expect(loadJsonFile(getPath('package.json'))).rejects.toThrow(
     'No package.json file created',
   );
-
-  await cleanup();
 });
 
-test('`monots init` fails outside a workspace', async (t) => {
+test('`monots init` fails outside a workspace', async () => {
   const { cleanup, context, getPath } = await setupFixtures('init-without-workspace');
+  cleanupItems.push(cleanup);
+
   const result = await cli.run(['init'], context);
   const json = await loadJsonFile(getPath('package.json'));
 
-  t.is(result, 1, 'The result should be a failure');
-  t.deepEqual(json, {}, 'The package.json file is untouched');
-
-  await cleanup();
+  expect(result).toBe(1);
+  expect(json).toEqual({});
 });
