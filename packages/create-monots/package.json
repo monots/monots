@@ -16,7 +16,8 @@
     "create-monots": "./dist/index.cjs"
   },
   "files": [
-    "dist"
+    "dist",
+    "templates"
   ],
   "dependencies": {
     "@swc/core": "^1.2.108",
