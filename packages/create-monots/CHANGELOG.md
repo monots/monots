@@ -1,5 +1,13 @@
 # create-monots
 
+## 0.1.2
+
+> 2021-11-15
+
+### Patch Changes
+
+- [#28](https://github.com/monots/monots/pull/28) [`888ed97`](https://github.com/monots/monots/commit/888ed971bfd0c84a87a1bd32890e9dddb1ef9945) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Add the `templates` folder to the published `create-monots` package.
+
 ## 0.1.1
 
 > 2021-11-15
