@@ -1,0 +1,22 @@
+name: 'pnpm installation'
+description: 'Install and audit dependencies for pnpm'
+inputs:
+  cache: # id of input
+    description: 'The location of the pnpm cache'
+    required: true
+    default: $HOME/.pnpm-store'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: enable corepack
+      run: corepack enable
+      shell: bash
+
+    - name: setup pnpm config
+      run: pnpm config set store-dir ${{ inputs.cache }}
+      shell: bash
+
+    - name: install dependencies
+      run: pnpm install
+      shell: bash

@@ -102,11 +102,6 @@ async function run(): Promise<void> {
     process.exit(1);
   }
 
-  if (typeof cli.flags.example !== 'string') {
-    console.error('Please provide an example name or url, otherwise remove the example option.');
-    process.exit(1);
-  }
-
   const example = cli.flags.example;
 
   try {

@@ -8,16 +8,11 @@ import { isNativeError } from 'node:util/types';
  */
 export async function pnpmInstall(cwd: string): Promise<void> {
   try {
-    await execa('pnpm', ['install'], { cwd });
+    await execa('pnpm', ['install'], { cwd, stdio: 'inherit' });
   } catch (error) {
     if (isNativeError(error)) {
       console.error(`Failed to install packages: ${error.message}`);
     }
-
-    console.log();
-    console.log(
-      'Currently `create-monots` requires either a global installation of [pnpm](https://pnpm.io/installation) or [corepack](https://github.com/nodejs/corepack) to be installed and enabled.',
-    );
 
     process.exit(1);
   }

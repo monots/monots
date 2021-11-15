@@ -105,8 +105,9 @@ export async function createMonotsProject(props: CreateMonotsProjectProps): Prom
   const appName = path.basename(root);
 
   await makeDir(root);
+  const folderEmpty = await isFolderEmpty(root, appName);
 
-  if (!isFolderEmpty(root, appName)) {
+  if (!folderEmpty) {
     process.exit(1);
   }
 
@@ -117,6 +118,7 @@ export async function createMonotsProject(props: CreateMonotsProjectProps): Prom
   await makeDir(root);
   process.chdir(root);
   const downloadPath = await fs.mkdtemp(path.join(os.tmpdir(), 'create-monots-'));
+  const variables = { name: path.basename(appPath), description: 'Created with `create-monots`' };
 
   if (example) {
     /**
@@ -143,13 +145,11 @@ export async function createMonotsProject(props: CreateMonotsProjectProps): Prom
       throw new DownloadError(isErrorLike(error) ? error.message : `${error}`);
     }
 
-    await copyTemplate({ input: downloadPath, output: root, variables: { name: appPath } });
-
-    console.log('Installing packages. This might take a couple of minutes.');
-    console.log();
-
-    await pnpmInstall(root);
-    console.log();
+    await copyTemplate({
+      input: downloadPath,
+      output: root,
+      variables,
+    });
   } else {
     /**
      * Otherwise, if an example repository is not provided for cloning, proceed
@@ -157,17 +157,36 @@ export async function createMonotsProject(props: CreateMonotsProjectProps): Prom
      */
     console.log(chalk.bold(`Using ${displayedCommand} to install.`));
     const templatePath = path.join(__dirname, '../templates', 'default');
-    await copyTemplate({ input: templatePath, output: root, variables: { name: appPath } });
-    await pnpmInstall(root);
+    await copyTemplate({
+      input: templatePath,
+      output: root,
+      variables,
+    });
   }
 
-  if (tryGitInit(root)) {
+  if (await tryGitInit(root)) {
     console.log('Initialized a git repository.');
     console.log();
   }
 
+  console.log('Installing packages. This might take a couple of minutes.');
+  console.log();
+  await pnpmInstall(root);
+  console.log();
+
+  const relativePath = path.join(process.cwd(), appName) === appPath ? appName : appPath;
+
   console.log(`${chalk.green('Success!')} Created ${appName} at ${appPath}`);
   console.log('Inside that directory, you can run all the monots commands:');
+  console.log();
+  console.log('We suggest that you begin by typing:');
+  console.log();
+  console.log(chalk.cyan('  cd'), relativePath);
+  console.log(`  ${chalk.cyan(`${displayedCommand} install`)}`);
+  console.log();
+  console.log(
+    chalk`Currently {blue \`create-monots\`} requires either a global installation of {bold pnpm} {blue \`npm i -g pnpm\`} or {bold corepack} {blue \`corepack enable \`} to be installed and enabled.`,
+  );
   console.log();
 }
 

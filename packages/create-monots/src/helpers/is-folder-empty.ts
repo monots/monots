@@ -1,9 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
+import { folderExists } from '@monots/core';
 import chalk from 'chalk';
-import fs from 'node:fs';
+import fs from 'node:fs/promises';
 import path from 'node:path';
 
-export function isFolderEmpty(root: string, name: string): boolean {
+export async function isFolderEmpty(root: string, name: string): Promise<boolean> {
   const validFiles = new Set([
     '.DS_Store',
     '.git',
@@ -25,11 +26,15 @@ export function isFolderEmpty(root: string, name: string): boolean {
     'yarn-error.log',
   ]);
 
-  const conflicts = fs
-    .readdirSync(root)
-    .filter((file) => !validFiles.has(file))
-    // Support IntelliJ IDEA-based editors
-    .filter((file) => !/\.iml$/.test(file));
+  console.log({ root });
+  const directoryFiles = await fs.readdir(root);
+  const conflicts: string[] = [];
+
+  for (const file of directoryFiles) {
+    if (validFiles.has(file) || /\.iml$/.test(file)) {
+      conflicts.push(file);
+    }
+  }
 
   if (conflicts.length > 0) {
     console.log(`The directory ${chalk.green(name)} contains files that could conflict:`);
@@ -37,9 +42,9 @@ export function isFolderEmpty(root: string, name: string): boolean {
 
     for (const file of conflicts) {
       try {
-        const stats = fs.lstatSync(path.join(root, file));
+        const isFolder = await folderExists(path.join(root, file));
 
-        if (stats.isDirectory()) {
+        if (isFolder) {
           console.log(`  ${chalk.blue(file)}/`);
         } else {
           console.log(`  ${file}`);

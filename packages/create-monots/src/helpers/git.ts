@@ -1,11 +1,15 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { execSync } from 'node:child_process';
+import { exec as _e } from 'node:child_process';
 import path from 'node:path';
-import rimraf from 'rimraf';
+import { promisify } from 'node:util';
+import _r from 'rimraf';
 
-function isInGitRepository(): boolean {
+const exec = promisify(_e);
+const rimraf = promisify(_r);
+
+async function isInGitRepository(): Promise<boolean> {
   try {
-    execSync('git rev-parse --is-inside-work-tree', { stdio: 'ignore' });
+    await exec('git rev-parse --is-inside-work-tree');
     return true;
   } catch {
     // ignore the error
@@ -14,9 +18,9 @@ function isInGitRepository(): boolean {
   return false;
 }
 
-function isInMercurialRepository(): boolean {
+async function isInMercurialRepository(): Promise<boolean> {
   try {
-    execSync('hg --cwd . root', { stdio: 'ignore' });
+    await exec('hg --cwd . root');
     return true;
   } catch {
     // ignore the error
@@ -25,29 +29,27 @@ function isInMercurialRepository(): boolean {
   return false;
 }
 
-export function tryGitInit(root: string): boolean {
+export async function tryGitInit(root: string): Promise<boolean> {
   let didInit = false;
   try {
-    execSync('git --version', { stdio: 'ignore' });
+    await exec('git --version');
 
-    if (isInGitRepository() || isInMercurialRepository()) {
+    if ((await isInGitRepository()) || (await isInMercurialRepository())) {
       return false;
     }
 
-    execSync('git init', { stdio: 'ignore' });
+    await exec('git init');
     didInit = true;
 
-    execSync('git checkout -b main', { stdio: 'ignore' });
+    await exec('git checkout -b main');
 
-    execSync('git add -A', { stdio: 'ignore' });
-    execSync('git commit -m "Initial commit from Create Next App"', {
-      stdio: 'ignore',
-    });
+    await exec('git add -A');
+    await exec('git commit -m "Initial commit from Create Next App"');
     return true;
   } catch {
     if (didInit) {
       try {
-        rimraf.sync(path.join(root, '.git'));
+        await rimraf(path.join(root, '.git'));
       } catch {
         // ignore the error
       }

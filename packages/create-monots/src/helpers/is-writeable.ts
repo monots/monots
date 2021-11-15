@@ -1,8 +1,9 @@
-import fs from 'node:fs';
+import { constants } from 'node:fs';
+import fs from 'node:fs/promises';
 
 export async function isWriteable(directory: string): Promise<boolean> {
   try {
-    await fs.promises.access(directory, (fs.constants || fs).W_OK);
+    await fs.access(directory, (constants || fs).W_OK);
     return true;
   } catch {
     return false;

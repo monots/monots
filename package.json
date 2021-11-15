@@ -19,6 +19,7 @@
     "check:pnpm": "node .monots/check-pnpm.js",
     "checks": "run-s lint typecheck test",
     "clean": "git clean -fdX --exclude='.config.json'",
+    "create-monots": "pnpm ts packages/create-monots/src/index.ts",
     "fix": "run-s -c fix:repo fix:build fix:es fix:prettier",
     "fix:build": "pnpm monots fix",
     "fix:es": "pnpm lint:es -- --fix",
@@ -109,5 +110,5 @@
       }
     }
   },
-  "packageManager": "pnpm@6.21.1"
+  "packageManager": "pnpm@6.22.1"
 }

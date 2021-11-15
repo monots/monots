@@ -18,7 +18,7 @@
     "fix:prettier": "pnpm run:prettier -- --write",
     "fix:repo": "manypkg fix",
     "preinstall": "pnpm symlink:root && pnpm check:pnpm",
-    "postinstall": "node .monots/enable-cli.js pnpm monots prepare",
+    "postinstall": "pnpm monots prepare",
     "lint": "run-s lint:\\*",
     "lint:build": "pnpm monots check",
     "lint:es": "eslint --ext=.tsx,.ts,.js .",
@@ -26,7 +26,7 @@
     "lint:prettier": "pnpm run:prettier -- --check",
     "lint:repo": "manypkg check",
     "monots": "monots",
-    "prepare": "husky install .monots/.husky",
+    "prepare": "husky install .monots/.husky || true",
     "prerelease": "pnpm build",
     "release": "changeset publish",
     "reset": "pnpm clean; rm pnpm-lock.yaml; pnpm symlink:root; pnpm i -r;",
@@ -78,5 +78,5 @@
       }
     }
   },
-  "packageManager": "pnpm@6.21.1"
+  "packageManager": "pnpm@6.22.1"
 }
