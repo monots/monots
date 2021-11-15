@@ -1,5 +1,19 @@
 # @monots/cli
 
+## 0.9.0
+
+> 2021-11-15
+
+### Minor Changes
+
+- [#25](https://github.com/monots/monots/pull/25) [`1181e6e`](https://github.com/monots/monots/commit/1181e6e867c50b3b912ac6fe5131ea60361e3ea5) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Remove most dependencies from `@monots/cli` since this slows down installation (esbuild and swc still required).
+
+### Patch Changes
+
+- [#25](https://github.com/monots/monots/pull/25) [`1181e6e`](https://github.com/monots/monots/commit/1181e6e867c50b3b912ac6fe5131ea60361e3ea5) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Make template packages public by default in `@monots/cli` and `create-monots`.
+
+* [#25](https://github.com/monots/monots/pull/25) [`1181e6e`](https://github.com/monots/monots/commit/1181e6e867c50b3b912ac6fe5131ea60361e3ea5) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Fix broken release causing this error `Error: Dynamic require of "path" is not supported`.
+
 ## 0.8.0
 
 > 2021-11-15
