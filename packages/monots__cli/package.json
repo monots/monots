@@ -33,6 +33,7 @@
   "devDependencies": {
     "del": "^6.0.0",
     "nanoid": "^3.1.30",
+    "recursive-copy": "^2.0.13",
     "type-fest": "^2.5.2"
   },
   "engines": {
@@ -43,6 +44,8 @@
   },
   "monots": {
     "mode": "cli",
-    "tsconfigs": {}
+    "tsconfigs": {
+      "__tests__": {}
+    }
   }
 }

@@ -188,9 +188,7 @@ export const ProjectMonots = s.type({
    */
   packageTsconfigs: s.defaulted(s.optional(Tsconfigs), {
     '': false,
-    src: {
-      compilerOptions: { types: [], noEmit: true, outDir: path.join('..', OUTPUT_FOLDER) },
-    },
+    src: { compilerOptions: { types: [], noEmit: true, outDir: path.join('..', OUTPUT_FOLDER) } },
   }),
 
   /**

@@ -2,7 +2,6 @@ import {
   copyTemplate,
   FatalError,
   folderExists,
-  getPackagePath,
   mangleScopedPackageName,
   ProjectEntity,
 } from '@monots/core';
@@ -12,6 +11,7 @@ import { Option } from 'clipanion';
 import path from 'node:path';
 import ora from 'ora';
 
+import { getPackagePath } from '../utils';
 import { BaseCommand } from './base-command.js';
 
 /**

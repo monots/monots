@@ -1,11 +1,9 @@
-import type { CommandContext } from '@monots/types';
 import path from 'node:path';
-import url from 'node:url';
 import { readPackageUpSync } from 'read-pkg-up';
 import updateNotifier from 'update-notifier';
 
 const SEPARATOR = '__';
-const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
 interface NotifyUpdate {
   name: string;
@@ -34,13 +32,6 @@ export function getPackageJson() {
   }
 
   return packageJson;
-}
-
-/**
- * Get the absolute path within this package.
- */
-export function getPackagePath(...paths: string[]) {
-  return path.join(__dirname, '..', ...paths);
 }
 
 /**

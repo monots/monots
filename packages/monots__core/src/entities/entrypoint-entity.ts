@@ -256,7 +256,6 @@ export class EntrypointEntity extends BaseEntity<Entrypoint> {
     // Packages with `mode` "cli" don't have a `main`, `browser`, `module` or
     // `types` field. They are placed within the `dist/index.js` file.
     if (this.package.isCli) {
-      console.log({ NAME: this.name });
       const target = path.join(this.package.output, 'index.js');
       const relativePath = path.relative(path.dirname(target), this.source);
 

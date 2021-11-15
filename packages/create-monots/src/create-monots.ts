@@ -110,8 +110,6 @@ export async function createMonotsProject(props: CreateMonotsProjectProps): Prom
     process.exit(1);
   }
 
-  const originalDirectory = process.cwd();
-
   const displayedCommand = 'pnpm';
   console.log(`Creating a new monots project in ${chalk.green(root)}.`);
   console.log();
@@ -167,8 +165,6 @@ export async function createMonotsProject(props: CreateMonotsProjectProps): Prom
     console.log('Initialized a git repository.');
     console.log();
   }
-
-  const cdpath = path.join(originalDirectory, appName) === appPath ? appName : appPath;
 
   console.log(`${chalk.green('Success!')} Created ${appName} at ${appPath}`);
   console.log('Inside that directory, you can run all the monots commands:');

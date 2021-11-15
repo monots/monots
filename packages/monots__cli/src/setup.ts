@@ -1,4 +1,4 @@
-import { NAME, getPackageJson } from '@monots/core';
+import { getPackageJson, NAME } from '@monots/core';
 import type { CommandContext } from '@monots/types';
 import { Builtins, Cli } from 'clipanion';
 
