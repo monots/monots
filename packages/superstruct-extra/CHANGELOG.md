@@ -1,5 +1,16 @@
 # superstruct-extra
 
+## 0.1.3
+
+> 2021-11-15
+
+### Patch Changes
+
+- [#25](https://github.com/monots/monots/pull/25) [`1181e6e`](https://github.com/monots/monots/commit/1181e6e867c50b3b912ac6fe5131ea60361e3ea5) Thanks [@ifiokjr](https://github.com/ifiokjr)! - `patch` and `minor` updates to external dependencies.
+
+- Updated dependencies [[`1181e6e`](https://github.com/monots/monots/commit/1181e6e867c50b3b912ac6fe5131ea60361e3ea5)]:
+  - @monots/types@0.1.3
+
 ## 0.1.2
 
 > 2021-11-01
