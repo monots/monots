@@ -9,6 +9,5 @@
   "compilerOptions": {
     "noEmit": true,
     "declaration": false
-  },
-  "include": ["./"]
+  }
 }

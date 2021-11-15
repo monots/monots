@@ -5,7 +5,7 @@ import { cli } from '../src/setup';
 import { setupFixtures } from './helpers';
 
 test('`monots create` should create package with a description', async (t) => {
-  const { cleanup, context, getPath } = await setupFixtures('pnpm-with-packages');
+  const { context, getPath, cleanup } = await setupFixtures('pnpm-with-packages');
   const result = await cli.run(['create', '--description', 'DDD', '@scoped/d'], context);
   const json = await loadJsonFile<any>(getPath('packages/scoped__d/package.json'));
 

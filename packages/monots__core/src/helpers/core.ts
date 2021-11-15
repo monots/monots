@@ -1,7 +1,10 @@
 import is from '@sindresorhus/is';
 import merge from 'deepmerge';
+import { template } from 'lodash-es';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { Transform } from 'node:stream';
+import copy from 'recursive-copy';
 
 /**
  * A typesafe implementation of `Object.keys()`
@@ -122,4 +125,38 @@ export async function getInstaller(cwd: string): Promise<InstallerType> {
   }
 
   return 'npm';
+}
+
+export async function copyTemplate(props: CopyTemplateProps) {
+  const { input, output, variables } = props;
+
+  await copy(input, output, {
+    rename: (filename) => template(filename)(variables).replace(/.template$/, ''),
+    transform: (filename) => {
+      if (path.extname(filename) !== '.template') {
+        // eslint-disable-next-line unicorn/no-null
+        return null as any;
+      }
+
+      return new Transform({
+        transform: (chunk, _encoding, done) => {
+          const output = template(chunk.toString())(variables);
+          done(undefined, output);
+          // render(chunk.toString(), variables, {}, (error, ouput) => {
+          // });
+        },
+      });
+    },
+  });
+}
+
+export interface TemplateVariables {
+  description?: string;
+  name: string;
+}
+
+export interface CopyTemplateProps {
+  input: string;
+  output: string;
+  variables: TemplateVariables;
 }

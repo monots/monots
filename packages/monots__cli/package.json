@@ -14,41 +14,11 @@
   ],
   "sideEffects": false,
   "type": "module",
-  "exports": {
-    ".": {
-      "import": "./dist/index.esm.js",
-      "require": "./dist/index.cjs.js",
-      "types": "./dist/index.d.ts"
-    },
-    "./index.js": {
-      "import": "./dist/index.esm.js",
-      "require": "./dist/index.cjs.js",
-      "types": "./dist/index.d.ts"
-    },
-    "./package.json": "./package.json",
-    "./setup": {
-      "import": "./dist/setup.esm.js",
-      "require": "./dist/setup.cjs.js",
-      "types": "./dist/setup.d.ts"
-    },
-    "./setup.js": {
-      "import": "./dist/setup.esm.js",
-      "require": "./dist/setup.cjs.js",
-      "types": "./dist/setup.d.ts"
-    },
-    "./types/*": "./dist/*.d.ts"
-  },
-  "main": "./dist/index.cjs.js",
-  "module": "./dist/index.esm.js",
-  "types": "./dist/index.d.ts",
   "bin": {
-    "monots": "bin.js",
-    "mts": "bin.js"
+    "monots": "dist/index.js"
   },
   "files": [
-    "bin.js",
     "dist",
-    "setup",
     "templates"
   ],
   "dependencies": {
@@ -58,32 +28,24 @@
     "chalk": "^4.1.2",
     "clipanion": "^3.1.0",
     "delay": "^5.0.0",
-    "lodash-es": "^4.17.21",
-    "ora": "^6.0.0",
-    "read-pkg-up": "^9.0.0",
-    "recursive-copy": "^2.0.13",
-    "update-notifier": "^5.1.0"
+    "ora": "^6.0.0"
   },
   "devDependencies": {
-    "@types/lodash-es": "^4.17.5",
-    "@types/update-notifier": "^5.1.0",
     "del": "^6.0.0",
     "nanoid": "^3.1.30",
+    "recursive-copy": "^2.0.13",
     "type-fest": "^2.5.2"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=14.13.0"
   },
   "publishConfig": {
     "access": "public"
   },
   "monots": {
-    "entrypoints": [
-      "index.ts",
-      "setup.ts"
-    ],
-    "mode": "library",
-    "tsconfigs": {},
-    "externalModules": []
+    "mode": "cli",
+    "tsconfigs": {
+      "__tests__": {}
+    }
   }
 }

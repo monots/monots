@@ -1,0 +1,1 @@
+/Users/ifiokjr/Coding/KICKJUMP/monots/packages/monots__cli/src/index.ts

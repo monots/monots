@@ -2,8 +2,9 @@
 !**/.eslintrc.js
 **/lib
 lib
-**/dist
 dist
+**/dist
+**/dist/**
 /node_modules
 **/node_modules/**
 .out

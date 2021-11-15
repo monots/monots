@@ -1,0 +1,127 @@
+name: ci
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+env:
+  PNPM_CACHE_FOLDER: '~/.pnpm-store'
+
+jobs:
+  # Lint the project
+  lint:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: setup caching
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.PNPM_CACHE_FOLDER }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
+      - name: setup node.js
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: 16.x
+
+      - name: install and audit
+        uses: ./.github/actions/pnpm
+        with:
+          cache: ${{ env.PNPM_CACHE_FOLDER }}
+
+      - name: check TS / JS files
+        run: pnpm lint:es
+
+      - name: check formatting
+        run: pnpm lint:prettier
+
+      - name: check repo and versions
+        run: pnpm lint:repo
+
+      - name: check build
+        run: pnpm lint:build
+
+  # Unit test and update coverage report
+  unit_test:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: setup caching
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.PNPM_CACHE_FOLDER }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
+      - name: setup node.js
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: 16.x
+
+      - name: install and audit
+        uses: ./.github/actions/pnpm
+        with:
+          cache: ${{ env.PNPM_CACHE_FOLDER }}
+
+      - name: run unit tests
+        run: pnpm test
+
+  # Build the project and run tests on built files.
+  build_test:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x, 17.x]
+      fail-fast: false
+
+    steps:
+      - name: checkout code repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: setup caching
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.PNPM_CACHE_FOLDER }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
+      - name: setup node.js
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: install and audit
+        uses: ./.github/actions/pnpm
+        with:
+          cache: ${{ env.PNPM_CACHE_FOLDER }}
+
+      - name: build project
+        run: pnpm build
+
+      - name: run unit tests
+        run: pnpm test

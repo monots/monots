@@ -13,14 +13,13 @@
   ],
   "type": "module",
   "scripts": {
-    "build": "run-p build:packages build:types",
+    "build": "run-p build:packages typecheck",
     "build:packages": "pnpm monots build",
-    "build:types": "tsc -b",
     "changeset": "changeset",
     "check:pnpm": "node .monots/check-pnpm.js",
     "checks": "run-s lint typecheck test",
     "clean": "git clean -fdX --exclude='.config.json'",
-    "create:test": "monots create @monots/awesome --description=\"An amazing package\" --interactive",
+    "create-monots": "pnpm ts packages/create-monots/src/index.ts",
     "fix": "run-s -c fix:repo fix:build fix:es fix:prettier",
     "fix:build": "pnpm monots fix",
     "fix:es": "pnpm lint:es -- --fix",
@@ -40,7 +39,6 @@
     "release": "changeset publish",
     "reset": "pnpm clean; rm pnpm-lock.yaml; pnpm symlink:root; pnpm i -r;",
     "run:prettier": "prettier --ignore-path .eslintignore \"**/*.{js,jsx,ts,tsx,md,mdx,json,html,css,yml,yaml,graphql}\"",
-    "storybook": "manypkg run support/storybook storybook",
     "symlink:root": "node .monots/symlink-root.js",
     "test": "ava",
     "test:watch": "ava --watch",
@@ -88,7 +86,6 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^2.4.1",
     "prettier-config-monots": "^0.1.0",
-    "snapshot-diff": "^0.9.0",
     "ts-node": "^10.4.0",
     "typescript": "^4.4.4",
     "write-json-file": "^5.0.0"
@@ -113,5 +110,5 @@
       }
     }
   },
-  "packageManager": "pnpm@6.20.0"
+  "packageManager": "pnpm@6.22.1"
 }
