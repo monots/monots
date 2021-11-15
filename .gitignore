@@ -128,7 +128,7 @@ yarn.lock
 /.size-limit.json
 /.stylelintignore
 /.stylelintrc.json
-/commitlint.config.js
+/commitlint.config.cjs
 /globals.d.ts
 /.prettierrc.cjs
 /.huskyrc
