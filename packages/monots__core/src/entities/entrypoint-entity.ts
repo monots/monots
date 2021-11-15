@@ -284,11 +284,6 @@ export class EntrypointEntity extends BaseEntity<Entrypoint> {
       const relativePath = path.relative(path.dirname(target), this.source);
 
       generateCommonJsDevFile(target, relativePath);
-      // if (this.package.json.type === 'commonjs') {
-      //   generateCommonJsDevFile(target, relativePath);
-      // } else {
-      //   generateEsModuleDevFile(target);
-      // }
     }
 
     await Promise.all(promises);
