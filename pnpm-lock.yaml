@@ -148,6 +148,7 @@ importers:
       '@monots/types': ^0.1.2
       '@swc/core': ^1.2.108
       '@swc/helpers': ^0.2.14
+      '@swc/register': ^0.1.7
       chalk: ^4.1.2
       clipanion: ^3.1.0
       del: ^6.0.0
@@ -159,6 +160,7 @@ importers:
       type-fest: ^2.5.3
     dependencies:
       '@swc/core': 1.2.108
+      '@swc/register': 0.1.7_@swc+core@1.2.108
       esbuild: 0.13.13
     devDependencies:
       '@monots/core': link:../monots__core

@@ -23,6 +23,7 @@
   ],
   "dependencies": {
     "@swc/core": "^1.2.108",
+    "@swc/register": "^0.1.7",
     "esbuild": "^0.13.13"
   },
   "devDependencies": {

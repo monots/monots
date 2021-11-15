@@ -19,6 +19,5 @@ export { DIRNAME };
  * Get the absolute path within this package.
  */
 export function getPackagePath(...paths: string[]) {
-  console.log({ DIRNAME });
   return path.join(DIRNAME, '..', ...paths);
 }
