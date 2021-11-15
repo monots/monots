@@ -1,5 +1,20 @@
 # @monots/cli
 
+## 0.8.0
+
+> 2021-11-15
+
+### Minor Changes
+
+- [#22](https://github.com/monots/monots/pull/22) [`bee017f`](https://github.com/monots/monots/commit/bee017f0106ecf9704b5b09b2bce2c1d69c31387) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Massive speed up to `@monots/cli` installation via bundling all dependencies. Now `npx @monots/cli <command>` is much more responsive.
+
+* [#22](https://github.com/monots/monots/pull/22) [`bee017f`](https://github.com/monots/monots/commit/bee017f0106ecf9704b5b09b2bce2c1d69c31387) Thanks [@ifiokjr](https://github.com/ifiokjr)! - **BREAKING**: Remove all entrypoints from `@monots/cli`. Now the package can only be consumed as a command line application.
+
+### Patch Changes
+
+- Updated dependencies [[`bee017f`](https://github.com/monots/monots/commit/bee017f0106ecf9704b5b09b2bce2c1d69c31387), [`bee017f`](https://github.com/monots/monots/commit/bee017f0106ecf9704b5b09b2bce2c1d69c31387)]:
+  - @monots/core@0.9.0
+
 ## 0.7.0
 
 > 2021-11-07

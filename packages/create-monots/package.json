@@ -1,6 +1,6 @@
 {
   "name": "create-monots",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "description": "Create a project with monots already setup.",
   "keywords": [],
@@ -20,7 +20,7 @@
     "dist"
   ],
   "devDependencies": {
-    "@monots/core": "^0.8.0",
+    "@monots/core": "^0.9.0",
     "@types/async-retry": "^1.4.3",
     "@types/cross-spawn": "^6.0.2",
     "@types/node": "^16.10.9",
