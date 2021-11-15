@@ -12,6 +12,9 @@
     }
   ],
   "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "run-p build:packages typecheck",
     "build:packages": "pnpm monots build",
@@ -36,7 +39,7 @@
     "monots": "pnpm ts packages/monots__cli/src/index.ts",
     "prepare": "husky install .monots/.husky",
     "prerelease": "pnpm build",
-    "release": "changeset publish",
+    "release": "rm pnpm-lock.yaml pnpm-workspace.yaml && changeset publish",
     "reset": "pnpm clean; rm pnpm-lock.yaml; pnpm symlink:root; pnpm i -r;",
     "run:prettier": "prettier --ignore-path .eslintignore \"**/*.{js,jsx,ts,tsx,md,mdx,json,html,css,yml,yaml,graphql}\"",
     "symlink:root": "node .monots/symlink-root.js",
