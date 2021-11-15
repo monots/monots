@@ -1,11 +1,11 @@
 import is from '@sindresorhus/is';
+import { camelCase, kebabCase } from 'case-anything';
 import merge from 'deepmerge';
 import { template } from 'lodash-es';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { Transform } from 'node:stream';
 import copy from 'recursive-copy';
-
 /**
  * A typesafe implementation of `Object.keys()`
  */
@@ -130,8 +130,14 @@ export async function getInstaller(cwd: string): Promise<InstallerType> {
 export async function copyTemplate(props: CopyTemplateProps) {
   const { input, output, variables } = props;
 
+  const variablesWithCasing = {
+    ...variables,
+    camelCaseName: camelCase(variables.name),
+    kebabCaseName: kebabCase(variables.name),
+  };
+
   await copy(input, output, {
-    rename: (filename) => template(filename)(variables).replace(/.template$/, ''),
+    rename: (filename) => template(filename)(variablesWithCasing).replace(/.template$/, ''),
     transform: (filename) => {
       if (path.extname(filename) !== '.template') {
         // eslint-disable-next-line unicorn/no-null
@@ -140,7 +146,7 @@ export async function copyTemplate(props: CopyTemplateProps) {
 
       return new Transform({
         transform: (chunk, _encoding, done) => {
-          const output = template(chunk.toString())(variables);
+          const output = template(chunk.toString())(variablesWithCasing);
           done(undefined, output);
           // render(chunk.toString(), variables, {}, (error, ouput) => {
           // });

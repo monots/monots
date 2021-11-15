@@ -1,31 +1,22 @@
+/* eslint-disable unicorn/prefer-module */
 import path from 'node:path';
 import { readPackageUpSync } from 'read-pkg-up';
-import updateNotifier from 'update-notifier';
 
 const SEPARATOR = '__';
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
+let DIRNAME: string;
 
-interface NotifyUpdate {
-  name: string;
-  version: string;
-  internal?: boolean;
-}
-
-/**
- * Notify the user of available updates to the CLI.
- */
-export function notifyUpdate(context: NotifyUpdate) {
-  const { name, internal, version } = context;
-
-  if (internal) {
-    return;
+try {
+  DIRNAME = path.dirname(new URL(import.meta.url).pathname);
+} catch (error) {
+  if (typeof __dirname === 'string') {
+    DIRNAME = __dirname;
+  } else {
+    throw error;
   }
-
-  updateNotifier({ pkg: { name, version } }).notify();
 }
 
 export function getPackageJson() {
-  const packageJson = readPackageUpSync({ cwd: __dirname })?.packageJson;
+  const packageJson = readPackageUpSync({ cwd: DIRNAME })?.packageJson;
 
   if (!packageJson) {
     throw new Error('Invalid installation of `monots`');

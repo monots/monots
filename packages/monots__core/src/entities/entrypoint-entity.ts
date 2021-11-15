@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/prefer-module */
 import { parse } from '@swc/core';
 import type { InputOptions } from '@swc/register/lib/node';
 import fs from 'node:fs/promises';
@@ -10,10 +11,33 @@ import { Entrypoint, EntrypointField, entrypointFields, ExportsField } from '../
 import { BaseEntity, BaseEntityProps } from './base-entity.js';
 import type { PackageEntity } from './package-entity.js';
 
+let DIRNAME: string;
+let _REQUIRE: typeof require;
+
+try {
+  DIRNAME = path.dirname(new URL(import.meta.url).pathname);
+} catch (error) {
+  if (typeof __dirname === 'string') {
+    DIRNAME = __dirname;
+  } else {
+    throw error;
+  }
+}
+
+try {
+  _REQUIRE = typeof require === 'function' ? require : createRequire(DIRNAME);
+} catch (error) {
+  if (typeof createRequire === 'function') {
+    _REQUIRE = createRequire(DIRNAME);
+  } else {
+    throw error;
+  }
+}
+
 /**
  * @internal
  */
-export const _require = createRequire(import.meta.url);
+export { _REQUIRE };
 
 interface EntrypointEntityProps extends BaseEntityProps<Entrypoint> {
   /**
@@ -218,7 +242,7 @@ export class EntrypointEntity extends BaseEntity<Entrypoint> {
             target,
             `// Allow the project to be used for commonjs environments \nconst register = require('${path.relative(
               path.dirname(target),
-              _require.resolve('@swc/register'),
+              _REQUIRE.resolve('@swc/register'),
             )}');\n\nregister(${JSON.stringify(
               config,
               undefined,
@@ -256,14 +280,10 @@ export class EntrypointEntity extends BaseEntity<Entrypoint> {
     // Packages with `mode` "cli" don't have a `main`, `browser`, `module` or
     // `types` field. They are placed within the `dist/index.js` file.
     if (this.package.isCli) {
-      const target = path.join(this.package.output, 'index.js');
+      const target = path.join(this.package.output, `${this.baseName || 'index'}.cjs`);
       const relativePath = path.relative(path.dirname(target), this.source);
 
-      if (this.package.json.type === 'commonjs') {
-        generateCommonJsDevFile(target, relativePath);
-      } else {
-        generateEsModuleDevFile(target);
-      }
+      generateCommonJsDevFile(target, relativePath);
     }
 
     await Promise.all(promises);

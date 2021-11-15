@@ -30,11 +30,11 @@
   ],
   "dependencies": {
     "@monots/types": "^0.1.2",
-    "@swc/helpers": "^0.2.13",
+    "@swc/helpers": "^0.2.14",
     "@types/is-uuid": "^1.0.0",
     "email-validator": "^2.0.4",
     "is-uuid": "^1.0.2",
-    "type-fest": "^2.5.2"
+    "type-fest": "^2.5.3"
   },
   "devDependencies": {
     "is-promise": "^4.0.0",
