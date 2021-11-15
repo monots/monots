@@ -9,13 +9,13 @@ export default {
   },
   testRegex: '/__tests__/.*\\.spec\\.tsx?$',
   transform: {
-    '^.+\\.(t|j)sx?$': ['@swc/jest', { jsc: { target: 'es2018' } }],
+    '^.+\\.(t|j)sx?$': ['@swc/jest', { jsc: { target: 'es2020' } }],
   },
   extensionsToTreatAsEsm: ['.ts'],
   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
   testRunner: 'jest-circus/runner',
   testPathIgnorePatterns: ['/node_modules/'],
   errorOnDeprecated: true,
-  testEnvironment: 'node',
+  // testEnvironment: 'node',
   modulePathIgnorePatterns: ['<rootDir>/packages/monots__cli/__fixtures__/'],
 };
