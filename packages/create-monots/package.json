@@ -46,7 +46,7 @@
     "validate-npm-package-name": "^3.0.0"
   },
   "engines": {
-    "node": ">= 12.2.0 || >=14.13.0"
+    "node": "^12.2.0 || ^14.13.0 || ^16"
   },
   "publishConfig": {
     "access": "public"

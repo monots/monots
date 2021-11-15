@@ -44,7 +44,7 @@ export async function tryGitInit(root: string): Promise<boolean> {
     await exec('git checkout -b main');
 
     await exec('git add -A');
-    await exec('git commit -m "Initial commit from Create Next App"');
+    await exec('git commit -m "feat: getting started with monots 🎉🥳"');
     return true;
   } catch {
     if (didInit) {
