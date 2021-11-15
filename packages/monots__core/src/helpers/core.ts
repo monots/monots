@@ -137,6 +137,7 @@ export async function copyTemplate(props: CopyTemplateProps) {
   };
 
   await copy(input, output, {
+    dot: true,
     rename: (filename) => template(filename)(variablesWithCasing).replace(/.template$/, ''),
     transform: (filename) => {
       if (path.extname(filename) !== '.template') {

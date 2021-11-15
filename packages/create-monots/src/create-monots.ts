@@ -185,14 +185,12 @@ export async function createMonotsProject(props: CreateMonotsProjectProps): Prom
   await pnpmInstall(root);
   console.log();
 
-  const relativePath = path.join(process.cwd(), appName) === appPath ? appName : appPath;
-
   console.log(`${chalk.green('Success!')} Created ${appName} at ${appPath}`);
   console.log('Inside that directory, you can run all the monots commands:');
   console.log();
   console.log('We suggest that you begin by typing:');
   console.log();
-  console.log(chalk.cyan('  cd'), relativePath);
+  console.log(chalk.cyan('  cd'), appName);
   console.log(`  ${chalk.cyan(`${displayedCommand} install`)}`);
   console.log();
   console.log(

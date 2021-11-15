@@ -18,7 +18,7 @@ export async function bundleWithEsbuild(pkg: PackageEntity) {
       await build({
         entryPoints: [entrypoint.source],
         outfile: path.join(pkg.output, `${entrypoint.baseName || 'index'}.cjs`),
-        // minify: true,
+        minify: true,
         sourcemap: false,
         bundle: true,
         external: [...builtins, 'esbuild', '@swc/core'],
