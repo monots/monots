@@ -1,5 +1,17 @@
 # create-monots
 
+## 0.2.0
+
+> 2021-11-15
+
+### Minor Changes
+
+- [#30](https://github.com/monots/monots/pull/30) [`c23a07e`](https://github.com/monots/monots/commit/c23a07ed658b3769f2f3c8174f1993bc0c4c8d3a) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Copy over `.` (dot) files when working with templates.
+
+### Patch Changes
+
+- [#30](https://github.com/monots/monots/pull/30) [`c23a07e`](https://github.com/monots/monots/commit/c23a07ed658b3769f2f3c8174f1993bc0c4c8d3a) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Change `engines` field to only support node version with built in `esm` support.
+
 ## 0.1.2
 
 > 2021-11-15
