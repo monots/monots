@@ -15,29 +15,31 @@
   "sideEffects": false,
   "type": "module",
   "bin": {
-    "monots": "dist/index.js"
+    "monots": "dist/index.cjs"
   },
   "files": [
     "dist",
     "templates"
   ],
   "dependencies": {
+    "@swc/core": "^1.2.108",
+    "esbuild": "^0.13.13"
+  },
+  "devDependencies": {
     "@monots/core": "^0.9.0",
     "@monots/types": "^0.1.2",
     "@swc/helpers": "^0.2.14",
     "chalk": "^4.1.2",
     "clipanion": "^3.1.0",
-    "delay": "^5.0.0",
-    "ora": "^6.0.0"
-  },
-  "devDependencies": {
     "del": "^6.0.0",
+    "delay": "^5.0.0",
     "nanoid": "^3.1.30",
+    "ora": "^6.0.0",
     "recursive-copy": "^2.0.13",
     "type-fest": "^2.5.3"
   },
   "engines": {
-    "node": ">=14.13.0"
+    "node": ">= 12.2.0 || >=14.13.0"
   },
   "publishConfig": {
     "access": "public"

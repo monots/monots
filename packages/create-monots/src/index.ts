@@ -1,13 +1,40 @@
 #!/usr/bin/env node
+/* eslint-disable unicorn/prefer-module */
 
-import { notifyUpdate } from '@monots/core';
 import chalk from 'chalk';
 import meow from 'meow';
 import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 import prompts from 'prompts';
 
 import { createMonotsProject, DownloadError } from './create-monots';
 import { validateNpmName } from './helpers/validate-pkg';
+
+let IMPORT_META: ImportMeta;
+let DIRNAME: string;
+
+try {
+  DIRNAME = path.dirname(new URL(import.meta.url).pathname);
+} catch (error) {
+  if (typeof __dirname === 'string') {
+    DIRNAME = __dirname;
+  } else {
+    throw error;
+  }
+}
+
+try {
+  IMPORT_META =
+    typeof import.meta === 'object' && typeof import.meta.url === 'string'
+      ? import.meta
+      : {
+          url: pathToFileURL(DIRNAME).href,
+        };
+} catch {
+  IMPORT_META = {
+    url: pathToFileURL(DIRNAME).href,
+  };
+}
 
 const cli = meow(
   `
@@ -34,7 +61,7 @@ const cli = meow(
   {
     autoHelp: true,
     autoVersion: true,
-    importMeta: import.meta,
+    importMeta: IMPORT_META,
     flags: {
       example: { alias: 'e', type: 'string' },
       examplePath: { type: 'string' },
@@ -134,28 +161,18 @@ async function run(): Promise<void> {
   }
 }
 
-run()
-  .then(() =>
-    notifyUpdate({ name: cli.pkg.name ?? '', version: cli.pkg.version ?? '', internal: false }),
-  )
-  .catch(async (error) => {
-    console.log();
-    console.log('Aborting installation.');
+run().catch(async (error) => {
+  console.log();
+  console.log('Aborting installation.');
 
-    if (error.command) {
-      console.log(`  ${chalk.cyan(error.command)} has failed.`);
-    } else {
-      console.log(chalk.red('Unexpected error. Please report it as a bug:'));
-      console.log(error);
-    }
+  if (error.command) {
+    console.log(`  ${chalk.cyan(error.command)} has failed.`);
+  } else {
+    console.log(chalk.red('Unexpected error. Please report it as a bug:'));
+    console.log(error);
+  }
 
-    console.log();
+  console.log();
 
-    notifyUpdate({
-      name: cli.pkg.name ?? '',
-      version: cli.pkg.version ?? '',
-      internal: false,
-    });
-
-    process.exit(1);
-  });
+  process.exit(1);
+});

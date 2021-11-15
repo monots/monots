@@ -2,6 +2,7 @@ import { build } from 'esbuild';
 import path from 'node:path';
 
 import type { PackageEntity } from '../entities/index.js';
+import { builtins } from './build-with-rollup.js';
 
 /**
  * This bundles all the files into one exportable with all dependencies
@@ -16,14 +17,14 @@ export async function bundleWithEsbuild(pkg: PackageEntity) {
     promises.push(async () => {
       await build({
         entryPoints: [entrypoint.source],
-        outfile: path.join(pkg.output, `${entrypoint.baseName || 'index'}.js`),
-        minify: true,
+        outfile: path.join(pkg.output, `${entrypoint.baseName || 'index'}.cjs`),
+        // minify: true,
         sourcemap: false,
         bundle: true,
-        external: [],
-        target: 'node14.13.0',
+        external: [...builtins, 'esbuild', '@swc/core'],
+        target: 'node12.20.0',
         platform: 'node',
-        format: 'esm',
+        format: 'cjs',
       });
     });
   }

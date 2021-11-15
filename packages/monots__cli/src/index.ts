@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 
-import { notifyUpdate } from '@monots/core';
+import chalk from 'chalk';
 
 import { cli, context } from './setup.js';
 
-cli.runExit(process.argv.slice(2), context).then(() => {
-  // Check for updates available and log to the console if available.
-  notifyUpdate(context);
+cli.runExit(process.argv.slice(2), context).catch((error) => {
+  console.log(chalk.red('Unexpected error. Please report it as a bug:'));
+  console.log(error);
+  console.log();
 });

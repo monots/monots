@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/prefer-module */
 import { copyTemplate } from '@monots/core';
 import retry from 'async-retry';
 import chalk from 'chalk';
@@ -27,7 +28,17 @@ interface CreateMonotsProjectProps {
   examplePath?: string;
 }
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
+let DIRNAME: string;
+
+try {
+  DIRNAME = path.dirname(new URL(import.meta.url).pathname);
+} catch (error) {
+  if (typeof __dirname === 'string') {
+    DIRNAME = __dirname;
+  } else {
+    throw error;
+  }
+}
 
 export async function createMonotsProject(props: CreateMonotsProjectProps): Promise<void> {
   const { appPath, example, examplePath } = props;
@@ -156,7 +167,7 @@ export async function createMonotsProject(props: CreateMonotsProjectProps): Prom
      * by installing from a template.
      */
     console.log(chalk.bold(`Using ${displayedCommand} to install.`));
-    const templatePath = path.join(__dirname, '../templates', 'default');
+    const templatePath = path.join(DIRNAME, '../templates', 'default');
     await copyTemplate({
       input: templatePath,
       output: root,

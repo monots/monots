@@ -1,7 +1,7 @@
 {
   "name": "create-monots",
   "version": "0.1.0",
-  "description": "Create a project with monots already setup.",
+  "description": "Create a project with monots.",
   "keywords": [],
   "repository": "https://github.com/monots/monots/tree/master/packages/create-monots",
   "license": "MIT",
@@ -13,11 +13,15 @@
     "./types/*": "./dist/*.d.ts"
   },
   "bin": {
-    "create-monots": "./dist/index.js"
+    "create-monots": "./dist/index.cjs"
   },
   "files": [
     "dist"
   ],
+  "dependencies": {
+    "@swc/core": "^1.2.108",
+    "esbuild": "^0.13.13"
+  },
   "devDependencies": {
     "@monots/core": "^0.9.0",
     "@types/async-retry": "^1.4.3",
@@ -41,7 +45,7 @@
     "validate-npm-package-name": "^3.0.0"
   },
   "engines": {
-    "node": ">=14.13.0"
+    "node": ">= 12.2.0 || >=14.13.0"
   },
   "publishConfig": {
     "access": "public"
