@@ -81,7 +81,7 @@ async function run(): Promise<void> {
       type: 'text',
       name: 'path',
       message: 'What is your project named?',
-      initial: 'awesome-project',
+      initial: 'my-project',
       validate: (name) => {
         const validation = validateNpmName(path.basename(path.resolve(name)));
 

@@ -1,1 +1,1 @@
-export * from './<%= _.kebabCase(name) %>.js';
+export * from './<%= kebabCaseName %>.js';

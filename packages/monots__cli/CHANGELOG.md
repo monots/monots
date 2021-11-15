@@ -114,7 +114,7 @@
     import sameExportWithoutExtension from '@scoped/pkg/entrypoint';
     ```
 
-* [`bab8691`](https://github.com/monots/monots/commit/bab8691c3765bab0fb8853cf3fd663959049b3ca) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Support using template syntax in filenames. You can now create dynamically named template files with `<%= _.kebabCase(name) %>.ts`
+* [`bab8691`](https://github.com/monots/monots/commit/bab8691c3765bab0fb8853cf3fd663959049b3ca) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Support using template syntax in filenames. You can now create dynamically named template files with `<%= kebabCaseName %>.ts`
 
 ### Patch Changes
 
