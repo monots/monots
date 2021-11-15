@@ -1,5 +1,15 @@
 # @monots/core
 
+## 0.9.0
+
+> 2021-11-15
+
+### Minor Changes
+
+- [#22](https://github.com/monots/monots/pull/22) [`bee017f`](https://github.com/monots/monots/commit/bee017f0106ecf9704b5b09b2bce2c1d69c31387) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Export `copyTemplate` which uses template variables to copy a directory to it's destination. It supports templates within files and also the filenames themeselves can be templated.
+
+* [#22](https://github.com/monots/monots/pull/22) [`bee017f`](https://github.com/monots/monots/commit/bee017f0106ecf9704b5b09b2bce2c1d69c31387) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Add `"mode": "cli"` option which always points to the `index.ts` file and bundles it for consumption as one file. It means that consuming the cli is much quicker for end users as there are no external dependencies to install.
+
 ## 0.8.0
 
 > 2021-11-07
