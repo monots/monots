@@ -1,7 +1,6 @@
 {
   "name": "create-monots",
   "version": "0.1.0",
-  "private": true,
   "description": "Create a project with monots already setup.",
   "keywords": [],
   "repository": "https://github.com/monots/monots/tree/master/packages/create-monots",
