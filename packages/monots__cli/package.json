@@ -24,7 +24,7 @@
   "dependencies": {
     "@monots/core": "^0.9.0",
     "@monots/types": "^0.1.2",
-    "@swc/helpers": "^0.2.13",
+    "@swc/helpers": "^0.2.14",
     "chalk": "^4.1.2",
     "clipanion": "^3.1.0",
     "delay": "^5.0.0",
@@ -34,7 +34,7 @@
     "del": "^6.0.0",
     "nanoid": "^3.1.30",
     "recursive-copy": "^2.0.13",
-    "type-fest": "^2.5.2"
+    "type-fest": "^2.5.3"
   },
   "engines": {
     "node": ">=14.13.0"
