@@ -1,5 +1,13 @@
 # @monots/utils
 
+## 0.2.0
+
+> 2021-11-16
+
+### Minor Changes
+
+- [#34](https://github.com/monots/monots/pull/34) [`a6bf7b3`](https://github.com/monots/monots/commit/a6bf7b36ecc27f03aabcd7db6c01ceb9ae8e6ea6) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Add `rename` property to `copyTemplate`. You can now specify the name of files which should be renamed. This helps solve the issue where npm won't publish `.gitignore` and `.npmrc` files.
+
 ## 0.1.0
 
 > 2021-11-16

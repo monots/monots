@@ -1,5 +1,15 @@
 # create-monots
 
+## 0.3.1
+
+> 2021-11-16
+
+### Patch Changes
+
+- [#34](https://github.com/monots/monots/pull/34) [`a6bf7b3`](https://github.com/monots/monots/commit/a6bf7b36ecc27f03aabcd7db6c01ceb9ae8e6ea6) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Add missing `--help` and `--version` flags for `create-monots` command.
+
+* [#34](https://github.com/monots/monots/pull/34) [`a6bf7b3`](https://github.com/monots/monots/commit/a6bf7b36ecc27f03aabcd7db6c01ceb9ae8e6ea6) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Make sure `.gitignore` and `.npmrc` are included in the generated project.
+
 ## 0.3.0
 
 > 2021-11-16

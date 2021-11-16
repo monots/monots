@@ -1,6 +1,6 @@
 {
   "name": "create-monots",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Bootstrap your TypeScript project with monots 🎉",
   "keywords": [
     "typescript",
@@ -28,7 +28,7 @@
     "templates"
   ],
   "devDependencies": {
-    "@monots/utils": "^0.1.0",
+    "@monots/utils": "^0.2.0",
     "@types/async-retry": "^1.4.3",
     "@types/cross-spawn": "^6.0.2",
     "@types/node": "^16.11.7",
