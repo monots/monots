@@ -37,61 +37,74 @@ try {
 }
 
 const cli = meow(
-  `
-        Usage
-          $ create-monots <input>
+  chalk`
+        {bold Usage}
+          {grey $} {blue create-monots} {grey <}input{grey >}
 
-        Options
-          --example, -e [name]|[github-url]
+        {bold Options}
+          {magenta {grey --}example}{grey ,} {magenta {grey -}e} {grey [}NAME{grey ]|[}GITHUB_URL{grey ]}
 
           An example to bootstrap the app with. You can use an example name
           from the official monots repo or a GitHub URL. The URL can use
           any branch and/or subdirectory.
 
-          --example-path <path-to-example>
+          {magenta {grey --}example-path} {grey <}path-to-example{grey >}
 
           In a rare case, your GitHub URL might contain a branch name with
           a slash (e.g. bug/fix-1) and the path to the example (e.g. foo/bar).
           In this case, you must specify the path to the example separately:
           --example-path foo/bar.
 
-        Examples
-          $ create-monots my-awesome-package
+        {bold Examples}
+          {grey $} {blue create-monots} my-awesome-package
 `,
   {
-    autoHelp: true,
-    autoVersion: true,
     importMeta: IMPORT_META,
     flags: {
       example: { alias: 'e', type: 'string' },
       examplePath: { type: 'string' },
+      help: { alias: 'h', type: 'boolean' },
+      version: { alias: 'v', type: 'boolean' },
     },
   },
 );
 
 async function run(): Promise<void> {
   let projectPath = cli.input[0];
+  console.log(cli.flags);
+
+  if (cli.flags.help) {
+    console.log(cli.help);
+    return;
+  }
+
+  if (cli.flags.version) {
+    console.log(cli.pkg.version);
+    return;
+  }
 
   if (typeof projectPath === 'string') {
     projectPath = projectPath.trim();
   }
 
   if (!projectPath) {
-    const res = await prompts({
-      type: 'text',
-      name: 'path',
-      message: 'What is your project named?',
-      initial: 'my-project',
-      validate: (name) => {
-        const validation = validateNpmName(path.basename(path.resolve(name)));
+    const res = await prompts([
+      {
+        type: 'text',
+        name: 'path',
+        message: 'What is your project named?',
+        initial: 'my-project',
+        validate: (name) => {
+          const validation = validateNpmName(path.basename(path.resolve(name)));
 
-        if (validation.valid) {
-          return true;
-        }
+          if (validation.valid) {
+            return true;
+          }
 
-        return `Invalid project name: ${validation.problems?.[0]}`;
+          return `Invalid project name: ${validation.problems?.[0]}`;
+        },
       },
-    });
+    ]);
 
     if (typeof res.path === 'string') {
       projectPath = res.path.trim();

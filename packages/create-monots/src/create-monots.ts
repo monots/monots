@@ -123,6 +123,7 @@ export async function createMonotsProject(props: CreateMonotsProjectProps): Prom
   }
 
   const displayedCommand = 'pnpm';
+  const rename = { gitignore: '.gitignore', npmrc: '.npmrc' };
   console.log(`Creating a new monots project in ${chalk.green(root)}.`);
   console.log();
 
@@ -160,6 +161,7 @@ export async function createMonotsProject(props: CreateMonotsProjectProps): Prom
       input: downloadPath,
       output: root,
       variables,
+      rename,
     });
   } else {
     /**
@@ -172,6 +174,7 @@ export async function createMonotsProject(props: CreateMonotsProjectProps): Prom
       input: templatePath,
       output: root,
       variables,
+      rename,
     });
   }
 
