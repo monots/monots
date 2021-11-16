@@ -5,13 +5,13 @@
 The easiest way to get started with **monots** is by using `create-monots`. This CLI tool enables you to quickly start building a new **monots** project, with everything set up for you. You can create a new project using the default template, or by using one of the [official boilerplate](https://github.com/monots/examples). To get started, use the following command:
 
 ```bash
-npx create-monots
+npm create monots
 ```
 
 To create a new project with a specific name, you can send a name as an argument. For example, the following command will create a new project `awesome` in a folder with the same name:
 
 ```bash
-npx create-monots awesome
+npm create monots sideproject
 ```
 
 Currently `create-monots` requires either a global installation of [`pnpm`](https://pnpm.io/installation) or [corepack](https://github.com/nodejs/corepack) to be installed and enabled.
@@ -39,7 +39,7 @@ corepack enable
 
 `create-monots` allows you to create a new project within seconds. Additionally it comes with the following features.
 
-- **Interactive Experience**: Running `npx create-monots` (with no arguments) launches an interactive experience that guides you through setting up a project.
+- **Interactive Experience**: Running `npm create monots` (with no arguments) launches an interactive experience that guides you through setting up your project.
 - **Zero Dependencies**: Initializing a project is as quick as one second. `create-monots` has zero dependencies.
 - **Offline Support**: `create-monots` will automatically detect if you're offline and bootstrap your project using your local package cache.
 - **Support for Examples**: `create-monots` can bootstrap your application using an example from the **monots** examples collection (e.g. `npx create-monots --example api-routes`).
