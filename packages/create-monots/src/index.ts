@@ -7,8 +7,8 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import prompts from 'prompts';
 
-import { createMonotsProject, DownloadError } from './create-monots';
-import { validateNpmName } from './helpers/validate-pkg';
+import { createMonotsProject, DownloadError } from './create-monots.js';
+import { validateNpmName } from './helpers/validate-pkg.js';
 
 let IMPORT_META: ImportMeta;
 let DIRNAME: string;
@@ -104,7 +104,7 @@ async function run(): Promise<void> {
     console.log(`  ${chalk.cyan(cli.pkg.name)} ${chalk.green('<project-directory>')}`);
     console.log();
     console.log('For example:');
-    console.log(`  ${chalk.cyan(cli.pkg.name)} ${chalk.green('my-awesome-package')}`);
+    console.log(`  ${chalk.cyan(cli.pkg.name)} ${chalk.green('my-package')}`);
     console.log();
     console.log(`Run ${chalk.cyan(`${cli.pkg.name} --help`)} to see all options.`);
     process.exit(1);

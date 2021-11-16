@@ -108,8 +108,17 @@ function createConfig(properties: GetRollupConfigProperties): RollupOptions {
         alias({
           // Allow files that are specific to the browser. Name your file
           // `file.default.ts` and create the alternative browser import
-          // `file.browser.ts`. The browser entrypoint will use the `browser` file while the node environment will use
+          // `file.browser.ts`. The browser entrypoint will use the `browser`
+          // file while the default esm environment will use `file.default.ts`.
           entries: [{ find: /^(.*)\.default(\.[jt]sx?)$/, replacement: '$1.browser$2' }],
+        }),
+      type === 'main' &&
+        alias({
+          // Allow files that are specific to commonjs. Name your file
+          // `file.default.ts` and create the alternative commonjs import
+          // `file.cjs.ts`. The commonjs entrypoint will use the `cjs` file
+          // while the default esm environment will use `file.default.ts`.
+          entries: [{ find: /^(.*)\.default(\.[jt]sx?)$/, replacement: '$1.cjs$2' }],
         }),
       swc({
         cwd: pkg.project.directory,

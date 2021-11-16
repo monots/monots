@@ -5,8 +5,9 @@ import fs from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import path from 'node:path';
 import normalizePath from 'normalize-path';
+import { entries } from 'ts-entries';
 
-import { createTypeScriptContent, entries, generateField } from '../helpers/index.js';
+import { createTypeScriptContent, generateField } from '../helpers/index.js';
 import { Entrypoint, EntrypointField, entrypointFields, ExportsField } from '../schema.js';
 import { BaseEntity, BaseEntityProps } from './base-entity.js';
 import type { PackageEntity } from './package-entity.js';

@@ -1,8 +1,8 @@
 import path from 'node:path';
 import * as s from 'superstruct-extra';
+import { objectKeys } from 'ts-extras';
 
 import { OUTPUT_FOLDER } from './constants.js';
-import { keys } from './helpers/index.js';
 
 const Tsconfig = s.record(s.string(), s.any());
 const Tsconfigs = s.union([
@@ -256,7 +256,7 @@ export const Project = s.type({
 });
 
 export const exportFields = ['import', 'require', 'browser', 'types', 'default'] as const;
-export const entrypointFields = keys(Entrypoint.schema);
+export const entrypointFields = objectKeys(Entrypoint.schema);
 
 export type ExportsField = typeof exportFields[number];
 export type EntrypointField = keyof Entrypoint;

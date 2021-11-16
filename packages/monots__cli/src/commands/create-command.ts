@@ -1,11 +1,6 @@
-import {
-  copyTemplate,
-  FatalError,
-  folderExists,
-  mangleScopedPackageName,
-  ProjectEntity,
-} from '@monots/core';
+import { FatalError, ProjectEntity } from '@monots/core';
 import type { CommandBoolean, CommandString, Usage } from '@monots/types';
+import { copyTemplate, folderExists, mangleScopedPackageName } from '@monots/utils';
 import chalk from 'chalk';
 import { Option } from 'clipanion';
 import path from 'node:path';
