@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { folderExists } from '@monots/core';
+import { folderExists } from '@monots/utils';
 import chalk from 'chalk';
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -26,7 +26,6 @@ export async function isFolderEmpty(root: string, name: string): Promise<boolean
     'yarn-error.log',
   ]);
 
-  console.log({ root });
   const directoryFiles = await fs.readdir(root);
   const conflicts: string[] = [];
 

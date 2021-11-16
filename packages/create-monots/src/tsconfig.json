@@ -12,7 +12,7 @@
   },
   "references": [
     {
-      "path": "../../monots__core/src"
+      "path": "../../monots__utils/src"
     }
   ]
 }

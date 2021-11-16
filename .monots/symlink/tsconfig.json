@@ -32,6 +32,9 @@
       "path": "packages/monots__types/src"
     },
     {
+      "path": "packages/monots__utils/src"
+    },
+    {
       "path": "packages/prettier-config-monots/src"
     },
     {

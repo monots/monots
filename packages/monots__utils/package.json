@@ -1,0 +1,62 @@
+{
+  "name": "@monots/utils",
+  "version": "0.0.0",
+  "description": "",
+  "keywords": [],
+  "repository": "https://github.com/monots/monots/tree/master/packages/monots__utils",
+  "license": "MIT",
+  "contributors": [],
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./index.js": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json",
+    "./types/*": "./dist/*.d.ts"
+  },
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@sindresorhus/is": "^4.2.0",
+    "@swc/helpers": "^0.2.14",
+    "@types/lodash-es": "^4.17.5",
+    "@types/node": "^16.11.7",
+    "case-anything": "^1.1.3",
+    "deepmerge": "^4.2.2",
+    "lodash-es": "^4.17.21",
+    "read-pkg-up": "^9.0.0",
+    "recursive-copy": "^2.0.13"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "monots": {
+    "entrypoints": [
+      "index.ts"
+    ],
+    "tsconfigs": {
+      "src": {
+        "compilerOptions": {
+          "types": [
+            "node"
+          ],
+          "noEmit": true
+        }
+      }
+    },
+    "mode": "library",
+    "externalModules": []
+  }
+}

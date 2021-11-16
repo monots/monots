@@ -1,5 +1,6 @@
-import { getPackageJson, NAME } from '@monots/core';
+import { NAME } from '@monots/core';
 import type { CommandContext } from '@monots/types';
+import { getPackageJson } from '@monots/utils';
 import { Builtins, Cli } from 'clipanion';
 
 import {

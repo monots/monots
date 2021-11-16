@@ -1,5 +1,5 @@
 /* eslint-disable unicorn/prefer-module */
-import { copyTemplate } from '@monots/core';
+import { copyTemplate } from '@monots/utils';
 import retry from 'async-retry';
 import chalk from 'chalk';
 import fs from 'node:fs/promises';
@@ -13,12 +13,12 @@ import {
   hasExample,
   hasRepo,
   RepoInfo,
-} from './helpers/examples';
-import { tryGitInit } from './helpers/git';
-import { pnpmInstall } from './helpers/install';
-import { isFolderEmpty } from './helpers/is-folder-empty';
-import { isWriteable } from './helpers/is-writeable';
-import { makeDir } from './helpers/make-dir';
+} from './helpers/examples.js';
+import { tryGitInit } from './helpers/git.js';
+import { pnpmInstall } from './helpers/install.js';
+import { isFolderEmpty } from './helpers/is-folder-empty.js';
+import { isWriteable } from './helpers/is-writeable.js';
+import { makeDir } from './helpers/make-dir.js';
 
 export class DownloadError extends Error {}
 

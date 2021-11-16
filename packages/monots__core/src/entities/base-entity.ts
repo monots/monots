@@ -1,9 +1,10 @@
+import { removeUndefined } from '@monots/utils';
 import is from '@sindresorhus/is';
 import path from 'node:path';
 import * as t from 'superstruct-extra';
 import { writeJsonFile } from 'write-json-file';
 
-import { compareOutput, FatalError, removeUndefined } from '../helpers/index.js';
+import { compareOutput, FatalError } from '../helpers/index.js';
 
 interface BaseData {
   [key: string]: unknown;

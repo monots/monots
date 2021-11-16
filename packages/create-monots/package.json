@@ -19,12 +19,8 @@
     "dist",
     "templates"
   ],
-  "dependencies": {
-    "@swc/core": "^1.2.108",
-    "esbuild": "^0.13.13"
-  },
   "devDependencies": {
-    "@monots/core": "^0.11.0",
+    "@monots/utils": "^0.0.0",
     "@types/async-retry": "^1.4.3",
     "@types/cross-spawn": "^6.0.2",
     "@types/node": "^16.11.7",

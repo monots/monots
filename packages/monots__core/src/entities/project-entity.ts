@@ -1,4 +1,5 @@
 import { getPackages } from '@manypkg/get-packages';
+import { fileExists, getInstaller, InstallerType } from '@monots/utils';
 import is from '@sindresorhus/is';
 import chalk from 'chalk';
 import del from 'del';
@@ -15,14 +16,7 @@ import { writeJsonFile } from 'write-json-file';
 
 import { DEFAULT_BROWSERSLIST, NAME, TYPESCRIPT_VERSION } from '../constants.js';
 import { bundleWithEsbuild } from '../helpers/bundle-with-esbuild.js';
-import {
-  BatchError,
-  buildPackageWithRollup,
-  FatalError,
-  fileExists,
-  getInstaller,
-  InstallerType,
-} from '../helpers/index.js';
+import { BatchError, buildPackageWithRollup, FatalError } from '../helpers/index.js';
 import { Project, ProjectMonots } from '../schema.js';
 import type { References, TsConfigJson } from '../types.js';
 import { BaseEntity, BaseEntityProps } from './base-entity.js';

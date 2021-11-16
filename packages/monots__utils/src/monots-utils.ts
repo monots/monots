@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/prefer-module */
 import is from '@sindresorhus/is';
 import { camelCase, kebabCase } from 'case-anything';
 import merge from 'deepmerge';
@@ -5,15 +6,8 @@ import { template } from 'lodash-es';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { Transform } from 'node:stream';
+import { readPackageUpSync } from 'read-pkg-up';
 import copy from 'recursive-copy';
-/**
- * A typesafe implementation of `Object.keys()`
- */
-export function keys<Type extends object, Key extends Extract<keyof Type, string>>(
-  value: Type,
-): Key[] {
-  return Object.keys(value) as Key[];
-}
 
 /**
  * Removes all undefined values from an object. Neither Firestore nor the RealtimeDB allow `undefined` as a value.
@@ -56,33 +50,6 @@ export async function folderExists(folderPath: string): Promise<boolean> {
   } catch {
     return false;
   }
-}
-
-/**
- * A more lenient typed version of `Array.prototype.includes` which allow less
- * specific types to be checked.
- */
-export function includes<Type>(
-  array: Type[] | readonly Type[],
-  item: unknown,
-  fromIndex?: number,
-): item is Type {
-  return array.includes(item as Type, fromIndex);
-}
-
-/**
- * A typesafe implementation of `Object.entries()`
- *
- * Taken from
- * https://github.com/biggyspender/ts-entries/blob/master/src/ts-entries.ts
- */
-export function entries<
-  Type extends object,
-  Key extends Extract<keyof Type, string>,
-  Value extends Type[Key],
-  Entry extends [Key, Value],
->(value: Type): Entry[] {
-  return Object.entries(value) as Entry[];
 }
 
 /**
@@ -166,4 +133,52 @@ export interface CopyTemplateProps {
   input: string;
   output: string;
   variables: TemplateVariables;
+}
+
+const SEPARATOR = '__';
+let DIRNAME: string;
+
+try {
+  DIRNAME = path.dirname(new URL(import.meta.url).pathname);
+} catch (error) {
+  if (typeof __dirname === 'string') {
+    DIRNAME = __dirname;
+  } else {
+    throw error;
+  }
+}
+
+export function getPackageJson() {
+  const packageJson = readPackageUpSync({ cwd: DIRNAME })?.packageJson;
+
+  if (!packageJson) {
+    throw new Error('Invalid installation of `monots`');
+  }
+
+  return packageJson;
+}
+
+/**
+ * Convert a mangled name to its unmangled version.
+ *
+ * `babel__types` => `@babel/types`.
+ */
+export function unmangleScopedPackage(mangledName: string): string {
+  return mangledName.includes(SEPARATOR) ? `@${mangledName.replace(SEPARATOR, '/')}` : mangledName;
+}
+
+/**
+ * Mangle a scoped package name. Which removes the `@` symbol and adds a `__`
+ * separator.
+ *
+ * `@babel/types` => `babel__types`
+ */
+export function mangleScopedPackageName(packageName: string): string {
+  if (packageName.indexOf('@') === 0 && packageName.includes('/')) {
+    // we have a scoped module, e.g. @bla/foo
+    // which should be converted to   bla__foo
+    packageName = packageName.slice(1).replace('/', '__');
+  }
+
+  return packageName;
 }
