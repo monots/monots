@@ -1,8 +1,16 @@
 {
   "name": "create-monots",
   "version": "0.3.0",
-  "description": "Create a project with monots.",
-  "keywords": [],
+  "description": "Bootstrap your TypeScript project with monots 🎉",
+  "keywords": [
+    "typescript",
+    "monorepo",
+    "bootstrap",
+    "docs",
+    "build-tool",
+    "monots",
+    "tsdoc"
+  ],
   "repository": "https://github.com/monots/monots/tree/master/packages/create-monots",
   "license": "MIT",
   "contributors": [],

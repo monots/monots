@@ -94,8 +94,10 @@ export async function getInstaller(cwd: string): Promise<InstallerType> {
   return 'npm';
 }
 
+// function normalizeRename
+
 export async function copyTemplate(props: CopyTemplateProps) {
-  const { input, output, variables } = props;
+  const { input, output, variables, rename = {} } = props;
 
   const variablesWithCasing = {
     ...variables,
@@ -105,7 +107,13 @@ export async function copyTemplate(props: CopyTemplateProps) {
 
   await copy(input, output, {
     dot: true,
-    rename: (filename) => template(filename)(variablesWithCasing).replace(/.template$/, ''),
+    rename: (filename) => {
+      const renamedFileName = rename[filename];
+
+      return renamedFileName
+        ? renamedFileName
+        : template(filename)(variablesWithCasing).replace(/.template$/, '');
+    },
     transform: (filename) => {
       if (path.extname(filename) !== '.template') {
         // eslint-disable-next-line unicorn/no-null
@@ -133,6 +141,25 @@ export interface CopyTemplateProps {
   input: string;
   output: string;
   variables: TemplateVariables;
+
+  /**
+   * Name of the relative source file and the desired relative destination. For
+   * example `npm` doesn't allow publishing a .gitignore file or `.npmrc` so we
+   * can add the following to rename the files.
+   *
+   * ```
+   * copyTemplate({
+   *   rename: {
+   *     gitignore: '.gitignore',
+   *     npmrc: '.npmrc'
+   *   },
+   *   input
+   *   output,
+   *   variables
+   * });
+   * ```
+   */
+  rename?: Record<string, string>;
 }
 
 const SEPARATOR = '__';
