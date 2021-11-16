@@ -1,5 +1,13 @@
 # @monots/cli
 
+## 0.10.1
+
+> 2021-11-16
+
+### Patch Changes
+
+- [`fe783da`](https://github.com/monots/monots/commit/fe783daa636a956844808ad89430fb01d7735c55) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Refactor to use `@monots/utils` for utility methods.
+
 ## 0.10.0
 
 > 2021-11-15
