@@ -1,5 +1,13 @@
 # create-monots
 
+## 0.3.0
+
+> 2021-11-16
+
+### Minor Changes
+
+- [#32](https://github.com/monots/monots/pull/32) [`16997a8`](https://github.com/monots/monots/commit/16997a8a66c4b2e7c46e249bdad262fbd1c5bb20) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Increase performance via `@monots/utils`. Build tooling from `@monots` core is not longer part of the distributed release.
+
 ## 0.2.0
 
 > 2021-11-15
