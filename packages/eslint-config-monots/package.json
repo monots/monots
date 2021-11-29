@@ -76,10 +76,10 @@
     "eslint-plugin-react": "^7.27.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
-    "eslint-plugin-unicorn": "^38.0.1"
+    "eslint-plugin-unicorn": "^39.0.0"
   },
   "devDependencies": {
-    "@types/eslint": "^7.28.2",
+    "@types/eslint": "^8.2.0",
     "@types/node": "^16.11.7",
     "eslint": "^8.2.0"
   },

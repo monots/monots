@@ -4,7 +4,7 @@ import is from '@sindresorhus/is';
 import chalk from 'chalk';
 import del from 'del';
 import detectIndent from 'detect-indent';
-import execa from 'execa';
+import { execa } from 'execa';
 import glob from 'fast-glob';
 import yaml from 'js-yaml';
 import { loadJsonFile } from 'load-json-file';
