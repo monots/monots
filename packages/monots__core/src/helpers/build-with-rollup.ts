@@ -278,10 +278,10 @@ async function buildPackage(pkg: PackageEntity) {
     const promise = rollup(config)
       .then((bundle) => {
         return Promise.all(
-          outputs.map(async (config) => ({
-            output: (await bundle.generate(config)).output,
-            config,
-          })),
+          outputs.map(async (config) => {
+            const { output } = await bundle.generate(config);
+            return { output, config };
+          }),
         );
       })
       .then(async (chunks) => {
