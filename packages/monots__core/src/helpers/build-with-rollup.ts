@@ -2,13 +2,15 @@ import alias from '@rollup/plugin-alias';
 import json from '@rollup/plugin-json';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
-import { Options, transform } from '@swc/core';
+import type { Options } from '@swc/core';
+import { transform } from '@swc/core';
 import chalk from 'chalk';
 import fs from 'node:fs/promises';
 import { builtinModules } from 'node:module';
 import path from 'node:path';
 import normalizePath from 'normalize-path';
-import { OutputAsset, OutputChunk, OutputOptions, Plugin, rollup, RollupOptions } from 'rollup';
+import type { OutputAsset, OutputChunk, OutputOptions, Plugin, RollupOptions } from 'rollup';
+import { rollup } from 'rollup';
 
 import { FIELD_EXTENSIONS, OUTPUT_FOLDER } from '../constants.js';
 import type { PackageEntity } from '../entities/index.js';
@@ -278,10 +280,10 @@ async function buildPackage(pkg: PackageEntity) {
     const promise = rollup(config)
       .then((bundle) => {
         return Promise.all(
-          outputs.map(async (config) => ({
-            output: (await bundle.generate(config)).output,
-            config,
-          })),
+          outputs.map(async (config) => {
+            const { output } = await bundle.generate(config);
+            return { output, config };
+          }),
         );
       })
       .then(async (chunks) => {

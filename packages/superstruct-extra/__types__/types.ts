@@ -1,6 +1,6 @@
-import { Struct } from 'superstruct-extra';
+import type { Struct } from 'superstruct-extra';
 
-import { InferStructTuple } from '../src/types.js';
+import type { InferStructTuple } from '../src/types.js';
 
 type A = InferStructTuple<
   [

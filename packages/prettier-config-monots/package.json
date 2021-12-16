@@ -33,7 +33,7 @@
   "devDependencies": {
     "@types/node": "^16.11.7",
     "@types/prettier": "^2.4.2",
-    "prettier": "^2.4.1"
+    "prettier": "^2.5.1"
   },
   "peerDependencies": {
     "prettier": "^2"

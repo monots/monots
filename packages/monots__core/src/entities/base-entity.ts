@@ -4,7 +4,7 @@ import path from 'node:path';
 import * as t from 'superstruct-extra';
 import { writeJsonFile } from 'write-json-file';
 
-import { compareOutput, FatalError } from '../helpers/index.js';
+import { type FatalError, compareOutput } from '../helpers/index.js';
 
 interface BaseData {
   [key: string]: unknown;

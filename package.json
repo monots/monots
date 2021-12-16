@@ -33,7 +33,6 @@
     "lint": "run-s lint:\\*",
     "lint:build": "pnpm monots check",
     "lint:es": "eslint -f codeframe --ext=.tsx,.ts,.js .",
-    "lint:md": "eslint -f codeframe  --ignore-pattern='*.js' --ignore-pattern='*.ts' --ignore-pattern='*.tsx' .",
     "lint:prettier": "pnpm run:prettier -- --check",
     "lint:repo": "manypkg check",
     "monots": "pnpm ts packages/monots__cli/src/index.ts",
@@ -78,8 +77,8 @@
     "@monots/tsconfig": "^0.1.0",
     "@types/node": "^16.11.7",
     "ava": "^3.15.0",
-    "browserslist": "^4.18.0",
-    "eslint": "^8.2.0",
+    "browserslist": "^4.19.1",
+    "eslint": "^8.4.1",
     "eslint-config-monots": "^0.4.2",
     "eslint-formatter-codeframe": "^7.32.1",
     "eslint-plugin-file-progress": "^1.2.0",
@@ -87,10 +86,10 @@
     "lint-staged": "^12.0.2",
     "load-json-file": "^7.0.0",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.4.1",
+    "prettier": "^2.5.1",
     "prettier-config-monots": "^0.1.1",
     "ts-node": "^10.4.0",
-    "typescript": "^4.4.4",
+    "typescript": "^4.5.4",
     "write-json-file": "^5.0.0"
   },
   "engines": {
@@ -98,6 +97,7 @@
     "pnpm": ">=6"
   },
   "monots": {
+    "baseTsconfig": "./.monots/tsconfig.base.json",
     "packages": [
       "packages/*",
       "!packages/monots__tsconfig",
@@ -113,5 +113,5 @@
       }
     }
   },
-  "packageManager": "pnpm@6.22.1"
+  "packageManager": "pnpm@6.24.1"
 }
