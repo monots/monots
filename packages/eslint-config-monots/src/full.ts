@@ -18,6 +18,7 @@ const config: import('eslint').Linter.Config = {
   },
   rules: {
     '@typescript-eslint/prefer-readonly': 'warn',
+    '@typescript-eslint/consistent-type-exports': ['error'],
     '@typescript-eslint/await-thenable': 'warn',
     '@typescript-eslint/no-unnecessary-type-arguments': 'warn',
     '@typescript-eslint/restrict-plus-operands': 'warn',
@@ -29,7 +30,6 @@ const config: import('eslint').Linter.Config = {
     'import/no-cycle': 'error',
     'import/no-self-import': 'error',
     'import/newline-after-import': 'error',
-    // 'import/extensions': ['error', 'ignorePackages'],
   },
 };
 

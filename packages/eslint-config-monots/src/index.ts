@@ -60,6 +60,7 @@ const config: Linter.Config = {
     ],
     '@typescript-eslint/no-non-null-assertion': 'warn',
     '@typescript-eslint/no-inferrable-types': 'warn',
+    '@typescript-eslint/consistent-type-imports': ['error', { disallowTypeAnnotations: false }],
     '@typescript-eslint/ban-types': [
       'warn',
       {
