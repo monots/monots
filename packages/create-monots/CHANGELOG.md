@@ -1,5 +1,15 @@
 # create-monots
 
+## 0.3.2
+
+> 2021-12-16
+
+### Patch Changes
+
+- [#37](https://github.com/monots/monots/pull/37) [`a9662ed`](https://github.com/monots/monots/commit/a9662ed2666f7cca7f993d08d9d31afb357bf272) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Upgrade dependencies.
+
+* [#37](https://github.com/monots/monots/pull/37) [`a9662ed`](https://github.com/monots/monots/commit/a9662ed2666f7cca7f993d08d9d31afb357bf272) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Fix installed versions of internal packages used in the default `monots` template.
+
 ## 0.3.1
 
 > 2021-11-16
