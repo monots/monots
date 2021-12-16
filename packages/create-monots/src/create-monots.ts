@@ -6,16 +6,16 @@ import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 
+import type { RepoInfo } from './helpers/examples.js';
 import {
   downloadAndExtractExample,
   downloadAndExtractRepo,
   getRepoInfo,
   hasExample,
   hasRepo,
-  RepoInfo,
 } from './helpers/examples.js';
 import { tryGitInit } from './helpers/git.js';
-import { pnpmInstall, pnpmAdd } from './helpers/install.js';
+import { pnpmAdd, pnpmInstall } from './helpers/install.js';
 import { isFolderEmpty } from './helpers/is-folder-empty.js';
 import { isWriteable } from './helpers/is-writeable.js';
 import { makeDir } from './helpers/make-dir.js';

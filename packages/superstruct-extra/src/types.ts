@@ -1,4 +1,4 @@
-import { Infer, Struct } from 'superstruct';
+import type { Infer, Struct } from 'superstruct';
 
 export type StructSpread<Type> = Type extends Type ? Struct<Type, null> : never;
 export type AnyStruct = Struct<any, any>;

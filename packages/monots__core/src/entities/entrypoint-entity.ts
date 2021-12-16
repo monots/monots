@@ -8,8 +8,10 @@ import normalizePath from 'normalize-path';
 import { entries } from 'ts-entries';
 
 import { createTypeScriptContent, generateField } from '../helpers/index.js';
-import { Entrypoint, EntrypointField, entrypointFields, ExportsField } from '../schema.js';
-import { BaseEntity, BaseEntityProps } from './base-entity.js';
+import type { EntrypointField, ExportsField } from '../schema.js';
+import { Entrypoint, entrypointFields } from '../schema.js';
+import type { BaseEntityProps } from './base-entity.js';
+import { BaseEntity } from './base-entity.js';
 import type { PackageEntity } from './package-entity.js';
 
 let DIRNAME: string;
@@ -193,7 +195,7 @@ export class EntrypointEntity extends BaseEntity<Entrypoint> {
             (specifier) =>
               (specifier.type === 'ExportDefaultSpecifier' ||
                 specifier.type === 'ExportSpecifier') &&
-              specifier.exported.value === 'default',
+              specifier.exported?.value === 'default',
           ))
       ) {
         return true;

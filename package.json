@@ -33,7 +33,6 @@
     "lint": "run-s lint:\\*",
     "lint:build": "pnpm monots check",
     "lint:es": "eslint -f codeframe --ext=.tsx,.ts,.js .",
-    "lint:md": "eslint -f codeframe  --ignore-pattern='*.js' --ignore-pattern='*.ts' --ignore-pattern='*.tsx' .",
     "lint:prettier": "pnpm run:prettier -- --check",
     "lint:repo": "manypkg check",
     "monots": "pnpm ts packages/monots__cli/src/index.ts",
@@ -109,8 +108,7 @@
         "transpileOnly": true,
         "compilerOptions": {
           "esModuleInterop": true,
-          "target": "ESNext",
-          "module": "node"
+          "target": "ESNext"
         }
       }
     }

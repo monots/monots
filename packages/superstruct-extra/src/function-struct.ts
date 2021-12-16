@@ -1,6 +1,6 @@
 import { func, Struct } from 'superstruct';
 
-import { AnyFunction } from './types.js';
+import type { AnyFunction } from './types.js';
 
 /**
  * A custom Struct for validating function calls at runtime.

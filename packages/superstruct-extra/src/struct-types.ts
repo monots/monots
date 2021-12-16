@@ -1,21 +1,12 @@
 import emailValidator from 'email-validator';
 import isUuid from 'is-uuid';
-import {
-  define,
-  func,
-  Infer,
-  instance,
-  refine,
-  string,
-  Struct,
-  StructError,
-  tuple,
-} from 'superstruct';
-import { ObjectSchema } from 'superstruct/lib/utils';
+import type { Infer } from 'superstruct';
+import { define, func, instance, refine, string, Struct, StructError, tuple } from 'superstruct';
+import type { ObjectSchema } from 'superstruct/lib/utils';
 
 import { FunctionStruct } from './function-struct.js';
 import { PromiseStruct } from './promise-struct.js';
-import {
+import type {
   AnyFunction,
   AnyStruct,
   AnyStructConstructor,
