@@ -30,7 +30,7 @@
   ],
   "dependencies": {
     "@sindresorhus/is": "^4.2.0",
-    "@swc/helpers": "^0.2.14",
+    "@swc/helpers": "^0.3.2",
     "@types/lodash-es": "^4.17.5",
     "@types/node": "^16.11.7",
     "case-anything": "^1.1.3",

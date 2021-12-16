@@ -31,7 +31,7 @@
   "dependencies": {
     "@changesets/get-dependents-graph": "^1.2.3",
     "@manypkg/get-packages": "^1.1.3",
-    "@swc/helpers": "^0.2.14",
+    "@swc/helpers": "^0.3.2",
     "@types/node": "^16.11.7",
     "next-transpile-modules": "^9.0.0",
     "read-pkg-up": "^9.0.0"
@@ -39,7 +39,7 @@
   "devDependencies": {
     "@types/react": "^17.0.34",
     "@types/react-dom": "^17.0.11",
-    "next": "^12.0.3",
+    "next": "^12.0.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
