@@ -17,3 +17,18 @@ export async function pnpmInstall(cwd: string): Promise<void> {
     process.exit(1);
   }
 }
+
+/**
+ * Add packages to the top level workspace.
+ */
+export async function pnpmAdd(cwd: string, packages: string[]): Promise<void> {
+  try {
+    await execa('pnpm', ['add', '-W', ...packages], { cwd, stdio: 'inherit' });
+  } catch (error) {
+    if (isNativeError(error)) {
+      console.error(`Failed to install packages: ${error.message}`);
+    }
+
+    process.exit(1);
+  }
+}

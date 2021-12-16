@@ -15,7 +15,7 @@ import {
   RepoInfo,
 } from './helpers/examples.js';
 import { tryGitInit } from './helpers/git.js';
-import { pnpmInstall } from './helpers/install.js';
+import { pnpmInstall, pnpmAdd } from './helpers/install.js';
 import { isFolderEmpty } from './helpers/is-folder-empty.js';
 import { isWriteable } from './helpers/is-writeable.js';
 import { makeDir } from './helpers/make-dir.js';
@@ -186,6 +186,12 @@ export async function createMonotsProject(props: CreateMonotsProjectProps): Prom
   console.log('Installing packages. This might take a couple of minutes.');
   console.log();
   await pnpmInstall(root);
+  await pnpmAdd(root, [
+    '@monots/cli',
+    '@monots/tsconfig',
+    'eslint-config-monots',
+    'prettier-config-monots',
+  ]);
   console.log();
 
   console.log(`${chalk.green('Success!')} Created ${appName} at ${appPath}`);
