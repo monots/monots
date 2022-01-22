@@ -34,7 +34,7 @@
     "@types/is-uuid": "^1.0.0",
     "email-validator": "^2.0.4",
     "is-uuid": "^1.0.2",
-    "type-fest": "^2.8.0"
+    "type-fest": "^2.10.0"
   },
   "devDependencies": {
     "is-promise": "^4.0.0",

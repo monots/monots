@@ -2,6 +2,7 @@
 /* eslint-disable unicorn/prefer-module */
 
 import chalk from 'chalk';
+import chalkTemplate from 'chalk-template';
 import meow from 'meow';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -37,7 +38,7 @@ try {
 }
 
 const cli = meow(
-  chalk`
+  chalkTemplate`
         {bold Usage}
           {grey $} {blue create-monots} {grey <}input{grey >}
 

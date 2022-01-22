@@ -2,6 +2,7 @@
 import { copyTemplate } from '@monots/utils';
 import retry from 'async-retry';
 import chalk from 'chalk';
+import chalkTemplate from 'chalk-template';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
@@ -203,7 +204,7 @@ export async function createMonotsProject(props: CreateMonotsProjectProps): Prom
   console.log(`  ${chalk.cyan(`${displayedCommand} install`)}`);
   console.log();
   console.log(
-    chalk`Currently {blue \`create-monots\`} requires either a global installation of {bold pnpm} {blue \`npm i -g pnpm\`} or {bold corepack} {blue \`corepack enable \`} to be installed and enabled.`,
+    chalkTemplate`Currently {blue \`create-monots\`} requires either a global installation of {bold pnpm} {blue \`npm i -g pnpm\`} or {bold corepack} {blue \`corepack enable \`} to be installed and enabled.`,
   );
   console.log();
 }

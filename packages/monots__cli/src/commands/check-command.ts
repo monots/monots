@@ -1,6 +1,6 @@
 import { ProjectEntity } from '@monots/core';
 import type { Usage } from '@monots/types';
-import chalk from 'chalk';
+import chalkTemplate from 'chalk-template';
 import ora from 'ora';
 
 import { BaseCommand } from './base-command.js';
@@ -15,7 +15,7 @@ export class CheckCommand extends BaseCommand {
   static override usage: Usage = {
     description: 'Check for configuration and validation errors in the project.',
     category: 'Lint',
-    details: chalk`
+    details: chalkTemplate`
       This command checks all the package.json files to see if they need updating.
       Use {cyan monots fix} to fix the errors.
     `,
@@ -25,7 +25,7 @@ export class CheckCommand extends BaseCommand {
   override async execute() {
     super.execute();
 
-    const spinner = ora(chalk`loading the monots project`).start();
+    const spinner = ora(chalkTemplate`loading the monots project`).start();
 
     try {
       const project = await ProjectEntity.create({ cwd: this.cwd });
@@ -35,7 +35,7 @@ export class CheckCommand extends BaseCommand {
       spinner.succeed('whoop! your project validated successfully!');
       return 0;
     } catch (error: any) {
-      spinner.fail(chalk`${error.message}\n\nUse {cyan monots fix} to fix the errors.`);
+      spinner.fail(chalkTemplate`${error.message}\n\nUse {cyan monots fix} to fix the errors.`);
       return 1;
     }
   }

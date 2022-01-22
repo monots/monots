@@ -21,7 +21,7 @@ export async function bundleWithEsbuild(pkg: PackageEntity) {
         minify: true,
         sourcemap: false,
         bundle: true,
-        external: [...builtins, 'esbuild', '@swc/core'],
+        external: [...builtins, 'esbuild', '@swc/core', 'fsevents'],
         target: 'node12.20.0',
         platform: 'node',
         format: 'cjs',

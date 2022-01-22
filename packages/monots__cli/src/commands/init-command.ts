@@ -1,6 +1,6 @@
 import { ProjectEntity } from '@monots/core';
 import type { Usage } from '@monots/types';
-import chalk from 'chalk';
+import chalkTemplate from 'chalk-template';
 import ora from 'ora';
 
 import { BaseCommand } from './base-command.js';
@@ -22,7 +22,7 @@ export class InitCommand extends BaseCommand {
 
   override async execute() {
     super.execute();
-    const spinner = ora(chalk`Reading local {bold package.json}`).start();
+    const spinner = ora(chalkTemplate`Reading local {bold package.json}`).start();
     let project: ProjectEntity;
 
     try {

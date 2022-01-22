@@ -1,6 +1,6 @@
 import { deepMerge, removeUndefined } from '@monots/utils';
 import is from '@sindresorhus/is';
-import chalk from 'chalk';
+import chalkTemplate from 'chalk-template';
 import del from 'del';
 import glob from 'fast-glob';
 import fs from 'node:fs/promises';
@@ -374,7 +374,7 @@ export class PackageEntity extends BaseEntity<Package> {
   #validateSourceFilePath(sourceFile: string) {
     if (!/\.tsx?$/.test(sourceFile)) {
       throw new FatalError(
-        chalk`Entrypoint source files must end in .ts or .tsx but ${path.relative(
+        chalkTemplate`Entrypoint source files must end in .ts or .tsx but ${path.relative(
           this.directory,
           sourceFile,
         )} does not`,
@@ -388,7 +388,7 @@ export class PackageEntity extends BaseEntity<Package> {
       )
     ) {
       throw new FatalError(
-        chalk`Entrypoint source files must be inside of the source directory of a package but ${path.relative(
+        chalkTemplate`Entrypoint source files must be inside of the source directory of a package but ${path.relative(
           this.directory,
           sourceFile,
         )} is not`,

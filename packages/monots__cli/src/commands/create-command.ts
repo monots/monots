@@ -1,7 +1,7 @@
 import { FatalError, ProjectEntity } from '@monots/core';
 import type { CommandBoolean, CommandString, Usage } from '@monots/types';
 import { copyTemplate, folderExists, mangleScopedPackageName } from '@monots/utils';
-import chalk from 'chalk';
+import chalkTemplate from 'chalk-template';
 import { Option } from 'clipanion';
 import path from 'node:path';
 import ora from 'ora';
@@ -58,7 +58,7 @@ export class CreateCommand extends BaseCommand {
       throw new FatalError('Creating projects is not currently supported.', this.cwd);
     }
 
-    const spinner = ora(chalk`loading project package`).start();
+    const spinner = ora(chalkTemplate`loading project package`).start();
 
     try {
       const project = await ProjectEntity.create({ cwd: this.cwd });
@@ -66,7 +66,7 @@ export class CreateCommand extends BaseCommand {
 
       if (await folderExists(output)) {
         throw new FatalError(
-          chalk`A package already exists for: {bold ${this.packageName}}`,
+          chalkTemplate`A package already exists for: {bold ${this.packageName}}`,
           this.cwd,
         );
       }
@@ -88,7 +88,7 @@ export class CreateCommand extends BaseCommand {
       await project.savePackagesJson();
       await project.saveTsconfigFiles();
 
-      spinner.succeed(chalk`{bold amazing!} your package was created!`);
+      spinner.succeed(chalkTemplate`{bold amazing!} your package was created!`);
       return 0;
     } catch (error: any) {
       spinner.fail(`oops, something went wrong: ${error.message}`);

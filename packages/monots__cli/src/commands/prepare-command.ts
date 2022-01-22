@@ -1,6 +1,6 @@
 import { ProjectEntity } from '@monots/core';
 import type { Usage } from '@monots/types';
-import chalk from 'chalk';
+import chalkTemplate from 'chalk-template';
 import ora from 'ora';
 
 import { BaseCommand } from './base-command.js';
@@ -33,7 +33,7 @@ export class PrepareCommand extends BaseCommand {
   override async execute() {
     super.execute();
 
-    const spinner = ora(chalk`Preparing project for development`).start();
+    const spinner = ora(chalkTemplate`Preparing project for development`).start();
 
     try {
       const project = await ProjectEntity.create({ cwd: this.cwd, version: this.context.version });

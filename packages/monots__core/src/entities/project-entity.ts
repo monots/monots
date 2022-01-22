@@ -2,7 +2,7 @@ import { getPackages } from '@manypkg/get-packages';
 import type { InstallerType } from '@monots/utils';
 import { fileExists, getInstaller } from '@monots/utils';
 import is from '@sindresorhus/is';
-import chalk from 'chalk';
+import chalkTemplate from 'chalk-template';
 import del from 'del';
 import detectIndent from 'detect-indent';
 import { execa } from 'execa';
@@ -326,7 +326,7 @@ export class ProjectEntity extends BaseEntity<Project> {
 
     if (!workspaces) {
       throw new FatalError(
-        chalk`Currently {bold monots} only supports workspace project using yarn, npm, pnpm or lerna.`,
+        chalkTemplate`Currently {bold monots} only supports workspace project using yarn, npm, pnpm or lerna.`,
         this.name,
       );
     }
@@ -361,7 +361,7 @@ export class ProjectEntity extends BaseEntity<Project> {
         })
         .catch((error) => {
           throw new FatalError(
-            chalk`There was a problem creating a package for the directory: ${directory}\n\n{bold.red ${error.message} }`,
+            chalkTemplate`There was a problem creating a package for the directory: ${directory}\n\n{bold.red ${error.message} }`,
             this.name,
           );
         });

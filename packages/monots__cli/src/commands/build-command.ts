@@ -1,6 +1,6 @@
 import { ProjectEntity } from '@monots/core';
 import type { Usage } from '@monots/types';
-import chalk from 'chalk';
+import chalkTemplate from 'chalk-template';
 import ora from 'ora';
 
 import { BaseCommand } from './base-command.js';
@@ -27,7 +27,7 @@ export class BuildCommand extends BaseCommand {
 
   override async execute() {
     super.execute();
-    const spinner = ora(chalk`loading project`).start();
+    const spinner = ora(chalkTemplate`loading project`).start();
 
     try {
       const project = await ProjectEntity.create({ cwd: this.cwd });
@@ -37,7 +37,7 @@ export class BuildCommand extends BaseCommand {
       spinner.text = 'building project';
       await project.build();
 
-      spinner.succeed(chalk`{bold yay!} your project was built successfully!`);
+      spinner.succeed(chalkTemplate`{bold yay!} your project was built successfully!`);
       return 0;
     } catch (error: any) {
       spinner.fail(`oops, something went wrong: ${error.message}`);

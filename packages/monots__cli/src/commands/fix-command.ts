@@ -1,6 +1,7 @@
 import { ProjectEntity } from '@monots/core';
 import type { Usage } from '@monots/types';
 import chalk from 'chalk';
+import chalkTemplate from 'chalk-template';
 import ora from 'ora';
 
 import { BaseCommand } from './base-command.js';
@@ -24,7 +25,7 @@ export class FixCommand extends BaseCommand {
   override async execute() {
     super.execute();
 
-    const spinner = ora(chalk`fixing the monots project`).start();
+    const spinner = ora(chalkTemplate`fixing the monots project`).start();
 
     try {
       const project = await ProjectEntity.create({ cwd: this.cwd });

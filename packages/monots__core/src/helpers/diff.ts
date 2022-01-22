@@ -1,4 +1,5 @@
 import chalk from 'chalk';
+import chalkTemplate from 'chalk-template';
 import isEqual from 'fast-deep-equal';
 import { diff } from 'jest-diff';
 import path from 'node:path';
@@ -42,7 +43,7 @@ export function compareOutput(props: CompareOutputProps) {
   if (!isEqual(actualKeys, expectedKeys)) {
     return [
       new FatalError(
-        chalk`\n{yellow The package.json file has unexpected keys.}\n\n${
+        chalkTemplate`\n{yellow The package.json file has unexpected keys.}\n\n${
           diff(actualKeys, expectedKeys, diffOptions) || ''
         }`,
         name,
@@ -61,14 +62,14 @@ export function compareOutput(props: CompareOutputProps) {
     }
 
     errorMessages.push(
-      chalk`{grey ${relativeName}}\n${diff(actualContents, expected[name], diffOptions)}`,
+      chalkTemplate`{grey ${relativeName}}\n${diff(actualContents, expected[name], diffOptions)}`,
     );
   }
 
   if (errorMessages.length > 0) {
     return [
       new FatalError(
-        chalk`\n{bold.yellow The actual content differs from expected content.}\n\n${errorMessages.join(
+        chalkTemplate`\n{bold.yellow The actual content differs from expected content.}\n\n${errorMessages.join(
           '\n\n',
         )}\n`,
         name,

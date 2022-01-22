@@ -1,12 +1,12 @@
 /* eslint-disable no-console */
-import chalk from 'chalk';
+import chalkTemplate from 'chalk-template';
 import figures from 'figures';
 import util from 'node:util';
 
 const messageTypes = {
-  error: chalk`{red ${figures.cross} - error}`,
-  success: chalk`{green ${figures.tick} - success}`,
-  info: chalk`{cyan ${figures.info} - info}`,
+  error: chalkTemplate`{red ${figures.cross} - error}`,
+  success: chalkTemplate`{green ${figures.tick} - success}`,
+  info: chalkTemplate`{cyan ${figures.info} - info}`,
   none: '',
 } as const;
 
@@ -15,7 +15,7 @@ export function format(
   options: { type: keyof typeof messageTypes; scope?: string },
 ): string {
   const { type, scope } = options;
-  const scopeString = scope === undefined ? '' : chalk` {cyan ${scope}}`;
+  const scopeString = scope === undefined ? '' : chalkTemplate` {cyan ${scope}}`;
   const fullPrefix = `\n🧐 ${messageTypes[type]}${scopeString}\n`;
 
   return fullPrefix + util.format('', ...arguments_);

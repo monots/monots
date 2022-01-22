@@ -1,8 +1,8 @@
 import is from '@sindresorhus/is';
-import chalk from 'chalk';
+import chalkTemplate from 'chalk-template';
 import { BaseError } from 'make-error';
 import util from 'node:util';
-import * as t from 'superstruct-extra';
+import * as t from 'superstruct';
 
 import { format } from './logger.js';
 
@@ -67,7 +67,7 @@ export function assert<Type, Struct>(
       const { key, message } = failure;
       errors.push(
         new ConfigurationError(
-          chalk`${level} configuration error for ${key}: {italic ${message}}`,
+          chalkTemplate`${level} configuration error for ${key}: {italic ${message}}`,
           name,
         ),
       );
