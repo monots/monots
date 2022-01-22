@@ -1,5 +1,14 @@
 # @monots/core
 
+## 0.12.4
+
+> 2022-01-22
+
+### Patch Changes
+
+- Updated dependencies [[`e42cb81`](https://github.com/monots/monots/commit/e42cb81bdd538dab9177a819fd8556b0858eadcc)]:
+  - @monots/utils@0.3.0
+
 ## 0.12.3
 
 > 2022-01-22

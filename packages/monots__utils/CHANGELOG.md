@@ -1,5 +1,13 @@
 # @monots/utils
 
+## 0.3.0
+
+> 2022-01-22
+
+### Minor Changes
+
+- [#40](https://github.com/monots/monots/pull/40) [`e42cb81`](https://github.com/monots/monots/commit/e42cb81bdd538dab9177a819fd8556b0858eadcc) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Switch from `case-anything` to `case-it` for better `"type": "module"` support. Errors were surfacing with vitest.
+
 ## 0.2.1
 
 > 2022-01-22

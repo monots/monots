@@ -1,5 +1,17 @@
 # create-monots
 
+## 0.4.0
+
+> 2022-01-22
+
+### Minor Changes
+
+- [`064f313`](https://github.com/monots/monots/commit/064f313ec8d276c4bd4a32f8a909570dcca3cabe) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Add `vitest` to the default `create-monots` command. This is the default testing engine for `monots`.
+
+### Patch Changes
+
+- [`064f313`](https://github.com/monots/monots/commit/064f313ec8d276c4bd4a32f8a909570dcca3cabe) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Update versions of installed dependencies in `npx create-monots` command.
+
 ## 0.3.3
 
 > 2022-01-22
