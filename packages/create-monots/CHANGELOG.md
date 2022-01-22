@@ -1,5 +1,13 @@
 # create-monots
 
+## 0.3.3
+
+> 2022-01-22
+
+### Patch Changes
+
+- [`ab28a0d`](https://github.com/monots/monots/commit/ab28a0d1fbdf9736134358e67b223165ebac9f7d) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Fix chalk coloring after version update. Use `chalk-template` for templating.
+
 ## 0.3.2
 
 > 2021-12-16
