@@ -1,6 +1,6 @@
 /* eslint-disable unicorn/prefer-module */
 import is from '@sindresorhus/is';
-import { camelCase, kebabCase } from 'case-anything';
+import { camelCaseIt, kebabCaseIt } from 'case-it';
 import merge from 'deepmerge';
 import { template } from 'lodash-es';
 import fs from 'node:fs/promises';
@@ -101,8 +101,8 @@ export async function copyTemplate(props: CopyTemplateProps) {
 
   const variablesWithCasing = {
     ...variables,
-    camelCaseName: camelCase(variables.name),
-    kebabCaseName: kebabCase(variables.name),
+    camelCaseName: camelCaseIt(variables.name),
+    kebabCaseName: kebabCaseIt(variables.name),
   };
 
   await copy(input, output, {

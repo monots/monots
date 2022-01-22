@@ -1,10 +1,10 @@
-import test from 'ava';
 import { loadJsonFile } from 'load-json-file';
+import { expect, test } from 'vitest';
 
 import { cli } from '../src/setup';
 import { setupFixtures } from './helpers';
 
-test('`monots fix` should update the package.json files', async (t) => {
+test('`monots fix` should update the package.json files', async () => {
   const { cleanup, context, getPath } = await setupFixtures('pnpm-with-packages');
   const result = await cli.run(['fix'], context);
   const jsonA = await loadJsonFile(getPath('packages/scoped__a/package.json'));
@@ -12,16 +12,16 @@ test('`monots fix` should update the package.json files', async (t) => {
   const jsonC = await loadJsonFile(getPath('packages/scoped__c/package.json'));
   const jsonTs = await loadJsonFile(getPath('packages/scoped__ts/package.json'));
 
-  t.is(result, 0, 'The result is successful');
-  t.snapshot(jsonA);
-  t.snapshot(jsonB);
-  t.snapshot(jsonC);
-  t.snapshot(jsonTs);
+  expect(result, 'The result is successful').toBe(0);
+  expect(jsonA).toMatchSnapshot();
+  expect(jsonB).toMatchSnapshot();
+  expect(jsonC).toMatchSnapshot();
+  expect(jsonTs).toMatchSnapshot();
 
   await cleanup();
 });
 
-test('`monots fix` should update the tsconfig files', async (t) => {
+test('`monots fix` should update the tsconfig files', async () => {
   const { cleanup, context, getPath } = await setupFixtures('pnpm-with-packages');
   const result = await cli.run(['fix'], context);
   const jsonA = await loadJsonFile(getPath('packages/scoped__a/src/tsconfig.json'));
@@ -29,24 +29,24 @@ test('`monots fix` should update the tsconfig files', async (t) => {
   const jsonC = await loadJsonFile(getPath('packages/scoped__c/src/tsconfig.json'));
   const jsonTs = await loadJsonFile(getPath('packages/scoped__ts/tsconfig.json'));
 
-  t.is(result, 0, 'The result is successful');
-  t.snapshot(jsonA);
-  t.snapshot(jsonB);
-  t.snapshot(jsonC);
-  t.snapshot(jsonTs);
+  expect(result, 'The result is successful').toBe(0);
+  expect(jsonA).toMatchSnapshot();
+  expect(jsonB).toMatchSnapshot();
+  expect(jsonC).toMatchSnapshot();
+  expect(jsonTs).toMatchSnapshot();
 
   await cleanup();
 });
 
-test('`monots fix` should update the relative baseTsconfig files', async (t) => {
+test('`monots fix` should update the relative baseTsconfig files', async () => {
   const { cleanup, context, getPath } = await setupFixtures('pnpm-with-packages-relative');
   const result = await cli.run(['fix'], context);
   const jsonA = await loadJsonFile(getPath('packages/scoped__a/src/tsconfig.json'));
   const jsonB = await loadJsonFile(getPath('packages/scoped__b/src/tsconfig.json'));
 
-  t.is(result, 0, 'The result is successful');
-  t.snapshot(jsonA);
-  t.snapshot(jsonB);
+  expect(result, 'The result is successful').toBe(0);
+  expect(jsonA).toMatchSnapshot();
+  expect(jsonB).toMatchSnapshot();
 
   await cleanup();
 });

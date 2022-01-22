@@ -133,6 +133,7 @@ yarn.lock
 /.prettierrc.cjs
 /.huskyrc
 /.lintstagedrc
+/vite.config.ts
 /tsconfig.json
 /tsconfig.references.json
 /.markdownlint.json
