@@ -5,13 +5,9 @@ import glob from 'fast-glob';
 
 const DATA_ROOT_URL = 'https://data.jsdelivr.com/v1/package/npm/';
 
-function getLatestVersion(name: string) {
-  return got(`${DATA_ROOT_URL}${name}`)
-    .json<any>()
-    .then((response) => {
-      console.log({ response });
-      return response.tags.latest;
-    });
+async function getLatestVersion(name: string) {
+  const response: any = await got(`${DATA_ROOT_URL}${name}`).json();
+  return response.tags.latest;
 }
 
 async function run() {

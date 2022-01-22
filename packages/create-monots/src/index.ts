@@ -72,7 +72,6 @@ const cli = meow(
 
 async function run(): Promise<void> {
   let projectPath = cli.input[0];
-  console.log(cli.flags);
 
   if (cli.flags.help) {
     console.log(cli.help);

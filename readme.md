@@ -57,7 +57,14 @@ What we need is a toolkit that provides all of these building blocks out of the 
 The easiest way to get started with **monots** is by using `create-monots`. This CLI tool enables you to quickly start building a new **monots** project, with everything set up for you. You can create a new project using the default template, or by using one of the [official boilerplate](https://github.com/monots/examples). To get started, use the following command:
 
 ```bash
+# npm
 npm create monots
+
+# yarn
+yarn create monots
+
+# yarn
+pnpm create monots
 ```
 
 To create a new project with a specific name, you can send a name as an argument. For example, the following command will create a new project `awesome` in a folder with the same name:
