@@ -1,5 +1,15 @@
 # eslint-config-monots
 
+## 0.5.1
+
+> 2022-01-22
+
+### Patch Changes
+
+- [`5cec9ee`](https://github.com/monots/monots/commit/5cec9ee12b75c8c470ca34ce217402a71c520b77) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Patch updates to dependencies.
+
+* [`ab28a0d`](https://github.com/monots/monots/commit/ab28a0d1fbdf9736134358e67b223165ebac9f7d) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Update external package dependencies.
+
 ## 0.5.0
 
 > 2021-12-16

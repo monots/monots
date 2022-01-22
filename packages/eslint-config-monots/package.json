@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-monots",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Provides the monots eslint configuration",
   "keywords": [
     "eslint",

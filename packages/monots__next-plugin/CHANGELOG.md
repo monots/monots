@@ -1,5 +1,13 @@
 # @monots/next-plugin
 
+## 0.1.2
+
+> 2022-01-22
+
+### Patch Changes
+
+- [`5cec9ee`](https://github.com/monots/monots/commit/5cec9ee12b75c8c470ca34ce217402a71c520b77) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Patch updates to dependencies.
+
 ## 0.1.1
 
 > 2021-11-15

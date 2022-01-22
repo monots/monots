@@ -1,5 +1,13 @@
 # @monots/types
 
+## 0.1.4
+
+> 2022-01-22
+
+### Patch Changes
+
+- [`ab28a0d`](https://github.com/monots/monots/commit/ab28a0d1fbdf9736134358e67b223165ebac9f7d) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Update external package dependencies.
+
 ## 0.1.3
 
 > 2021-11-15
