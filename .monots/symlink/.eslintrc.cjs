@@ -17,5 +17,9 @@ module.exports = {
       files: ['./packages/{create-monots,monots__cli}/src/**/*.ts'],
       rules: { 'no-console': 'off', 'unicorn/no-process-exit': 'off' },
     },
+    {
+      files: ['**/vite.config.{js,ts}'],
+      rules: { 'import/no-default-export': 'off' },
+    },
   ],
 };
