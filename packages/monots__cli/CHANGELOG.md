@@ -1,5 +1,13 @@
 # @monots/cli
 
+## 0.10.4
+
+> 2022-01-22
+
+### Patch Changes
+
+- [`064f313`](https://github.com/monots/monots/commit/064f313ec8d276c4bd4a32f8a909570dcca3cabe) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Update versions of installed dependencies in `monots create` package command.
+
 ## 0.10.3
 
 > 2022-01-22
