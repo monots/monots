@@ -1,11 +1,11 @@
-import test from 'ava';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { expect, test } from 'vitest';
 
 import { cli } from '../src/setup';
 import { setupFixtures } from './helpers';
 
-test('`monots prepare` should create development dist files', async (t) => {
+test('`monots prepare` should create development dist files', async () => {
   const { cleanup, context, getPath } = await setupFixtures('pnpm-with-packages');
   const result = await cli.run(['prepare'], context);
   const options = { encoding: 'utf-8' } as const;
@@ -28,11 +28,11 @@ test('`monots prepare` should create development dist files', async (t) => {
     ].map((file) => fs.readlink(file)),
   );
 
-  t.is(result, 0, 'The result is successful');
-  t.snapshot(main);
-  t.snapshot(types);
-  t.snapshot(typesWithDefault);
-  t.snapshot(symlinkTargets.map((file) => path.relative(getPath(), file)));
+  expect(result, 'The result is successful').toBe(0);
+  expect(main).toMatchSnapshot();
+  expect(types).toMatchSnapshot();
+  expect(typesWithDefault).toMatchSnapshot();
+  expect(symlinkTargets.map((file) => path.relative(getPath(), file))).toMatchSnapshot();
 
   await cleanup();
 });

@@ -1,18 +1,18 @@
-import test from 'ava';
 import { loadJsonFile } from 'load-json-file';
+import { expect, test } from 'vitest';
 
 import { cli } from '../src/setup';
 import { setupFixtures } from './helpers';
 
-test('`monots create` should create package with a description', async (t) => {
+test('`monots create` should create package with a description', async () => {
   const { context, getPath, cleanup } = await setupFixtures('pnpm-with-packages');
   const result = await cli.run(['create', '--description', 'DDD', '@scoped/d'], context);
   const json = await loadJsonFile<any>(getPath('packages/scoped__d/package.json'));
 
-  t.is(result, 0);
-  t.is(json.name, '@scoped/d');
-  t.is(json.description, 'DDD');
-  t.deepEqual(json.exports, {
+  expect(result).toBe(0);
+  expect(json.name).toBe('@scoped/d');
+  expect(json.description).toBe('DDD');
+  expect(json.exports).toEqual({
     '.': {
       browser: './dist/index.browser.esm.js',
       import: './dist/index.esm.js',
@@ -30,11 +30,11 @@ test('`monots create` should create package with a description', async (t) => {
   await cleanup();
 });
 
-test('`monots create` should not overwrite existing packages', async (t) => {
+test('`monots create` should not overwrite existing packages', async () => {
   const { cleanup, context } = await setupFixtures('pnpm-with-packages');
   const result = await cli.run(['create', '--description', 'C', '@scoped/c'], context);
 
-  t.is(result, 1);
+  expect(result).toBe(1);
 
   await cleanup();
 });
