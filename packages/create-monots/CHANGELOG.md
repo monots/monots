@@ -1,5 +1,13 @@
 # create-monots
 
+## 0.4.1
+
+> 2022-01-22
+
+### Patch Changes
+
+- [`cf0b55b`](https://github.com/monots/monots/commit/cf0b55bc7ee1bb3296a7cc72b9f6bf5f04c57a8b) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Fix failing `pnpm create monots` command.
+
 ## 0.4.0
 
 > 2022-01-22
