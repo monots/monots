@@ -1,5 +1,13 @@
 # @monots/next-plugin
 
+## 0.2.1
+
+> 2022-01-24
+
+### Patch Changes
+
+- [`49ea37b`](https://github.com/monots/monots/commit/49ea37b4331dcad6ed9293e3bdf3ce8bd33b28c9) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Fix publishing issue with `@monots/next-plugin@0.2.0` due to the version already being published to npm several months ago.
+
 ## 0.2.0
 
 > 2022-01-24
