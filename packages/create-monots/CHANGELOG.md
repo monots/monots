@@ -1,5 +1,13 @@
 # create-monots
 
+## 0.5.1
+
+> 2022-01-24
+
+### Patch Changes
+
+- [`610678b`](https://github.com/monots/monots/commit/610678b74b6bffd02c31227aacc1ed0f029417e5) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Update template versions to latest.
+
 ## 0.5.0
 
 > 2022-01-24
