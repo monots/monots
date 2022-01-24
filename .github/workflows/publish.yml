@@ -19,6 +19,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: cancel previous runs
+        uses: styfle/cancel-workflow-action@0.9.1
+
       - name: checkout code repository
         uses: actions/checkout@v2
         with:
@@ -26,6 +29,7 @@ jobs:
 
       - name: setup caching
         uses: actions/cache@v2
+        if: ${{ !env.ACT }}
         with:
           path: ${{ env.PNPM_CACHE_FOLDER }}
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -51,7 +55,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: create versions
-        uses: changesets/action@c3d88279fd9abe11410de073005e34863f735b1c
+        uses: changesets/action@v1
         if: github.ref == 'refs/heads/main'
         with:
           version: pnpm version:ci
