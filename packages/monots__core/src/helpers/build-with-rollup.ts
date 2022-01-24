@@ -120,7 +120,7 @@ function createConfig(properties: GetRollupConfigProperties): RollupOptions {
           // `file.default.ts` and create the alternative commonjs import
           // `file.cjs.ts`. The commonjs entrypoint will use the `cjs` file
           // while the default esm environment will use `file.default.ts`.
-          entries: [{ find: /^(.*)\.default(\.[jt]sx?)$/, replacement: '$1.cjs$2' }],
+          entries: [{ find: /^(.*)\.default(\.[jt]sx?)$/, replacement: '$1.node$2' }],
         }),
       swc({
         cwd: pkg.project.directory,

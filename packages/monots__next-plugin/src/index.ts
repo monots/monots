@@ -1,45 +1,58 @@
-import { getDependentsGraph } from '@changesets/get-dependents-graph';
-import { getPackagesSync } from '@manypkg/get-packages';
-import type { NextConfig } from 'next';
-import withNextTranspile from 'next-transpile-modules';
-import { readPackageUpSync } from 'read-pkg-up';
+/* eslint-disable unicorn/prefer-module */
+import { type NextConfig } from 'next';
+import { type Configuration, type RuleSetRule } from 'webpack';
 
-function getPackageJsonName() {
-  const packageJson = readPackageUpSync({ cwd: process.cwd() })?.packageJson;
+const hookLoader = require.resolve('@monots/next-plugin/hook');
 
-  if (!packageJson || !packageJson.name) {
-    throw new Error('Invalid installation of `monots`');
-  }
+/**
+ * The monots plugin for next.js to support loading non-transpiled files on the
+ * server and browser.
+ */
+function monotsNextPlugin(nextConfig: NextConfig = {}) {
+  const originalWebpack = nextConfig.webpack;
 
-  return packageJson.name;
-}
+  nextConfig.webpack = (webpackConfig: Configuration, options) => {
+    let hasFoundRule = false;
+    options.defaultLoaders.babel.options.rootMode = 'upward-optional';
 
-interface RecursivelyUpdateDependentsProps {
-  searchName: string;
-  graph: Map<string, string[]>;
-  names: Set<string>;
-}
+    const foundRule = (rule: RuleSetRule | '...') => {
+      if (rule === '...') {
+        return;
+      }
 
-function recursivelyUpdateDependents(props: RecursivelyUpdateDependentsProps): void {
-  const { searchName, graph, names } = props;
+      if (
+        rule.use === options.defaultLoaders.babel ||
+        (Array.isArray(rule.use) && rule.use.includes(options.defaultLoaders.babel))
+      ) {
+        hasFoundRule = true;
+        delete rule.include;
+      }
 
-  for (const [name, dependents] of graph.entries()) {
-    if (!dependents.includes(searchName) || names.has(name)) {
-      continue;
+      for (const childRule of rule.oneOf ?? []) {
+        foundRule(childRule);
+      }
+    };
+
+    // Look at top level rules
+    for (const rule of webpackConfig.module?.rules ?? []) {
+      foundRule(rule);
     }
 
-    names.add(name);
-    recursivelyUpdateDependents({ graph, names, searchName: name });
-  }
+    if (!hasFoundRule) {
+      throw new Error(
+        'If you see this error, please open an issue with your Next.js version and @monots/next-plugin version. The Next Default loader could not be found',
+      );
+    }
+
+    webpackConfig.module?.rules?.unshift({
+      test: /\/node_modules\/@swc\/register\/lib\/index\.js$/,
+      use: hookLoader,
+    });
+
+    return originalWebpack ? originalWebpack(webpackConfig, options) : webpackConfig;
+  };
+
+  return nextConfig;
 }
 
-function withMonots(nextConfig?: NextConfig) {
-  const names = new Set<string>();
-  const graph = getDependentsGraph(getPackagesSync(process.cwd()));
-  const searchName = getPackageJsonName();
-  recursivelyUpdateDependents({ graph, names, searchName });
-
-  return withNextTranspile([...names], { resolveSymlinks: true })(nextConfig);
-}
-
-export = withMonots;
+export = monotsNextPlugin;

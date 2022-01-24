@@ -1,0 +1,5 @@
+{
+  "main": "../dist/hook.cjs.js",
+  "module": "../dist/hook.esm.js",
+  "types": "../dist/hook.d.ts"
+}
