@@ -24,7 +24,7 @@
   "dependencies": {
     "@swc/core": "^1.2.133",
     "@swc/register": "^0.1.9",
-    "esbuild": "^0.14.12"
+    "esbuild": "^0.14.13"
   },
   "devDependencies": {
     "@monots/core": "^0.12.4",

@@ -78,7 +78,7 @@
     "eslint-plugin-unicorn": "^40.1.0"
   },
   "devDependencies": {
-    "@types/eslint": "^8.4.0",
+    "@types/eslint": "^8.4.1",
     "@types/node": "^17.0.10",
     "eslint": "^8.7.0"
   },

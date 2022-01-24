@@ -29,7 +29,7 @@
     "dist"
   ],
   "dependencies": {
-    "@changesets/get-dependents-graph": "^1.2.3",
+    "@changesets/get-dependents-graph": "^1.3.0",
     "@manypkg/get-packages": "^1.1.3",
     "@swc/helpers": "^0.3.2",
     "@types/node": "^17.0.10",
