@@ -10,7 +10,9 @@ yarn add @monots/next-plugin
 
 ## Motivation
 
-Next.JS doesn't automatically transpile the Node JS modules
+Next.JS doesn't automatically work with `monots prepare` and you will see cryptic errors when running on the server.
+
+This plugin ensures that files are transpiled without requiring a build.
 
 ## Usage
 
@@ -20,5 +22,3 @@ Add the plugin to your `next.config.js` file.
 const withMonots = require('@monots/next-plugin');
 module.exports = withMonots({ ...yourOwnConfig });
 ```
-
-Under the hood this uses the `next-transpile-modules` plugin and automatically adds the internal packages being used by the next.js package.
