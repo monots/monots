@@ -1,5 +1,13 @@
 # create-monots
 
+## 0.5.0
+
+> 2022-01-24
+
+### Minor Changes
+
+- [`c844b9f`](https://github.com/monots/monots/commit/c844b9f59cf2f8a9fcbc40d0d40a8d58cdb4d679) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Improve github workflows in `create-monots` template.
+
 ## 0.4.1
 
 > 2022-01-22
