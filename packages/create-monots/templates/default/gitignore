@@ -135,6 +135,7 @@ yarn.lock
 /tsconfig.json
 /tsconfig.references.json
 /.markdownlint.json
+/vite.config.ts
 .parcel-cache/
 .psc-ide-port
 

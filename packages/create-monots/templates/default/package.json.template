@@ -22,7 +22,6 @@
     "lint": "run-s lint:\\*",
     "lint:build": "pnpm monots check",
     "lint:es": "eslint --ext=.tsx,.ts,.js .",
-    "lint:md": "eslint --ignore-pattern='*.js' --ignore-pattern='*.ts' --ignore-pattern='*.tsx' .",
     "lint:prettier": "pnpm run:prettier -- --check",
     "lint:repo": "manypkg check",
     "monots": "monots",
