@@ -145,7 +145,7 @@ importers:
 
   packages/monots__cli:
     specifiers:
-      '@monots/core': ^0.12.4
+      '@monots/core': ^0.13.0
       '@monots/types': ^0.1.4
       '@monots/utils': ^0.3.0
       '@swc/core': ^1.2.133

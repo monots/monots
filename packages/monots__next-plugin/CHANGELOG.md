@@ -1,5 +1,13 @@
 # @monots/next-plugin
 
+## 0.2.0
+
+> 2022-01-24
+
+### Minor Changes
+
+- [`9b03778`](https://github.com/monots/monots/commit/9b0377806adbd448080ac02e7b995074d40a9ae7) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Massively improve and simplify the NextJS plugin.
+
 ## 0.1.2
 
 > 2022-01-22

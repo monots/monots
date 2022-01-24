@@ -1,5 +1,13 @@
 # @monots/core
 
+## 0.13.0
+
+> 2022-01-24
+
+### Minor Changes
+
+- [`9b03778`](https://github.com/monots/monots/commit/9b0377806adbd448080ac02e7b995074d40a9ae7) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Add support for `.node.ts` extension which will only be built for Node and CommonJS environments.
+
 ## 0.12.4
 
 > 2022-01-22
