@@ -1,5 +1,13 @@
 # @monots/next-plugin
 
+## 0.3.0
+
+> 2022-01-25
+
+### Minor Changes
+
+- [`26257f2`](https://github.com/monots/monots/commit/26257f2a59d3cf70896b83390c550266a7fc0345) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Add support for **browser-only** and **node-only** imports to the webpack configuration of the next.js plugin.
+
 ## 0.2.1
 
 > 2022-01-24

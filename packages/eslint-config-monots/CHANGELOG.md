@@ -1,5 +1,13 @@
 # eslint-config-monots
 
+## 0.6.0
+
+> 2022-01-25
+
+### Minor Changes
+
+- [`10ef30a`](https://github.com/monots/monots/commit/10ef30ae1072f5edc39763155eeb216ef40b8539) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Add the `eslint-plugin-file-progress` plugin to the default eslint configuration.
+
 ## 0.5.1
 
 > 2022-01-22
