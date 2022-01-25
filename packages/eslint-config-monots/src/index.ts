@@ -5,7 +5,7 @@ import type { Linter } from 'eslint';
 const config: Linter.Config = {
   parser: '@typescript-eslint/parser',
   ignorePatterns: ['*.d.ts'],
-  plugins: ['@typescript-eslint', 'unicorn', 'simple-import-sort'],
+  plugins: ['@typescript-eslint', 'unicorn', 'simple-import-sort', 'file-progress'],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
@@ -23,6 +23,7 @@ const config: Linter.Config = {
     node: true,
   },
   rules: {
+    'file-progress/activate': 1,
     'prefer-const': ['error', { destructuring: 'all' }],
 
     'unicorn/no-keyword-prefix': 'off',

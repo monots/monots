@@ -14,7 +14,6 @@ importers:
       eslint: ^8.7.0
       eslint-config-monots: ^0.5.1
       eslint-formatter-codeframe: ^7.32.1
-      eslint-plugin-file-progress: ^1.2.0
       fast-glob: ^3.2.11
       got: ^12.0.1
       husky: ^7.0.4
@@ -39,7 +38,6 @@ importers:
       eslint: 8.7.0
       eslint-config-monots: link:packages/eslint-config-monots
       eslint-formatter-codeframe: 7.32.1
-      eslint-plugin-file-progress: 1.2.0_eslint@8.7.0
       fast-glob: 3.2.11
       got: 12.0.1
       husky: 7.0.4
@@ -113,6 +111,7 @@ importers:
       eslint-import-resolver-node: ^0.3.6
       eslint-import-resolver-typescript: ^2.4.0
       eslint-plugin-eslint-comments: ^3.2.0
+      eslint-plugin-file-progress: ^1.2.0
       eslint-plugin-import: ^2.25.4
       eslint-plugin-jsx-a11y: ^6.5.1
       eslint-plugin-markdown: ^2.2.1
@@ -130,6 +129,7 @@ importers:
       eslint-import-resolver-node: 0.3.6
       eslint-import-resolver-typescript: 2.5.0_9ff7dbcc486b497d34e34a545c49272a
       eslint-plugin-eslint-comments: 3.2.0_eslint@8.7.0
+      eslint-plugin-file-progress: 1.2.0_eslint@8.7.0
       eslint-plugin-import: 2.25.4_eslint@8.7.0
       eslint-plugin-jsx-a11y: 6.5.1_eslint@8.7.0
       eslint-plugin-markdown: 2.2.1_eslint@8.7.0

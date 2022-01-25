@@ -1,9 +1,5 @@
 module.exports = {
   extends: ['monots'],
-  plugins: ['file-progress'],
-  rules: {
-    'file-progress/activate': 1,
-  },
   overrides: [
     {
       files: ['*.ts', '*.tsx'],

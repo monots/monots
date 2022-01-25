@@ -14,6 +14,9 @@
   ],
   "sideEffects": false,
   "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
   "bin": {
     "monots": "dist/index.cjs"
   },
