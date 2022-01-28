@@ -1,5 +1,13 @@
 # prettier-config-monots
 
+## 0.1.2
+
+> 2022-01-28
+
+### Patch Changes
+
+- [`d45747c`](https://github.com/monots/monots/commit/d45747c91e038c6dc2aa9da9a280bdcdb762feee) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Remove [deprecated](https://prettier.io/blog/2021/09/09/2.4.0.html) `jsxBracketSameLine` and replace with `bracketSameLine`.
+
 ## 0.1.1
 
 > 2021-11-15

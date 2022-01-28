@@ -1,5 +1,13 @@
 # @monots/utils
 
+## 0.3.1
+
+> 2022-01-28
+
+### Patch Changes
+
+- [`5b863ff`](https://github.com/monots/monots/commit/5b863ffd92c567314eac2e18a21e97b4bb1b17e3) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Minor updates to external dependencies.
+
 ## 0.3.0
 
 > 2022-01-22

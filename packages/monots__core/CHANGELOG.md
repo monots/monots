@@ -1,5 +1,28 @@
 # @monots/core
 
+## 0.14.0
+
+> 2022-01-28
+
+### Minor Changes
+
+- [`e3c9989`](https://github.com/monots/monots/commit/e3c9989e213fe475792662f61aaca8714046a1c8) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Add support for `ignoreExports` flag to the package configuration. Setting this flag to `true` will leave the package.json `exports` field untouched when running the following command.
+
+  ```bash
+  monots fix
+  ```
+
+* [`2eafd64`](https://github.com/monots/monots/commit/2eafd640cd48da332e26add232004c729daadf37) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Add support for breaking changes in `@swc/register@1.10.0`.
+
+### Patch Changes
+
+- [`5b863ff`](https://github.com/monots/monots/commit/5b863ffd92c567314eac2e18a21e97b4bb1b17e3) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Minor updates to external dependencies.
+
+- Updated dependencies [[`5b863ff`](https://github.com/monots/monots/commit/5b863ffd92c567314eac2e18a21e97b4bb1b17e3)]:
+  - @monots/types@0.1.5
+  - @monots/utils@0.3.1
+  - superstruct-extra@0.1.4
+
 ## 0.13.0
 
 > 2022-01-24
