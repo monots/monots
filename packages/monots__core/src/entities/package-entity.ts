@@ -224,7 +224,10 @@ export class PackageEntity extends BaseEntity<Package> {
       json.type = 'module';
     }
 
-    json.exports = this.#generateExportsField();
+    if (!this.monots.ignoreExports) {
+      json.exports = this.#generateExportsField();
+    }
+
     json.files = this.#getRequiredFiles();
     return json;
   }
@@ -563,4 +566,5 @@ const DEFAULT_MONOTS_PACKAGE_OPTIONS: Required<PackageMonots> = {
   externalModules: [],
   sourceFolderName: SOURCE_FOLDER_NAME,
   extraExports: {},
+  ignoreExports: false,
 };

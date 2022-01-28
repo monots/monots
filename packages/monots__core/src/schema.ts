@@ -103,6 +103,14 @@ export const PackageMonots = s.type({
   extraExports: s.optional(
     s.record(s.string(), s.union([s.record(s.string(), s.string()), s.string()])),
   ),
+
+  /**
+   * Set to true to completely bypass managing the exports field of this
+   * package.
+   *
+   * This can be useful when you need to turn off the exports field.
+   */
+  ignoreExports: s.optional(s.boolean()),
 });
 
 export type Package = s.Infer<typeof Package>;

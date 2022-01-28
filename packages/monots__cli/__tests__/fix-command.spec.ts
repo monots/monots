@@ -50,3 +50,13 @@ test('`monots fix` should update the relative baseTsconfig files', async () => {
 
   await cleanup();
 });
+
+test('`monots fix` should support ignoring exports', async () => {
+  const { cleanup, context, getPath } = await setupFixtures('pnpm-ignore-exports');
+  await cli.run(['fix'], context);
+  const jsonA = await loadJsonFile(getPath('packages/scoped__a/package.json'));
+
+  expect(jsonA).toMatchSnapshot();
+
+  await cleanup();
+});
