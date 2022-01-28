@@ -45,7 +45,7 @@
     "test": "vitest run",
     "test:watch": "vitest watch",
     "ts": "node --experimental-specifier-resolution=node --loader ts-node/esm",
-    "typecheck": "tsc -b",
+    "typecheck": "tsc --build --force",
     "update:deps": "pnpm update --latest --recursive -i",
     "update:templates": "pnpm ts ./.monots/update-package.json-templates.ts",
     "update:workspace": "pnpm up -r --workspace \"packages/*\"",

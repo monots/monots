@@ -3,7 +3,7 @@
 export const useTabs = false;
 export const tabWidth = 2;
 
-export const jsxBracketSameLine = false;
+export const bracketSameLine = false;
 export const bracketSpacing = true;
 export const printWidth = 100;
 export const semi = true;
