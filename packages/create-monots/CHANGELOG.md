@@ -1,5 +1,13 @@
 # create-monots
 
+## 0.7.0
+
+> 2022-01-28
+
+### Minor Changes
+
+- [`9939832`](https://github.com/monots/monots/commit/99398328f3265edabf2f4e8e464f44582bd79b26) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Update `create-monots` template with new scripts structure. Also update some elements of the CI.
+
 ## 0.6.0
 
 > 2022-01-28
