@@ -1,30 +1,18 @@
 import { promises as fs } from 'node:fs';
 import { execSync } from 'node:child_process';
 import path from 'node:path';
-import url from 'node:url';
 import { getPackages } from '@manypkg/get-packages';
-
-const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
-/**
- * Resolve a path relative to the base directory.
- *
- * @param {string[]} paths
- */
-function baseDir(...paths) {
-  return path.resolve(__dirname, '..', ...paths);
-}
+import { Pkg, baseDir } from './helpers';
 
 /**
  * The cached packages, to prevent multiple re-computations.
  */
-let packages;
+let packages: Promise<Pkg[]> | undefined;
 
 /**
  * Get all dependencies.
  *
  * @param excludeDeprecated - when true exclude the deprecated packages
- *
- * @returns {Promise<object>}
  */
 export function getAllDependencies({
   excludeDeprecated = true,
@@ -33,7 +21,7 @@ export function getAllDependencies({
 }) {
   if (!packages) {
     packages = getPackages(baseDir()).then(({ packages = [] }) => {
-      const transformedPackages = [];
+      const transformedPackages: Pkg[] = [];
 
       for (const pkg of packages) {
         if (excludeSupport && pkg.dir.startsWith(baseDir('support'))) {
@@ -66,9 +54,9 @@ const NAME = 'CHANGELOG.md';
 /**
  * Read a file.
  *
- * @param {string} filePath The file path.
+ * @param filePath The file path.
  */
-async function readFile(filePath) {
+async function readFile(filePath: string) {
   try {
     return await fs.readFile(filePath, 'utf-8');
   } catch {
@@ -79,7 +67,7 @@ async function readFile(filePath) {
 /**
  * Get the release date
  *
- * @param {Date} [date=`new Date()`] The date to use.
+ * @param [date=`new Date()`] The date to use.
  */
 function getDate(date = new Date()) {
   return `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date
@@ -91,9 +79,9 @@ function getDate(date = new Date()) {
 /**
  * Check if the file has changed.
  *
- * @param {string} filePath The file path to check.
+ * @param filePath The file path to check.
  */
-function hasFileChanged(filePath) {
+function hasFileChanged(filePath: string) {
   const isUntracked = !execSync(`git ls-files ${filePath}`).toString().trim();
 
   if (isUntracked) {

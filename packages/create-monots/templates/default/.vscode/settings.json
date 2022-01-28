@@ -1,0 +1,23 @@
+{
+  // Editor Settings
+  "editor.tabSize": 2,
+  "editor.rulers": [80],
+  "editor.insertSpaces": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.ignorePath": ".eslintignore",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+
+  // File Settings
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+
+  // TypeScript settings
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.format.enable": false,
+
+  // JavaScript settings
+  "javascript.format.enable": false
+}

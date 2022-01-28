@@ -2,6 +2,7 @@ import { loadJsonFile } from 'load-json-file';
 import { writeJsonFile } from 'write-json-file';
 import { got } from 'got';
 import glob from 'fast-glob';
+import { baseDir } from './helpers';
 
 const DATA_ROOT_URL = 'https://data.jsdelivr.com/v1/package/npm/';
 
@@ -13,7 +14,7 @@ async function getLatestVersion(name: string) {
 async function run() {
   // find and load package.json.template files
   const files = await glob('**/package.json.template', {
-    cwd: process.cwd(),
+    cwd: baseDir(),
     absolute: true,
   });
 

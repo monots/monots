@@ -137,3 +137,41 @@ jobs:
 
       - name: run unit tests
         run: pnpm test
+
+  changeset:
+    timeout-minutes: 8
+    runs-on: ubuntu-latest
+    if: ${{ false == contains(github.ref, 'changeset') && github.repository == 'kickjump/kickjump' }}
+    steps:
+      - name: cancel previous runs
+        uses: styfle/cancel-workflow-action@0.9.1
+
+      - name: checkout code repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: setup pnpm caching
+        uses: actions/cache@v2
+        if: ${{ !env.ACT }}
+        with:
+          path: ${{ env.PNPM_CACHE_FOLDER }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
+      - name: setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: install and audit
+        uses: ./.github/actions/pnpm
+        with:
+          cache: ${{ env.PNPM_CACHE_FOLDER }}
+
+      - name: check versions are valid
+        if: github.event.pull_request
+        run: |
+          pnpm version:pr
+          pnpm version:ci

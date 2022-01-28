@@ -11,6 +11,9 @@
   },
   "references": [
     {
+      "path": ".monots/scripts"
+    },
+    {
       "path": "packages/create-monots/src"
     },
     {

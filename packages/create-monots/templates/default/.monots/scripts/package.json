@@ -1,0 +1,27 @@
+{
+  "name": "scripts",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check:pnpm": "node ./check-pnpm.js",
+    "delete:changeset:property": "pnpm ts ./delete-changeset-changelog-property.ts",
+    "fix:prisma": "pnpm ts ./fix-prisma.ts",
+    "symlink:root": "node ./symlink-root.js",
+    "ts": "node --experimental-specifier-resolution=node --loader ts-node/esm",
+    "update:changelog:dates": "pnpm ts ./changelog-dates.ts"
+  },
+  "dependencies": {
+    "@manypkg/get-packages": "^1.1.3",
+    "chalk": "^5.0.0",
+    "chalk-template": "^0.3.1",
+    "load-json-file": "^7.0.1",
+    "write-json-file": "^5.0.0"
+  },
+  "monots": {
+    "mode": "app",
+    "tsconfigs": {
+      "src": false,
+      "": {}
+    }
+  }
+}

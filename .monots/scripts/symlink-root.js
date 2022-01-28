@@ -12,6 +12,15 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+/**
+ * Resolve a path relative to the base directory.
+ *
+ * @param {string[]} paths
+ */
+function baseDir(...paths) {
+  return resolve(__dirname, '../..', ...paths);
+}
+
 const targets = readdirSync(baseDir('.monots', 'symlink'))
   // Exclude the `readme.md` file from being symlinked.
   .filter((filename) => !filename.endsWith('readme.md'))
@@ -19,15 +28,6 @@ const targets = readdirSync(baseDir('.monots', 'symlink'))
     original: baseDir('.monots', 'symlink', filename),
     target: baseDir(filename),
   }));
-
-/**
- * Resolve a path relative to the base directory.
- *
- * @param {string[]} paths
- */
-function baseDir(...paths) {
-  return resolve(__dirname, '..', ...paths);
-}
 
 /**
  * Safely get the stats for a file.

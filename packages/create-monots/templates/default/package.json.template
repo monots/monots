@@ -9,7 +9,6 @@
     "build": "run-p build:packages typecheck",
     "build:packages": "pnpm monots build",
     "changeset": "changeset",
-    "check:pnpm": "node .monots/check-pnpm.js",
     "checks": "run-s lint typecheck test",
     "clean": "git clean -fdX --exclude='.config.json'",
     "fix": "run-s -c fix:repo fix:build fix:es fix:prettier",
@@ -17,7 +16,7 @@
     "fix:es": "pnpm lint:es -- --fix",
     "fix:prettier": "pnpm run:prettier -- --write",
     "fix:repo": "manypkg fix",
-    "preinstall": "pnpm symlink:root && pnpm check:pnpm",
+    "preinstall": "pnpm scripts symlink:root && pnpm scripts check:pnpm",
     "postinstall": "pnpm monots prepare",
     "lint": "run-s lint:\\*",
     "lint:build": "pnpm monots check",
@@ -30,6 +29,7 @@
     "release": "changeset publish",
     "reset": "pnpm clean; rm pnpm-lock.yaml; pnpm symlink:root; pnpm i -r;",
     "run:prettier": "prettier --ignore-path .eslintignore \"**/*.{js,jsx,ts,tsx,md,mdx,json,html,css,yml,yaml,graphql}\"",
+    "scripts": "pnpm --dir .monots/scripts run",
     "symlink:root": "node .monots/symlink-root.js",
     "test": "vitest run",
     "test:watch": "vitest watch",
@@ -39,8 +39,9 @@
     "update:workspace": "pnpm up -r --workspace \"packages/*\"",
     "version:changeset": "changeset version",
     "version:ci": "run-s version:changeset version:date fix:repo update:workspace fix:prettier version:lockfile",
-    "version:date": "node .monots/changelog-dates.js",
-    "version:lockfile": "pnpm install --lockfile-only"
+    "version:date": "pnpm scripts changelog:dates",
+    "version:lockfile": "pnpm install --lockfile-only",
+    "version:pr": "pnpm scripts delete:changeset:property"
   },
   "dependencies": {
     "@changesets/changelog-github": "^0.4.2",
@@ -51,7 +52,6 @@
     "eslint": "^8.7.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.2",
-    "load-json-file": "^7.0.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.1",
     "ts-node": "^10.4.0",
@@ -65,7 +65,8 @@
   },
   "monots": {
     "packages": [
-      "packages/*"
+      "packages/*",
+      ".monots/scripts"
     ],
     "baseTsconfig": "./node_modules/@monots/tsconfig/tsconfig.json",
     "tsconfig": {
@@ -78,5 +79,5 @@
       }
     }
   },
-  "packageManager": "pnpm@6.24.1"
+  "packageManager": "pnpm@6.28.0"
 }
