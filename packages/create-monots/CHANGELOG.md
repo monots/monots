@@ -1,5 +1,17 @@
 # create-monots
 
+## 0.6.0
+
+> 2022-01-28
+
+### Minor Changes
+
+- [`63e268c`](https://github.com/monots/monots/commit/63e268c1997b27ffdef2293c2dca664b750d34f3) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Add commit status to publish workflow in `create-monots` default template.
+
+### Patch Changes
+
+- [`70cf593`](https://github.com/monots/monots/commit/70cf59340b480151b7760284b8f9621819759ca7) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Improve `pnpm typecheck` command for templates.
+
 ## 0.5.1
 
 > 2022-01-24

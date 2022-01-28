@@ -1,5 +1,13 @@
 # @monots/next-plugin
 
+## 0.4.0
+
+> 2022-01-28
+
+### Minor Changes
+
+- [`2eafd64`](https://github.com/monots/monots/commit/2eafd640cd48da332e26add232004c729daadf37) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Add support for breaking changes in `@swc/register@1.10.0`.
+
 ## 0.3.0
 
 > 2022-01-25

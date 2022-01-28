@@ -1,5 +1,16 @@
 # superstruct-extra
 
+## 0.1.4
+
+> 2022-01-28
+
+### Patch Changes
+
+- [`5b863ff`](https://github.com/monots/monots/commit/5b863ffd92c567314eac2e18a21e97b4bb1b17e3) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Minor updates to external dependencies.
+
+- Updated dependencies [[`5b863ff`](https://github.com/monots/monots/commit/5b863ffd92c567314eac2e18a21e97b4bb1b17e3)]:
+  - @monots/types@0.1.5
+
 ## 0.1.3
 
 > 2021-11-15

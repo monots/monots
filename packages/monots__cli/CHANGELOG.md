@@ -1,5 +1,21 @@
 # @monots/cli
 
+## 0.11.0
+
+> 2022-01-28
+
+### Minor Changes
+
+- [`e3c9989`](https://github.com/monots/monots/commit/e3c9989e213fe475792662f61aaca8714046a1c8) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Add support for `ignoreExports` flag to the package configuration. Setting this flag to `true` will leave the package.json `exports` field untouched when running the following command.
+
+  ```bash
+  monots fix
+  ```
+
+### Patch Changes
+
+- [`5b863ff`](https://github.com/monots/monots/commit/5b863ffd92c567314eac2e18a21e97b4bb1b17e3) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Minor updates to external dependencies.
+
 ## 0.10.4
 
 > 2022-01-22
