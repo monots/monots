@@ -9,6 +9,7 @@ const loader: LoaderDefinitionFunction = function () {
     null,
     `module.exports = () => {};
     exports.revert = () => {};
+    exports.default = () => {};
   `,
   );
 };

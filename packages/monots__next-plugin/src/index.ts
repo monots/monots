@@ -46,7 +46,7 @@ function withMonots(nextConfig: NextConfig = {}) {
     }
 
     webpackConfig.module?.rules?.unshift({
-      test: /\/node_modules\/@swc\/register\/lib\/index\.js$/,
+      test: /\/node_modules\/@swc\/register\/lib\/(index|node)\.js$/,
       use: hookLoader,
     });
 

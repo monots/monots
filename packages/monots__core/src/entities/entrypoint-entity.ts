@@ -238,21 +238,20 @@ export class EntrypointEntity extends BaseEntity<Entrypoint> {
         jsc: { target: 'es2015' },
       };
 
-      const promise = fs
-        .mkdir(path.dirname(target), { recursive: true })
-        .then(() =>
-          fs.writeFile(
-            target,
-            `// Allow the project to be used for commonjs environments \nconst register = require('${path.relative(
-              path.dirname(target),
-              _REQUIRE.resolve('@swc/register'),
-            )}');\n\nregister(${JSON.stringify(
-              config,
-              undefined,
-              2,
-            )})\nmodule.exports = require('${relativePath}');\nregister.revert();`,
-          ),
+      const promise = fs.mkdir(path.dirname(target), { recursive: true }).then(() => {
+        const register = path.relative(
+          path.dirname(target),
+          _REQUIRE.resolve('@swc/register/lib/node.js'),
         );
+        return fs.writeFile(
+          target,
+          `// Allow the project to be used for commonjs environments \nconst register = require('${register}');\n\n(register.default || register)(${JSON.stringify(
+            config,
+            undefined,
+            2,
+          )})\nmodule.exports = require('${relativePath}');\nregister.revert();`,
+        );
+      });
 
       promises.push(promise);
     };
