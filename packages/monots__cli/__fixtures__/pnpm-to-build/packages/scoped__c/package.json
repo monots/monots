@@ -1,0 +1,20 @@
+{
+  "name": "@scoped/c",
+  "version": "1.0.0",
+  "main": "",
+  "module": "",
+  "browser": "",
+  "types": "",
+  "monots": {
+    "entrypoints": [
+      "index.ts",
+      "other.ts",
+      "and-another/index.ts",
+      "and-another/nested/cool.ts",
+      "and-another/nested/index.ts"
+    ],
+    "extraExports": {
+      "./extra": "./extra.js"
+    }
+  }
+}
