@@ -1,6 +1,6 @@
 {
   "name": "create-monots",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Bootstrap your TypeScript project with monots 🎉",
   "keywords": [
     "typescript",

@@ -1,5 +1,13 @@
 # create-monots
 
+## 0.7.1
+
+> 2022-01-29
+
+### Patch Changes
+
+- [`c888ed3`](https://github.com/monots/monots/commit/c888ed3f731a8c1a718aadf7fd060424743e6cef) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Remove unused dependencies in bundled CLI.
+
 ## 0.7.0
 
 > 2022-01-28
