@@ -1,5 +1,13 @@
 # @monots/core
 
+## 0.14.1
+
+> 2022-01-29
+
+### Patch Changes
+
+- [`c888ed3`](https://github.com/monots/monots/commit/c888ed3f731a8c1a718aadf7fd060424743e6cef) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Add support for `react` automatic jsx runtime.
+
 ## 0.14.0
 
 > 2022-01-28
