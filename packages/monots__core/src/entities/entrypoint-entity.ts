@@ -235,7 +235,7 @@ export class EntrypointEntity extends BaseEntity<Entrypoint> {
       const config: InputOptions = {
         rootMode: 'upward-optional',
         module: { type: 'commonjs' },
-        jsc: { target: 'es2015' },
+        jsc: { target: 'es2015', transform: { react: { runtime: 'automatic' } } },
       };
 
       const promise = fs.mkdir(path.dirname(target), { recursive: true }).then(() => {

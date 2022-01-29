@@ -10,7 +10,12 @@ const register = require('../../../../../../../../node_modules/.pnpm/@swc+regist
     \\"type\\": \\"commonjs\\"
   },
   \\"jsc\\": {
-    \\"target\\": \\"es2015\\"
+    \\"target\\": \\"es2015\\",
+    \\"transform\\": {
+      \\"react\\": {
+        \\"runtime\\": \\"automatic\\"
+      }
+    }
   }
 })
 module.exports = require('../src/index.ts');

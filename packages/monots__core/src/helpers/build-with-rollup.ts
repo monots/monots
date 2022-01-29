@@ -125,7 +125,10 @@ function createConfig(properties: GetRollupConfigProperties): RollupOptions {
       swc({
         cwd: pkg.project.directory,
         env: { targets: pkg.browserslist },
-        jsc: { externalHelpers: !!pkg.populatedJson.dependencies?.['@swc/helpers'] },
+        jsc: {
+          externalHelpers: !!pkg.populatedJson.dependencies?.['@swc/helpers'],
+          transform: { react: { runtime: 'automatic' } },
+        },
       }),
       json({ namedExports: false }),
       resolve({ extensions: ['.js', '.jsx', '.ts', '.tsx', '.cjs', '.mjs'] }),
