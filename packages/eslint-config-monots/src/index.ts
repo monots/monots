@@ -198,7 +198,6 @@ const config: Linter.Config = {
         '@typescript-eslint/no-non-null-assertion': 'off', // Makes writing tests more convenient
         '@typescript-eslint/no-use-before-define': 'off',
         'react/display-name': 'off',
-        '@kyleshevlin/prefer-custom-hooks': 'off',
         '@typescript-eslint/explicit-module-boundary-types': 'off',
       },
     },
