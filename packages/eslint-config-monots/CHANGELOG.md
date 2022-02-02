@@ -1,5 +1,13 @@
 # eslint-config-monots
 
+## 0.7.0
+
+> 2022-02-02
+
+### Minor Changes
+
+- [`3c9540e`](https://github.com/monots/monots/commit/3c9540efcfcb60a8b19e568485d2a8c6ffb93c4c) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Remove `@kyleshevlin/prefer-custom-hooks` rule from the default `eslint-config-monots/react` configuration.
+
 ## 0.6.0
 
 > 2022-01-25
