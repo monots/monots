@@ -30,11 +30,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: setup node.js
-        uses: actions/setup-node@v2-beta
-        with:
-          node-version: 16.x
-
       - name: install and audit
         uses: ./.github/actions/pnpm
         with:

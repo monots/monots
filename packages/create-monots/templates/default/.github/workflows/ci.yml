@@ -1,9 +1,6 @@
 name: ci
 
 on:
-  schedule:
-    - cron: '0 0 * * *'
-
   push:
     branches:
       - main
@@ -28,11 +25,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-
-      - name: setup node.js
-        uses: actions/setup-node@v2-beta
-        with:
-          node-version: 16.x
 
       - name: install and audit
         uses: ./.github/actions/pnpm
@@ -64,11 +56,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: setup node.js
-        uses: actions/setup-node@v2-beta
-        with:
-          node-version: 16.x
-
       - name: install and audit
         uses: ./.github/actions/pnpm
         with:
@@ -95,14 +82,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: setup node.js
-        uses: actions/setup-node@v2-beta
-        with:
-          node-version: ${{ matrix.node-version }}
-
       - name: install and audit
         uses: ./.github/actions/pnpm
         with:
+          node-version: ${{ matrix.node-version }}
           cache: ${{ env.PNPM_CACHE_FOLDER }}
 
       - name: build project
