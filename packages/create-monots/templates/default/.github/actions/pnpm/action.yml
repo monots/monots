@@ -9,6 +9,15 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: setup pnpm caching
+      uses: actions/cache@v2
+      if: ${{ !env.ACT }}
+      with:
+        path: ${{ env.PNPM_CACHE_FOLDER }}
+        key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-
+
     - name: enable corepack
       run: corepack enable
       shell: bash
