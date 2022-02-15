@@ -1,5 +1,15 @@
 # create-monots
 
+## 0.7.2
+
+> 2022-02-15
+
+### Patch Changes
+
+- [`f67dc68`](https://github.com/monots/monots/commit/f67dc686da9adfecddfdf767563110c226ce2e66) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Update dependencies.
+
+* [`87e8c1d`](https://github.com/monots/monots/commit/87e8c1d09342f86bb5558b72db9def676f4ddadb) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Update composite `pnpm` action to include caching.
+
 ## 0.7.1
 
 > 2022-01-29

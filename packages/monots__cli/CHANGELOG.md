@@ -1,5 +1,13 @@
 # @monots/cli
 
+## 0.11.1
+
+> 2022-02-15
+
+### Patch Changes
+
+- [`f67dc68`](https://github.com/monots/monots/commit/f67dc686da9adfecddfdf767563110c226ce2e66) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Update dependencies.
+
 ## 0.11.0
 
 > 2022-01-28
