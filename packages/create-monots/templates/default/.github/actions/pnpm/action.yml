@@ -13,7 +13,7 @@ runs:
       uses: actions/cache@v2
       if: ${{ !env.ACT }}
       with:
-        path: ${{ env.PNPM_CACHE_FOLDER }}
+        path: ${{ inputs.cache }}
         key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: |
           ${{ runner.os }}-pnpm-
