@@ -1,6 +1,6 @@
 {
   "name": "@monots/types",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "The monots templates",
   "homepage": "https://github.com/monots/monots/tree/master/@monots/types",
   "repository": "https://github.com/monots/monots/tree/master/packages/monots__types",
