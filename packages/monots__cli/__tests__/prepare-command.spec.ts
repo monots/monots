@@ -8,7 +8,7 @@ import { setupFixtures } from './helpers';
 test('`monots prepare` should create development dist files', async () => {
   const { cleanup, context, getPath } = await setupFixtures('pnpm-with-packages');
   const result = await cli.run(['prepare'], context);
-  const options = { encoding: 'utf-8' } as const;
+  const options = { encoding: 'utf8' } as const;
 
   const [main, types, typesWithDefault] = await Promise.all(
     [

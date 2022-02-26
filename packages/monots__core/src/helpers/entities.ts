@@ -24,24 +24,30 @@ interface GenerateFieldProps {
    * The type of field being generated.
    */
   type: EntrypointField;
+
+  /**
+   * Whether to always prefix the field.
+   */
+  alwaysPrefix?: boolean;
 }
 
 /**
  * Generate the field value for the provided field.
  */
 export function generateField(props: GenerateFieldProps): string {
-  const { directory, output, name, type } = props;
+  const { directory, output, name, type, alwaysPrefix } = props;
 
   return prefixRelativePath(
     normalizePath(path.join(path.relative(directory, output), `${name}${FIELD_EXTENSIONS[type]}`)),
+    alwaysPrefix,
   );
 }
 
 /**
  * Add a `./` prefix to a path that needs to be seen as relative.
  */
-export function prefixRelativePath(path: string): string {
-  return path.startsWith('.') ? path : `./${path}`;
+export function prefixRelativePath(path: string, alwaysPrefix = false): string {
+  return path.startsWith('.') && !alwaysPrefix ? path : `./${path}`;
 }
 
 /**

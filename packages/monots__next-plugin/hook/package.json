@@ -1,4 +1,16 @@
 {
+  "exports": {
+    ".": {
+      "import": "./../dist/hook.esm.js",
+      "require": "./../dist/hook.cjs.js",
+      "types": "./../dist/hook.d.ts"
+    },
+    "./index.js": {
+      "import": "./../dist/hook.esm.js",
+      "require": "./../dist/hook.cjs.js",
+      "types": "./../dist/hook.d.ts"
+    }
+  },
   "main": "../dist/hook.cjs.js",
   "module": "../dist/hook.esm.js",
   "types": "../dist/hook.d.ts"

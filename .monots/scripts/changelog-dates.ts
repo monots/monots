@@ -58,7 +58,7 @@ const NAME = 'CHANGELOG.md';
  */
 async function readFile(filePath: string) {
   try {
-    return await fs.readFile(filePath, 'utf-8');
+    return await fs.readFile(filePath, 'utf8');
   } catch {
     return;
   }

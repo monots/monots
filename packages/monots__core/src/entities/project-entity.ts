@@ -60,7 +60,7 @@ export class ProjectEntity extends BaseEntity<Project> {
   static async create(props: CreateProjectEntityProps): Promise<ProjectEntity> {
     const { cwd, skipPackages = false, version = '0.0.0' } = props;
     const packageJsonPath = path.join(cwd, 'package.json');
-    const contents = await fs.readFile(packageJsonPath, 'utf-8');
+    const contents = await fs.readFile(packageJsonPath, 'utf8');
     const indent = detectIndent(contents).indent || '  ';
     const json = parseJson(contents, packageJsonPath);
     const project = new ProjectEntity({ map: new Map(), indent, json, path: packageJsonPath });
@@ -318,7 +318,7 @@ export class ProjectEntity extends BaseEntity<Project> {
       workspaces = lerna.packages;
     } else if (tool === 'pnpm') {
       const pnpm = yaml.load(
-        await fs.readFile(path.join(this.directory, 'pnpm-workspace.yaml'), { encoding: 'utf-8' }),
+        await fs.readFile(path.join(this.directory, 'pnpm-workspace.yaml'), { encoding: 'utf8' }),
       );
 
       workspaces = is.plainObject(pnpm) ? (pnpm.packages as string[]) : undefined;

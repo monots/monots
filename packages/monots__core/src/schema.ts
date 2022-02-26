@@ -1,6 +1,5 @@
 import path from 'node:path';
 import * as s from 'superstruct-extra';
-import { objectKeys } from 'ts-extras';
 
 import { OUTPUT_FOLDER } from './constants.js';
 
@@ -52,6 +51,13 @@ export const Entrypoint = s.type({
    */
   browser: s.optional(
     s.union([s.string(), s.record(s.string(), s.union([s.string(), s.boolean()]))]),
+  ),
+
+  /**
+   * The exports from this package.
+   */
+  exports: s.optional(
+    s.record(s.string(), s.union([s.record(s.string(), s.string()), s.string()])),
   ),
 });
 
@@ -111,6 +117,17 @@ export const PackageMonots = s.type({
    * This can be useful when you need to turn off the exports field.
    */
   ignoreExports: s.optional(s.boolean()),
+
+  /**
+   * Whether to add an exports field to the entrypoint.
+   *
+   * This is useful internally when running tests. I'm adding it to make testing
+   * easier in the https://github.com/skribbledev/skribble monorepo. It might
+   * also help with certain build tools.
+   *
+   * @default false
+   */
+  addExportsToEntrypoints: s.optional(s.boolean()),
 });
 
 export type Package = s.Infer<typeof Package>;
@@ -264,7 +281,7 @@ export const Project = s.type({
 });
 
 export const exportFields = ['import', 'require', 'browser', 'types', 'default'] as const;
-export const entrypointFields = objectKeys(Entrypoint.schema);
+export const entrypointFields = ['types', 'main', 'module', 'browser'] as const;
 
 export type ExportsField = typeof exportFields[number];
-export type EntrypointField = keyof Entrypoint;
+export type EntrypointField = typeof entrypointFields[number];

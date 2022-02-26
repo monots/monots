@@ -1,3 +1,11 @@
 {
+  "exports": {
+    ".": {
+      "require": "./../dist/markdown.cjs.js"
+    },
+    "./index.js": {
+      "require": "./../dist/markdown.cjs.js"
+    }
+  },
   "main": "../dist/markdown.cjs.js"
 }

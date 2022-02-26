@@ -5,6 +5,7 @@ import fs from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import path from 'node:path';
 import normalizePath from 'normalize-path';
+import sortKeys from 'sort-keys';
 import { entries } from 'ts-entries';
 
 import { createTypeScriptContent, generateField } from '../helpers/index.js';
@@ -89,6 +90,7 @@ export class EntrypointEntity extends BaseEntity<Entrypoint> {
   fields: {
     package: Partial<Record<EntrypointField, string>>;
     exports: Partial<Record<ExportsField, string>>;
+    entrypointExports: Partial<Record<ExportsField, string>>;
   };
 
   /**
@@ -122,7 +124,7 @@ export class EntrypointEntity extends BaseEntity<Entrypoint> {
       path.join(this.package.name, path.relative(this.package.directory, this.directory)),
     );
 
-    this.fields = Object.create({ package: {}, exports: {} });
+    this.fields = Object.create({ package: {}, exports: {}, entrypointExports: {} });
     const name = this.isRoot ? 'index' : path.relative(this.package.name, this.name);
 
     for (const field of this.package.fields) {
@@ -141,6 +143,14 @@ export class EntrypointEntity extends BaseEntity<Entrypoint> {
         output: this.package.output,
         // The directory is relative to the package for the exports object.
         directory: this.package.directory,
+      });
+
+      this.fields.entrypointExports[field] = generateField({
+        name,
+        type: exportFieldToPackageField[field],
+        output: this.package.output,
+        directory: path.join(this.package.directory, this.baseName),
+        alwaysPrefix: true,
       });
     }
   }
@@ -165,6 +175,20 @@ export class EntrypointEntity extends BaseEntity<Entrypoint> {
       } else {
         Reflect.deleteProperty(json, key);
       }
+    }
+
+    const shouldIncludeExports =
+      !this.isRoot &&
+      this.package.isLibrary &&
+      // this.package.monots.addExportsToEntrypoints &&
+      !this.package.monots.ignoreExports;
+
+    if (shouldIncludeExports) {
+      const exportsObject: Record<string, string | Record<string, any>> = {};
+      const value = { ...this.fields.entrypointExports };
+      exportsObject['.'] = value;
+      exportsObject['./index.js'] = value;
+      json.exports = sortKeys(exportsObject, { deep: true });
     }
 
     return json;

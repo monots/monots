@@ -1,3 +1,11 @@
 {
+  "exports": {
+    ".": {
+      "require": "./../dist/react.cjs.js"
+    },
+    "./index.js": {
+      "require": "./../dist/react.cjs.js"
+    }
+  },
   "main": "../dist/react.cjs.js"
 }

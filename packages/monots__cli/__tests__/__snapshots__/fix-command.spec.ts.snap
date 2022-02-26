@@ -1,5 +1,86 @@
 // Vitest Snapshot v1
 
+exports[`\`monots fix\` should add exports to entrypoints 1`] = `
+{
+  "browser": "./dist/index.browser.esm.js",
+  "exports": {
+    ".": {
+      "browser": "./dist/index.browser.esm.js",
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts",
+    },
+    "./extra": "./extra.js",
+    "./index.js": {
+      "browser": "./dist/index.browser.esm.js",
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts",
+    },
+    "./other": {
+      "browser": "./dist/other.browser.esm.js",
+      "import": "./dist/other.esm.js",
+      "require": "./dist/other.cjs.js",
+      "types": "./dist/other.d.ts",
+    },
+    "./other.js": {
+      "browser": "./dist/other.browser.esm.js",
+      "import": "./dist/other.esm.js",
+      "require": "./dist/other.cjs.js",
+      "types": "./dist/other.d.ts",
+    },
+    "./package.json": "./package.json",
+    "./types/*": "./dist/*.d.ts",
+  },
+  "files": [
+    "dist",
+    "other",
+  ],
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
+  "monots": {
+    "addExportsToEntrypoints": true,
+    "entrypoints": [
+      "index.ts",
+      "other.ts",
+    ],
+    "externalModules": [],
+    "extraExports": {
+      "./extra": "./extra.js",
+    },
+    "mode": "library",
+    "tsconfigs": {},
+  },
+  "name": "@scoped/add",
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "version": "1.0.0",
+}
+`;
+
+exports[`\`monots fix\` should add exports to entrypoints 2`] = `
+{
+  "browser": "../dist/other.browser.esm.js",
+  "exports": {
+    ".": {
+      "browser": "./../dist/other.browser.esm.js",
+      "import": "./../dist/other.esm.js",
+      "require": "./../dist/other.cjs.js",
+      "types": "./../dist/other.d.ts",
+    },
+    "./index.js": {
+      "browser": "./../dist/other.browser.esm.js",
+      "import": "./../dist/other.esm.js",
+      "require": "./../dist/other.cjs.js",
+      "types": "./../dist/other.d.ts",
+    },
+  },
+  "main": "../dist/other.cjs.js",
+  "module": "../dist/other.esm.js",
+  "types": "../dist/other.d.ts",
+}
+`;
+
 exports[`\`monots fix\` should support ignoring exports 1`] = `
 {
   "browser": "./dist/index.browser.esm.js",

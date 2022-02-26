@@ -1,0 +1,12 @@
+{
+  "name": "root",
+  "scripts": {
+    "postinstall": "monots prepare"
+  },
+  "dependencies": {},
+  "monots": {
+    "packages": [
+      "packages/*"
+    ]
+  }
+}

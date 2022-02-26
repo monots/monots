@@ -1,3 +1,11 @@
 {
+  "exports": {
+    ".": {
+      "require": "./../dist/full-off.cjs.js"
+    },
+    "./index.js": {
+      "require": "./../dist/full-off.cjs.js"
+    }
+  },
   "main": "../dist/full-off.cjs.js"
 }

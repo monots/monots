@@ -60,3 +60,15 @@ test('`monots fix` should support ignoring exports', async () => {
 
   await cleanup();
 });
+
+test('`monots fix` should add exports to entrypoints', async () => {
+  const { cleanup, context, getPath } = await setupFixtures('pnpm-with-add-exports-to-entrypoints');
+  await cli.run(['fix'], context);
+  const mainJson = await loadJsonFile(getPath('packages/scoped__add/package.json'));
+  const scopedJson = await loadJsonFile(getPath('packages/scoped__add/other/package.json'));
+
+  expect(mainJson).toMatchSnapshot();
+  expect(scopedJson).toMatchSnapshot();
+
+  await cleanup();
+});
