@@ -1,5 +1,13 @@
 # @monots/types
 
+## 0.1.7
+
+> 2022-02-26
+
+### Patch Changes
+
+- [`907b281`](https://github.com/monots/monots/commit/907b281ed4f4eb44c19a5a9ec3fc6c8be137d6a2) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Update external dependencies.
+
 ## 0.1.6
 
 > 2022-02-15

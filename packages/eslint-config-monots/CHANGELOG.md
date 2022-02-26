@@ -1,5 +1,17 @@
 # eslint-config-monots
 
+## 0.8.0
+
+> 2022-02-26
+
+### Minor Changes
+
+- [`2c5e26f`](https://github.com/monots/monots/commit/2c5e26f305c330a6ce5d9559ba2534142fc3a928) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Upgrade to [`eslint-plugin-unicorn@41.0.0`](https://github.com/sindresorhus/eslint-plugin-unicorn/releases/tag/v41.0.0) which comes with breaking changes and new default rules.
+
+### Patch Changes
+
+- [`907b281`](https://github.com/monots/monots/commit/907b281ed4f4eb44c19a5a9ec3fc6c8be137d6a2) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Update external dependencies.
+
 ## 0.7.1
 
 > 2022-02-15

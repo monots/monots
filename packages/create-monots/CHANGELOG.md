@@ -1,5 +1,15 @@
 # create-monots
 
+## 0.7.3
+
+> 2022-02-26
+
+### Patch Changes
+
+- [`907b281`](https://github.com/monots/monots/commit/907b281ed4f4eb44c19a5a9ec3fc6c8be137d6a2) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Update template dependencies.
+
+* [`8c8d54e`](https://github.com/monots/monots/commit/8c8d54eb86b6c1ddb96911134593a67fc7798460) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Update composite `pnpm` action to install NodeJS.
+
 ## 0.7.2
 
 > 2022-02-15
