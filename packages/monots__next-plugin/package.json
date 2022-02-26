@@ -1,6 +1,6 @@
 {
   "name": "@monots/next-plugin",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "A Next.js plugin to make NextJS sites work with monots",
   "keywords": [],
   "repository": "https://github.com/monots/monots/tree/master/packages/monots__next-plugin",

@@ -1,5 +1,22 @@
 # @monots/core
 
+## 0.15.0
+
+> 2022-02-26
+
+### Minor Changes
+
+- [`6f02cca`](https://github.com/monots/monots/commit/6f02cca34a4ffbff6a309033bf128a7410648cdc) Thanks [@ifiokjr](https://github.com/ifiokjr)! - New package configuration option `addExportsToEntrypoints` which supports adding an exports field to the entrypoint files when set to true. This is being used in https://github.com/skribbledev/skribble.
+
+### Patch Changes
+
+- [`907b281`](https://github.com/monots/monots/commit/907b281ed4f4eb44c19a5a9ec3fc6c8be137d6a2) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Update external dependencies.
+
+- Updated dependencies [[`907b281`](https://github.com/monots/monots/commit/907b281ed4f4eb44c19a5a9ec3fc6c8be137d6a2)]:
+  - @monots/types@0.1.7
+  - @monots/utils@0.3.3
+  - superstruct-extra@0.1.6
+
 ## 0.14.2
 
 > 2022-02-15
