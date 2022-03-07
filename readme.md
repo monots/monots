@@ -63,7 +63,7 @@ npm create monots
 # yarn
 yarn create monots
 
-# yarn
+# pnpm
 pnpm create monots
 ```
 
