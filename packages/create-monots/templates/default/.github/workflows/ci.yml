@@ -9,9 +9,6 @@ on:
     branches:
       - main
 
-env:
-  PNPM_CACHE_FOLDER: '~/.pnpm-store'
-
 jobs:
   # Lint the project
   lint:
@@ -28,8 +25,6 @@ jobs:
 
       - name: install and audit
         uses: ./.github/actions/pnpm
-        with:
-          cache: ${{ env.PNPM_CACHE_FOLDER }}
 
       - name: check TS / JS files
         run: pnpm lint:es
@@ -58,8 +53,6 @@ jobs:
 
       - name: install and audit
         uses: ./.github/actions/pnpm
-        with:
-          cache: ${{ env.PNPM_CACHE_FOLDER }}
 
       - name: run unit tests
         run: pnpm test
@@ -86,7 +79,6 @@ jobs:
         uses: ./.github/actions/pnpm
         with:
           node-version: ${{ matrix.node-version }}
-          cache: ${{ env.PNPM_CACHE_FOLDER }}
 
       - name: build project
         run: pnpm build
@@ -114,8 +106,6 @@ jobs:
 
       - name: install and audit
         uses: ./.github/actions/pnpm
-        with:
-          cache: ${{ env.PNPM_CACHE_FOLDER }}
 
       - name: check versions are valid
         if: github.event.pull_request
