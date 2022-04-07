@@ -2,7 +2,7 @@
 
 exports[`\`monots prepare\` should create development dist files 1`] = `
 "// Allow the project to be used for commonjs environments 
-const register = require('../../../../../../../../node_modules/.pnpm/@swc+register@0.1.10_@swc+core@1.2.145/node_modules/@swc/register/lib/node.js');
+const register = require('../../../../../../../../node_modules/.pnpm/@swc+register@0.1.10_@swc+core@1.2.164/node_modules/@swc/register/lib/node.js');
 
 (register.default || register)({
   \\"rootMode\\": \\"upward-optional\\",

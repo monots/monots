@@ -256,7 +256,7 @@ export class ProjectEntity extends BaseEntity<Project> {
     }
 
     const values = await Promise.all(promises);
-    return values.some((value) => value);
+    return values.some(Boolean);
   }
 
   /**

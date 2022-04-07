@@ -361,7 +361,7 @@ export class PackageEntity extends BaseEntity<Package> {
     const values = await Promise.all(promises);
     const changed = await super.saveJson(props);
 
-    return changed || values.some((value) => value);
+    return changed || values.some(Boolean);
   }
 
   /**

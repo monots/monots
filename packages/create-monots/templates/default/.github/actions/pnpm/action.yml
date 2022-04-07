@@ -1,5 +1,5 @@
 name: 'pnpm installation'
-description: 'Install and audit dependencies for pnpm'
+description: 'install and audit dependencies for pnpm'
 inputs:
   cache: # id of input
     description: 'The location of the pnpm cache'
@@ -33,6 +33,10 @@ runs:
 
     - name: setup pnpm config
       run: pnpm config set store-dir ${{ inputs.cache }}
+      shell: bash
+
+    - name: audit dependencies
+      run: pnpm lint:audit
       shell: bash
 
     - name: install dependencies

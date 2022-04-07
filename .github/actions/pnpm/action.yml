@@ -35,6 +35,10 @@ runs:
       run: pnpm config set store-dir ${{ inputs.cache }}
       shell: bash
 
+    - name: audit dependencies
+      run: pnpm lint:audit
+      shell: bash
+
     - name: install dependencies
       run: pnpm install
       shell: bash
