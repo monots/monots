@@ -20,10 +20,12 @@ runs:
 
     - name: setup pnpm store
       id: store
+      env:
+        LOCAL_PNPM_HOME: $HOME/pnpm
       shell: bash
       run: |
-        echo "PNPM_HOME=$HOME/pnpm" >> $GITHUB_ENV
-        echo "$PNPM_HOME" >> $GITHUB_PATH
+        echo "PNPM_HOME=$LOCAL_PNPM_HOME" >> $GITHUB_ENV
+        echo "$LOCAL_PNPM_HOME" >> $GITHUB_PATH
         echo ::set-output name=path::$(pnpm store path)}
 
     - name: setup pnpm caching
