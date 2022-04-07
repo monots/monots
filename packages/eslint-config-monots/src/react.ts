@@ -2,7 +2,7 @@ import type { Linter } from 'eslint';
 
 const config: Linter.Config = {
   ignorePatterns: ['*.d.ts'],
-  plugins: ['react-hooks', 'react', 'jsx-a11y', '@kyleshevlin'],
+  plugins: ['react-hooks', 'react', 'jsx-a11y'],
   extends: ['plugin:react/recommended'],
 
   parserOptions: {
@@ -30,9 +30,6 @@ const config: Linter.Config = {
 
     'react-hooks/exhaustive-deps': 'error',
     'react-hooks/rules-of-hooks': 'error',
-
-    // See https://kyleshevlin.com/use-encapsulation
-    '@kyleshevlin/prefer-custom-hooks': 'warn',
   },
 };
 
