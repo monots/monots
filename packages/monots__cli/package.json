@@ -25,25 +25,25 @@
     "templates"
   ],
   "dependencies": {
-    "@swc/core": "^1.2.145",
+    "@swc/core": "^1.2.164",
     "@swc/register": "^0.1.10",
-    "esbuild": "^0.14.23"
+    "esbuild": "^0.14.34"
   },
   "devDependencies": {
     "@monots/core": "^0.15.0",
     "@monots/types": "^0.1.7",
     "@monots/utils": "^0.3.3",
-    "@swc/helpers": "^0.3.5",
-    "chalk": "^5.0.0",
-    "chalk-template": "^0.3.1",
+    "@swc/helpers": "^0.3.8",
+    "chalk": "^5.0.1",
+    "chalk-template": "^0.4.0",
     "clipanion": "^3.1.0",
     "del": "^6.0.0",
     "delay": "^5.0.0",
     "load-json-file": "^7.0.1",
-    "nanoid": "^3.3.1",
+    "nanoid": "^3.3.2",
     "ora": "^6.1.0",
     "recursive-copy": "^2.0.14",
-    "type-fest": "^2.12.0"
+    "type-fest": "^2.12.2"
   },
   "engines": {
     "node": "^12.2.0 || ^14.13.0 || ^16"
