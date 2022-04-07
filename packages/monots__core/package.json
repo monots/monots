@@ -1,6 +1,6 @@
 {
   "name": "@monots/core",
-  "version": "0.15.0",
+  "version": "0.15.1",
   "description": "The monots cli for creating your next TypeScript monorepo",
   "homepage": "https://github.com/monots/monots/tree/master/@monots/core",
   "repository": "https://github.com/monots/monots/tree/master/packages/monots__core",
@@ -35,8 +35,8 @@
   ],
   "dependencies": {
     "@manypkg/get-packages": "^1.1.3",
-    "@monots/types": "^0.1.7",
-    "@monots/utils": "^0.3.3",
+    "@monots/types": "^0.1.8",
+    "@monots/utils": "^0.3.4",
     "@rollup/plugin-alias": "^3.1.9",
     "@rollup/plugin-commonjs": "^21.0.3",
     "@rollup/plugin-json": "^4.1.0",

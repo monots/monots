@@ -1,5 +1,15 @@
 # @monots/cli
 
+## 0.12.1
+
+> 2022-04-07
+
+### Patch Changes
+
+- [`02e7fac`](https://github.com/monots/monots/commit/02e7fac77eb0e0c441efc8adb7b2ec05d5f34fb4) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Update external dependency versions.
+
+* [`e1ebdaa`](https://github.com/monots/monots/commit/e1ebdaabe4b215ade9c2caaf8793f2811de63e3e) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Update template `package.json`.
+
 ## 0.12.0
 
 > 2022-02-26

@@ -29,7 +29,7 @@
     "dist"
   ],
   "dependencies": {
-    "@monots/types": "^0.1.7",
+    "@monots/types": "^0.1.8",
     "@swc/helpers": "^0.3.8",
     "@types/is-uuid": "^1.0.0",
     "email-validator": "^2.0.4",
