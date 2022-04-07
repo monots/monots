@@ -5,7 +5,12 @@ import type { Linter } from 'eslint';
 const config: Linter.Config = {
   parser: '@typescript-eslint/parser',
   ignorePatterns: ['*.d.ts'],
-  plugins: ['@typescript-eslint', 'unicorn', 'simple-import-sort', 'file-progress'],
+  plugins: [
+    '@typescript-eslint',
+    'eslint-plugin-unicorn',
+    'eslint-plugin-simple-import-sort',
+    'eslint-plugin-file-progress',
+  ],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',

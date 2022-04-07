@@ -1,8 +1,10 @@
+import '@rushstack/eslint-patch/modern-module-resolution';
+
 import type { Linter } from 'eslint';
 
 const config: Linter.Config = {
   ignorePatterns: ['*.d.ts'],
-  plugins: ['react-hooks', 'react', 'jsx-a11y'],
+  plugins: ['eslint-plugin-react-hooks', 'eslint-plugin-react', 'eslint-plugin-jsx-a11y'],
   extends: ['plugin:react/recommended'],
 
   parserOptions: {

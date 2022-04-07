@@ -1,7 +1,7 @@
 import '@rushstack/eslint-patch/modern-module-resolution';
 
 const config: import('eslint').Linter.Config = {
-  plugins: ['import'],
+  plugins: ['eslint-plugin-import'],
   extends: ['plugin:import/typescript'],
   settings: {
     'import/parsers': {

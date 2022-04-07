@@ -1,10 +1,16 @@
+import '@rushstack/eslint-patch/modern-module-resolution';
+
 import type { Linter } from 'eslint';
 
 const config: Linter.Config = {
   // Only apply markdown rules when not in TypeScript mode, since they are
   // currently incompatible.
   overrides: [
-    { plugins: ['markdown'], files: ['*.mdx', '*.md'], processor: 'markdown/markdown' },
+    {
+      plugins: ['eslint-plugin-markdown'],
+      files: ['*.mdx', '*.md'],
+      processor: 'markdown/markdown',
+    },
     {
       // Lint code blocks in markdown
       files: ['**/*.{md,mdx}/*.{ts,tsx,js,jsx}'],
