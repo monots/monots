@@ -1,5 +1,19 @@
 # create-monots
 
+## 0.8.0
+
+> 2022-04-07
+
+### Minor Changes
+
+- [`e1ebdaa`](https://github.com/monots/monots/commit/e1ebdaabe4b215ade9c2caaf8793f2811de63e3e) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Update `create-monots` default template files and CI setup.
+
+* [`38e218e`](https://github.com/monots/monots/commit/38e218eda30537d3b7c8b2ba35ece978e54296cf) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Add `fix:audit` script to default template which can automically fix audit issues and update the lock file.
+
+### Patch Changes
+
+- [`02e7fac`](https://github.com/monots/monots/commit/02e7fac77eb0e0c441efc8adb7b2ec05d5f34fb4) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Update external dependency versions.
+
 ## 0.7.3
 
 > 2022-02-26
