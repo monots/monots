@@ -18,10 +18,13 @@ runs:
       run: corepack enable
       shell: bash
 
-    - name: get pnpm store path
+    - name: setup pnpm store
       id: store
       shell: bash
-      run: echo ::set-output name=path::$(pnpm store path)}
+      run: |
+        echo "PNPM_HOME=$HOME/pnpm" >> $GITHUB_ENV
+        echo "$PNPM_HOME" >> $GITHUB_PATH
+        echo ::set-output name=path::$(pnpm store path)}
 
     - name: setup pnpm caching
       uses: actions/cache@v2
