@@ -1,5 +1,13 @@
 # eslint-config-monots
 
+## 0.9.0
+
+> 2022-04-07
+
+### Minor Changes
+
+- [`4913737`](https://github.com/monots/monots/commit/4913737468f39703f2d533b9f6476b164da6432c) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Use `eslint-plugin-` prefix for all eslint plugins. Also make sure eslint-plugins are loaded properly via `@rushstack/eslint-patch/modern-module-resolution`.
+
 ## 0.8.1
 
 > 2022-04-07
