@@ -1,6 +1,4 @@
 {
   "extends": "@monots/tsconfig/tsconfig.json",
-  "compilerOptions": {
-    // "module": "nodenext"
-  }
+  "compilerOptions": {}
 }

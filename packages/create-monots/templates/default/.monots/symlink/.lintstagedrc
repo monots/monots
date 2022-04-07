@@ -8,7 +8,8 @@
   "*.{md,mdx}": [
     "prettier --write --ignore-path .eslintignore"
   ],
-  "{packages,support}/**/*.{ts,tsx,js}": [
+  "{packages,.monots}/**/*.{ts,tsx,js}": [
+    "eslint --fix",
     "prettier --write --ignore-path .eslintignore"
   ]
 }

@@ -5,16 +5,19 @@
   "scripts": {
     "check:pnpm": "node ./check-pnpm.js",
     "delete:changeset:property": "pnpm ts ./delete-changeset-changelog-property.ts",
-    "fix:prisma": "pnpm ts ./fix-prisma.ts",
+    "fix:audit": "pnpm ts ./fix-audit.ts",
     "symlink:root": "node ./symlink-root.js",
     "ts": "node --experimental-specifier-resolution=node --loader ts-node/esm",
-    "update:changelog:dates": "pnpm ts ./changelog-dates.ts"
+    "update:changelog:dates": "pnpm ts ./changelog-dates.ts",
+    "update:templates": "pnpm ts ./update-package.json-templates.ts"
   },
   "dependencies": {
     "@manypkg/get-packages": "^1.1.3",
-    "chalk": "^5.0.0",
-    "chalk-template": "^0.3.1",
+    "@types/shelljs": "^0.8.11",
+    "chalk": "^5.0.1",
+    "chalk-template": "^0.4.0",
     "load-json-file": "^7.0.1",
+    "shelljs": "^0.8.5",
     "write-json-file": "^5.0.0"
   },
   "monots": {

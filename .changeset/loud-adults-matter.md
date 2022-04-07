@@ -1,5 +1,5 @@
 ---
-"@monots/cli": patch
+'@monots/cli': patch
 ---
 
 Update template `package.json`.
