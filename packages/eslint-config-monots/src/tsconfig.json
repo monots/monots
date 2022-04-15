@@ -7,7 +7,7 @@
   ],
   "extends": "../../monots__tsconfig/tsconfig.json",
   "compilerOptions": {
-    "types": [],
+    "types": ["node"],
     "noEmit": true,
     "module": "CommonJS"
   },
