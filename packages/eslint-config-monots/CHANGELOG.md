@@ -1,5 +1,17 @@
 # eslint-config-monots
 
+## 0.10.0
+
+> 2022-04-15
+
+### Minor Changes
+
+- [`3789846`](https://github.com/monots/monots/commit/3789846c4f63d844955f716c6e85617b26b419e0) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Add svelte support to eslint configuration. This can be accessed via `monots/svelte` during configurations.
+
+### Patch Changes
+
+- [`25a171e`](https://github.com/monots/monots/commit/25a171e9ce6cf0131807345d862be296adc22309) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Minor updates to external dependencies.
+
 ## 0.9.0
 
 > 2022-04-07
