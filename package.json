@@ -86,7 +86,7 @@
     "pnpm": ">=6"
   },
   "monots": {
-    "baseTsconfig": "./packages/monots__tsconfig/tsconfig.json",
+    "baseTsconfig": "./.monots/tsconfig.base.json",
     "tsconfigPath": "./.monots/symlink/tsconfig.json",
     "packages": [
       "packages/*",
