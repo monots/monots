@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "moduleSuffixes": ["", ".node", ".browser", ".ios", ".android", ".native"],
     "module": "ESNext",
     "target": "ESNext",
     "jsx": "preserve",
@@ -17,7 +18,6 @@
     "resolveJsonModule": true,
     "useDefineForClassFields": true,
     "importsNotUsedAsValues": "remove",
-
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
     "noUnusedLocals": true,

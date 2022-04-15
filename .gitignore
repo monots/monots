@@ -114,9 +114,6 @@ temp/
 
 .DS_Store
 
-*/**/lib
-packages/**/lib
-
 # We are using pnpm
 package-lock.json
 **/package-lock.json

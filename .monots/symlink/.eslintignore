@@ -1,7 +1,5 @@
 !.eslintrc.js
 !**/.eslintrc.js
-**/lib
-lib
 dist
 **/dist
 **/dist/**
@@ -13,14 +11,13 @@ coverage
 
 .cache
 **/.next
-lerna.json
-.vscode
 .yarn/**
 
 **/temp/**
+**/tmp/**
 
 pnpm-lock.yaml
 /pnpm-lock.yaml
 .pnpm-store/
 
-packages/monots__cli/__fixtures__/**
+**/__fixtures__/**
