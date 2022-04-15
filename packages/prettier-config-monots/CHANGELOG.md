@@ -1,5 +1,13 @@
 # prettier-config-monots
 
+## 0.2.1
+
+> 2022-04-15
+
+### Patch Changes
+
+- [`93cd4e5`](https://github.com/monots/monots/commit/93cd4e505bc0af43d31f0bc0b94593a9de11a3f0) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Fix `prettier-plugin-svelte` plugin name which was incorrectly typed.
+
 ## 0.2.0
 
 > 2022-04-15

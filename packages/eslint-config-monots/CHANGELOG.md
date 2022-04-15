@@ -1,5 +1,13 @@
 # eslint-config-monots
 
+## 0.10.1
+
+> 2022-04-15
+
+### Patch Changes
+
+- [`911d360`](https://github.com/monots/monots/commit/911d360dbb7f65f49b3dd08849926a439b10a0c3) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Fix missing svelte entrypoint for eslint config.
+
 ## 0.10.0
 
 > 2022-04-15
