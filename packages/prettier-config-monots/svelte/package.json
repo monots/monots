@@ -1,0 +1,11 @@
+{
+  "exports": {
+    ".": {
+      "require": "./../dist/svelte.cjs.js"
+    },
+    "./index.js": {
+      "require": "./../dist/svelte.cjs.js"
+    }
+  },
+  "main": "../dist/svelte.cjs.js"
+}

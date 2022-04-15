@@ -21,18 +21,26 @@
     "./index.js": {
       "require": "./dist/index.cjs.js"
     },
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./svelte": {
+      "require": "./dist/svelte.cjs.js"
+    },
+    "./svelte.js": {
+      "require": "./dist/svelte.cjs.js"
+    }
   },
   "main": "./dist/index.cjs.js",
   "files": [
-    "dist"
+    "dist",
+    "svelte"
   ],
   "dependencies": {
-    "prettier-plugin-packagejson": "^2.2.17"
+    "prettier-plugin-packagejson": "^2.2.17",
+    "prettier-plugin-svelte": "^2.7.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.23",
-    "@types/prettier": "^2.4.4",
+    "@types/prettier": "^2.6.0",
     "prettier": "^2.6.2"
   },
   "peerDependencies": {
@@ -43,14 +51,16 @@
   },
   "monots": {
     "entrypoints": [
-      "index.ts"
+      "index.ts",
+      "svelte.ts"
     ],
     "tsconfigs": {
       "src": {
         "compilerOptions": {
           "types": [
             "node"
-          ]
+          ],
+          "noEmit": true
         }
       }
     },
