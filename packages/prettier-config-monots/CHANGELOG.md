@@ -1,5 +1,13 @@
 # prettier-config-monots
 
+## 0.2.0
+
+> 2022-04-15
+
+### Minor Changes
+
+- [`8a2e972`](https://github.com/monots/monots/commit/8a2e972548e956bf0f43571f827aae417a715185) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Add svelte support to prettier plugin via the new endpoint `prettier-config-monots/svelte`.
+
 ## 0.1.3
 
 > 2022-04-07

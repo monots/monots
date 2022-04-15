@@ -1,5 +1,13 @@
 # create-monots
 
+## 0.8.1
+
+> 2022-04-15
+
+### Patch Changes
+
+- [`909b26b`](https://github.com/monots/monots/commit/909b26b768443860c70227dd02082c41c669dd13) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Small update to template dependencies.
+
 ## 0.8.0
 
 > 2022-04-07
