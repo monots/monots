@@ -80,7 +80,7 @@
     "vite": "^2.9.5",
     "vitest": "^0.9.3"
   },
-  "packageManager": "pnpm@7.0.0-rc.4",
+  "packageManager": "pnpm@7.0.0-rc.6",
   "engines": {
     "node": ">=16.9",
     "pnpm": ">=6"
