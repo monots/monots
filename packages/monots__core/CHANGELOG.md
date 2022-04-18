@@ -1,5 +1,13 @@
 # @monots/core
 
+## 0.15.3
+
+> 2022-04-18
+
+### Patch Changes
+
+- [`1629690`](https://github.com/monots/monots/commit/16296906fd9aef91140178b6509a62b4f5b9a941) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Minor updates to external dependencies.
+
 ## 0.15.2
 
 > 2022-04-15
