@@ -1,6 +1,6 @@
 {
   "name": "@monots/core",
-  "version": "0.15.2",
+  "version": "0.15.3",
   "description": "The monots cli for creating your next TypeScript monorepo",
   "homepage": "https://github.com/monots/monots/tree/master/@monots/core",
   "repository": "https://github.com/monots/monots/tree/master/packages/monots__core",

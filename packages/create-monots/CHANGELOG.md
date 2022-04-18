@@ -1,5 +1,13 @@
 # create-monots
 
+## 0.8.2
+
+> 2022-04-18
+
+### Patch Changes
+
+- [`1629690`](https://github.com/monots/monots/commit/16296906fd9aef91140178b6509a62b4f5b9a941) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Upgrade `pnpm` version in templates.
+
 ## 0.8.1
 
 > 2022-04-15
