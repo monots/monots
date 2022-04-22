@@ -1,5 +1,13 @@
 # @monots/cli
 
+## 0.12.3
+
+> 2022-04-22
+
+### Patch Changes
+
+- [`db58ecd`](https://github.com/monots/monots/commit/db58ecd3e6e5dacdeb3e2f23ea684c75f6fb00ef) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Minor updates to external dependencies.
+
 ## 0.12.2
 
 > 2022-04-15

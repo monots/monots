@@ -1,5 +1,16 @@
 # @monots/core
 
+## 0.15.4
+
+> 2022-04-22
+
+### Patch Changes
+
+- [`db58ecd`](https://github.com/monots/monots/commit/db58ecd3e6e5dacdeb3e2f23ea684c75f6fb00ef) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Minor updates to external dependencies.
+
+- Updated dependencies [[`db58ecd`](https://github.com/monots/monots/commit/db58ecd3e6e5dacdeb3e2f23ea684c75f6fb00ef)]:
+  - @monots/utils@0.3.6
+
 ## 0.15.3
 
 > 2022-04-18

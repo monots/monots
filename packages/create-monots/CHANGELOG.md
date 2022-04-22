@@ -1,5 +1,15 @@
 # create-monots
 
+## 0.9.0
+
+> 2022-04-22
+
+### Minor Changes
+
+- [`7ff6e03`](https://github.com/monots/monots/commit/7ff6e0307baf37b9b62d2aa3407c1c9797d88fd9) Thanks [@ifiokjr](https://github.com/ifiokjr)! - - Update CI workflow to test with NodeJS v18
+  - Add a `.node-version` file to the template root
+  - Minor updates to external dependencies
+
 ## 0.8.2
 
 > 2022-04-18

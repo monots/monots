@@ -1,5 +1,13 @@
 # eslint-config-monots
 
+## 0.10.2
+
+> 2022-04-22
+
+### Patch Changes
+
+- [`7ff6e03`](https://github.com/monots/monots/commit/7ff6e0307baf37b9b62d2aa3407c1c9797d88fd9) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Make `eslint-config-monots/svelte` configuration better.
+
 ## 0.10.1
 
 > 2022-04-15
