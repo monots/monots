@@ -25,9 +25,9 @@
     "templates"
   ],
   "dependencies": {
-    "@swc/core": "^1.2.165",
+    "@swc/core": "^1.2.171",
     "@swc/register": "^0.1.10",
-    "esbuild": "^0.14.36"
+    "esbuild": "^0.14.38"
   },
   "devDependencies": {
     "@monots/core": "^0.15.3",
@@ -40,7 +40,7 @@
     "del": "^6.0.0",
     "delay": "^5.0.0",
     "load-json-file": "^7.0.1",
-    "nanoid": "^3.3.2",
+    "nanoid": "^3.3.3",
     "ora": "^6.1.0",
     "recursive-copy": "^2.0.14",
     "type-fest": "^2.12.2"

@@ -1,5 +1,5 @@
 ---
-"create-monots": minor
+'create-monots': minor
 ---
 
 - Update CI workflow to test with NodeJS v18
