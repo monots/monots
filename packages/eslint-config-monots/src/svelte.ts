@@ -9,7 +9,7 @@ const config: Linter.Config = {
   settings: {
     'svelte3/typescript': () => require('typescript'),
   },
-  overrides: [{ files: ['*.svelte'], processor: 'svelte3/svelte3' }],
+  processor: 'svelte3/svelte3',
 };
 
 export = config;

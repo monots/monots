@@ -124,7 +124,7 @@ export async function createMonotsProject(props: CreateMonotsProjectProps): Prom
   }
 
   const displayedCommand = 'pnpm';
-  const rename = { gitignore: '.gitignore', npmrc: '.npmrc' };
+  const rename = { gitignore: '.gitignore', npmrc: '.npmrc', 'node-version': '.node-version' };
   console.log(`Creating a new monots project in ${chalk.green(root)}.`);
   console.log();
 
