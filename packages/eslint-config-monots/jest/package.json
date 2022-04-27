@@ -1,0 +1,11 @@
+{
+  "exports": {
+    ".": {
+      "require": "./../dist/jest.cjs.js"
+    },
+    "./index.js": {
+      "require": "./../dist/jest.cjs.js"
+    }
+  },
+  "main": "../dist/jest.cjs.js"
+}

@@ -24,6 +24,7 @@ const config: Linter.Config = {
     extraFileExtensions: ['.mjs', '.json', '.cjs'],
   },
   env: {
+    es6: true,
     browser: true,
     node: true,
   },

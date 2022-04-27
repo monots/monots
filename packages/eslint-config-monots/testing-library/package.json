@@ -1,0 +1,11 @@
+{
+  "exports": {
+    ".": {
+      "require": "./../dist/testing-library.cjs.js"
+    },
+    "./index.js": {
+      "require": "./../dist/testing-library.cjs.js"
+    }
+  },
+  "main": "../dist/testing-library.cjs.js"
+}
