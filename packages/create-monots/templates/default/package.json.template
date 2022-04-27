@@ -81,5 +81,5 @@
       }
     }
   },
-  "packageManager": "pnpm@7.0.0-rc.7"
+  "packageManager": "pnpm@7.0.0-rc.9"
 }
