@@ -25,7 +25,7 @@
     "templates"
   ],
   "dependencies": {
-    "@swc/core": "^1.2.171",
+    "@swc/core": "^1.2.172",
     "@swc/register": "^0.1.10",
     "esbuild": "^0.14.38"
   },
