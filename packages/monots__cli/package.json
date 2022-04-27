@@ -1,6 +1,6 @@
 {
   "name": "@monots/cli",
-  "version": "0.12.3",
+  "version": "0.12.4",
   "description": "Create and manage your TypeScript monorepo with monots",
   "homepage": "https://github.com/monots/monots/tree/master/@monots/cli",
   "repository": "https://github.com/monots/monots/tree/master/packages/monots__cli",
@@ -30,7 +30,7 @@
     "esbuild": "^0.14.38"
   },
   "devDependencies": {
-    "@monots/core": "^0.15.4",
+    "@monots/core": "^0.15.5",
     "@monots/types": "^0.1.8",
     "@monots/utils": "^0.3.6",
     "@swc/helpers": "^0.3.8",

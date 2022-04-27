@@ -1,5 +1,13 @@
 # create-monots
 
+## 0.9.1
+
+> 2022-04-27
+
+### Patch Changes
+
+- [`cb34077`](https://github.com/monots/monots/commit/cb3407719f4d3850985f89ff26c2b718dc1c083a) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Update the version of `pnpm` in the default template.
+
 ## 0.9.0
 
 > 2022-04-22

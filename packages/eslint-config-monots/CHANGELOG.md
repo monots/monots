@@ -1,5 +1,17 @@
 # eslint-config-monots
 
+## 0.11.0
+
+> 2022-04-27
+
+### Minor Changes
+
+- [`f3e60c0`](https://github.com/monots/monots/commit/f3e60c00d11f13bb5f1296aa795417f0d982dad9) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Add new configurations for setting up tests with jest. Also improve the markdown settings for usage in an override block.
+
+### Patch Changes
+
+- [`a14ad75`](https://github.com/monots/monots/commit/a14ad75122e90d5f1891c7df9b359a83a59039a6) Thanks [@ifiokjr](https://github.com/ifiokjr)! - Minor updates to external dependencies.
+
 ## 0.10.2
 
 > 2022-04-22
