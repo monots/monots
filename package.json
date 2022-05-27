@@ -49,7 +49,7 @@
     "update:deps": "pnpm update --latest --recursive -i",
     "update:templates": "pnpm scripts update:templates",
     "version:changeset": "changeset version",
-    "version:ci": "run-s version:changeset version:date fix:repo update:workspace fix:prettier version:lockfile",
+    "version:ci": "run-s version:changeset version:date fix:repo fix:prettier version:lockfile",
     "version:date": "pnpm scripts update:changelog:dates",
     "version:lockfile": "pnpm install --lockfile-only",
     "version:pr": "pnpm scripts delete:changeset:property"
