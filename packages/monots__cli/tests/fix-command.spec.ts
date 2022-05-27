@@ -10,12 +10,12 @@ afterAll(async () => {
 });
 
 test('`monots fix` should update the package.json files', async () => {
-  const { context, getPath, loadJsonFile } = await setupFixtures('pnpm-with-packages');
+  const { context, loadJsonFile } = await setupFixtures('pnpm-with-packages');
   const result = await cli.run(['fix'], context);
-  const jsonA = await loadJsonFile(getPath('packages/scoped__a/package.json'));
-  const jsonB = await loadJsonFile(getPath('packages/scoped__b/package.json'));
-  const jsonC = await loadJsonFile(getPath('packages/scoped__c/package.json'));
-  const jsonTs = await loadJsonFile(getPath('packages/scoped__ts/package.json'));
+  const jsonA = await loadJsonFile('packages/scoped__a/package.json');
+  const jsonB = await loadJsonFile('packages/scoped__b/package.json');
+  const jsonC = await loadJsonFile('packages/scoped__c/package.json');
+  const jsonTs = await loadJsonFile('packages/scoped__ts/package.json');
 
   expect(result, 'The result is successful').toBe(0);
   expect(jsonA).toMatchSnapshot();
