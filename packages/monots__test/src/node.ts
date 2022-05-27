@@ -2,7 +2,6 @@ import del from 'del';
 import { loadJsonFile } from 'load-json-file';
 import { randomBytes } from 'node:crypto';
 import path from 'node:path';
-import { URL } from 'node:url';
 import copy from 'recursive-copy';
 
 interface CreateSetupFixtures<Context extends object> {

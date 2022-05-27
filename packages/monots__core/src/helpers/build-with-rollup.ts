@@ -11,8 +11,8 @@ import path from 'node:path';
 import normalizePath from 'normalize-path';
 import type { OutputAsset, OutputChunk, OutputOptions, Plugin, RollupOptions } from 'rollup';
 import { rollup } from 'rollup';
-import { build } from 'vite';
 
+// import { build } from 'vite';
 import { FIELD_EXTENSIONS, OUTPUT_FOLDER } from '../constants.js';
 import type { PackageEntity } from '../entities/index.js';
 import type { EntrypointField } from '../schema.js';
@@ -295,7 +295,7 @@ async function buildPackage(pkg: PackageEntity) {
   const promises: Array<Promise<void>> = [];
 
   for (const { config, outputs } of configs) {
-    build({ build: { rollupOptions: config } });
+    // build({ build: { rollupOptions: config } });
     const promise = rollup(config)
       .then((bundle) => {
         return Promise.all(

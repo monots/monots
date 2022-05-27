@@ -1,4 +1,4 @@
-import type { Merge, MergeExclusive, Negative, ValueOf } from 'type-fest';
+import type { ValueOf } from 'type-fest';
 
 export interface MonotsConfig {
   /**
