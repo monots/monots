@@ -20,7 +20,7 @@ jobs:
         uses: styfle/cancel-workflow-action@0.9.1
 
       - name: checkout code repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
@@ -48,7 +48,7 @@ jobs:
         uses: styfle/cancel-workflow-action@0.9.1
 
       - name: checkout code repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
@@ -72,7 +72,7 @@ jobs:
         uses: styfle/cancel-workflow-action@0.9.1
 
       - name: checkout code repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
@@ -96,7 +96,7 @@ jobs:
         uses: styfle/cancel-workflow-action@0.9.1
 
       - name: checkout code repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
