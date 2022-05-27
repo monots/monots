@@ -232,8 +232,6 @@ export const ProjectMonots = s.type({
 
   /**
    * The structure for the root tsconfig.
-   *
-   * This is useful for adding settings to the `ts-node` property.
    */
   tsconfig: s.defaulted(s.optional(Tsconfig), {}),
 });

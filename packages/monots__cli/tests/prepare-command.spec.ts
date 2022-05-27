@@ -1,12 +1,18 @@
+import { createSetupFixtures } from '@monots/test';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { expect, test } from 'vitest';
+import { afterAll, expect, test } from 'vitest';
 
-import { cli } from '../src/setup';
-import { setupFixtures } from './helpers';
+import { cli, context } from '../src/setup';
+
+const setupFixtures = createSetupFixtures({ context, fileUrl: import.meta.url });
+
+afterAll(async () => {
+  setupFixtures.cleanup();
+});
 
 test('`monots prepare` should create development dist files', async () => {
-  const { cleanup, context, getPath } = await setupFixtures('pnpm-with-packages');
+  const { context, getPath } = await setupFixtures('pnpm-with-packages');
   const result = await cli.run(['prepare'], context);
   const options = { encoding: 'utf8' } as const;
 
@@ -33,6 +39,4 @@ test('`monots prepare` should create development dist files', async () => {
   expect(types).toMatchSnapshot();
   expect(typesWithDefault).toMatchSnapshot();
   expect(symlinkTargets.map((file) => path.relative(getPath(), file))).toMatchSnapshot();
-
-  await cleanup();
 });

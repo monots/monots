@@ -7,21 +7,12 @@
   ],
   "extends": "../../../.monots/tsconfig.base.json",
   "compilerOptions": {
-    "types": [],
-    "noEmit": true
+    "types": ["node"],
+    "noEmit": false,
+    "declaration": true,
+    "composite": true,
+    "emitDeclarationOnly": true,
+    "outDir": "../dist"
   },
-  "references": [
-    {
-      "path": "../../monots__core/src"
-    },
-    {
-      "path": "../../monots__test/src"
-    },
-    {
-      "path": "../../monots__types/src"
-    },
-    {
-      "path": "../../monots__utils/src"
-    }
-  ]
+  "references": []
 }

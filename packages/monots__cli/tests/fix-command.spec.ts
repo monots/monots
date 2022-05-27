@@ -1,11 +1,16 @@
-import { loadJsonFile } from 'load-json-file';
-import { expect, test } from 'vitest';
+import { createSetupFixtures } from '@monots/test';
+import { afterAll, expect, test } from 'vitest';
 
-import { cli } from '../src/setup';
-import { setupFixtures } from './helpers';
+import { cli, context } from '../src/setup';
+
+const setupFixtures = createSetupFixtures({ context, fileUrl: import.meta.url });
+
+afterAll(async () => {
+  setupFixtures.cleanup();
+});
 
 test('`monots fix` should update the package.json files', async () => {
-  const { cleanup, context, getPath } = await setupFixtures('pnpm-with-packages');
+  const { context, getPath, loadJsonFile } = await setupFixtures('pnpm-with-packages');
   const result = await cli.run(['fix'], context);
   const jsonA = await loadJsonFile(getPath('packages/scoped__a/package.json'));
   const jsonB = await loadJsonFile(getPath('packages/scoped__b/package.json'));
@@ -17,58 +22,48 @@ test('`monots fix` should update the package.json files', async () => {
   expect(jsonB).toMatchSnapshot();
   expect(jsonC).toMatchSnapshot();
   expect(jsonTs).toMatchSnapshot();
-
-  await cleanup();
 });
 
 test('`monots fix` should update the tsconfig files', async () => {
-  const { cleanup, context, getPath } = await setupFixtures('pnpm-with-packages');
+  const { context, loadJsonFile } = await setupFixtures('pnpm-with-packages');
   const result = await cli.run(['fix'], context);
-  const jsonA = await loadJsonFile(getPath('packages/scoped__a/src/tsconfig.json'));
-  const jsonB = await loadJsonFile(getPath('packages/scoped__b/src/tsconfig.json'));
-  const jsonC = await loadJsonFile(getPath('packages/scoped__c/src/tsconfig.json'));
-  const jsonTs = await loadJsonFile(getPath('packages/scoped__ts/tsconfig.json'));
+  const jsonA = await loadJsonFile('packages/scoped__a/src/tsconfig.json');
+  const jsonB = await loadJsonFile('packages/scoped__b/src/tsconfig.json');
+  const jsonC = await loadJsonFile('packages/scoped__c/src/tsconfig.json');
+  const jsonTs = await loadJsonFile('packages/scoped__ts/tsconfig.json');
 
   expect(result, 'The result is successful').toBe(0);
   expect(jsonA).toMatchSnapshot();
   expect(jsonB).toMatchSnapshot();
   expect(jsonC).toMatchSnapshot();
   expect(jsonTs).toMatchSnapshot();
-
-  await cleanup();
 });
 
 test('`monots fix` should update the relative baseTsconfig files', async () => {
-  const { cleanup, context, getPath } = await setupFixtures('pnpm-with-packages-relative');
+  const { context, loadJsonFile } = await setupFixtures('pnpm-with-packages-relative');
   const result = await cli.run(['fix'], context);
-  const jsonA = await loadJsonFile(getPath('packages/scoped__a/src/tsconfig.json'));
-  const jsonB = await loadJsonFile(getPath('packages/scoped__b/src/tsconfig.json'));
+  const jsonA = await loadJsonFile('packages/scoped__a/src/tsconfig.json');
+  const jsonB = await loadJsonFile('packages/scoped__b/src/tsconfig.json');
 
   expect(result, 'The result is successful').toBe(0);
   expect(jsonA).toMatchSnapshot();
   expect(jsonB).toMatchSnapshot();
-
-  await cleanup();
 });
 
 test('`monots fix` should support ignoring exports', async () => {
-  const { cleanup, context, getPath } = await setupFixtures('pnpm-ignore-exports');
+  const { context, loadJsonFile } = await setupFixtures('pnpm-ignore-exports');
   await cli.run(['fix'], context);
-  const jsonA = await loadJsonFile(getPath('packages/scoped__a/package.json'));
+  const jsonA = await loadJsonFile('packages/scoped__a/package.json');
 
   expect(jsonA).toMatchSnapshot();
-
-  await cleanup();
 });
 
 test('`monots fix` should add exports to entrypoints', async () => {
-  const { cleanup, context, getPath } = await setupFixtures('pnpm-with-add-exports-to-entrypoints');
+  const { context, loadJsonFile } = await setupFixtures('pnpm-with-add-exports-to-entrypoints');
   await cli.run(['fix'], context);
-  const mainJson = await loadJsonFile(getPath('packages/scoped__add/package.json'));
-  const scopedJson = await loadJsonFile(getPath('packages/scoped__add/other/package.json'));
+  const mainJson = await loadJsonFile('packages/scoped__add/package.json');
+  const scopedJson = await loadJsonFile('packages/scoped__add/other/package.json');
 
   expect(mainJson).toMatchSnapshot();
   expect(scopedJson).toMatchSnapshot();
-
-  await cleanup();
 });

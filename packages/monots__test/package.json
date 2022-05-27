@@ -1,9 +1,9 @@
 {
-  "name": "superstruct-extra",
-  "version": "0.1.6",
-  "description": "Extra types, refinements and coersions for superstruct.",
+  "name": "@monots/test",
+  "version": "0.0.0",
+  "description": "Test utilities ",
   "keywords": [],
-  "repository": "https://github.com/monots/monots/tree/master/packages/superstruct-extra",
+  "repository": "https://github.com/monots/monots/tree/master/packages/monots__test",
   "license": "MIT",
   "contributors": [],
   "sideEffects": false,
@@ -29,19 +29,12 @@
     "dist"
   ],
   "dependencies": {
-    "@monots/types": "^0.1.8",
     "@swc/helpers": "^0.3.16",
-    "@types/is-uuid": "^1.0.0",
-    "email-validator": "^2.0.4",
-    "is-uuid": "^1.0.2",
-    "type-fest": "^2.13.0"
-  },
-  "devDependencies": {
-    "is-promise": "^4.0.0",
-    "superstruct": "^0.15.4"
-  },
-  "peerDependencies": {
-    "superstruct": "*"
+    "@types/node": "^17.0.35",
+    "del": "^6.1.1",
+    "delay": "^5.0.0",
+    "load-json-file": "^7.0.1",
+    "recursive-copy": "^2.0.14"
   },
   "publishConfig": {
     "access": "public"
@@ -50,8 +43,16 @@
     "entrypoints": [
       "index.ts"
     ],
+    "tsconfigs": {
+      "src": {
+        "compilerOptions": {
+          "types": [
+            "node"
+          ]
+        }
+      }
+    },
     "mode": "library",
-    "tsconfigs": {},
     "externalModules": []
   }
 }

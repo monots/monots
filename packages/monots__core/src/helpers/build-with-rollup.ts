@@ -11,16 +11,35 @@ import path from 'node:path';
 import normalizePath from 'normalize-path';
 import type { OutputAsset, OutputChunk, OutputOptions, Plugin, RollupOptions } from 'rollup';
 import { rollup } from 'rollup';
+import { build } from 'vite';
 
 import { FIELD_EXTENSIONS, OUTPUT_FOLDER } from '../constants.js';
 import type { PackageEntity } from '../entities/index.js';
 import type { EntrypointField } from '../schema.js';
 import { BatchError, FatalError, ScopelessError, UnexpectedBuildError } from './errors.js';
 
-export const builtins = [...builtinModules, ...builtinModules.map((name) => `node:${name}`)];
+const _builtinModules = [
+  ...builtinModules,
+  'assert/strict',
+  'diagnostics_channel',
+  'dns/promises',
+  'fs/promises',
+  'path/posix',
+  'path/win32',
+  'readline/promises',
+  'stream/consumers',
+  'stream/promises',
+  'stream/web',
+  'timers/promises',
+  'util/types',
+  'wasi',
+];
+export const builtins = [..._builtinModules, ...builtinModules.map((name) => `node:${name}`)];
 
-function createConfig(properties: GetRollupConfigProperties): RollupOptions {
-  const { pkg, type } = properties;
+function createConfig(props: GetRollupConfigProperties): RollupOptions {
+  const { pkg, type } = props;
+  const input: Record<string, string> = {};
+  const warnings: FatalError[] = [];
   const externalModules = Object.keys({
     ...pkg.populatedJson.peerDependencies,
     ...pkg.populatedJson.dependencies,
@@ -31,13 +50,9 @@ function createConfig(properties: GetRollupConfigProperties): RollupOptions {
     externalModules.push(...builtins);
   }
 
-  const input: Record<string, string> = {};
-
   for (const entrypoint of pkg.entrypoints) {
     input[path.join(OUTPUT_FOLDER, entrypoint.baseName || 'index')] = entrypoint.source;
   }
-
-  const warnings: FatalError[] = [];
 
   const config: RollupOptions = {
     input,
@@ -280,6 +295,7 @@ async function buildPackage(pkg: PackageEntity) {
   const promises: Array<Promise<void>> = [];
 
   for (const { config, outputs } of configs) {
+    build({ build: { rollupOptions: config } });
     const promise = rollup(config)
       .then((bundle) => {
         return Promise.all(

@@ -29,6 +29,11 @@ cli.register(BuildCommand);
 cli.register(CheckCommand);
 cli.register(CreateCommand);
 
+/**
+ * Loads the `monots` configuration and uses it to register all commands.
+ */
+export function registerCommands() {}
+
 export const context: CommandContext = {
   internal: false,
   version,
