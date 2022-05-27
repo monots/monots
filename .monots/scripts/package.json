@@ -4,12 +4,11 @@
   "type": "module",
   "scripts": {
     "check:pnpm": "node ./check-pnpm.js",
-    "delete:changeset:property": "pnpm ts ./delete-changeset-changelog-property.ts",
-    "fix:audit": "pnpm ts ./fix-audit.ts",
+    "delete:changeset:property": "tsx ./delete-changeset-changelog-property.ts",
+    "fix:audit": "tsx ./fix-audit.ts",
     "symlink:root": "node ./symlink-root.js",
-    "ts": "node --experimental-specifier-resolution=node --loader ts-node/esm",
-    "update:changelog:dates": "pnpm ts ./changelog-dates.ts",
-    "update:templates": "pnpm ts ./update-package.json-templates.ts"
+    "update:changelog:dates": "tsx ./changelog-dates.ts",
+    "update:templates": "tsx ./update-package.json-templates.ts"
   },
   "dependencies": {
     "@manypkg/get-packages": "^1.1.3",

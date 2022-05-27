@@ -20,4 +20,4 @@ pnpm-lock.yaml
 /pnpm-lock.yaml
 .pnpm-store/
 
-**/__fixtures__/**
+**/fixtures/**

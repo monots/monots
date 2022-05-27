@@ -2,13 +2,6 @@
   "extends": "./.monots/tsconfig.base.json",
   "include": [],
   "files": [],
-  "ts-node": {
-    "transpileOnly": true,
-    "compilerOptions": {
-      "esModuleInterop": true,
-      "target": "ESNext"
-    }
-  },
   "references": [
     {
       "path": ".monots/scripts"
@@ -20,7 +13,7 @@
       "path": "packages/eslint-config-monots/src"
     },
     {
-      "path": "packages/monots__cli/__tests__"
+      "path": "packages/load-esm-config/src"
     },
     {
       "path": "packages/monots__cli/src"
@@ -30,6 +23,9 @@
     },
     {
       "path": "packages/monots__next-plugin/src"
+    },
+    {
+      "path": "packages/monots__test/src"
     },
     {
       "path": "packages/monots__types/src"
