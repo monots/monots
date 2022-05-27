@@ -1,5 +1,13 @@
 # create-monots
 
+## 0.10.0
+
+> 2022-05-27
+
+### Minor Changes
+
+- b807c2f: Add a new `rust` template and update dependencies.
+
 ## 0.9.1
 
 > 2022-04-27

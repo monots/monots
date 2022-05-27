@@ -1,5 +1,21 @@
 # @monots/utils
 
+## 0.4.0
+
+> 2022-05-27
+
+### Minor Changes
+
+- b807c2f: Breaking change to `deepMerge` which now takes an array of object to merge followed by the options available via the `deepmerge` library.
+
+  - Add new `createDebugger` function to `@monots/utils` which creates a `debug` function with the given namespace.
+
+  - Add `normalizePath` function for creating a linux friendly path.
+
+### Patch Changes
+
+- b807c2f: Update packages and refactor some internal code.
+
 ## 0.3.6
 
 > 2022-04-22

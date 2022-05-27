@@ -1,5 +1,13 @@
 # eslint-config-monots
 
+## 0.11.1
+
+> 2022-05-27
+
+### Patch Changes
+
+- b807c2f: Update packages and refactor some internal code.
+
 ## 0.11.0
 
 > 2022-04-27

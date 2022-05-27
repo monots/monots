@@ -1,5 +1,13 @@
 # prettier-config-monots
 
+## 0.2.2
+
+> 2022-05-27
+
+### Patch Changes
+
+- b807c2f: Update packages and refactor some internal code.
+
 ## 0.2.1
 
 > 2022-04-15

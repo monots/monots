@@ -1,5 +1,15 @@
 # superstruct-extra
 
+## 0.1.7
+
+> 2022-05-27
+
+### Patch Changes
+
+- b807c2f: Update packages and refactor some internal code.
+- Updated dependencies [b807c2f]
+  - @monots/types@0.1.9
+
 ## 0.1.6
 
 > 2022-02-26

@@ -1,5 +1,13 @@
 # @monots/next-plugin
 
+## 0.4.5
+
+> 2022-05-27
+
+### Patch Changes
+
+- b807c2f: Update packages and refactor some internal code.
+
 ## 0.4.4
 
 > 2022-04-15

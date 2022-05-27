@@ -1,5 +1,13 @@
 # @monots/cli
 
+## 0.12.5
+
+> 2022-05-27
+
+### Patch Changes
+
+- b807c2f: Update packages and refactor some internal code.
+
 ## 0.12.4
 
 > 2022-04-27
