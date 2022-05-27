@@ -1,9 +1,11 @@
-/* eslint-disable unicorn/prefer-module */
 import is from '@sindresorhus/is';
 import { camelCaseIt, kebabCaseIt } from 'case-it';
+import debug from 'debug';
+import type { Options as DeepMergeOptions } from 'deepmerge';
 import merge from 'deepmerge';
 import { template } from 'lodash-es';
 import fs from 'node:fs/promises';
+import os from 'node:os';
 import path from 'node:path';
 import { Transform } from 'node:stream';
 import { readPackageUpSync } from 'read-pkg-up';
@@ -59,8 +61,11 @@ export async function folderExists(folderPath: string): Promise<boolean> {
  * To completely remove a key you can use the `Merge` helper class which
  * replaces it's key with a completely new object
  */
-export function deepMerge<Type = any>(...objects: Array<object | unknown[]>): Type {
-  return merge.all<Type>(objects as any, { isMergeableObject: is.plainObject });
+export function deepMerge<Type = any>(
+  objects: Array<object | unknown[]>,
+  options?: DeepMergeOptions,
+): Type {
+  return merge.all<Type>(objects as any, { isMergeableObject: is.plainObject, ...options });
 }
 
 /**
@@ -168,7 +173,9 @@ let DIRNAME: string;
 try {
   DIRNAME = path.dirname(new URL(import.meta.url).pathname);
 } catch (error) {
+  // eslint-disable-next-line unicorn/prefer-module
   if (typeof __dirname === 'string') {
+    // eslint-disable-next-line unicorn/prefer-module
     DIRNAME = __dirname;
   } else {
     throw error;
@@ -209,3 +216,50 @@ export function mangleScopedPackageName(packageName: string): string {
 
   return packageName;
 }
+
+const filter = process.env.MONOTS_DEBUG_FILTER;
+const DEBUG = process.env.DEBUG;
+
+interface DebuggerOptions {
+  onlyWhenFocused?: boolean | string;
+}
+
+export type MonotsDebugScope = `monots:${string}`;
+
+/**
+ * Use the `debug` package to create a debug instance.
+ *
+ * Use with `DEBUG="monots:*"`
+ */
+export function createDebugger(namespace: MonotsDebugScope, options: DebuggerOptions = {}) {
+  const log = debug(namespace);
+  const { onlyWhenFocused } = options;
+  const focus = typeof onlyWhenFocused === 'string' ? onlyWhenFocused : namespace;
+  return (msg: string, ...args: any[]) => {
+    if (filter && !msg.includes(filter)) {
+      return;
+    }
+
+    if (onlyWhenFocused && !DEBUG?.includes(focus)) {
+      return;
+    }
+
+    log(msg, ...args);
+  };
+}
+
+export const isWindows = os.platform() === 'win32';
+
+/**
+ * Normalize the path for posix systems.
+ */
+export function normalizePath(id: string): string {
+  return path.posix.normalize(isWindows ? slash(id) : id);
+}
+
+function slash(p: string): string {
+  return p.replace(/\\/g, '/');
+}
+
+export { camelCaseIt as camelCase, kebabCaseIt as kebabCase } from 'case-it';
+export { type Options as DeepMergeOptions } from 'deepmerge';

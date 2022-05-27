@@ -1,0 +1,46 @@
+name: 'pnpm installation'
+description: 'Install and audit dependencies for pnpm'
+inputs:
+  node-version: # id of input
+    description: 'The node version'
+    required: false
+    default: 16.x
+
+runs:
+  using: 'composite'
+  steps:
+    - name: setup node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ inputs.node-version }}
+
+    - name: enable corepack
+      run: corepack enable
+      shell: bash
+
+    - name: setup pnpm store
+      id: store
+      env:
+        LOCAL_PNPM_HOME: $HOME/pnpm
+      shell: bash
+      run: |
+        echo "PNPM_HOME=$LOCAL_PNPM_HOME" >> $GITHUB_ENV
+        echo "$LOCAL_PNPM_HOME" >> $GITHUB_PATH
+        echo ::set-output name=path::$(pnpm store path)}
+
+    - name: setup pnpm caching
+      uses: actions/cache@v2
+      if: ${{ !env.ACT }}
+      with:
+        path: ${{ steps.store.outputs.path }}
+        key: ${{ runner.os }}-pnpm7-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm7-
+
+    - name: audit dependencies
+      run: pnpm lint:audit
+      shell: bash
+
+    - name: install dependencies
+      run: pnpm install
+      shell: bash

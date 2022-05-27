@@ -145,10 +145,10 @@ export class PackageEntity extends BaseEntity<Package> {
     }
 
     if (monots.tsconfigs[monots.sourceFolderName] !== false) {
-      const sourceConfig = deepMerge(
+      const sourceConfig = deepMerge([
         { compilerOptions },
         monots.tsconfigs[monots.sourceFolderName] ?? {},
-      );
+      ]);
       monots.tsconfigs[monots.sourceFolderName] = sourceConfig;
     }
 

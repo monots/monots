@@ -1,6 +1,5 @@
 {
-  "$schema": "https://unpkg.com/@changesets/config@1.6.1/schema.json",
-  "changelog": ["@changesets/changelog-github", { "repo": "monots/monots" }],
+  "$schema": "https://unpkg.com/@changesets/config@2.0.0/schema.json",
   "updateInternalDependencies": "patch",
   "commit": false,
   "linked": [],

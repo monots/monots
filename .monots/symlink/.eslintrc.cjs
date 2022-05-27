@@ -14,7 +14,7 @@ module.exports = {
       rules: { 'no-console': 'off', 'unicorn/no-process-exit': 'off' },
     },
     {
-      files: ['**/vite.config.{js,ts}'],
+      files: ['**/{vite,vitest}.config.{js,ts}'],
       rules: { 'import/no-default-export': 'off' },
     },
   ],
