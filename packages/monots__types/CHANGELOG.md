@@ -1,5 +1,13 @@
 # @monots/types
 
+## 0.1.9
+
+> 2022-05-27
+
+### Patch Changes
+
+- b807c2f: Update packages and refactor some internal code.
+
 ## 0.1.8
 
 > 2022-04-07

@@ -1,6 +1,6 @@
 {
   "name": "prettier-config-monots",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "The monots prettier configuration",
   "homepage": "https://github.com/monots/monots/tree/master/packages/prettier-config-monots",
   "repository": "https://github.com/monots/monots/tree/master/packages/prettier-config-monots",

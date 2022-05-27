@@ -1,5 +1,18 @@
 # @monots/core
 
+## 0.15.6
+
+> 2022-05-27
+
+### Patch Changes
+
+- b807c2f: Update packages and refactor some internal code.
+- Updated dependencies [b807c2f]
+- Updated dependencies [b807c2f]
+  - @monots/types@0.1.9
+  - @monots/utils@0.4.0
+  - superstruct-extra@0.1.7
+
 ## 0.15.5
 
 > 2022-04-27

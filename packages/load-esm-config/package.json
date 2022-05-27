@@ -1,6 +1,6 @@
 {
   "name": "load-esm-config",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Load configuration files written in TypeScript and JavaScript",
   "keywords": [],
   "repository": "https://github.com/monots/monots/tree/master/packages/load-esm-config",
@@ -29,7 +29,7 @@
     "dist"
   ],
   "dependencies": {
-    "@monots/utils": "^0.3.6",
+    "@monots/utils": "^0.4.0",
     "@sindresorhus/is": "^4.6.0",
     "@swc/helpers": "^0.3.16",
     "chalk": "^5.0.1",
