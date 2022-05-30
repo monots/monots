@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "moduleSuffixes": ["", ".node", ".browser", ".ios", ".android", ".native"],
+    "moduleSuffixes": ["", ".$node", ".$browser", ".$deno", ".ios", ".android", ".native"],
     "module": "ESNext",
     "target": "ESNext",
+    "moduleResolution": "Node",
     "jsx": "preserve",
     "lib": ["DOM", "ESNext"],
-    "moduleResolution": "Node",
     "noImplicitReturns": true,
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,

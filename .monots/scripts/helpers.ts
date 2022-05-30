@@ -1,8 +1,7 @@
-import path from 'node:path';
-import url from 'node:url';
-import { Package } from '@manypkg/get-packages';
+import type { Package } from '@manypkg/get-packages';
+import * as path from 'node:path';
 
-const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+const DIRNAME = path.dirname(new URL(import.meta.url).pathname);
 
 /**
  * Resolve a path relative to the base directory.
@@ -10,7 +9,7 @@ const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
  * @param {string[]} paths
  */
 export function baseDir(...paths: string[]) {
-  return path.resolve(__dirname, '../..', ...paths);
+  return path.resolve(DIRNAME, '../..', ...paths);
 }
 
 export type Pkg = Package['packageJson'] & {

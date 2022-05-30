@@ -1,8 +1,7 @@
 import emailValidator from 'email-validator';
-import isUuid from 'is-uuid';
+import * as isUuid from 'is-uuid';
 import type { Infer } from 'superstruct';
 import { define, func, instance, refine, string, Struct, StructError, tuple } from 'superstruct';
-import type { ObjectSchema } from 'superstruct/lib/utils';
 
 import { FunctionStruct } from './function-struct.js';
 import { PromiseStruct } from './promise-struct.js';
@@ -181,7 +180,7 @@ export function isStructError(value: unknown): value is StructError {
  * uuidSchema.is('123') // => false
  * ```
  */
-export function uuid(version: keyof typeof isUuid = 'v4'): Struct<Uuid, null> {
+export function uuid(version: 'v1' | 'v2' | 'v3' | 'v4' | 'v5' = 'v4'): Struct<Uuid, null> {
   return refine<Uuid, null>(string(), `uuid:${version}`, (value) => isUuid[version](value));
 }
 
@@ -201,6 +200,8 @@ export function uuid(version: keyof typeof isUuid = 'v4'): Struct<Uuid, null> {
 export function email(): Struct<Email, null> {
   return refine<Email, null>(string(), 'email', (value) => emailValidator.validate(value));
 }
+
+type ObjectSchema = Record<string, Struct<any, any>>;
 
 /**
  * Refine the type of arrays, maps, sets, and objects to be readonly.

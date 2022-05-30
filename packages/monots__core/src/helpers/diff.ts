@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import chalkTemplate from 'chalk-template';
 import isEqual from 'fast-deep-equal';
 import { diff } from 'jest-diff';
-import path from 'node:path';
+import * as path from 'node:path';
 
 import { FatalError } from './errors.js';
 

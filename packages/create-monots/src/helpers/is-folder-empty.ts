@@ -1,8 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { folderExists } from '@monots/utils';
 import chalk from 'chalk';
-import fs from 'node:fs/promises';
-import path from 'node:path';
+import * as fs from 'node:fs/promises';
+import * as path from 'node:path';
 
 export async function isFolderEmpty(root: string, name: string): Promise<boolean> {
   const validFiles = new Set([

@@ -5,7 +5,7 @@ import type {
   CommandString,
 } from '@monots/types';
 import { Command, Option } from 'clipanion';
-import path from 'node:path';
+import * as path from 'node:path';
 
 export abstract class BaseCommand extends Command<CommandContext> implements BaseCommandProps {
   /**

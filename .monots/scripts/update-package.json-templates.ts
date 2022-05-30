@@ -1,8 +1,9 @@
+import glob from 'fast-glob';
+import { got } from 'got';
 import { loadJsonFile } from 'load-json-file';
 import { writeJsonFile } from 'write-json-file';
-import { got } from 'got';
-import glob from 'fast-glob';
-import { baseDir } from './helpers';
+
+import { baseDir } from './helpers.js';
 
 const DATA_ROOT_URL = 'https://data.jsdelivr.com/v1/package/npm/';
 
@@ -22,7 +23,7 @@ async function run() {
     // read the json file
     const json = await loadJsonFile<any>(file);
     const dependencies = json.dependencies || {};
-    const internalPromises: Promise<void>[] = [];
+    const internalPromises: Array<Promise<void>> = [];
 
     // read the dependencies
     for (const name of Object.keys(dependencies)) {

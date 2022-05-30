@@ -1,10 +1,10 @@
-import shell from 'shelljs';
 import chalkTemplate from 'chalk-template';
+import shell from 'shelljs';
 
 const auditResult = shell.exec('pnpm audit --fix', {});
 
 if (auditResult.stdout.includes('No fixes were made')) {
-  chalkTemplate`{yellow no fixes required 🎉}`;
+  console.log(chalkTemplate`{yellow no fixes required 🎉}`);
   process.exit(0);
 }
 

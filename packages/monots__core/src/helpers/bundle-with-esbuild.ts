@@ -1,5 +1,5 @@
 import { build } from 'esbuild';
-import path from 'node:path';
+import * as path from 'node:path';
 
 import type { PackageEntity } from '../entities/index.js';
 import { builtins } from './build-with-rollup.js';
@@ -17,14 +17,14 @@ export async function bundleWithEsbuild(pkg: PackageEntity) {
     promises.push(async () => {
       await build({
         entryPoints: [entrypoint.source],
-        outfile: path.join(pkg.output, `${entrypoint.baseName || 'index'}.cjs`),
-        minify: true,
+        outfile: path.join(pkg.output, `${entrypoint.baseName || 'index'}.js`),
+        minify: false,
         sourcemap: false,
         bundle: true,
-        external: [...builtins, 'esbuild', '@swc/core', 'fsevents'],
-        target: 'node12.20.0',
+        external: [...builtins, 'esbuild', 'fsevents', ...Object.keys(pkg.json.dependencies ?? [])],
+        target: 'node16.10.0',
         platform: 'node',
-        format: 'cjs',
+        format: pkg.json.type === 'module' ? 'esm' : 'cjs',
       });
     });
   }

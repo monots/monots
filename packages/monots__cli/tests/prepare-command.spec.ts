@@ -1,6 +1,6 @@
 import { createSetupFixtures } from '@monots/test';
-import fs from 'node:fs/promises';
-import path from 'node:path';
+import * as fs from 'node:fs/promises';
+import * as path from 'node:path';
 import { afterAll, expect, test } from 'vitest';
 
 import { cli, context } from '../src/setup';

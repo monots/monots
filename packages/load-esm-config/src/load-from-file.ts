@@ -1,13 +1,12 @@
-import is from '@sindresorhus/is';
+import { invariant, is } from '@monots/utils';
 import { build } from 'esbuild';
 import { findUpMultiple } from 'find-up';
-import fs from 'node:fs/promises';
+import * as fs from 'node:fs/promises';
 import { createRequire } from 'node:module';
-import path from 'node:path';
+import * as path from 'node:path';
 import { performance } from 'node:perf_hooks';
 import { pathToFileURL } from 'node:url';
 import { readPackageUp } from 'read-pkg-up';
-import invariant from 'tiny-invariant';
 
 import { debug, SUPPORTED_EXTENSIONS } from './config-constants.js';
 import type {

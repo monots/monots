@@ -1,5 +1,12 @@
-import isPromise from 'is-promise';
 import { Struct } from 'superstruct';
+
+function isPromise<T, S>(value: PromiseLike<T> | S): value is PromiseLike<T> {
+  return (
+    !!value &&
+    (typeof value === 'object' || typeof value === 'function') &&
+    typeof (value as any).then === 'function'
+  );
+}
 
 /**
  * A custom Struct for validating function calls at runtime.

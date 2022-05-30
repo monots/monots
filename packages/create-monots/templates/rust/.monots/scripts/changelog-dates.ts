@@ -1,6 +1,6 @@
 import { promises as fs } from 'node:fs';
 import { execSync } from 'node:child_process';
-import path from 'node:path';
+import * as path from 'node:path';
 import { getPackages } from '@manypkg/get-packages';
 import { Pkg, baseDir } from './helpers';
 

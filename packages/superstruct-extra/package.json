@@ -30,14 +30,12 @@
   ],
   "dependencies": {
     "@monots/types": "^0.1.9",
-    "@swc/helpers": "^0.3.16",
     "@types/is-uuid": "^1.0.0",
     "email-validator": "^2.0.4",
     "is-uuid": "^1.0.2",
     "type-fest": "^2.13.0"
   },
   "devDependencies": {
-    "is-promise": "^4.0.0",
     "superstruct": "^0.15.4"
   },
   "peerDependencies": {

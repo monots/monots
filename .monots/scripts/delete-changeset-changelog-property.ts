@@ -7,10 +7,11 @@
  * This allows PR's which don't have access to the `GITHUB_TOKEN` to still pass.
  */
 
+import chalk from 'chalk';
 import { loadJsonFile } from 'load-json-file';
 import { writeJsonFile } from 'write-json-file';
-import chalk from 'chalk';
-import { baseDir } from './helpers';
+
+import { baseDir } from './helpers.js';
 
 async function main() {
   if (!process.env.CI) {

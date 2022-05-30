@@ -21,13 +21,13 @@
     "./types/*": "./dist/*.d.ts"
   },
   "bin": {
-    "create-monots": "./dist/index.cjs"
+    "create-monots": "./dist/index.js"
   },
   "files": [
     "dist",
     "templates"
   ],
-  "devDependencies": {
+  "dependencies": {
     "@monots/utils": "^0.4.0",
     "@types/async-retry": "^1.4.4",
     "@types/cross-spawn": "^6.0.2",

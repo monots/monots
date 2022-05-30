@@ -1,4 +1,4 @@
-import path from 'node:path';
+import * as path from 'node:path';
 import normalizePath from 'normalize-path';
 
 import { FIELD_EXTENSIONS, NAME } from '../constants.js';

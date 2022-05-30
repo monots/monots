@@ -1,6 +1,7 @@
 {
   "name": "scripts",
   "private": true,
+  "repository": "https://github.com/monots/monots/tree/master/.monots/scripts",
   "type": "module",
   "scripts": {
     "check:pnpm": "node ./check-pnpm.js",

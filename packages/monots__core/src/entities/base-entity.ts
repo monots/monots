@@ -1,7 +1,6 @@
-import { removeUndefined } from '@monots/utils';
-import is from '@sindresorhus/is';
-import path from 'node:path';
-import * as t from 'superstruct-extra';
+import { is, removeUndefined } from '@monots/utils';
+import * as path from 'node:path';
+import * as t from 'superstruct';
 import { writeJsonFile } from 'write-json-file';
 
 import { type FatalError, compareOutput } from '../helpers/index.js';

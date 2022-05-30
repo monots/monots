@@ -2,34 +2,21 @@
 
 exports[`\`monots prepare\` should create development dist files 1`] = `
 "// Allow the project to be used for commonjs environments 
-const register = require('../../../../../../../../../node_modules/.pnpm/@swc+register@0.1.10_@swc+core@1.2.194/node_modules/@swc/register/lib/node.js');
+const { register } = require('../../../../../../../../../node_modules/.pnpm/esbuild-register@3.3.2_esbuild@0.14.42/node_modules/esbuild-register/dist/node.js');
 
-(register.default || register)({
-  \\"rootMode\\": \\"upward-optional\\",
-  \\"module\\": {
-    \\"type\\": \\"commonjs\\"
-  },
-  \\"jsc\\": {
-    \\"target\\": \\"es2015\\",
-    \\"transform\\": {
-      \\"react\\": {
-        \\"runtime\\": \\"automatic\\"
-      }
-    }
-  }
-})
+const { unregister } = register({ target: \`node\${process.version.slice(1)}\`})
 module.exports = require('../src/index.ts');
-register.revert();"
+unregister();"
 `;
 
 exports[`\`monots prepare\` should create development dist files 2`] = `
-"export * from \\"../src/index\\";
+"export * from \\"../src/index.js\\";
 "
 `;
 
 exports[`\`monots prepare\` should create development dist files 3`] = `
-"export * from \\"../src/other\\";
-export { default } from \\"../src/other\\";
+"export * from \\"../src/other.js\\";
+export { default } from \\"../src/other.js\\";
 "
 `;
 

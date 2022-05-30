@@ -1,10 +1,9 @@
-import { deepMerge, removeUndefined } from '@monots/utils';
-import is from '@sindresorhus/is';
+import { deepMerge, is, removeUndefined } from '@monots/utils';
 import chalkTemplate from 'chalk-template';
 import del from 'del';
 import glob from 'fast-glob';
-import fs from 'node:fs/promises';
-import path from 'node:path';
+import * as fs from 'node:fs/promises';
+import * as path from 'node:path';
 import normalizePath from 'normalize-path';
 import parseJson from 'parse-json';
 import sortKeys from 'sort-keys';
@@ -481,13 +480,14 @@ export class PackageEntity extends BaseEntity<Package> {
    */
   #generateExportsField() {
     let extraExports = this.monots.extraExports;
-    const exportsObject: Record<string, string | Record<string, any>> = {
-      './package.json': './package.json',
-    };
+
+    const exportsObject: Record<string, string | Record<string, any>> = Object.create(null);
 
     if (this.fields.includes('types')) {
       exportsObject['./types/*'] = `./${OUTPUT_FOLDER}/*.d.ts`;
     }
+
+    exportsObject['./package.json'] = './package.json';
 
     if (this.isLibrary) {
       // Only add entrypoints for libraries.
@@ -505,7 +505,37 @@ export class PackageEntity extends BaseEntity<Package> {
       extraExports = { ...this.json.exports, ...extraExports };
     }
 
-    return sortKeys({ ...exportsObject, ...extraExports }, { deep: true });
+    return sortKeys(
+      { ...exportsObject, ...extraExports },
+      {
+        deep: true,
+        compare(a, z) {
+          const fallback = a.localeCompare(z);
+
+          if (fallback === 0) {
+            return fallback;
+          }
+
+          if (a === 'types') {
+            return -1;
+          }
+
+          if (z === 'types') {
+            return 1;
+          }
+
+          if (a === 'default') {
+            return 1;
+          }
+
+          if (z === 'default') {
+            return -1;
+          }
+
+          return fallback;
+        },
+      },
+    );
   }
 
   #getRequiredFiles() {
@@ -532,10 +562,10 @@ export class PackageEntity extends BaseEntity<Package> {
 }
 
 const fieldNameToExportName: Record<EntrypointField, ExportsField> = {
+  types: 'types',
   module: 'import',
   main: 'require',
   browser: 'browser',
-  types: 'types',
 };
 
 interface EntrypointInput {

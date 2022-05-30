@@ -5,7 +5,7 @@
  * before any packages have been installed.
  */
 
-import process from 'process';
+import * as process from 'node:process';
 
 if (!/pnpm(\.[cm]?js|)$/.test(process.env.npm_execpath || '')) {
   console.warn(

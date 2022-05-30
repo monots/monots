@@ -25,21 +25,19 @@
     "templates"
   ],
   "dependencies": {
-    "@swc/core": "^1.2.194",
-    "@swc/register": "^0.1.10",
-    "esbuild": "^0.14.41"
-  },
-  "devDependencies": {
     "@monots/core": "^0.15.6",
-    "@monots/test": "^0.0.0",
     "@monots/types": "^0.1.9",
     "@monots/utils": "^0.4.0",
-    "@swc/helpers": "^0.3.16",
     "chalk": "^5.0.1",
     "chalk-template": "^0.4.0",
     "clipanion": "^3.1.0",
+    "esbuild": "^0.14.41",
+    "esbuild-register": "^3.3.2",
     "ora": "^6.1.0",
     "type-fest": "^2.13.0"
+  },
+  "devDependencies": {
+    "@monots/test": "^0.0.0"
   },
   "engines": {
     "node": "^12.2.0 || ^14.13.0 || ^16"
@@ -50,7 +48,7 @@
   "monots": {
     "mode": "cli",
     "tsconfigs": {
-      "__tests__": {}
+      "tests": {}
     }
   }
 }

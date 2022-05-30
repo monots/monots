@@ -1,9 +1,17 @@
 {
   "extends": "@monots/tsconfig/tsconfig.json",
   "compilerOptions": {
+    "module": "ESNext", // NodeNext causes failures
     "checkJs": false,
     "allowJs": false
   },
-  "include": ["../**/*.ts", "../**/*.tsx", "../**/*.js"],
+  "include": [
+    "../**/*.ts",
+    "../**/*.tsx",
+    "../**/*.js",
+    "../.monots/**/*.ts",
+    "../.monots/**/*.tsx",
+    "../.monots/**/*.js"
+  ],
   "exclude": ["../**/dist/", "../**/public/", "../**/.cache/", "../**/node_modules/**"]
 }

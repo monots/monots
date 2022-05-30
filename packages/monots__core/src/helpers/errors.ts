@@ -1,7 +1,5 @@
-import is from '@sindresorhus/is';
-import chalkTemplate from 'chalk-template';
 import { BaseError } from 'make-error';
-import util from 'node:util';
+import * as util from 'node:util';
 import * as t from 'superstruct';
 
 import { format } from './logger.js';
@@ -52,31 +50,10 @@ export function assert<Type, Struct>(
   value: unknown,
   props: AssertProps<Type, Struct>,
 ): asserts value is Type {
-  const { struct, level, name } = props;
+  const { struct } = props;
+  const [error] = t.validate(value, struct);
 
-  try {
-    t.assert(value, struct);
-  } catch (error) {
-    if (!isStructError(error)) {
-      throw error;
-    }
-
-    const errors: ConfigurationError[] = [];
-
-    for (const failure of error.failures()) {
-      const { key, message } = failure;
-      errors.push(
-        new ConfigurationError(
-          chalkTemplate`${level} configuration error for ${key}: {italic ${message}}`,
-          name,
-        ),
-      );
-    }
-
-    throw new BatchError(errors);
+  if (error) {
+    throw error;
   }
-}
-
-function isStructError(value: unknown): value is t.StructError {
-  return is.error(value) && is.function_((value as any).failures);
 }

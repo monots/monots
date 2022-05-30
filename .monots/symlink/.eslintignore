@@ -1,5 +1,7 @@
 !.eslintrc.js
 !**/.eslintrc.js
+!.monots/
+packages/**/.monots
 dist
 **/dist
 **/dist/**
@@ -15,6 +17,7 @@ coverage
 
 **/temp/**
 **/tmp/**
+tmp**
 
 pnpm-lock.yaml
 /pnpm-lock.yaml

@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { exec as _e } from 'node:child_process';
-import path from 'node:path';
+import * as path from 'node:path';
 import { promisify } from 'node:util';
 import _r from 'rimraf';
 

@@ -4,7 +4,7 @@
 import chalk from 'chalk';
 import chalkTemplate from 'chalk-template';
 import meow from 'meow';
-import path from 'node:path';
+import * as path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import prompts from 'prompts';
 
@@ -12,17 +12,7 @@ import { createMonotsProject, DownloadError } from './create-monots.js';
 import { validateNpmName } from './helpers/validate-pkg.js';
 
 let IMPORT_META: ImportMeta;
-let DIRNAME: string;
-
-try {
-  DIRNAME = path.dirname(new URL(import.meta.url).pathname);
-} catch (error) {
-  if (typeof __dirname === 'string') {
-    DIRNAME = __dirname;
-  } else {
-    throw error;
-  }
-}
+const DIRNAME = path.dirname(new URL(import.meta.url).pathname);
 
 try {
   IMPORT_META =

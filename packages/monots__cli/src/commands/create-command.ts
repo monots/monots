@@ -3,10 +3,10 @@ import type { CommandBoolean, CommandString, Usage } from '@monots/types';
 import { copyTemplate, folderExists, mangleScopedPackageName } from '@monots/utils';
 import chalkTemplate from 'chalk-template';
 import { Option } from 'clipanion';
-import path from 'node:path';
+import * as path from 'node:path';
 import ora from 'ora';
 
-import { getPackagePath } from '../utils';
+import { getPackagePath } from '../utils.js';
 import { BaseCommand } from './base-command.js';
 
 /**

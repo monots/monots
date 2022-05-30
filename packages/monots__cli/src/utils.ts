@@ -1,19 +1,7 @@
 /* eslint-disable unicorn/prefer-module */
-import path from 'node:path';
+import * as path from 'node:path';
 
-let DIRNAME: string;
-
-try {
-  DIRNAME = path.dirname(new URL(import.meta.url).pathname);
-} catch (error) {
-  if (typeof __dirname === 'string') {
-    DIRNAME = __dirname;
-  } else {
-    throw error;
-  }
-}
-
-export { DIRNAME };
+const DIRNAME = path.dirname(new URL(import.meta.url).pathname);
 
 /**
  * Get the absolute path within this package.

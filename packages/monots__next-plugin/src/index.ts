@@ -46,15 +46,15 @@ function withMonots(nextConfig: NextConfig = {}) {
     }
 
     webpackConfig.module?.rules?.unshift({
-      test: /\/node_modules\/@swc\/register\/lib\/(index|node)\.js$/,
+      test: /\/node_modules\/esbuild-register\/dist\/(index|node)\.js$/,
       use: hookLoader,
     });
 
     const resolve = (webpackConfig.resolve ??= {});
 
     resolve.extensions = isServer
-      ? ['.node.ts', '.node.tsx', '.node.js', ...(resolve.extensions ?? [])]
-      : ['.browser.ts', '.browser.tsx', '.browser.js', ...(resolve.extensions ?? [])];
+      ? ['.$node.ts', '.$node.tsx', '.$node.js', ...(resolve.extensions ?? [])]
+      : ['.$browser.ts', '.$browser.tsx', '.$browser.js', ...(resolve.extensions ?? [])];
 
     return originalWebpack ? originalWebpack(webpackConfig, options) : webpackConfig;
   };

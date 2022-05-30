@@ -1,7 +1,5 @@
 import { getPackages } from '@manypkg/get-packages';
-import type { InstallerType } from '@monots/utils';
-import { fileExists, getInstaller } from '@monots/utils';
-import is from '@sindresorhus/is';
+import { type InstallerType, fileExists, getInstaller, is } from '@monots/utils';
 import chalkTemplate from 'chalk-template';
 import del from 'del';
 import detectIndent from 'detect-indent';
@@ -9,8 +7,8 @@ import { execa } from 'execa';
 import glob from 'fast-glob';
 import yaml from 'js-yaml';
 import { loadJsonFile } from 'load-json-file';
-import fs from 'node:fs/promises';
-import path from 'node:path';
+import * as fs from 'node:fs/promises';
+import * as path from 'node:path';
 import parseJson from 'parse-json';
 import type { JsonObject } from 'type-fest';
 import { writeJsonFile } from 'write-json-file';
@@ -209,7 +207,7 @@ export class ProjectEntity extends BaseEntity<Project> {
 
     if (errors.length > 0) {
       throw new BatchError(
-        errors.sort((a, b) => (a.scope + a.message).localeCompare(b.scope + b.message)),
+        errors.sort((a, b) => `${a.scope}${a.message}`.localeCompare(`${b.scope}${b.message}`)),
       );
     }
   }

@@ -1,4 +1,4 @@
-import path from 'node:path';
+import * as path from 'node:path';
 import * as s from 'superstruct-extra';
 
 import { OUTPUT_FOLDER } from './constants.js';

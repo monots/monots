@@ -1,9 +1,7 @@
-/* eslint-disable unicorn/prefer-module */
-import { parse } from '@swc/core';
-import type { InputOptions } from '@swc/register/lib/node';
-import fs from 'node:fs/promises';
+import { hasDefaultExport } from '@monots/utils';
+import * as fs from 'node:fs/promises';
 import { createRequire } from 'node:module';
-import path from 'node:path';
+import * as path from 'node:path';
 import normalizePath from 'normalize-path';
 import sortKeys from 'sort-keys';
 import { entries } from 'ts-entries';
@@ -15,33 +13,7 @@ import type { BaseEntityProps } from './base-entity.js';
 import { BaseEntity } from './base-entity.js';
 import type { PackageEntity } from './package-entity.js';
 
-let DIRNAME: string;
-let _REQUIRE: typeof require;
-
-try {
-  DIRNAME = path.dirname(new URL(import.meta.url).pathname);
-} catch (error) {
-  if (typeof __dirname === 'string') {
-    DIRNAME = __dirname;
-  } else {
-    throw error;
-  }
-}
-
-try {
-  _REQUIRE = typeof require === 'function' ? require : createRequire(DIRNAME);
-} catch (error) {
-  if (typeof createRequire === 'function') {
-    _REQUIRE = createRequire(DIRNAME);
-  } else {
-    throw error;
-  }
-}
-
-/**
- * @internal
- */
-export { _REQUIRE };
+const require = createRequire(import.meta.url);
 
 interface EntrypointEntityProps extends BaseEntityProps<Entrypoint> {
   /**
@@ -195,52 +167,19 @@ export class EntrypointEntity extends BaseEntity<Entrypoint> {
   }
 
   /**
-   * Will return true if the entrypoint has a default export.
-   */
-  async hasDefaultExport(): Promise<boolean> {
-    if (!/(export\s*{[^}]*default|export\s+(|\*\s+as\s+)default\s)/.test(this.contents)) {
-      // This definitely doesn't have an export statement.
-      return false;
-    }
-
-    const ast = await parse(this.contents, {
-      target: 'es2015',
-      syntax: 'typescript',
-      decorators: true,
-      dynamicImport: true,
-      tsx: path.extname(this.source) === 'tsx',
-    });
-
-    for (const statement of ast.body) {
-      if (
-        statement.type === 'ExportDefaultDeclaration' ||
-        (statement.type === 'ExportNamedDeclaration' &&
-          statement.specifiers.some(
-            (specifier) =>
-              (specifier.type === 'ExportDefaultSpecifier' ||
-                specifier.type === 'ExportSpecifier') &&
-              specifier.exported?.value === 'default',
-          ))
-      ) {
-        return true;
-      }
-    }
-
-    return false;
-  }
-
-  /**
    * Generate the files.
    */
   async generateDevFiles(): Promise<void> {
     const promises: Array<Promise<void>> = [];
 
     const generateTypesDevFile = (target: string, relativePath: string) => {
-      const promise = this.hasDefaultExport().then(async (hasDefaultExport) => {
-        await fs.mkdir(path.dirname(target), { recursive: true });
+      const promise = fs.mkdir(path.dirname(target), { recursive: true }).then(async () => {
         await fs.writeFile(
           target,
-          createTypeScriptContent(hasDefaultExport, relativePath.replace(/.tsx?$/, '')),
+          createTypeScriptContent(
+            hasDefaultExport(this.contents),
+            relativePath.replace(/\.tsx?$/, '.js'),
+          ),
         );
       });
 
@@ -256,24 +195,14 @@ export class EntrypointEntity extends BaseEntity<Entrypoint> {
     };
 
     const generateCommonJsDevFile = (target: string, relativePath: string) => {
-      const config: InputOptions = {
-        rootMode: 'upward-optional',
-        module: { type: 'commonjs' },
-        jsc: { target: 'es2015', transform: { react: { runtime: 'automatic' } } },
-      };
-
       const promise = fs.mkdir(path.dirname(target), { recursive: true }).then(() => {
         const register = path.relative(
           path.dirname(target),
-          _REQUIRE.resolve('@swc/register/lib/node.js'),
+          require.resolve('esbuild-register/dist/node.js'),
         );
         return fs.writeFile(
           target,
-          `// Allow the project to be used for commonjs environments \nconst register = require('${register}');\n\n(register.default || register)(${JSON.stringify(
-            config,
-            undefined,
-            2,
-          )})\nmodule.exports = require('${relativePath}');\nregister.revert();`,
+          `// Allow the project to be used for commonjs environments \nconst { register } = require('${register}');\n\nconst { unregister } = register({ target: \`node\${process.version.slice(1)}\`})\nmodule.exports = require('${relativePath}');\nunregister();`.trim(),
         );
       });
 
@@ -306,10 +235,14 @@ export class EntrypointEntity extends BaseEntity<Entrypoint> {
     // Packages with `mode` "cli" don't have a `main`, `browser`, `module` or
     // `types` field. They are placed within the `dist/index.js` file.
     if (this.package.isCli) {
-      const target = path.join(this.package.output, `${this.baseName || 'index'}.cjs`);
-      const relativePath = path.relative(path.dirname(target), this.source);
+      const target = path.join(this.package.output, `${this.baseName || 'index'}.js`);
 
-      generateCommonJsDevFile(target, relativePath);
+      if (this.package.json.type === 'module') {
+        generateEsModuleDevFile(target);
+      } else {
+        const relativePath = path.relative(path.dirname(target), this.source);
+        generateCommonJsDevFile(target, relativePath);
+      }
     }
 
     await Promise.all(promises);
@@ -317,9 +250,9 @@ export class EntrypointEntity extends BaseEntity<Entrypoint> {
 }
 
 const exportFieldToPackageField: Record<ExportsField, EntrypointField> = {
+  types: 'types',
   import: 'module',
   require: 'main',
   browser: 'browser',
-  types: 'types',
   default: 'module',
 };

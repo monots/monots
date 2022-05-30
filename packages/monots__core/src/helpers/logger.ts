@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import chalkTemplate from 'chalk-template';
 import figures from 'figures';
-import util from 'node:util';
+import * as util from 'node:util';
 
 const messageTypes = {
   error: chalkTemplate`{red ${figures.cross} - error}`,

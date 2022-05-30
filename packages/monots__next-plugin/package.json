@@ -39,9 +39,7 @@
     "dist",
     "hook"
   ],
-  "dependencies": {
-    "@swc/helpers": "^0.3.16"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.5",

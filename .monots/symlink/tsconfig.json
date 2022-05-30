@@ -19,6 +19,9 @@
       "path": "packages/monots__cli/src"
     },
     {
+      "path": "packages/monots__cli/tests"
+    },
+    {
       "path": "packages/monots__core/src"
     },
     {
@@ -32,6 +35,9 @@
     },
     {
       "path": "packages/monots__utils/src"
+    },
+    {
+      "path": "packages/monots__utils/tests"
     },
     {
       "path": "packages/prettier-config-monots/src"

@@ -2,17 +2,15 @@ import alias from '@rollup/plugin-alias';
 import json from '@rollup/plugin-json';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
-import type { Options } from '@swc/core';
-import { transform } from '@swc/core';
 import chalk from 'chalk';
-import fs from 'node:fs/promises';
+import * as fs from 'node:fs/promises';
 import { builtinModules } from 'node:module';
-import path from 'node:path';
+import * as path from 'node:path';
 import normalizePath from 'normalize-path';
 import type { OutputAsset, OutputChunk, OutputOptions, Plugin, RollupOptions } from 'rollup';
 import { rollup } from 'rollup';
+import esbuild from 'rollup-plugin-esbuild';
 
-// import { build } from 'vite';
 import { FIELD_EXTENSIONS, OUTPUT_FOLDER } from '../constants.js';
 import type { PackageEntity } from '../entities/index.js';
 import type { EntrypointField } from '../schema.js';
@@ -137,16 +135,12 @@ function createConfig(props: GetRollupConfigProperties): RollupOptions {
           // while the default esm environment will use `file.default.ts`.
           entries: [{ find: /^(.*)\.default(\.[jt]sx?)$/, replacement: '$1.node$2' }],
         }),
-      swc({
-        cwd: pkg.project.directory,
-        env: { targets: pkg.browserslist },
-        jsc: {
-          externalHelpers: !!pkg.populatedJson.dependencies?.['@swc/helpers'],
-          transform: { react: { runtime: 'automatic' } },
-        },
+      esbuild({
+        // Target the minimum supported version of Node.js
+        target: 'node16.13.0',
       }),
       json({ namedExports: false }),
-      resolve({ extensions: ['.js', '.jsx', '.ts', '.tsx', '.cjs', '.mjs'] }),
+      resolve({ extensions: ['.js', '.jsx', '.ts', '.tsx', '.cjs', '.mjs', '.cts', '.mts'] }),
       type === 'browser' &&
         replace({
           values: {
@@ -169,16 +163,6 @@ function makeExternalPredicate(externals: string[]) {
 
   const pattern = new RegExp(`^(${externals.join('|')})($|/)`);
   return (id: string) => pattern.test(id);
-}
-
-function swc(options: Options = {}): Plugin {
-  return {
-    name: 'swc',
-    transform(code, filename) {
-      options.filename = filename;
-      return transform(code, options);
-    },
-  };
 }
 
 interface GetRollupConfigProperties {

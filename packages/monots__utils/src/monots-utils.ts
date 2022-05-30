@@ -1,18 +1,18 @@
 import is from '@sindresorhus/is';
 import { camelCaseIt, kebabCaseIt } from 'case-it';
 import debug from 'debug';
-import type { Options as DeepMergeOptions } from 'deepmerge';
-import merge from 'deepmerge';
+import merge, { type Options as DeepMergeOptions } from 'deepmerge';
 import { template } from 'lodash-es';
-import fs from 'node:fs/promises';
-import os from 'node:os';
-import path from 'node:path';
+import * as fs from 'node:fs/promises';
+import * as os from 'node:os';
+import * as path from 'node:path';
 import { Transform } from 'node:stream';
 import { readPackageUpSync } from 'read-pkg-up';
 import copy from 'recursive-copy';
 
 /**
- * Removes all undefined values from an object. Neither Firestore nor the RealtimeDB allow `undefined` as a value.
+ * Removes all undefined values from an object. Neither Firestore nor the
+ * RealtimeDB allow `undefined` as a value.
  *
  * @param data The object to clean
  */
@@ -168,19 +168,7 @@ export interface CopyTemplateProps {
 }
 
 const SEPARATOR = '__';
-let DIRNAME: string;
-
-try {
-  DIRNAME = path.dirname(new URL(import.meta.url).pathname);
-} catch (error) {
-  // eslint-disable-next-line unicorn/prefer-module
-  if (typeof __dirname === 'string') {
-    // eslint-disable-next-line unicorn/prefer-module
-    DIRNAME = __dirname;
-  } else {
-    throw error;
-  }
-}
+const DIRNAME = path.dirname(new URL(import.meta.url).pathname);
 
 export function getPackageJson() {
   const packageJson = readPackageUpSync({ cwd: DIRNAME })?.packageJson;
@@ -209,8 +197,8 @@ export function unmangleScopedPackage(mangledName: string): string {
  */
 export function mangleScopedPackageName(packageName: string): string {
   if (packageName.indexOf('@') === 0 && packageName.includes('/')) {
-    // we have a scoped module, e.g. @bla/foo
-    // which should be converted to   bla__foo
+    // we have a scoped module, e.g. @bla/foo which should be converted to
+    // bla__foo
     packageName = packageName.slice(1).replace('/', '__');
   }
 
@@ -261,5 +249,7 @@ function slash(p: string): string {
   return p.replace(/\\/g, '/');
 }
 
+export { default as is } from '@sindresorhus/is';
 export { camelCaseIt as camelCase, kebabCaseIt as kebabCase } from 'case-it';
 export { type Options as DeepMergeOptions } from 'deepmerge';
+export { default as invariant } from 'tiny-invariant';

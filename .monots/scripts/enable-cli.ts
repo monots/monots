@@ -1,8 +1,9 @@
-import { writeJsonFile } from 'write-json-file';
 import { loadJsonFile } from 'load-json-file';
 import { exec as ex } from 'node:child_process';
 import { promisify } from 'node:util';
-import { baseDir } from './helpers';
+import { writeJsonFile } from 'write-json-file';
+
+import { baseDir } from './helpers.js';
 
 const exec = promisify(ex);
 

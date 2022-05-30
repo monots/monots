@@ -3,9 +3,9 @@ import { copyTemplate } from '@monots/utils';
 import retry from 'async-retry';
 import chalk from 'chalk';
 import chalkTemplate from 'chalk-template';
-import fs from 'node:fs/promises';
-import os from 'node:os';
-import path from 'node:path';
+import * as fs from 'node:fs/promises';
+import * as os from 'node:os';
+import * as path from 'node:path';
 
 import type { RepoInfo } from './helpers/examples.js';
 import {
@@ -29,17 +29,7 @@ interface CreateMonotsProjectProps {
   examplePath?: string;
 }
 
-let DIRNAME: string;
-
-try {
-  DIRNAME = path.dirname(new URL(import.meta.url).pathname);
-} catch (error) {
-  if (typeof __dirname === 'string') {
-    DIRNAME = __dirname;
-  } else {
-    throw error;
-  }
-}
+const DIRNAME = path.dirname(new URL(import.meta.url).pathname);
 
 export async function createMonotsProject(props: CreateMonotsProjectProps): Promise<void> {
   const { appPath, example, examplePath } = props;

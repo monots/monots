@@ -1,5 +1,5 @@
 import { deepMerge, normalizePath } from '@monots/utils';
-import path from 'node:path';
+import * as path from 'node:path';
 
 import { DEFAULT_GET_ARGUMENT } from './config-constants.js';
 import type { LoadEsmConfigOptions, LoadEsmConfigResult } from './config-types.js';

@@ -7,10 +7,9 @@
  */
 
 import { lstatSync, readdirSync, readlinkSync, rmdirSync, symlinkSync, unlinkSync } from 'node:fs';
-import { dirname, join, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import * as path from 'node:path';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const DIRNAME = path.dirname(new URL(import.meta.url).pathname);
 
 /**
  * Resolve a path relative to the base directory.
@@ -18,7 +17,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
  * @param {string[]} paths
  */
 function baseDir(...paths) {
-  return resolve(__dirname, '../..', ...paths);
+  return path.resolve(DIRNAME, '../..', ...paths);
 }
 
 const targets = readdirSync(baseDir('.monots', 'symlink'))
@@ -45,20 +44,20 @@ function getFileStatSync(target) {
 /**
  * Delete a file or folder recursively.
  *
- * @param {string} path
+ * @param {string} filepath
  *
  * @returns {void}
  */
-function deletePath(path) {
-  const stat = getFileStatSync(path);
+function deletePath(filepath) {
+  const stat = getFileStatSync(filepath);
 
   if (!stat) {
     return;
   }
 
   if (stat.isFile()) {
-    console.log('deleting file', path);
-    unlinkSync(path);
+    console.log('deleting file', filepath);
+    unlinkSync(filepath);
   }
 
   if (!stat.isDirectory()) {
@@ -66,23 +65,23 @@ function deletePath(path) {
   }
 
   // Delete all nested paths
-  for (const file of readdirSync(path)) {
-    deletePath(join(path, file));
+  for (const file of readdirSync(filepath)) {
+    deletePath(path.join(filepath, file));
   }
 
   // Delete the directory
-  rmdirSync(path);
+  rmdirSync(filepath);
 }
 
 /**
  * Check that the path is linked to the target.
  *
- * @param {string} path
+ * @param {string} filepath
  * @param {string} target
  */
-function isLinkedTo(path, target) {
+function isLinkedTo(filepath, target) {
   try {
-    const checkTarget = readlinkSync(path);
+    const checkTarget = readlinkSync(filepath);
     return checkTarget === target;
   } catch {
     return false;
