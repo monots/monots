@@ -1,5 +1,13 @@
 # @monots/cli
 
+## 0.13.1
+
+> 2022-05-30
+
+### Patch Changes
+
+- 1cd22e9: Fix the binary path for `@monots/cli`.
+
 ## 0.13.0
 
 > 2022-05-30
