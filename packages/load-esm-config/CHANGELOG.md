@@ -1,5 +1,25 @@
 # load-esm-config
 
+## 0.2.0
+
+> 2022-05-30
+
+### Minor Changes
+
+- 04ba7ca: **BREAKING**: Rename `lookupFilesToRoot` option to `disableUpwardLookup`. The default is now for `loadEsmConfig` to search upward until it reaches the root directory. You can set this option to true to only search the provided working directory (`cwd`).
+
+  **BREAKING**: Rename interface `LoadEsmConfig` to `LoadEsmConfigOptions`.
+
+  Other changes:
+
+  - Improved the readme for better npm documentation.
+  - Refactored the code to be more readable.
+
+### Patch Changes
+
+- Updated dependencies [ecbcdf7]
+  - @monots/utils@0.5.0
+
 ## 0.1.0
 
 > 2022-05-27

@@ -1,5 +1,13 @@
 # superstruct-extra
 
+## 0.2.0
+
+> 2022-05-30
+
+### Minor Changes
+
+- ecbcdf7: Export the `PromiseStruct` class.
+
 ## 0.1.7
 
 > 2022-05-27
