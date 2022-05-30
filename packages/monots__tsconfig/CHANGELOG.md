@@ -1,5 +1,13 @@
 # @monots/tsconfig
 
+## 0.2.0
+
+> 2022-05-30
+
+### Minor Changes
+
+- ecbcdf7: Add `moduleSuffixes` to support conditional imports based on the platform.
+
 ## 0.1.0
 
 > 2021-09-12

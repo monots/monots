@@ -1,5 +1,20 @@
 # @monots/core
 
+## 0.16.0
+
+> 2022-05-30
+
+### Minor Changes
+
+- ecbcdf7: Replace `@swc/core` with `esbuild`.
+
+### Patch Changes
+
+- Updated dependencies [ecbcdf7]
+- Updated dependencies [ecbcdf7]
+  - @monots/utils@0.5.0
+  - superstruct-extra@0.2.0
+
 ## 0.15.6
 
 > 2022-05-27

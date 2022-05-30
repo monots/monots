@@ -1,5 +1,21 @@
 # @monots/cli
 
+## 0.13.0
+
+> 2022-05-30
+
+### Minor Changes
+
+- ecbcdf7: **Regression**: Don't bundle dependencies and export the cli as an ESM module.
+- ecbcdf7: Replace `@swc/core` with `esbuild`.
+
+### Patch Changes
+
+- Updated dependencies [ecbcdf7]
+- Updated dependencies [ecbcdf7]
+  - @monots/utils@0.5.0
+  - @monots/core@0.16.0
+
 ## 0.12.5
 
 > 2022-05-27

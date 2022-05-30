@@ -1,5 +1,13 @@
 # @monots/utils
 
+## 0.5.0
+
+> 2022-05-30
+
+### Minor Changes
+
+- ecbcdf7: Add `hasDefaultExport()` and `matchAll()` functions to exports. Also re-export `@sindresorhus/is` and `tiny-invariant`
+
 ## 0.4.0
 
 > 2022-05-27

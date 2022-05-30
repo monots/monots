@@ -1,5 +1,13 @@
 # @monots/next-plugin
 
+## 0.5.0
+
+> 2022-05-30
+
+### Minor Changes
+
+- ecbcdf7: Add support for `esbuild-register` and use new platform extensions `.$node`, `.$browser`.
+
 ## 0.4.5
 
 > 2022-05-27
