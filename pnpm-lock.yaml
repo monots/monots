@@ -261,7 +261,7 @@ importers:
       rollup-plugin-esbuild: ^4.9.1
       sort-keys: ^5.0.0
       superstruct: ^0.15.4
-      superstruct-extra: ^0.2.0
+      superstruct-extra: ^0.1.7
       ts-entries: ^1.2.0
       ts-extras: ^0.10.2
       typanion: ^3.9.0
@@ -305,7 +305,7 @@ importers:
       rollup-plugin-esbuild: 4.9.1_dgay67aafm6c67qd6qiu2dy75y
       sort-keys: 5.0.0
       superstruct: 0.15.4
-      superstruct-extra: link:../superstruct-extra
+      superstruct-extra: 0.1.7_superstruct@0.15.4
       ts-entries: 1.2.0
       ts-extras: 0.10.2
       typanion: 3.9.0
@@ -779,6 +779,13 @@ packages:
       tmp: 0.2.1
     dev: false
 
+  /@monots/types/0.1.9:
+    resolution: {integrity: sha512-qqQSSaO6c3FUx3O/jvUf3Z5Zo3Q9ryqwzVFeOtzM7jEbPecA2e81JYrloIgIOijlB8rDPBvhG1fpsv/nsvCwPA==}
+    dependencies:
+      clipanion: 3.1.0
+      type-fest: 2.13.0
+    dev: false
+
   /@mrmlnc/readdir-enhanced/2.2.1:
     resolution: {integrity: sha512-bPHp6Ji8b41szTOcaP63VlnbbO5Ny6dwAATtY6JTjh5N2OLrb5Qk/Th5cRkRQhkWCt+EJsYrNB0MiL+Gpn6e3g==}
     engines: {node: '>=4'}
@@ -1021,6 +1028,12 @@ packages:
   /@sindresorhus/is/4.6.0:
     resolution: {integrity: sha512-t09vSN3MdfsyCHoFcTRCH/iUtG7OJ0CsjzB8cjAmKc/va/kIgeDI/TxsigdncE/4be734m0cvIYwNaV4i2XqAw==}
     engines: {node: '>=10'}
+    dev: false
+
+  /@swc/helpers/0.3.16:
+    resolution: {integrity: sha512-xOhhpOruRcroQ0Nb5a5IgP94AJ0DuJnhEfXL+icJ1gn7uls5DXX2mRrlBqmrd0rAj/+/BRU8RB2VN8mA8DuFYQ==}
+    dependencies:
+      tslib: 2.4.0
     dev: false
 
   /@szmarczak/http-timer/1.1.2:
@@ -6861,6 +6874,20 @@ packages:
     dependencies:
       react: 18.1.0
     dev: true
+
+  /superstruct-extra/0.1.7_superstruct@0.15.4:
+    resolution: {integrity: sha512-EXxN2Yr6QctudPM+3miA39vtQReOd4CJGMafZgNrm+7BVIklpLGKbXqqhdb54b8UvUChZ3Qj1F1txxAIYzaxNA==}
+    peerDependencies:
+      superstruct: '*'
+    dependencies:
+      '@monots/types': 0.1.9
+      '@swc/helpers': 0.3.16
+      '@types/is-uuid': 1.0.0
+      email-validator: 2.0.4
+      is-uuid: 1.0.2
+      superstruct: 0.15.4
+      type-fest: 2.13.0
+    dev: false
 
   /superstruct/0.15.4:
     resolution: {integrity: sha512-eOoMeSbP9ZJChNOm/9RYjE+F36rYR966AAqeG3xhQB02j2sfAUXDp4EQ/7bAOqnlJnuFDB8yvOu50SocvKpUEw==}
