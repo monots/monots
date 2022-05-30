@@ -1,11 +1,18 @@
 import type { DeepMergeOptions } from '@monots/utils';
 import type { PartialDeep } from 'type-fest';
 
-import { type SupportedExtensions } from './config-constants.js';
+import { type SupportedExtensions } from './constants.js';
 
+/**
+ * The configuration as a function.
+ */
 type ConfigAsFunction<Config extends object, Argument = unknown> = (
   argument: Argument,
 ) => Config | Promise<Config>;
+
+/**
+ * The exported configuration type.
+ */
 export type ExportedConfig<Config extends object, Argument = unknown> =
   | Config
   | Promise<Config>
@@ -119,14 +126,6 @@ export interface LoadEsmConfigResult<Config extends object = any> {
    * All the dependencies encountered while loading the file.
    */
   dependencies: string[];
-}
-
-export interface LoadFromFile<Argument = unknown>
-  extends Pick<
-    Required<LoadEsmConfigOptions<any, Argument>>,
-    'name' | 'cwd' | 'dirs' | 'extensions' | 'disableUpwardLookup'
-  > {
-  argument: Argument;
 }
 
 export interface BundleConfigFile {

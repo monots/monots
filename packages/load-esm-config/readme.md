@@ -23,6 +23,8 @@ pnpm add load-esm-config
 
 ## Usage
 
+### `loadEsmConfig`
+
 ```ts
 import { loadEsmConfig } from 'load-esm-config';
 
@@ -39,9 +41,16 @@ By default it supports these extensions: `['.ts', '.mts', '.cts', '.js', '.mjs',
 
 By default `./` (current) and `.config/` folders will be searched for matching configuration files. In the example above both `something.config.ts` and `.config/something.config.mjs` are valid configuration locations. This optionality should help remove configuration file overload in top level Further configuration folders can be added via the `dirs` property.
 
-## API
+### `loadEsmFile`
 
-### `loadEsmConfig`
+```ts
+import { loadEsmFile } from 'load-esm-config';
+
+// Load all the exports from the given file.
+const result = loadEsmFile('path/to/file.js');
+```
+
+## API
 
 <table><tr><td width="400px" valign="top">
 
@@ -162,6 +171,40 @@ interface LoadEsmConfigResult<Config extends object = any> {
    * All the dependencies encountered while loading the file.
    */
   dependencies: string[];
+}
+```
+
+</td></tr></table>
+
+<table><tr><td width="400px" valign="top">
+
+### `interface LoadEsmFileResult`
+
+The value returned when calling `loadEsmFile`. This will either be `undefined` or an object with the properties shown.
+
+</td><td width="600px"><br>
+
+```ts
+interface LoadEsmFileResult {
+  /**
+   * The exports loaded from the file.
+   */
+  exported: any;
+
+  /**
+   * The dependencies within the file.
+   */
+  dependencies: string[];
+
+  /**
+   * Whether the file is a TypeScript file.
+   */
+  isTypeScript: boolean;
+
+  /**
+   * The EsModule file name.
+   */
+  isEsModule: boolean;
 }
 ```
 

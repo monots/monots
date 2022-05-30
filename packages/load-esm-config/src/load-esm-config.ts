@@ -1,9 +1,11 @@
-import { deepMerge, normalizePath } from '@monots/utils';
+import { deepMerge, is, normalizePath } from '@monots/utils';
+import { findUpMultiple } from 'find-up';
 import * as path from 'node:path';
 
-import { DEFAULT_GET_ARGUMENT } from './config-constants.js';
-import type { LoadEsmConfigOptions, LoadEsmConfigResult } from './config-types.js';
-import { loadFromFile } from './load-from-file.js';
+import { debug, DEFAULT_GET_ARGUMENT } from './constants.js';
+import { loadEsmFile } from './load-esm-file.js';
+import type { LoadEsmConfigOptions, LoadEsmConfigResult } from './types.js';
+import { generateLookupFiles } from './utils.js';
 
 /**
  * Load a configuration file with the given name.
@@ -25,22 +27,45 @@ export async function loadEsmConfig<Config extends object = any, Argument = unkn
     config: defaultConfig = {},
     cwd = process.cwd(),
     dirs = ['.config', ''],
-    extensions = ['.ts', '.mts', '.cts', '.js', '.mjs', '.cjs'],
+    extensions = ['.ts', '.tsx', '.mts', '.cts', '.js', '.jsx', '.mjs', '.cjs'],
     getArgument = DEFAULT_GET_ARGUMENT,
     disableUpwardLookup = false,
     mergeOptions,
   } = options;
-  const argument = getArgument(options);
-  const config = defaultConfig as Config;
-  const result = await loadFromFile({ name, argument, cwd, dirs, extensions, disableUpwardLookup });
+  // track the performance of loading the file.
 
-  if (!result) {
+  const argument = getArgument(options);
+
+  // lookup the configuration file from the provided `cwd`.
+  const LOOKUP_FILES = generateLookupFiles({ name, extensions, dirs });
+  const stopAt = disableUpwardLookup ? cwd : undefined;
+  const files = await findUpMultiple(LOOKUP_FILES, { stopAt, cwd: cwd });
+  const filepath = files.at(0);
+
+  if (!filepath) {
+    debug(`no configuration file found for ${name}`);
     return;
   }
 
+  const result = await loadEsmFile(filepath);
+
+  if (!result) {
+    debug(`no configuration file found for ${name}`);
+    return;
+  }
+
+  const { dependencies, exported, isEsModule } = result;
+  const exportedConfig = isEsModule ? exported.default : exported;
+  const config = await (is.function_(exportedConfig) ? exportedConfig(argument) : exportedConfig);
+
+  if (typeof config !== 'object') {
+    debug('configuration file did not return an object');
+    throw new Error(`the provided configuration must export or return an object.`);
+  }
+
   return {
-    config: deepMerge([config, result.config], mergeOptions),
-    dependencies: result.dependencies.map((name) => normalizePath(path.resolve(name))),
-    path: normalizePath(result.path),
+    config: deepMerge([defaultConfig, config], mergeOptions),
+    dependencies: dependencies.map((name) => normalizePath(path.resolve(name))),
+    path: normalizePath(filepath),
   };
 }
