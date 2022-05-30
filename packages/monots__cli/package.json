@@ -18,7 +18,7 @@
     ".": "./src/index.ts"
   },
   "bin": {
-    "monots": "dist/index.cjs"
+    "monots": "dist/index.js"
   },
   "files": [
     "dist",
