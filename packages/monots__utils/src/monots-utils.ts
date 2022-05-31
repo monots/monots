@@ -7,7 +7,7 @@ import * as fs from 'node:fs/promises';
 import * as os from 'node:os';
 import * as path from 'node:path';
 import { Transform } from 'node:stream';
-import { readPackageUpSync } from 'read-pkg-up';
+import { readPackageUp, readPackageUpSync } from 'read-pkg-up';
 import copy from 'recursive-copy';
 
 /**
@@ -85,7 +85,7 @@ export type InstallerType = typeof Installer[keyof typeof Installer];
 /**
  * Get the installer for the provided folder, synchronously.
  *
- * @param rootDirectory - the root directory to use
+ * @param cwd - the root directory to use
  */
 export async function getInstaller(cwd: string): Promise<InstallerType> {
   if (await fileExists(path.resolve(cwd, 'pnpm-lock.yaml'))) {
@@ -170,7 +170,7 @@ export interface CopyTemplateProps {
 const SEPARATOR = '__';
 const DIRNAME = path.dirname(new URL(import.meta.url).pathname);
 
-export function getPackageJson() {
+export function getPackageJsonSync() {
   const packageJson = readPackageUpSync({ cwd: DIRNAME })?.packageJson;
 
   if (!packageJson) {
@@ -178,6 +178,29 @@ export function getPackageJson() {
   }
 
   return packageJson;
+}
+
+/**
+ * ```ts
+ * const dirname = getDirname(import.meta.url);
+ * ```
+ */
+export function getDirname(fileUrl: string) {
+  const { pathname } = new URL(fileUrl);
+  return path.dirname(slash(pathname));
+}
+
+/**
+ * Get the closest package.json.
+ */
+export async function getPackageJson(fileUrl: string) {
+  const result = await readPackageUp({ cwd: getDirname(fileUrl) });
+
+  if (!result?.packageJson) {
+    throw new Error('No package.json found for `monots`');
+  }
+
+  return result.packageJson;
 }
 
 /**
