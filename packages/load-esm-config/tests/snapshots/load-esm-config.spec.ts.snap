@@ -28,6 +28,13 @@ exports[`can load simple \`.js\` config in esm environment 1`] = `
 }
 `;
 
+exports[`can load simple \`.js\` config in nested commonjs environment 1`] = `
+{
+  "filename": "simple.config.js",
+  "option": "simple",
+}
+`;
+
 exports[`can load simple \`.mjs\` config in commonjs environment 1`] = `
 {
   "filename": "simple2.config.mjs",
@@ -35,7 +42,21 @@ exports[`can load simple \`.mjs\` config in commonjs environment 1`] = `
 }
 `;
 
+exports[`can load simple \`.mjs\` config in nested commonjs environment 1`] = `
+{
+  "filename": "simple2.config.mjs",
+  "option": "simple2",
+}
+`;
+
 exports[`can load simple \`.mts\` config in commonjs environment 1`] = `
+{
+  "filename": "simple4.config.mts.js",
+  "option": "simple4",
+}
+`;
+
+exports[`can load simple \`.mts\` config in nested commonjs environment 1`] = `
 {
   "filename": "simple4.config.mts.js",
   "option": "simple4",
@@ -50,6 +71,13 @@ exports[`can load simple \`.ts\` config in commonjs environment 1`] = `
 `;
 
 exports[`can load simple \`.ts\` config in esm environment 1`] = `
+{
+  "filename": "simple3.config.ts",
+  "option": "simple3",
+}
+`;
+
+exports[`can load simple \`.ts\` config in nested commonjs environment 1`] = `
 {
   "filename": "simple3.config.ts",
   "option": "simple3",

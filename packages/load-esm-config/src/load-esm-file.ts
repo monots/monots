@@ -1,9 +1,9 @@
-import { invariant } from '@monots/utils';
 import { build } from 'esbuild';
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { readPackageUp } from 'read-pkg-up';
+import invariant from 'tiny-invariant';
 
 import { debug } from './constants.js';
 import { loadFromBundledFile } from './load-from-bundled-file';
@@ -59,11 +59,8 @@ export async function loadEsmFile(filepath: string): Promise<LoadEsmFileResult |
     // ignoring any errors here
   }
 
-  isEsModule = isEsModuleFile(filepath) ? true : isCommonJsFile(filepath) ? true : isEsModule;
-
-  if (isTypeScriptFile(filepath)) {
-    isTypeScript = true;
-  }
+  isEsModule = isEsModuleFile(filepath) ? true : isCommonJsFile(filepath) ? false : isEsModule;
+  isTypeScript = isTypeScriptFile(filepath);
 
   let exported: any;
 

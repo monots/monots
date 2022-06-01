@@ -62,11 +62,11 @@ These are the options that can be provided to the `loadEsmConfig` function.
 
 ````ts
 /**
- * @template Config - the type of configuration that will be loaded
+ * @template Config - the type of configuration that will be loaded.
  * @template Argument - the argument that is passed to the configuration if is
  * supports being called.
  */
-export interface LoadEsmConfigOptions<Config extends object = object, Argument = unknown> {
+interface LoadEsmConfigOptions<Config extends object = object, Argument = unknown> {
   /**
    * The name of the configuration object to search for.
    *
@@ -93,9 +93,23 @@ export interface LoadEsmConfigOptions<Config extends object = object, Argument =
 
   /**
    * The initial configuration which will be used to set the defaults for the
-   * provided configuration.
+   * eventually returned configuration.
    */
   config?: PartialDeep<Config>;
+
+  /**
+   * The export keys to find the configuration object. The first key in each
+   * array will take priority.
+   *
+   * The empty string refers to a direct import and is only valid for `cjs`
+   * `module.exports`.
+   *
+   * @default { esm: ['default'], cjs: ['', 'default'] }
+   */
+  exportKeys?: {
+    esm: string[];
+    cjs: string[];
+  };
 
   /**
    * The extensions to support.
@@ -123,7 +137,7 @@ export interface LoadEsmConfigOptions<Config extends object = object, Argument =
    *
    * @default () => {}
    */
-  getArgument?: (options: LoadEsmConfig<Config>) => Argument;
+  getArgument?: (options: LoadEsmConfigOptions<Config>) => Argument;
 
   /**
    * Overwrite the way certain properties are merged.
@@ -213,3 +227,7 @@ interface LoadEsmFileResult {
 ## Gratitude
 
 This package is adapted from [vite](https://github.com/vitejs/vite/blob/80dd2dfd8049c39e516e19ad5cfdaa1c5f02e4a3/packages/vite/src/node/config.ts). The work the vite developers are doing is outstanding and this package would not exist without their efforts.
+
+```
+
+```

@@ -1,4 +1,4 @@
-import { createDebugger } from '@monots/utils';
+import createDebugger from 'debug';
 import type { ValueOf } from 'type-fest';
 
 export const DEFAULT_GET_ARGUMENT = () => {};

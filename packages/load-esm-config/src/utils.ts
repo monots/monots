@@ -1,3 +1,5 @@
+import is from '@sindresorhus/is';
+import merge, { type Options as DeepMergeOptions } from 'deepmerge';
 import * as path from 'node:path';
 
 import { SUPPORTED_EXTENSIONS } from './constants.js';
@@ -44,4 +46,20 @@ export function generateLookupFiles(options: GenerateLookupFiles): string[] {
   }
 
   return files;
+}
+
+export { type Options as DeepMergeOptions } from 'deepmerge';
+
+/**
+ * A deep merge which only merges plain objects and Arrays. It clones the object
+ * before the merge so will not mutate any of the passed in values.
+ *
+ * To completely remove a key you can use the `Merge` helper class which
+ * replaces it's key with a completely new object
+ */
+export function deepMerge<Type = any>(
+  objects: Array<object | unknown[]>,
+  options?: DeepMergeOptions,
+): Type {
+  return merge.all<Type>(objects as any, { isMergeableObject: is.plainObject, ...options });
 }

@@ -19,7 +19,8 @@ export type ExportedConfig<Config extends object, Argument = unknown> =
   | ConfigAsFunction<Config, Argument>;
 
 /**
- * Taken from https://github.com/vitejs/vite/blob/80dd2dfd8049c39e516e19ad5cfdaa1c5f02e4a3/packages/vite/src/node/config.ts#L832-L834
+ * Taken from
+ * https://github.com/vitejs/vite/blob/80dd2dfd8049c39e516e19ad5cfdaa1c5f02e4a3/packages/vite/src/node/config.ts#L832-L834
  */
 export interface NodeModuleWithCompile extends NodeModule {
   _compile: (code: string, filename: string) => any;
@@ -60,6 +61,20 @@ export interface LoadEsmConfigOptions<Config extends object = object, Argument =
    * eventually returned configuration.
    */
   config?: PartialDeep<Config>;
+
+  /**
+   * The export keys to find the configuration object. The first key in each
+   * array will take priority.
+   *
+   * The empty string refers to a direct import and is only valid for `cjs`
+   * `module.exports`.
+   *
+   * @default { esm: ['default'], cjs: ['', 'default'] }
+   */
+  exportKeys?: {
+    esm: string[];
+    cjs: string[];
+  };
 
   /**
    * The extensions to support.
@@ -126,6 +141,12 @@ export interface LoadEsmConfigResult<Config extends object = any> {
    * All the dependencies encountered while loading the file.
    */
   dependencies: string[];
+
+  /**
+   * The root directory of the configuration file. For nested configuration
+   * files, it will show parent folder.
+   */
+  root: string;
 }
 
 export interface BundleConfigFile {

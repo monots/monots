@@ -15,11 +15,26 @@ test.each([
   ['.ts', 'simple3'],
   ['.mts', 'simple4'],
 ])('can load simple `%s` config in commonjs environment', async (extension, name) => {
-  const { context } = await setupFixtures('cjs');
-  const { config, path } = await loadEsmConfig({ name, cwd: context.cwd });
+  const { context, getPath } = await setupFixtures('cjs');
+  const { config, path, root } = await loadEsmConfig({ name, cwd: context.cwd });
 
   expect(path.endsWith(`${name}.config${extension}`)).toBe(true);
   expect(config).toMatchSnapshot();
+  expect(getPath()).toBe(root);
+});
+
+test.each([
+  ['.js', 'simple'],
+  ['.mjs', 'simple2'],
+  ['.ts', 'simple3'],
+  ['.mts', 'simple4'],
+])('can load simple `%s` config in nested commonjs environment', async (extension, name) => {
+  const { context, getPath } = await setupFixtures('nested-cjs');
+  const { config, path, root } = await loadEsmConfig({ name, cwd: context.cwd });
+
+  expect(path.endsWith(`${name}.config${extension}`)).toBe(true);
+  expect(config).toMatchSnapshot();
+  expect(getPath()).toBe(root);
 });
 
 test.each([
