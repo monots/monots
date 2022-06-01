@@ -16,7 +16,7 @@ export const NAME = 'monots';
 /**
  * The version of TypeScript to use in the monorepo - used in init.
  */
-export const TYPESCRIPT_VERSION = '4.4.3';
+export const TYPESCRIPT_VERSION = '4.7.2';
 
 /**
  * The default browserslist configuration to use if none specified for the project.

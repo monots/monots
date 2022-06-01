@@ -1,5 +1,4 @@
-import type { MonotsConfig } from '@monots/types';
-import type { ExportedConfig } from 'load-esm-config';
+import type { DefineMonotsConfig } from '../types.js';
 
 /**
  * Define the monots configuration.
@@ -9,6 +8,6 @@ import type { ExportedConfig } from 'load-esm-config';
  *
  * @param config - the configuration to use can be an object, a function or a
  */
-export function defineConfig(config: ExportedConfig<MonotsConfig>): ExportedConfig<MonotsConfig> {
+export function defineConfig(config: DefineMonotsConfig): DefineMonotsConfig {
   return config;
 }

@@ -16,6 +16,9 @@
   },
   "references": [
     {
+      "path": "../../load-esm-config/src"
+    },
+    {
       "path": "../../monots__types/src"
     },
     {

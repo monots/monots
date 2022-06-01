@@ -1,8 +1,8 @@
 ---
-'@monots/config': minor
+'@monots/core': minor
 ---
 
-Add the new package for loading and defining the monots configuration.
+Add the new config loading and defining functions.
 
 ```ts
 declare function defineConfig(config: MonotsConfig): MonotsConfig;

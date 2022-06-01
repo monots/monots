@@ -7,8 +7,7 @@ import * as path from 'node:path';
 import normalizePath from 'normalize-path';
 import parseJson from 'parse-json';
 import sortKeys from 'sort-keys';
-import { entries } from 'ts-entries';
-import { objectKeys } from 'ts-extras';
+import { objectEntries, objectKeys } from 'ts-extras';
 import type { JsonObject } from 'type-fest';
 import { writeJsonFile } from 'write-json-file';
 
@@ -247,7 +246,7 @@ export class PackageEntity extends BaseEntity<Package> {
     const isRelativeExtendsPath =
       extendedTsconfig.startsWith('./') || extendedTsconfig.startsWith('../');
 
-    for (const [folder, content] of entries(tsconfigs)) {
+    for (const [folder, content] of objectEntries(tsconfigs)) {
       if (!content || !(folder === '' || folders.includes(folder) || isSourceFolder(folder))) {
         continue;
       }

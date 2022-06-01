@@ -75,5 +75,14 @@
     "titleBar.inactiveBackground": "#f8e23699",
     "titleBar.inactiveForeground": "#15202b99"
   },
-  "peacock.color": "#f8e236"
+  "peacock.color": "#f8e236",
+
+  "vitest.include": ["**/*.{spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
+  "vitest.commandLine": "pnpm vitest",
+  "vitest.showFailMessages": true,
+
+  "javascript.preferences.importModuleSpecifierEnding": "js",
+  "typescript.preferences.includePackageJsonAutoImports": "on",
+  "typescript.preferences.importModuleSpecifierEnding": "js",
+  "typescript.preferences.importModuleSpecifier": "project-relative"
 }

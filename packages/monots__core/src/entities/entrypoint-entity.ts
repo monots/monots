@@ -4,7 +4,7 @@ import { createRequire } from 'node:module';
 import * as path from 'node:path';
 import normalizePath from 'normalize-path';
 import sortKeys from 'sort-keys';
-import { entries } from 'ts-entries';
+import { objectEntries } from 'ts-extras';
 
 import { createTypeScriptContent, generateField } from '../helpers/index.js';
 import type { EntrypointField, ExportsField } from '../schema.js';
@@ -209,7 +209,7 @@ export class EntrypointEntity extends BaseEntity<Entrypoint> {
       promises.push(promise);
     };
 
-    for (const [field, fieldPath] of entries(this.fields.package)) {
+    for (const [field, fieldPath] of objectEntries(this.fields.package)) {
       if (!fieldPath) {
         continue;
       }
