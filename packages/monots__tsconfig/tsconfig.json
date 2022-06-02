@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "moduleSuffixes": ["", ".$node", ".$browser", ".$deno", ".ios", ".android", ".native"],
+    // "moduleSuffixes": ["", ".$node", ".$browser", ".$deno", ".ios", ".android", ".native"],
     "module": "ESNext",
     "target": "ESNext",
     "moduleResolution": "Node",

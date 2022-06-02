@@ -1,6 +1,6 @@
 import { NAME } from '@monots/core';
 import type { CommandContext } from '@monots/types';
-import { getPackageJson } from '@monots/utils';
+import { getPackageJsonSync } from '@monots/utils';
 import { Builtins, Cli } from 'clipanion';
 
 import {
@@ -12,7 +12,7 @@ import {
   PrepareCommand,
 } from './commands/index.js';
 
-const { version, description = '', name } = getPackageJson();
+const { version, description = '', name } = getPackageJsonSync();
 
 export const cli = new Cli<CommandContext>({
   binaryLabel: description,
@@ -39,6 +39,8 @@ export const context: CommandContext = {
   version,
   description,
   name,
+  colorDepth: 256,
+  env: process.env,
   cwd: process.cwd(),
   stdin: process.stdin,
   stdout: process.stdout,

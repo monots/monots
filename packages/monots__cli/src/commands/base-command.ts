@@ -1,13 +1,13 @@
 import type {
-  BaseCommandProps,
   CommandBoolean,
   CommandContext,
   CommandString,
+  MonotsCommandProps,
 } from '@monots/types';
 import { Command, Option } from 'clipanion';
 import * as path from 'node:path';
 
-export abstract class BaseCommand extends Command<CommandContext> implements BaseCommandProps {
+export abstract class BaseCommand extends Command<CommandContext> implements MonotsCommandProps {
   /**
    * Set the current working directory from the command line.
    */

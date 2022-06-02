@@ -1,7 +1,7 @@
 import { createSetupFixtures } from '@monots/test';
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
-import { afterAll, expect, test } from 'vitest';
+import { afterAll, test } from 'vitest';
 
 import { cli, context } from '../src/setup';
 
@@ -11,7 +11,7 @@ afterAll(async () => {
   setupFixtures.cleanup();
 });
 
-test('`monots prepare` should create development dist files', async () => {
+test.concurrent('`monots prepare` should create development dist files', async ({ expect }) => {
   const { context, getPath } = await setupFixtures('pnpm-with-packages');
   const result = await cli.run(['prepare'], context);
   const options = { encoding: 'utf8' } as const;

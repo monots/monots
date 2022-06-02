@@ -132,7 +132,6 @@ yarn.lock
 /.lintstagedrc
 /vite.config.ts
 /vitest.config.ts
-/tsconfig.json
 /tsconfig.references.json
 /.markdownlint.json
 /.vscode

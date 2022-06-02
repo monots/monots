@@ -152,6 +152,7 @@ export interface LoadEsmConfigResult<Config extends object = any> {
 export interface BundleConfigFile {
   fileName: string;
   isEsModule?: boolean;
+  cwd: string;
 }
 
 export interface GenerateLookupFiles {

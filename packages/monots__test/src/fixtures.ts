@@ -32,12 +32,14 @@ export function createSetupFixtures<Context extends object>(options: CreateSetup
   const { fileUrl, fixturesDirectory = 'fixtures', context } = options;
   let cleanups: Array<() => Promise<void>> = [];
   const root = path.join(path.dirname(new URL(fileUrl).pathname), fixturesDirectory);
+  const tmp = path.join(root, '..', 'tmp');
 
-  async function setupFixtures(...paths: string[]) {
-    const target = path.join(root, 'tmp', randomBytes(32).toString('hex'));
-    const source = path.join(root, ...paths);
+  async function setupFixtures(dir: string) {
+    const target = path.join(tmp, `${dir}-${randomBytes(5).toString('hex')}`);
+    const source = path.join(root, dir);
 
-    await copy(source, target);
+    // in case of name-clash override the previous directory.
+    await copy(source, target, { overwrite: true });
 
     function getPath(...paths: string[]) {
       return path.join(target, ...paths);

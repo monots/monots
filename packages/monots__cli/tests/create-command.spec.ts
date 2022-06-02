@@ -1,6 +1,6 @@
 import { createSetupFixtures } from '@monots/test';
 import type { PackageJson } from 'type-fest';
-import { afterAll, expect, test } from 'vitest';
+import { afterAll, test } from 'vitest';
 
 import { cli, context } from '../src/setup';
 
@@ -10,7 +10,7 @@ afterAll(async () => {
   setupFixtures.cleanup();
 });
 
-test('`monots create` should create package with a description', async () => {
+test.concurrent('`monots create` should create package with a description', async ({ expect }) => {
   const { context, loadJsonFile } = await setupFixtures('pnpm-with-packages');
   const result = await cli.run(['create', '--description', 'DDD', '@scoped/d'], context);
   const json = await loadJsonFile<PackageJson>('packages/scoped__d/package.json');
@@ -34,7 +34,7 @@ test('`monots create` should create package with a description', async () => {
   });
 });
 
-test('`monots create` should not overwrite existing packages', async () => {
+test.concurrent('`monots create` should not overwrite existing packages', async ({ expect }) => {
   const { context } = await setupFixtures('pnpm-with-packages');
   const result = await cli.run(['create', '--description', 'C', '@scoped/c'], context);
 

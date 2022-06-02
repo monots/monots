@@ -1,7 +1,7 @@
 import { createSetupFixtures } from '@monots/test';
-import { afterAll, expect, test } from 'vitest';
+import { afterAll, test } from 'vitest';
 
-import { cli, context } from '../src/setup';
+import { cli, context } from '../src/setup.js';
 
 const setupFixtures = createSetupFixtures({ context, fileUrl: import.meta.url });
 
@@ -9,7 +9,7 @@ afterAll(async () => {
   setupFixtures.cleanup();
 });
 
-test('`monots build` should create build files', async () => {
+test.concurrent('`monots build` should create build files', async ({ expect }) => {
   const { context } = await setupFixtures('pnpm-to-build');
   await cli.run(['prepare'], context);
   await cli.run(['fix'], context);

@@ -41,6 +41,8 @@
     "normalize-path": "^3.0.0",
     "read-pkg-up": "^9.1.0",
     "tiny-invariant": "^1.2.0",
+    "ts-extras": "^0.10.2",
+    "tsconfck": "^2.0.1",
     "type-fest": "^2.13.0"
   },
   "devDependencies": {

@@ -2,7 +2,7 @@
 
 exports[`\`monots prepare\` should create development dist files 1`] = `
 "// Allow the project to be used for commonjs environments 
-const { register } = require('../../../../../../../../../node_modules/.pnpm/esbuild-register@3.3.2_esbuild@0.14.42/node_modules/esbuild-register/dist/node.js');
+const { register } = require('../../../../../../../../node_modules/.pnpm/esbuild-register@3.3.2_esbuild@0.14.42/node_modules/esbuild-register/dist/node.js');
 
 const { unregister } = register({ target: \`node\${process.version.slice(1)}\`})
 module.exports = require('../src/index.ts');

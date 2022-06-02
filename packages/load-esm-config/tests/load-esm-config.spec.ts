@@ -3,7 +3,7 @@ import { afterAll, expect, test } from 'vitest';
 
 import { loadEsmConfig } from '../';
 
-export const setupFixtures = createSetupFixtures({ context: {}, fileUrl: import.meta.url });
+const setupFixtures = createSetupFixtures({ context: {}, fileUrl: import.meta.url });
 
 afterAll(async () => {
   await setupFixtures.cleanup();

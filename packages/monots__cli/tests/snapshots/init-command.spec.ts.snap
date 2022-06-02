@@ -4,7 +4,7 @@ exports[`\`monots init\` should run without error in a pnpm project 1`] = `
 {
   "dependencies": {
     "@monots/cli": "^0.0.0",
-    "typescript": "^4.4.3",
+    "typescript": "^4.7.2",
   },
   "monots": {
     "packages": [

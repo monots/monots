@@ -1,3 +1,4 @@
+import is from '@sindresorhus/is';
 import type { ReadonlyDeep } from 'type-fest';
 
 type AnyFunction = (...args: any[]) => any;
@@ -119,7 +120,7 @@ export class Emitter<Events extends EventsMap = EventsMap> {
       for (const [index, handler] of (this.#events[props.event] ?? []).entries()) {
         const result = handler(...props.args);
 
-        if (isPromise(result)) {
+        if (is.promise(result)) {
           throw new Error('Must specify `async: true` when using promises');
         }
 
@@ -159,10 +160,33 @@ export class Emitter<Events extends EventsMap = EventsMap> {
   };
 }
 
-function isPromise<T, S>(value: PromiseLike<T> | S): value is PromiseLike<T> {
-  return (
-    !!value &&
-    (typeof value === 'object' || typeof value === 'function') &&
-    typeof (value as any).then === 'function'
-  );
-}
+// function createProxy(fn: any, mapArgs: any, previous: Array<string>): any {
+//   return new Proxy(EMPTY_FUNCTION, {
+//     apply: (_target, _this, args) => {
+//       const namespacedPath = previous.join(':');
+//       return fn(...mapArgs(namespacedPath, args));
+//     },
+//     get: (_, prop) => {
+//       const values: string[] = previous ? previous : [];
+
+//       if (typeof prop !== 'string') {
+//         return Function.prototype[prop as keyof Function];
+//       }
+
+//       // if (typeof Function.prototype[prop as keyof Function] === 'function') {
+//       //   return (Function.prototype[prop as keyof Function] as any).bind('');
+//       // }
+
+//       return createProxy(fn, mapArgs, [...values, prop]);
+//     },
+
+//     set: (object, prop) => {
+//       throw new TypeError(
+//         `Cannot assign to read only property '${String(prop)}' of object '#${object}'`,
+//       );
+//     },
+//   });
+// }
+
+// const EMPTY_FUNCTION = () => {};
+// type A = keyof Function;

@@ -1,6 +1,8 @@
 {
   "extends": "../packages/monots__tsconfig/tsconfig.json",
   "compilerOptions": {
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "allowJs": true,
+    "checkJs": true
   }
 }

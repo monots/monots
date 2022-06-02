@@ -25,7 +25,16 @@
       "path": "packages/monots__core/src"
     },
     {
+      "path": "packages/monots__core/tests"
+    },
+    {
       "path": "packages/monots__next-plugin/src"
+    },
+    {
+      "path": "packages/monots__preset-core/src"
+    },
+    {
+      "path": "packages/monots__preset-npm/src"
     },
     {
       "path": "packages/monots__test/src"

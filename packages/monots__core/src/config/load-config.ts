@@ -5,31 +5,55 @@ import type {
   ResolvedMonotsConfig,
   ResolvedPlugin,
 } from '@monots/types';
-import { deepMerge, Emitter, is, normalizePath } from '@monots/utils';
-import type { LoadEsmConfigOptions } from 'load-esm-config';
+import { deepMerge, Emitter, is } from '@monots/utils';
+import type { LoadEsmConfigOptions, LoadEsmConfigResult } from 'load-esm-config';
 import { loadEsmConfig } from 'load-esm-config';
 import * as path from 'node:path';
+import normalizePath from 'normalize-path';
 import type { AnyFunction } from 'superstruct-extra';
 import { objectEntries } from 'ts-extras';
 import type { Except } from 'type-fest';
 
-import type { MonotsEmitter } from '../types.js';
+import type { DefineConfigArgument, EmitterProps, MonotsEmitter } from '../types.js';
+
+export interface LoadConfigOptions extends Except<LoadEsmConfigOptions, 'name' | 'getArgument'> {
+  /**
+   * Load directly from the provided `config` property. This is mainly for testing.
+   *
+   * Will throw an error if no configuration is provided.
+   */
+  skipLookup?: boolean;
+}
 
 /**
  * Load the monots configuration object.
  */
-export async function loadConfig(
-  options?: Except<LoadEsmConfigOptions, 'name' | 'getArgument'>,
-): Promise<ResolvedMonotsConfig> {
+export async function loadConfig(options?: LoadConfigOptions): Promise<ResolvedMonotsConfig> {
   const emitter: MonotsEmitter = new Emitter();
-  const getArgument = () => ({ on: emitter.on });
-  type Argument = ReturnType<typeof getArgument>;
+  const emitterProps: EmitterProps = { on: emitter.on, emit: emitter.emit };
+  const getArgument = (): DefineConfigArgument => emitterProps;
+  let loadedResult: LoadEsmConfigResult<MonotsConfig> | undefined;
 
-  const result = await loadEsmConfig<MonotsConfig, Argument>({
-    name: 'monots',
-    ...options,
-    getArgument,
-  });
+  if (options?.skipLookup) {
+    if (!options.config) {
+      throw new Error('when using `skipLookup` you must also provide a config object.');
+    }
+
+    loadedResult = {
+      config: options.config,
+      dependencies: [],
+      path: path.join(options.cwd ?? process.cwd(), 'monots.config.js'),
+      root: options.cwd ?? process.cwd(),
+    };
+  } else {
+    loadedResult = await loadEsmConfig<MonotsConfig, DefineConfigArgument>({
+      ...options,
+      name: 'monots',
+      getArgument,
+    });
+  }
+
+  const result = loadedResult;
 
   if (!result) {
     throw new Error('no configuration file found');
@@ -41,7 +65,9 @@ export async function loadConfig(
   const transformedPlugins: ResolvedPlugin[] = [];
   const pluginProps: PluginProps = {
     ...result,
-    getPath: (relativePath: string) => path.join(result.root, normalizePath(relativePath)),
+    getPath: (...paths: string[]) => normalizePath(path.join(result.root, ...paths)),
+    emit: emitter.emit,
+    on: emitter.on,
   };
 
   // Find all the plugins with a transformer. Register these transformers and
@@ -61,15 +87,19 @@ export async function loadConfig(
   }
 
   for (const plugin of plugins) {
-    const transformedPlugin: ResolvedPlugin =
-      plugin.type === 'resolved'
-        ? plugin
-        : {
-            name: plugin.name,
-            original: plugin,
-            type: 'resolved',
-            plugin: transformers[plugin.type](plugin as any),
-          };
+    let transformedPlugin: ResolvedPlugin;
+
+    if (plugin.type === 'resolved') {
+      transformedPlugin = plugin;
+    } else {
+      const fn = transformers[plugin.type]?.(plugin as any);
+
+      if (!is.function_(fn)) {
+        throw new Error(`No transformer found for plugin type "${plugin.type}"`);
+      }
+
+      transformedPlugin = { name: plugin.name, original: plugin, type: 'resolved', plugin: fn };
+    }
 
     transformedPlugins.push(transformedPlugin);
     const maybePromise = transformedPlugin.plugin(pluginProps);
@@ -81,15 +111,19 @@ export async function loadConfig(
 
   // Generate the resolved configuration from plugins.
   const resolved = await emitter.emit({
-    event: 'config:pre:resolve',
+    event: 'setup',
     async: true,
-    args: [result],
+    args: [pluginProps],
     transformer: (values) =>
-      deepMerge<ResolvedMonotsConfig>([...values, result, { plugins: transformedPlugins }]),
+      deepMerge<ResolvedMonotsConfig>([
+        ...values,
+        result,
+        { plugins: transformedPlugins, ...emitterProps },
+      ]),
   });
 
   await emitter.emit({
-    event: 'config:post:resolve',
+    event: 'ready',
     async: true,
     args: [resolved],
     parallel: true,

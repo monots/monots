@@ -1,4 +1,11 @@
-import type { ValueOf } from 'type-fest';
+import type { RemoveIndexSignature, ValueOf } from 'type-fest';
+
+/**
+ * The container for all events that can be emitted by the monots package.
+ */
+export interface MonotsEvents {}
+
+// export type Events = RemoveIndexSignature<MonotsEvents>;
 
 export interface MonotsConfig {
   /**
@@ -45,7 +52,7 @@ export interface MonotsConfig {
    * }
    * ```
    */
-  config: Record<string, PackageConfig>;
+  // config: Record<string, PackageConfig>;
 }
 
 /**
@@ -59,11 +66,11 @@ export interface MonotsConfig {
  */
 export type AsArray<T> = T extends T ? T | readonly T[] : never;
 
-export interface PackageConfig {
-  glob: AsArray<string | RegExp>;
-  plugins?: MonotsPlugin[];
-  excludedPlugins?: PluginName[];
-}
+// export interface PackageConfig {
+//   glob: AsArray<string | RegExp>;
+//   plugins?: MonotsPlugin[];
+//   excludedPlugins?: PluginName[];
+// }
 
 export interface RootConfig {}
 
@@ -78,61 +85,147 @@ export interface MonotsCommandContext {
   build: object;
 }
 
-export type MonotsCommandName = keyof MonotsCommandContext;
-export type PluginScope = 'root' | 'package' | 'any';
+/**
+ * This is defined as a type so that it can't be extended with declaration
+ * merging.
+ */
+export interface BasePluginProps {
+  /**
+   * The configuration object as loaded from the configuration file.
+   */
+  config: MonotsConfig;
+
+  /**
+   * The path to the configuration file.
+   */
+  path: string;
+
+  /**
+   * The root directory of the monots project.
+   */
+  root: string;
+
+  /**
+   * The dependencies that were loaded from the configuration file.
+   */
+  dependencies: string[];
+
+  /**
+   * Get the posix path relative to the monorepo root directory.
+   */
+  getPath: (...paths: string[]) => string;
+}
+
+/**
+ * The resolved configuration which can be updated by returning an object with
+ * properties in the `loadd` event handler.
+ */
+export interface ResolvedMonotsConfig extends BasePluginProps {
+  /**
+   * All the resolved plugins.
+   */
+  plugins: ResolvedPlugin[];
+}
+
+export interface PluginProps extends BasePluginProps {}
+
+type PluginTransformer<Instance extends Plugin> = (plugin: Instance) => PluginFunction;
 
 export interface Plugin {
   /**
-   * The command that the plugin is active for.
+   * The name of the plugin which is used for debugging.
    */
-  command: LiteralString;
+  name: string;
 
   /**
-   * The scope of the plugin whether it operates on the monots project of
-   * package level.
+   * The type of plugin.
    */
-  scope: PluginScope;
+  type: string;
+
+  /**
+   * This can be used to register new plugin formats. Resolved plugins can do
+   * anything but aren't easy to work with. This allows you to register your own
+   * plugin formats which can be used to make certain workflows easier.
+   */
+  transformers?: Partial<PluginTransformers>;
 }
 
-// export interface PackagePlugin {
-//   scope: 'package' | 'any';
-// }
-
-interface ExamplePlugin extends Plugin {
-  command: 'fix';
-  scope: 'package';
-  example: string;
-}
-
-type LiteralString = string & Record<never, never>;
+export type PluginTransformers = { [Key in keyof Plugins]: PluginTransformer<Plugins[Key]> };
 
 /**
- * Use this interface to register the plugin interface for a given command.
+ * This is the runtime type for all plugins. Transformers can be registered to
+ * make plugins easier to work with, but at their core a plugin is just a
+ * `plugin` method that takes an emitter and produces side effects.
+ */
+export interface ResolvedPlugin extends Plugin {
+  type: 'resolved';
+
+  /**
+   * The original plugin instance. This is undefined if the plugin was initially
+   * a `ResolvedPlugin`.
+   */
+  original?: MonotsPlugin;
+
+  /**
+   * The function called to run the plugin.
+   */
+  plugin: PluginFunction;
+}
+
+export type PluginFunction = (props: PluginProps) => MaybePromise<void>;
+
+/**
+ * Use this interface to register the plugin expected instance for a plugin
+ * type.
  *
- * The key should be a unique name and should the same name provided to the
- * plugin configuration.
+ * The type should be a unique name and should match the type key property of
+ * the plugin.
+ *
+ * The following example is how to register a plugin with types.
  *
  * ```
- * import { AvailablePlugin } from '@monots/types';
- *
  * interface MinePlugin {
- *   command: 'mine';
- *   data: { something: number }
+ *   // required field
+ *   name: string;
+ *   // required field
+ *   type: 'mine';
+ *   // A custom field
+ *   handleSomething(name: string): Promise<void>
  * }
  *
+ * // Now register the type in available plugins.
  * declare module '@monots/types' {
- *   export interface AvailablePlugins {
+ *   export interface MonotsPlugins {
  *     mine: MinePlugin;
  *   }
  * }
  * ```
  */
-export interface AvailablePlugins {
-  [key: LiteralString]: Plugin;
+export interface MonotsPlugins {
+  [key: string]: Plugin;
+
+  /**
+   * This is the plugin that is understood by the `monots` plugin engine.
+   */
+  resolved: ResolvedPlugin;
   example: ExamplePlugin;
+  other: OtherPlugin;
 }
 
-export type MonotsPlugin = ValueOf<AvailablePlugins>;
-export type PackagePlugin = Exclude<MonotsPlugin, { scope: 'root' }>;
-export type RootPlugin = Exclude<MonotsPlugin, { scope: 'package' }>;
-export type PluginName = keyof AvailablePlugins;
+interface ExamplePlugin extends Plugin {
+  type: 'example';
+  onSomething: () => void;
+}
+
+interface OtherPlugin extends Plugin {
+  type: 'other';
+  init: () => void;
+}
+
+export type Plugins = RemoveIndexSignature<MonotsPlugins>;
+export type PluginTypes = keyof Plugins;
+/**
+ * The union of all plugin types.
+ */
+export type MonotsPlugin = ValueOf<Plugins>;
+export type MaybePromise<Type> = Promise<Type> | Type;

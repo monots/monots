@@ -1,5 +1,5 @@
 import { createSetupFixtures } from '@monots/test';
-import { afterAll, expect, test } from 'vitest';
+import { afterAll, test } from 'vitest';
 
 import { cli, context } from '../src/setup';
 
@@ -9,7 +9,7 @@ afterAll(async () => {
   setupFixtures.cleanup();
 });
 
-test('`monots init` should run without error in a pnpm project', async () => {
+test.concurrent('`monots init` should run without error in a pnpm project', async ({ expect }) => {
   const { loadJsonFile, context } = await setupFixtures('init-pnpm-with-package-json');
   const result = await cli.run(['init'], context);
   const json = await loadJsonFile('package.json');
@@ -18,7 +18,7 @@ test('`monots init` should run without error in a pnpm project', async () => {
   expect(json).toMatchSnapshot();
 });
 
-test('`monots init` errors when no package.json file available', async () => {
+test.concurrent('`monots init` errors when no package.json file available', async ({ expect }) => {
   const { loadJsonFile, context } = await setupFixtures('init-without-package-json');
   const result = await cli.run(['init'], context);
 
@@ -26,7 +26,7 @@ test('`monots init` errors when no package.json file available', async () => {
   await expect(loadJsonFile('package.json'), 'No package.json file created').rejects.toThrow();
 });
 
-test('`monots init` fails outside a workspace', async () => {
+test.concurrent('`monots init` fails outside a workspace', async ({ expect }) => {
   const { loadJsonFile, context } = await setupFixtures('init-without-workspace');
   const result = await cli.run(['init'], context);
   const json = await loadJsonFile('package.json');

@@ -1,5 +1,5 @@
 import type {
-  BaseMonotsResolvedConfig,
+  BasePluginProps,
   MonotsConfig,
   MonotsEvents,
   ResolvedMonotsConfig,
@@ -55,26 +55,26 @@ export type MonotsEmitter = Emitter<Mapped<MonotsEvents>>;
  */
 export type DefineMonotsConfig = ExportedConfig<MonotsConfig, DefineConfigArgument>;
 export type LoadConfigProps = Except<LoadEsmConfigOptions, 'name' | 'getArgument'>;
-export interface DefineConfigArgument extends Pick<MonotsEmitter, 'on' | 'emit'> {}
-export type GenerateResolvedConfig = Except<
-  Partial<ResolvedMonotsConfig>,
-  keyof BaseMonotsResolvedConfig
->;
+export interface DefineConfigArgument extends EmitterProps {}
+export type EmitterProps = Pick<MonotsEmitter, 'on' | 'emit'>;
+export type ResolvedAlias = ResolvedMonotsConfig;
 
 declare module '@monots/types' {
-  export interface ConfigLoadedProps extends LoadEsmConfigResult<MonotsConfig> {}
-
+  export interface PluginProps extends EmitterProps {}
+  export interface ResolvedMonotsConfig extends EmitterProps {}
+  export type PartialResolvedConfig = Omit<Partial<ResolvedMonotsConfig>, keyof BasePluginProps>;
   export interface MonotsEvents {
     /**
      * Gather the resolved configuration properties.
      *
      * Use this to add new properties to the `ResolvedMonotsConfig` object.
      */
-    'config:pre:resolve': (props: ConfigLoadedProps) => Promise<GenerateResolvedConfig>;
+    setup: (props: PluginProps) => Promise<PartialResolvedConfig>;
 
     /**
-     * Receive all the resolved configuration properties.
+     * All plugins have been initialized and the resolved configuration is
+     * provided within this event.
      */
-    'config:post:resolve': (props: ResolvedMonotsConfig) => Promise<void>;
+    ready: (props: ResolvedAlias) => Promise<void>;
   }
 }

@@ -1,3 +1,4 @@
+import { objectKeys } from 'ts-extras';
 import { build } from 'esbuild';
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
@@ -9,6 +10,7 @@ import { debug } from './constants.js';
 import { loadFromBundledFile } from './load-from-bundled-file';
 import type { BundleConfigFile } from './types.js';
 import { isCommonJsFile, isEsModuleFile, isTypeScriptFile } from './utils';
+import { parse } from 'tsconfck';
 
 export interface LoadEsmFileResult {
   /**
@@ -66,7 +68,7 @@ export async function loadEsmFile(filepath: string): Promise<LoadEsmFileResult |
 
   if (isEsModule) {
     const fileUrl = pathToFileURL(filepath);
-    const bundled = await bundleConfigFile({ fileName: filepath, isEsModule });
+    const bundled = await bundleConfigFile({ fileName: filepath, isEsModule, cwd });
     const now = Date.now();
     dependencies = bundled.dependencies;
 
@@ -76,10 +78,13 @@ export async function loadEsmFile(filepath: string): Promise<LoadEsmFileResult |
       // with --experimental-loader themselves, we have to do a hack here:
       // bundle the config file w/ ts transforms first, write it to disk,
       // load it with native Node ESM, then delete the file.
-      await fs.writeFile(tmpFile, bundled.code);
-      exported = await import(`${fileUrl}.js?t=${now}`);
-      await fs.unlink(tmpFile);
-      debug(`TS + native esm config loaded in ${getDuration()}`, fileUrl);
+      try {
+        await fs.writeFile(tmpFile, bundled.code);
+        exported = await import(`${fileUrl}.js?t=${now}`);
+        debug(`TS + native esm config loaded in ${getDuration()}`, fileUrl);
+      } finally {
+        await fs.unlink(tmpFile);
+      }
     } else {
       exported = await import(`${fileUrl}?t=${now}`);
       debug(`native esm config loaded in ${getDuration()}`, fileUrl);
@@ -88,7 +93,7 @@ export async function loadEsmFile(filepath: string): Promise<LoadEsmFileResult |
 
   if (!exported) {
     // bundle config file and transpile to cjs using esbuild
-    const bundled = await bundleConfigFile({ fileName: filepath });
+    const bundled = await bundleConfigFile({ fileName: filepath, cwd });
     dependencies = bundled.dependencies;
     exported = await loadFromBundledFile(filepath, bundled.code);
     debug(`bundled config file loaded in ${getDuration()}`);
@@ -107,14 +112,21 @@ export async function loadEsmFile(filepath: string): Promise<LoadEsmFileResult |
 async function bundleConfigFile(
   options: BundleConfigFile,
 ): Promise<{ code: string; dependencies: string[] }> {
-  const { fileName, isEsModule = false } = options;
+  const { fileName, cwd, isEsModule = false } = options;
+  const { tsconfig } = await parse(fileName);
+  const tsconfigPaths = objectKeys(tsconfig?.compilerOptions?.paths ?? {}).map(
+    (path) => new RegExp(`^${path.replace('*', '[a-zA-Z-_\\$\\[\\]]*')}`),
+  );
+
   const result = await build({
-    absWorkingDir: process.cwd(),
+    absWorkingDir: cwd,
     entryPoints: [fileName],
     outfile: 'out.js',
     write: false,
     platform: 'node',
     bundle: true,
+
+    // logLevel: 'verbose',
     format: isEsModule ? 'esm' : 'cjs',
     sourcemap: 'inline',
     metafile: true,
@@ -125,7 +137,11 @@ async function bundleConfigFile(
         name: 'externalize-deps',
         setup(build) {
           build.onResolve({ filter: /.*/ }, (args) => {
-            if (args.path[0] === '.' || path.isAbsolute(args.path)) {
+            if (
+              args.path[0] === '.' ||
+              path.isAbsolute(args.path) ||
+              tsconfigPaths.some((regex) => regex.test(args.path ?? ''))
+            ) {
               return;
             }
 
