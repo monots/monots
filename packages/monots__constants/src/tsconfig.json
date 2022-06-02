@@ -7,9 +7,7 @@
   ],
   "extends": "../../../.monots/tsconfig.base.json",
   "compilerOptions": {
-    "types": [
-      "node"
-    ],
+    "types": [],
     "noEmit": false,
     "declaration": true,
     "composite": true,

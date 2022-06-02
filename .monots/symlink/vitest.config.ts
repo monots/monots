@@ -1,9 +1,9 @@
-/// <reference types="vitest" />
-import * as path from 'node:path';
-import { defineConfig } from 'vite';
-import { baseDir } from '../scripts/helpers.js';
 import { loadJsonFile } from 'load-json-file';
+import * as path from 'node:path';
 import tsconfigPaths from 'vite-tsconfig-paths';
+import { defineConfig } from 'vitest/config';
+
+import { baseDir } from '../scripts/helpers.js';
 
 const referenceTsConfig = await loadJsonFile<{ references: Array<{ path: string }> }>(
   baseDir('tsconfig.json'),
@@ -16,6 +16,8 @@ const projects = referenceTsConfig.references.map((reference) =>
 export default defineConfig({
   plugins: [tsconfigPaths({ projects })],
   test: {
+    include: ['**/*.spec.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+
     // rename `__snapshots__` to `snapshots`
     resolveSnapshotPath(testPath, snapExtension) {
       return path.join(

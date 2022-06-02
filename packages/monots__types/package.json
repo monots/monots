@@ -36,6 +36,7 @@
     "packages"
   ],
   "dependencies": {
+    "@monots/constants": "^0.0.0",
     "clipanion": "^3.1.0",
     "type-fest": "^2.13.0"
   },

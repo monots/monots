@@ -14,5 +14,9 @@
     "emitDeclarationOnly": true,
     "outDir": "../dist"
   },
-  "references": []
+  "references": [
+    {
+      "path": "../../monots__constants/src"
+    }
+  ]
 }

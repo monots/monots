@@ -2,6 +2,7 @@ import { loadConfig, NAME } from '@monots/core';
 import type { CommandContext } from '@monots/types';
 import { getPackageJsonSync } from '@monots/utils';
 import { Builtins, Cli } from 'clipanion';
+import parser from 'yargs-parser';
 
 const { version, description = '', name } = getPackageJsonSync();
 
@@ -9,6 +10,8 @@ const { version, description = '', name } = getPackageJsonSync();
  * Loads the `monots` configuration and uses it to register all commands.
  */
 export async function createCli() {
+  const argv = parser(process.argv.slice(2));
+  const logLevel = argv.logLevel || argv.l;
   const result = await loadConfig();
 
   if (!result) {
@@ -23,6 +26,8 @@ export async function createCli() {
 
   cli.register(Builtins.HelpCommand);
   cli.register(Builtins.VersionCommand);
+
+  // Gather commands
 }
 
 export const context: CommandContext = {

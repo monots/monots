@@ -16,6 +16,7 @@
     "@types/shelljs": "^0.8.11",
     "chalk": "^5.0.1",
     "chalk-template": "^0.4.0",
+    "globby": "^13.1.1",
     "load-json-file": "^7.0.1",
     "shelljs": "^0.8.5",
     "write-json-file": "^5.0.0"

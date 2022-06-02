@@ -1,0 +1,21 @@
+export default {
+  "package.json": "{\n  \"name\": \"root\",\n  \"scripts\": {\n    \"postinstall\": \"monots prepare\"\n  },\n  \"dependencies\": {},\n  \"monots\": {\n    \"packages\": [\n      \"packages/*\"\n    ]\n  }\n}\n",
+  "pnpm-workspace.yaml": "packages:\n  - 'packages/*'\n",
+  "packages/scoped__add/package.json": "{\n  \"name\": \"@scoped/add\",\n  \"version\": \"1.0.0\",\n  \"main\": \"\",\n  \"module\": \"\",\n  \"browser\": \"\",\n  \"types\": \"\",\n  \"monots\": {\n    \"entrypoints\": [\n      \"index.ts\",\n      \"other.ts\"\n    ],\n    \"extraExports\": {\n      \"./extra\": \"./extra.js\"\n    },\n    \"addExportsToEntrypoints\": true\n  }\n}\n",
+  "packages/scoped__a/package.json": "{\n  \"name\": \"@scoped/a\",\n  \"version\": \"1.0.0\",\n  \"main\": \"\",\n  \"module\": \"\",\n  \"browser\": \"\",\n  \"types\": \"\",\n  \"dependencies\": {\n    \"@scoped/b\": \"^2.0.0\"\n  }\n}\n",
+  "packages/scoped__b/package.json": "{\n  \"name\": \"@scoped/b\",\n  \"version\": \"2.0.0\",\n  \"main\": \"\",\n  \"module\": \"\",\n  \"browser\": \"\",\n  \"dependencies\": {\n    \"@scoped/c\": \"^1.0.0\"\n  }\n}\n",
+  "packages/scoped__c/package.json": "{\n  \"name\": \"@scoped/c\",\n  \"version\": \"1.0.0\",\n  \"main\": \"\",\n  \"module\": \"\",\n  \"browser\": \"\",\n  \"types\": \"\",\n  \"monots\": {\n    \"entrypoints\": [\n      \"index.ts\",\n      \"other.ts\",\n      \"and-another/index.ts\",\n      \"and-another/nested/cool.ts\",\n      \"and-another/nested/index.ts\"\n    ],\n    \"extraExports\": {\n      \"./extra\": \"./extra.js\"\n    }\n  }\n}\n",
+  "packages/scoped__ts/index.ts": "export * from './other';\n",
+  "packages/scoped__ts/other.ts": "export function other() {\n  return '';\n}\n",
+  "packages/scoped__ts/package.json": "{\n  \"name\": \"@scoped/ts\",\n  \"version\": \"1.0.0\",\n  \"main\": \"\",\n  \"module\": \"\",\n  \"browser\": \"\",\n  \"types\": \"\",\n  \"dependencies\": {\n    \"@scoped/b\": \"^2.0.0\"\n  },\n  \"monots\": {\n    \"entrypoints\": [],\n    \"sourceFolderName\": \"\"\n  }\n}\n",
+  "packages/scoped__add/src/index.ts": "export function a() {\n  console.log('a');\n}\n",
+  "packages/scoped__add/src/other.ts": "export default function () {\n  return 'other';\n}\n",
+  "packages/scoped__a/src/index.ts": "export function a() {\n  console.log('a');\n}\n",
+  "packages/scoped__b/src/index.ts": "export function a() {\n  console.log('a');\n}\n",
+  "packages/scoped__c/src/index.ts": "export function a() {\n  console.log('a');\n}\n",
+  "packages/scoped__c/src/other.ts": "export default function () {\n  return 'other';\n}\n",
+  "packages/scoped__ts/src/index.ts": "export function a() {\n  console.log('a');\n}\n",
+  "packages/scoped__c/src/and-another/index.ts": "",
+  "packages/scoped__c/src/and-another/nested/cool.ts": "",
+  "packages/scoped__c/src/and-another/nested/index.ts": ""
+};

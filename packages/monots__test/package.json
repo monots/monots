@@ -33,6 +33,7 @@
     "del": "^6.1.1",
     "delay": "^5.0.0",
     "load-json-file": "^7.0.1",
+    "memfs": "^3.4.4",
     "recursive-copy": "^2.0.14"
   },
   "devDependencies": {

@@ -1,9 +1,10 @@
+import type { MonotsPriority } from '@monots/constants';
 import type { RemoveIndexSignature, ValueOf } from 'type-fest';
 
 /**
  * The container for all events that can be emitted by the monots package.
  */
-export interface MonotsEvents {}
+export interface MonotsEvents extends monots.Events {}
 
 // export type Events = RemoveIndexSignature<MonotsEvents>;
 
@@ -118,9 +119,9 @@ export interface BasePluginProps {
 
 /**
  * The resolved configuration which can be updated by returning an object with
- * properties in the `loadd` event handler.
+ * properties in the `load` event handler.
  */
-export interface ResolvedMonotsConfig extends BasePluginProps {
+export interface ResolvedMonotsConfig extends BasePluginProps, monots.ResolvedConfig {
   /**
    * All the resolved plugins.
    */
@@ -141,6 +142,14 @@ export interface Plugin {
    * The type of plugin.
    */
   type: string;
+
+  /**
+   * Set the priority of the plugin. A higher number is a higher priority and
+   * will be loaded earlier.
+   *
+   * @default MonotsPriority.Default
+   */
+  priority?: MonotsPriority | number;
 
   /**
    * This can be used to register new plugin formats. Resolved plugins can do
@@ -194,16 +203,16 @@ export type PluginFunction = (props: PluginProps) => MaybePromise<void>;
  * }
  *
  * // Now register the type in available plugins.
- * declare module '@monots/types' {
- *   export interface MonotsPlugins {
- *     mine: MinePlugin;
+ * declare global {
+ *   namespace monots {
+ *     interface MonotsPlugins {
+ *       mine: MinePlugin;
+ *     }
  *   }
  * }
  * ```
  */
-export interface MonotsPlugins {
-  [key: string]: Plugin;
-
+export interface MonotsPlugins extends monots.Plugins {
   /**
    * This is the plugin that is understood by the `monots` plugin engine.
    */
@@ -229,3 +238,18 @@ export type PluginTypes = keyof Plugins;
  */
 export type MonotsPlugin = ValueOf<Plugins>;
 export type MaybePromise<Type> = Promise<Type> | Type;
+
+declare global {
+  namespace monots {
+    /**
+     * Extend this interface to add your own typed events to emit.
+     */
+    interface Events {
+      [key: string]: (...args: any[]) => MaybePromise<any>;
+    }
+    interface Plugins {
+      [key: string]: Plugin;
+    }
+    interface ResolvedConfig {}
+  }
+}

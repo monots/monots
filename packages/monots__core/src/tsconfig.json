@@ -19,6 +19,9 @@
       "path": "../../load-esm-config/src"
     },
     {
+      "path": "../../monots__constants/src"
+    },
+    {
       "path": "../../monots__test/src"
     },
     {

@@ -26,6 +26,7 @@ importers:
       husky: ^8.0.1
       lint-staged: ^13.0.0
       load-json-file: ^7.0.1
+      memfs: ^3.4.4
       npm-run-all: ^4.1.5
       prettier: ^2.6.2
       prettier-config-monots: ^0.2.1
@@ -53,6 +54,7 @@ importers:
       husky: 8.0.1
       lint-staged: 13.0.0
       load-json-file: 7.0.1
+      memfs: 3.4.4
       npm-run-all: 4.1.5
       prettier: 2.6.2
       prettier-config-monots: link:packages/prettier-config-monots
@@ -68,6 +70,7 @@ importers:
       '@types/shelljs': ^0.8.11
       chalk: ^5.0.1
       chalk-template: ^0.4.0
+      globby: ^13.1.1
       load-json-file: ^7.0.1
       shelljs: ^0.8.5
       write-json-file: ^5.0.0
@@ -76,6 +79,7 @@ importers:
       '@types/shelljs': 0.8.11
       chalk: 5.0.1
       chalk-template: 0.4.0
+      globby: 13.1.1
       load-json-file: 7.0.1
       shelljs: 0.8.5
       write-json-file: 5.0.0
@@ -224,6 +228,7 @@ importers:
       '@monots/test': ^0.0.0
       '@monots/types': ^0.1.9
       '@monots/utils': ^0.5.0
+      '@types/yargs-parser': ^21.0.0
       chalk: ^5.0.1
       chalk-template: ^0.4.0
       clipanion: ^3.1.0
@@ -231,10 +236,12 @@ importers:
       esbuild-register: ^3.3.2
       ora: ^6.1.0
       type-fest: ^2.13.0
+      yargs-parser: ^21.0.1
     dependencies:
       '@monots/core': link:../monots__core
       '@monots/types': link:../monots__types
       '@monots/utils': link:../monots__utils
+      '@types/yargs-parser': 21.0.0
       chalk: 5.0.1
       chalk-template: 0.4.0
       clipanion: 3.1.0
@@ -242,12 +249,20 @@ importers:
       esbuild-register: 3.3.2_esbuild@0.14.42
       ora: 6.1.0
       type-fest: 2.13.0
+      yargs-parser: 21.0.1
     devDependencies:
       '@monots/test': link:../monots__test
+
+  packages/monots__constants:
+    specifiers:
+      type-fest: ^2.13.0
+    dependencies:
+      type-fest: 2.13.0
 
   packages/monots__core:
     specifiers:
       '@manypkg/get-packages': ^1.1.3
+      '@monots/constants': ^0.0.0
       '@monots/test': ^0.0.0
       '@monots/types': ^0.1.9
       '@monots/utils': ^0.5.0
@@ -273,6 +288,7 @@ importers:
       execa: ^6.1.0
       fast-deep-equal: ^3.1.3
       fast-glob: ^3.2.11
+      fast-sort: ^3.1.3
       figures: ^4.0.1
       jest-diff: ^28.1.0
       js-yaml: ^4.1.0
@@ -295,6 +311,7 @@ importers:
       write-json-file: ^5.0.0
     dependencies:
       '@manypkg/get-packages': 1.1.3
+      '@monots/constants': link:../monots__constants
       '@monots/types': link:../monots__types
       '@monots/utils': link:../monots__utils
       '@rollup/plugin-alias': 3.1.9_rollup@2.75.5
@@ -319,6 +336,7 @@ importers:
       execa: 6.1.0
       fast-deep-equal: 3.1.3
       fast-glob: 3.2.11
+      fast-sort: 3.1.3
       figures: 4.0.1
       jest-diff: 28.1.0
       js-yaml: 4.1.0
@@ -375,11 +393,13 @@ importers:
       del: ^6.1.1
       delay: ^5.0.0
       load-json-file: ^7.0.1
+      memfs: ^3.4.4
       recursive-copy: ^2.0.14
     dependencies:
       del: 6.1.1
       delay: 5.0.0
       load-json-file: 7.0.1
+      memfs: 3.4.4
       recursive-copy: 2.0.14
     devDependencies:
       '@types/node': 17.0.38
@@ -389,9 +409,11 @@ importers:
 
   packages/monots__types:
     specifiers:
+      '@monots/constants': ^0.0.0
       clipanion: ^3.1.0
       type-fest: ^2.13.0
     dependencies:
+      '@monots/constants': link:../monots__constants
       clipanion: 3.1.0
       type-fest: 2.13.0
 
@@ -1404,6 +1426,10 @@ packages:
     resolution: {integrity: sha512-6YOoWjruKj1uLf3INHH7D3qTXwFfEsg1kf3c0uDdSBJwfa/llkwIjrAGV7j7mVgGNbzTQ3HiHKKDXl6bJPD97w==}
     dependencies:
       '@types/node': 17.0.38
+    dev: false
+
+  /@types/yargs-parser/21.0.0:
+    resolution: {integrity: sha512-iO9ZQHkZxHn4mSakYV0vFHAVDyEOIJQrV2uZ06HxEPcx+mt8swXoZHIbaaJ2crJYFfErySgktuTZ3BeLz+XmFA==}
     dev: false
 
   /@typescript-eslint/eslint-plugin/5.27.0_dszb5tb7atwkjjijmmov4qhi7i:
@@ -3771,6 +3797,10 @@ packages:
   /fast-levenshtein/2.0.6:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
 
+  /fast-sort/3.1.3:
+    resolution: {integrity: sha512-DFD9n2nZVfJljjRaEN94SnIvUoSW2wpCdS2LC95iMNnzz8sja4yAYUVOXsXqvTiKUGMXiuhGZkrmtzUx8vopTg==}
+    dev: false
+
   /fastq/1.13.0:
     resolution: {integrity: sha512-YpkpUnK8od0o1hmeSc7UUs/eB/vIPWJYjKck2QKIzAf71Vm1AAQ3EbuZB3g2JIy+pg+ERD0vqI79KyZiB2e2Nw==}
     dependencies:
@@ -3910,6 +3940,10 @@ packages:
     engines: {node: '>= 8'}
     dependencies:
       minipass: 3.1.6
+    dev: false
+
+  /fs-monkey/1.0.3:
+    resolution: {integrity: sha512-cybjIfiiE+pTWicSCLFHSrXZ6EilF30oh91FDP9S2B051prEa7QWfrVTQm10/dDpswBDXZugPa1Ogu8Yh+HV0Q==}
     dev: false
 
   /fs.realpath/1.0.0:
@@ -4084,6 +4118,17 @@ packages:
       ignore: 5.2.0
       merge2: 1.4.1
       slash: 3.0.0
+    dev: false
+
+  /globby/13.1.1:
+    resolution: {integrity: sha512-XMzoDZbGZ37tufiv7g0N4F/zp3zkwdFtVbV3EHsVl1KQr4RPLfNoT068/97RPshz2J5xYNEjLKKBKaGHifBd3Q==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dependencies:
+      dir-glob: 3.0.1
+      fast-glob: 3.2.11
+      ignore: 5.2.0
+      merge2: 1.4.1
+      slash: 4.0.0
     dev: false
 
   /globby/9.2.0:
@@ -5156,6 +5201,13 @@ packages:
 
   /mdast-util-to-string/2.0.0:
     resolution: {integrity: sha512-AW4DRS3QbBayY/jJmD8437V1Gombjf8RSOUCMFBuo5iHi58AGEgVCKQ+ezHkZZDpAQS75hcBMpLqjpJTjtUL7w==}
+    dev: false
+
+  /memfs/3.4.4:
+    resolution: {integrity: sha512-W4gHNUE++1oSJVn8Y68jPXi+mkx3fXR5ITE/Ubz6EQ3xRpCN5k2CQ4AUR8094Z7211F876TyoBACGsIveqgiGA==}
+    engines: {node: '>= 4.0.0'}
+    dependencies:
+      fs-monkey: 1.0.3
     dev: false
 
   /memorystream/0.3.1:
@@ -6627,6 +6679,11 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
+  /slash/4.0.0:
+    resolution: {integrity: sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==}
+    engines: {node: '>=12'}
+    dev: false
+
   /slice-ansi/3.0.0:
     resolution: {integrity: sha512-pSyv7bSTC7ig9Dcgbw9AuRNUb5k5V6oDudjZoMBSr13qpLBG7tB+zgCkARjq7xIUgdz5P1Qe8u+rSGdouOOIyQ==}
     engines: {node: '>=8'}
@@ -7648,6 +7705,11 @@ packages:
   /yargs-parser/20.2.9:
     resolution: {integrity: sha512-y11nGElTIV+CT3Zv9t7VKl+Q3hTQoT9a1Qzezhhl6Rp21gJ/IVTW7Z3y9EWXhuUBC2Shnf+DX0antecpAwSP8w==}
     engines: {node: '>=10'}
+    dev: false
+
+  /yargs-parser/21.0.1:
+    resolution: {integrity: sha512-9BK1jFpLzJROCI5TzwZL/TU4gqjK5xiHV/RfWLOahrjAko/e4DJkRDZQXfvqAsiZzzYhgAzbgz6lg48jcm4GLg==}
+    engines: {node: '>=12'}
     dev: false
 
   /yargs/15.4.1:

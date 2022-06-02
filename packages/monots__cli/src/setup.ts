@@ -39,8 +39,6 @@ export const context: CommandContext = {
   version,
   description,
   name,
-  colorDepth: 256,
-  env: process.env,
   cwd: process.cwd(),
   stdin: process.stdin,
   stdout: process.stdout,

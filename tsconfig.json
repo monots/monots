@@ -22,10 +22,16 @@
       "path": "packages/monots__cli/tests"
     },
     {
+      "path": "packages/monots__constants/src"
+    },
+    {
       "path": "packages/monots__core/src"
     },
     {
       "path": "packages/monots__core/tests"
+    },
+    {
+      "path": "packages/monots__dispatcher/src"
     },
     {
       "path": "packages/monots__next-plugin/src"

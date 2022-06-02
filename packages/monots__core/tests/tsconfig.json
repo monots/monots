@@ -6,13 +6,18 @@
     "Then run the command to automatically update everything: `monots fix`"
   ],
   "extends": "../../../.monots/tsconfig.base.json",
+  "include": [
+    "**/*.ts",
+    "*.ts"
+  ],
   "compilerOptions": {
     "noEmit": true,
     "declaration": false,
     "baseUrl": "../src",
     "paths": {
-      "@monots/core": ["./index.ts"]
+      "@monots/core": [
+        "./index.ts"
+      ]
     }
-  },
-  "include": ["**/*.ts"]
+  }
 }

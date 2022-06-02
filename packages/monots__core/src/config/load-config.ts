@@ -1,3 +1,4 @@
+import { MonotsPriority } from '@monots/constants';
 import type {
   MonotsConfig,
   PluginProps,
@@ -98,7 +99,13 @@ export async function loadConfig(options?: LoadConfigOptions): Promise<ResolvedM
         throw new Error(`No transformer found for plugin type "${plugin.type}"`);
       }
 
-      transformedPlugin = { name: plugin.name, original: plugin, type: 'resolved', plugin: fn };
+      transformedPlugin = {
+        name: plugin.name,
+        original: plugin,
+        type: 'resolved',
+        plugin: fn,
+        priority: plugin.priority ?? MonotsPriority.Default,
+      };
     }
 
     transformedPlugins.push(transformedPlugin);
@@ -111,7 +118,7 @@ export async function loadConfig(options?: LoadConfigOptions): Promise<ResolvedM
 
   // Generate the resolved configuration from plugins.
   const resolved = await emitter.emit({
-    event: 'setup',
+    event: 'core:prepare',
     async: true,
     args: [pluginProps],
     transformer: (values) =>
@@ -122,12 +129,7 @@ export async function loadConfig(options?: LoadConfigOptions): Promise<ResolvedM
       ]),
   });
 
-  await emitter.emit({
-    event: 'ready',
-    async: true,
-    args: [resolved],
-    parallel: true,
-  });
+  await emitter.emit({ event: 'core:ready', async: true, args: [resolved], parallel: true });
 
   return resolved;
 }

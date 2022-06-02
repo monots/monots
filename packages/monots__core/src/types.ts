@@ -2,10 +2,11 @@ import type {
   BasePluginProps,
   MonotsConfig,
   MonotsEvents,
+  PluginProps,
   ResolvedMonotsConfig,
 } from '@monots/types';
 import type { Emitter } from '@monots/utils';
-import type { ExportedConfig, LoadEsmConfigOptions, LoadEsmConfigResult } from 'load-esm-config';
+import type { ExportedConfig, LoadEsmConfigOptions } from 'load-esm-config';
 import type { Except, TsConfigJson as BaseTsConfigJson } from 'type-fest';
 
 /**
@@ -44,11 +45,12 @@ export type TsConfigJson = BaseTsConfigJson & { 'ts-node'?: BaseTsConfigJson } &
 export type References = BaseTsConfigJson.References & JsonObject;
 
 type Mapped<Type> = { [Key in keyof Type]: Type[Key] };
+type MonotsEventsAlias = MonotsEvents;
 
 /**
  * The main emitter used by the monots package.
  */
-export type MonotsEmitter = Emitter<Mapped<MonotsEvents>>;
+export type MonotsEmitter = Emitter<Mapped<MonotsEventsAlias>>;
 
 /**
  * The props that can be used when defining a monots configuration.
@@ -58,23 +60,28 @@ export type LoadConfigProps = Except<LoadEsmConfigOptions, 'name' | 'getArgument
 export interface DefineConfigArgument extends EmitterProps {}
 export type EmitterProps = Pick<MonotsEmitter, 'on' | 'emit'>;
 export type ResolvedAlias = ResolvedMonotsConfig;
+export type PartialResolvedConfig = Omit<Partial<ResolvedMonotsConfig>, keyof BasePluginProps>;
+
+declare global {
+  namespace monots {
+    interface ResolvedConfig extends EmitterProps {}
+    interface Events {
+      /**
+       * Gather the resolved configuration properties.
+       *
+       * Use this to add new properties to the `ResolvedMonotsConfig` object.
+       */
+      'core:prepare': (props: PluginProps) => Promise<PartialResolvedConfig>;
+
+      /**
+       * All plugins have been initialized and the resolved configuration is
+       * provided within this event.
+       */
+      'core:ready': (props: ResolvedAlias) => Promise<void>;
+    }
+  }
+}
 
 declare module '@monots/types' {
   export interface PluginProps extends EmitterProps {}
-  export interface ResolvedMonotsConfig extends EmitterProps {}
-  export type PartialResolvedConfig = Omit<Partial<ResolvedMonotsConfig>, keyof BasePluginProps>;
-  export interface MonotsEvents {
-    /**
-     * Gather the resolved configuration properties.
-     *
-     * Use this to add new properties to the `ResolvedMonotsConfig` object.
-     */
-    setup: (props: PluginProps) => Promise<PartialResolvedConfig>;
-
-    /**
-     * All plugins have been initialized and the resolved configuration is
-     * provided within this event.
-     */
-    ready: (props: ResolvedAlias) => Promise<void>;
-  }
 }

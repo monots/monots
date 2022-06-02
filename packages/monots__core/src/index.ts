@@ -1,4 +1,4 @@
-export * from './base-command.js';
+export * from './command.js';
 export * from './config/index.js';
 export * from './constants.js';
 export * from './core-plugin.js';

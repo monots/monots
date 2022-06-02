@@ -1,4 +1,4 @@
-import { BaseCommand, ProjectEntity } from '@monots/core';
+import { MonotsCommand, ProjectEntity } from '@monots/core';
 import type { Usage } from '@monots/types';
 import chalkTemplate from 'chalk-template';
 import ora from 'ora';
@@ -11,7 +11,7 @@ import ora from 'ora';
  *
  * @category CliCommand
  */
-export class BuildCommand extends BaseCommand {
+export class BuildCommand extends MonotsCommand {
   static override paths = [['build']];
   static override usage: Usage = {
     description: 'Build all your packages and their entrypoints.',

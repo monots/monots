@@ -8,12 +8,12 @@ export interface CorePlugin extends Plugin {
   /**
    * Return an object with properties to populate the resolved configuration resolved configuration.
    */
-  setup?: MonotsEvents['setup'];
+  onPrepare?: MonotsEvents['core:prepare'];
 
   /**
    * A handler for after
    */
-  ready?: MonotsEvents['ready'];
+  onReady?: MonotsEvents['core:ready'];
 }
 
 /**
@@ -24,34 +24,36 @@ export function corePlugin(): CorePlugin {
   return {
     type: 'core',
     name: 'core',
-    setup: async (props) => {
+    onPrepare: async (props) => {
       return { loadJsonFile: (relativePath) => loadJsonFile(props.getPath(relativePath)) };
     },
     transformers: {
       core: (plugin) => (props) => {
         const dispose: Unsubscribe[] = [];
 
-        if (plugin.setup) {
-          dispose.push(props.on('setup', plugin.setup));
+        if (plugin.onPrepare) {
+          dispose.push(props.on('core:prepare', plugin.onPrepare));
         }
 
-        if (plugin.ready) {
-          dispose.push(props.on('ready', plugin.ready));
+        if (plugin.onReady) {
+          dispose.push(props.on('core:ready', plugin.onReady));
         }
       },
     },
   };
 }
 
-declare module '@monots/types' {
-  export interface MonotsPlugins {
-    core: CorePlugin;
-  }
+declare global {
+  namespace monots {
+    interface Plugins {
+      core: CorePlugin;
+    }
 
-  export interface ResolvedMonotsConfig {
-    /**
-     * Load a json file file relative to the root of this monorepo.
-     */
-    loadJsonFile: <Type>(path: string) => Promise<Type>;
+    interface ResolvedConfig {
+      /**
+       * Load a json file file relative to the root of this monorepo.
+       */
+      loadJsonFile: <Type>(path: string) => Promise<Type>;
+    }
   }
 }
