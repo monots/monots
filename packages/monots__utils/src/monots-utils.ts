@@ -186,8 +186,8 @@ export function getPackageJsonSync() {
  * ```
  */
 export function getDirname(fileUrl: string) {
-  const { pathname } = new URL(fileUrl);
-  return path.dirname(slash(pathname));
+  const filename = fileUrl.startsWith('file:') ? new URL(fileUrl).pathname : fileUrl;
+  return path.dirname(slash(filename));
 }
 
 /**

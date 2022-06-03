@@ -1,13 +1,14 @@
 import type {
   BasePluginProps,
+  MaybePromise,
   MonotsConfig,
   MonotsEvents,
   PluginProps,
   ResolvedMonotsConfig,
 } from '@monots/types';
 import type { Emitter } from '@monots/utils';
-import type { ExportedConfig, LoadEsmConfigOptions } from 'load-esm-config';
-import type { Except, TsConfigJson as BaseTsConfigJson } from 'type-fest';
+import type { ExportedConfig, LoadEsmConfigOptions, Consola } from 'load-esm-config';
+import type { Except, RemoveIndexSignature, TsConfigJson as BaseTsConfigJson } from 'type-fest';
 
 /**
  * Matches a JSON object.
@@ -44,13 +45,12 @@ export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
 export type TsConfigJson = BaseTsConfigJson & { 'ts-node'?: BaseTsConfigJson } & JsonObject;
 export type References = BaseTsConfigJson.References & JsonObject;
 
-type Mapped<Type> = { [Key in keyof Type]: Type[Key] };
 type MonotsEventsAlias = MonotsEvents;
 
 /**
  * The main emitter used by the monots package.
  */
-export type MonotsEmitter = Emitter<Mapped<MonotsEventsAlias>>;
+export type MonotsEmitter = Emitter<RemoveIndexSignature<MonotsEventsAlias>>;
 
 /**
  * The props that can be used when defining a monots configuration.
@@ -64,6 +64,7 @@ export type PartialResolvedConfig = Omit<Partial<ResolvedMonotsConfig>, keyof Ba
 
 declare global {
   namespace monots {
+    interface CommandContext extends EmitterProps {}
     interface ResolvedConfig extends EmitterProps {}
     interface Events {
       /**
@@ -71,7 +72,7 @@ declare global {
        *
        * Use this to add new properties to the `ResolvedMonotsConfig` object.
        */
-      'core:prepare': (props: PluginProps) => Promise<PartialResolvedConfig>;
+      'core:prepare': (props: PluginProps) => MaybePromise<PartialResolvedConfig | undefined>;
 
       /**
        * All plugins have been initialized and the resolved configuration is
@@ -83,5 +84,10 @@ declare global {
 }
 
 declare module '@monots/types' {
-  export interface PluginProps extends EmitterProps {}
+  export interface PluginProps extends EmitterProps {
+    /**
+     * An instance of the logger
+     */
+    logger: Consola;
+  }
 }

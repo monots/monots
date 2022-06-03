@@ -34,6 +34,7 @@
     "@types/normalize-path": "^3.0.0",
     "chalk": "^5.0.1",
     "chalk-template": "^0.4.0",
+    "consola": "^2.15.3",
     "debug": "^4.3.4",
     "deepmerge": "^4.2.2",
     "esbuild": "^0.14.41",

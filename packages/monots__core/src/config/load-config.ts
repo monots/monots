@@ -1,14 +1,20 @@
 import { MonotsPriority } from '@monots/constants';
 import type {
   MonotsConfig,
+  MonotsPlugin,
+  NestedMonotsPlugins,
   PluginProps,
   PluginTransformers,
   ResolvedMonotsConfig,
   ResolvedPlugin,
 } from '@monots/types';
-import { deepMerge, Emitter, is } from '@monots/utils';
-import type { LoadEsmConfigOptions, LoadEsmConfigResult } from 'load-esm-config';
-import { loadEsmConfig } from 'load-esm-config';
+import { deepMerge, Emitter, is, sort } from '@monots/utils';
+import {
+  type LoadEsmConfigOptions,
+  type LoadEsmConfigResult,
+  loadEsmConfig,
+  createLogger,
+} from 'load-esm-config';
 import * as path from 'node:path';
 import normalizePath from 'normalize-path';
 import type { AnyFunction } from 'superstruct-extra';
@@ -60,12 +66,14 @@ export async function loadConfig(options?: LoadConfigOptions): Promise<ResolvedM
     throw new Error('no configuration file found');
   }
 
-  // Load the plugins.
+  // store the transformers which will map plugins to their resolved version.
   const transformers: PluginTransformers = Object.create(null);
-  const plugins = [...(result.config.plugins ?? [])];
+  // sort the plugins by priority
+  const plugins = sortPlugins(flattenPlugins(result.config.plugins));
   const transformedPlugins: ResolvedPlugin[] = [];
   const pluginProps: PluginProps = {
     ...result,
+    logger: createLogger(options?.logLevel ?? 'warn'),
     getPath: (...paths: string[]) => normalizePath(path.join(result.root, ...paths)),
     emit: emitter.emit,
     on: emitter.on,
@@ -123,7 +131,7 @@ export async function loadConfig(options?: LoadConfigOptions): Promise<ResolvedM
     args: [pluginProps],
     transformer: (values) =>
       deepMerge<ResolvedMonotsConfig>([
-        ...values,
+        ...values.filter((value): value is object => !!value),
         result,
         { plugins: transformedPlugins, ...emitterProps },
       ]),
@@ -132,4 +140,20 @@ export async function loadConfig(options?: LoadConfigOptions): Promise<ResolvedM
   await emitter.emit({ event: 'core:ready', async: true, args: [resolved], parallel: true });
 
   return resolved;
+}
+
+function getPriority(value: number | MonotsPriority | undefined): number {
+  return is.number(value)
+    ? value
+    : is.string(value)
+    ? MonotsPriority[value]
+    : MonotsPriority.Default;
+}
+
+function flattenPlugins(plugins: NestedMonotsPlugins = []): MonotsPlugin[] {
+  return plugins.flatMap((plugin) => (is.array(plugin) ? flattenPlugins(plugin) : plugin));
+}
+
+function sortPlugins(plugins: MonotsPlugin[]): MonotsPlugin[] {
+  return sort(plugins ?? []).desc((plugin) => getPriority(plugin.priority));
 }

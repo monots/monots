@@ -15,14 +15,14 @@
   "type": "module",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.esm.js",
-      "require": "./dist/index.cjs.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.cjs.js"
     },
     "./index.js": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.esm.js",
-      "require": "./dist/index.cjs.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.cjs.js"
     },
     "./package.json": "./package.json",
     "./types/*": "./dist/*.d.ts"
@@ -53,6 +53,7 @@
     "chalk": "^5.0.1",
     "chalk-template": "^0.4.0",
     "clipanion": "^3.1.0",
+    "consola": "^2.15.3",
     "del": "^6.1.1",
     "detect-indent": "^7.0.0",
     "esbuild": "^0.14.41",
@@ -60,7 +61,6 @@
     "execa": "^6.1.0",
     "fast-deep-equal": "^3.1.3",
     "fast-glob": "^3.2.11",
-    "fast-sort": "^3.1.3",
     "figures": "^4.0.1",
     "jest-diff": "^28.1.0",
     "js-yaml": "^4.1.0",
@@ -97,7 +97,12 @@
     ],
     "mode": "library",
     "tsconfigs": {
-      "src": {},
+      "src": {
+        "compilerOptions": {
+          "types": [],
+          "noEmit": true
+        }
+      },
       "tests": {
         "include": [
           "**/*.ts",

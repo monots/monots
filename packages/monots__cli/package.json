@@ -26,6 +26,7 @@
   ],
   "dependencies": {
     "@monots/core": "^0.16.0",
+    "@monots/plugin-commands": "^0.0.0",
     "@monots/types": "^0.1.9",
     "@monots/utils": "^0.5.0",
     "@types/yargs-parser": "^21.0.0",
@@ -34,6 +35,7 @@
     "clipanion": "^3.1.0",
     "esbuild": "^0.14.41",
     "esbuild-register": "^3.3.2",
+    "load-esm-config": "^0.2.0",
     "ora": "^6.1.0",
     "type-fest": "^2.13.0",
     "yargs-parser": "^21.0.1"

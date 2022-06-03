@@ -1,24 +1,42 @@
+import type { MonotsCommandContext } from '@monots/core';
 import { loadConfig, NAME } from '@monots/core';
-import type { CommandContext } from '@monots/types';
-import { getPackageJsonSync } from '@monots/utils';
+import type * as _ from '@monots/plugin-commands'; // for the types
+import { getPackageJson } from '@monots/utils';
+import chalk from 'chalk';
 import { Builtins, Cli } from 'clipanion';
+import { createLogger, LogLevel } from 'load-esm-config';
 import parser from 'yargs-parser';
-
-const { version, description = '', name } = getPackageJsonSync();
 
 /**
  * Loads the `monots` configuration and uses it to register all commands.
  */
 export async function createCli() {
+  const { version, description = '', name } = await getPackageJson(import.meta.url);
   const argv = parser(process.argv.slice(2));
-  const logLevel = argv.logLevel || argv.l;
+  const logLevel: LogLevel = argv.silent ? 'silent' : argv.logLevel ?? 'log';
   const result = await loadConfig();
+  const logger = createLogger(logLevel);
 
   if (!result) {
-    throw new Error('No configuration found for `monots`');
+    logger.error(new Error('No configuration found for `monots`'));
+    process.exit(1);
   }
 
-  const cli = new Cli<CommandContext>({
+  const context: MonotsCommandContext = {
+    ...result.cliContext,
+    internal: false,
+    version,
+    description,
+    name,
+    logLevel: logger.level,
+    logger,
+    cwd: process.cwd(),
+    stdin: process.stdin,
+    stdout: process.stdout,
+    stderr: process.stderr,
+  };
+
+  const cli = new Cli<MonotsCommandContext>({
     binaryLabel: description,
     binaryName: NAME,
     binaryVersion: version,
@@ -27,16 +45,14 @@ export async function createCli() {
   cli.register(Builtins.HelpCommand);
   cli.register(Builtins.VersionCommand);
 
-  // Gather commands
-}
+  for (const command of result.commands) {
+    cli.register(command);
+  }
 
-export const context: CommandContext = {
-  internal: false,
-  version,
-  description,
-  name,
-  cwd: process.cwd(),
-  stdin: process.stdin,
-  stdout: process.stdout,
-  stderr: process.stderr,
-};
+  try {
+    await cli.runExit(process.argv.slice(2), context);
+  } catch (error) {
+    logger.error(chalk.red('Unexpected error. Please report it as a bug:'));
+    logger.error(error);
+  }
+}

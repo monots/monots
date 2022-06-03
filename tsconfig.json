@@ -31,10 +31,13 @@
       "path": "packages/monots__core/tests"
     },
     {
-      "path": "packages/monots__dispatcher/src"
+      "path": "packages/monots__next-plugin/src"
     },
     {
-      "path": "packages/monots__next-plugin/src"
+      "path": "packages/monots__plugin-command-create/src"
+    },
+    {
+      "path": "packages/monots__plugin-commands/src"
     },
     {
       "path": "packages/monots__preset-core/src"

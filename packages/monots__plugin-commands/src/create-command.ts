@@ -1,26 +1,23 @@
-import { FatalError, ProjectEntity } from '@monots/core';
+import { FatalError, MonotsCommand, ProjectEntity, CommandOption } from '@monots/core';
 import type { CommandBoolean, CommandString, Usage } from '@monots/types';
 import { copyTemplate, folderExists, mangleScopedPackageName } from '@monots/utils';
-import chalkTemplate from 'chalk-template';
-import { Option } from 'clipanion';
+import chalk from 'chalk-template';
+
 import * as path from 'node:path';
 import ora from 'ora';
-
-import { getPackagePath } from '../utils.js';
-import { BaseCommand } from './base-command.js';
 
 /**
  * Create a package for the project.
  *
  * @category CliCommand
  */
-export class CreateCommand extends BaseCommand {
+export class CreateCommand extends MonotsCommand {
   static override paths = [['create']];
   static override usage: Usage = {
     description: 'Create a package for the current project in the packages folder.',
     category: 'Create',
     details: `
-      Create a TypeScript package within the current project.
+      Create a package using the provided template in the specified location.
     `,
     examples: [
       [
@@ -29,25 +26,25 @@ export class CreateCommand extends BaseCommand {
       ],
     ],
   };
-  packageName: CommandString = Option.String({ required: true });
+  packageName: CommandString = CommandOption.String({ required: true });
 
-  project?: CommandBoolean = Option.Boolean('--project,-P', {
+  project?: CommandBoolean = CommandOption.Boolean('--project,-P', {
     description: 'When true will create a new project instead.',
   });
 
-  keywords?: CommandString = Option.String('--keywords,-K', {
+  keywords?: CommandString = CommandOption.String('--keywords,-K', {
     description: 'Comma separated package keywords',
   });
 
-  interactive?: CommandBoolean = Option.Boolean('--interactive,-i', {
+  interactive?: CommandBoolean = CommandOption.Boolean('--interactive,-i', {
     description: 'Set to true to interactively add required data for the package',
   });
 
-  template?: CommandString = Option.String('--template,-T', {
+  template?: CommandString = CommandOption.String('--template,-T', {
     description: 'The template to use. This can be a file path or a url for a GitHub project',
   });
 
-  description?: CommandString = Option.String('--description,-D', {
+  description?: CommandString = CommandOption.String('--description,-D', {
     description: 'Set the description of the package being created',
   });
 
@@ -58,7 +55,7 @@ export class CreateCommand extends BaseCommand {
       throw new FatalError('Creating projects is not currently supported.', this.cwd);
     }
 
-    const spinner = ora(chalkTemplate`loading project package`).start();
+    const spinner = ora(chalk`loading project package`).start();
 
     try {
       const project = await ProjectEntity.create({ cwd: this.cwd });
@@ -66,7 +63,7 @@ export class CreateCommand extends BaseCommand {
 
       if (await folderExists(output)) {
         throw new FatalError(
-          chalkTemplate`A package already exists for: {bold ${this.packageName}}`,
+          chalk`A package already exists for: {bold ${this.packageName}}`,
           this.cwd,
         );
       }
@@ -88,11 +85,21 @@ export class CreateCommand extends BaseCommand {
       await project.savePackagesJson();
       await project.saveTsconfigFiles();
 
-      spinner.succeed(chalkTemplate`{bold amazing!} your package was created!`);
+      spinner.succeed(chalk`{bold amazing!} your package was created!`);
       return 0;
     } catch (error: any) {
       spinner.fail(`oops, something went wrong: ${error.message}`);
+      this.context.logger.error(error);
       return 1;
     }
   }
+}
+
+const DIRNAME = path.dirname(new URL(import.meta.url).pathname);
+
+/**
+ * Get the absolute path within this package.
+ */
+export function getPackagePath(...paths: string[]) {
+  return path.join(DIRNAME, '..', ...paths);
 }

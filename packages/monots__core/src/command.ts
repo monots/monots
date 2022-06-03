@@ -1,13 +1,23 @@
-import type { BaseContext, Command as CliCommand } from 'clipanion';
-import { Command, Option } from 'clipanion';
+import { PluginProps } from '@monots/types';
+import type { BaseContext, Command as CliCommand, Usage } from 'clipanion';
+import { Command, Option as CommandOption } from 'clipanion';
+import type { Consola } from 'consola';
+import { LogLevel } from 'load-esm-config';
 import * as path from 'node:path';
+import type { LooseTest } from 'typanion';
 import type { ConditionalPick } from 'type-fest';
+import { isEnum } from 'typanion';
+import { objectKeys } from 'ts-extras';
+import chalk from 'chalk';
 
-export abstract class MonotsCommand extends Command<CommandContext> implements MonotsCommandProps {
+export abstract class MonotsCommand
+  extends Command<MonotsCommandContext>
+  implements MonotsCommandProps
+{
   /**
    * Set the current working directory from the command line.
    */
-  cwd: CommandString = Option.String('--cwd', {
+  cwd: CommandString = CommandOption.String('--cwd', {
     description: 'Set the current working directory from which the command should be run',
     hidden: false,
   }) as CommandString;
@@ -15,17 +25,39 @@ export abstract class MonotsCommand extends Command<CommandContext> implements M
   /**
    * Set whether the command should use verbose logging from the command line.
    */
-  logLevel: CommandBoolean =
-    Option.String('--log-level', {
-      description: 'Set the log level .',
-    }) ?? false;
+  logLevel?: CommandEnum<keyof typeof LogLevel> = CommandOption.String('--log-level', {
+    validator: isEnum(objectKeys(LogLevel)),
+    description: `Set the log level to any of the following: ${objectKeys(LogLevel)
+      .map((name) => chalk.cyan(`"${name}"`))
+      .join(' | ')}`,
+  });
+
+  silent?: CommandBoolean = CommandOption.Boolean('--silent', {
+    description: 'Sets the log level to `silent`.',
+    hidden: true,
+  });
 
   async execute(): Promise<number | void> {
     this.cwd = this.cwd ? path.resolve(this.cwd) : this.context.cwd;
   }
 }
 
-export interface CommandContext extends BaseContext {
+export interface MonotsCommandClass {
+  new (): MonotsCommand;
+  paths?: string[][];
+  schema?: Array<
+    LooseTest<{
+      [key: string]: unknown;
+    }>
+  >;
+  usage?: Usage;
+}
+
+export interface MonotsCommand {
+  constructor: MonotsCommandClass;
+}
+
+export interface MonotsCommandContext extends BaseContext, monots.CommandContext {
   /**
    * The current working directory.
    */
@@ -53,6 +85,16 @@ export interface CommandContext extends BaseContext {
    * @default false
    */
   internal: boolean;
+
+  /**
+   * The log level that was used.
+   */
+  logLevel: LogLevel;
+
+  /**
+   * The logger to use when printing messages.
+   */
+  logger: Consola;
 }
 
 export interface MonotsCommandProps {
@@ -72,7 +114,7 @@ export type CommandBoolean = Annotate<boolean>;
 export type CommandArray<Type = string> = Annotate<Type[]>;
 export type CommandEnum<Type extends string> = Annotate<Type>;
 
-type AnnotatedPropsFromCommand<Command extends CliCommand<CommandContext>> = ConditionalPick<
+type AnnotatedPropsFromCommand<Command extends CliCommand<MonotsCommandContext>> = ConditionalPick<
   Command,
   FlaggedCommand
 >;
@@ -80,13 +122,13 @@ type AnnotatedPropsFromCommand<Command extends CliCommand<CommandContext>> = Con
 /**
  * Get the properties from a clipanion command.
  */
-export type PropsFromCommand<Command extends CliCommand<CommandContext>> = {
+export type PropsFromCommand<Command extends CliCommand<MonotsCommandContext>> = {
   [Key in keyof AnnotatedPropsFromCommand<Command>]: RemoveAnnotation<
     AnnotatedPropsFromCommand<Command>[Key]
   >;
 };
 
-export type { Usage } from 'clipanion';
+export { Option as CommandOption, type Usage } from 'clipanion';
 
 /**
  * This stores the available monots commands.
@@ -95,14 +137,26 @@ export interface MonotsCommands extends monots.Commands {}
 
 declare global {
   namespace monots {
-    interface Events {
-      /**
-       * This command can be used to register new commands. Commands are registered using the npm library `clipanion` and documentation is available
-       */
-      'register:commands': () => MonotsCommand[];
-    }
     interface Commands {
       [key: string]: MonotsCommand;
     }
+
+    interface Events {
+      /**
+       * This command can be used to register new commands. Commands are
+       * registered using the npm library `clipanion` and documentation is
+       * available
+       */
+      'commands:register': (props: PluginProps) => MonotsCommandClass[];
+    }
+
+    interface ResolvedConfig {
+      /**
+       * All the registered commands from the configured plugins.
+       */
+      commands: MonotsCommandClass[];
+    }
+
+    interface CommandContext {}
   }
 }

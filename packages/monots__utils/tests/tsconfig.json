@@ -9,8 +9,6 @@
   "compilerOptions": {
     "noEmit": true,
     "declaration": false,
-    "types": [
-      "node"
-    ]
+    "types": ["node"]
   }
 }

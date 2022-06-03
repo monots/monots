@@ -1,9 +1,32 @@
 import is from '@sindresorhus/is';
+import consola from 'consola';
 import merge, { type Options as DeepMergeOptions } from 'deepmerge';
 import * as path from 'node:path';
 
-import { SUPPORTED_EXTENSIONS } from './constants.js';
+import { LogLevel, SUPPORTED_EXTENSIONS } from './constants.js';
 import type { GenerateLookupFiles } from './types.js';
+
+const { Consola } = consola as unknown as typeof import('consola');
+
+/**
+ * Create a logger from the provided log level.
+ */
+export function createLogger(logLevel?: LogLevel): import('consola').Consola {
+  return !logLevel
+    ? new Consola({ level: LogLevel.log })
+    : is.string(logLevel)
+    ? new Consola({ level: LogLevel[logLevel] ?? 2 })
+    : is.number(logLevel)
+    ? new Consola({
+        level:
+          logLevel < 0
+            ? Number.NEGATIVE_INFINITY
+            : logLevel > 5
+            ? Number.POSITIVE_INFINITY
+            : logLevel,
+      })
+    : logLevel;
+}
 
 /**
  * Check that the file is a TypeScript file.

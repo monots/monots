@@ -3,10 +3,10 @@ import { findUp } from 'find-up';
 import * as path from 'node:path';
 import normalizePath from 'normalize-path';
 
-import { debug, DEFAULT_GET_ARGUMENT } from './constants.js';
+import { DEFAULT_GET_ARGUMENT } from './constants.js';
 import { loadEsmFile } from './load-esm-file.js';
 import type { ExportedConfig, LoadEsmConfigOptions, LoadEsmConfigResult } from './types.js';
-import { deepMerge, generateLookupFiles } from './utils.js';
+import { createLogger, deepMerge, generateLookupFiles } from './utils.js';
 
 /**
  * Load a configuration file with the given name.
@@ -33,8 +33,10 @@ export async function loadEsmConfig<Config extends object = any, Argument = unkn
     disableUpwardLookup = false,
     mergeOptions,
     exportKeys = { esm: ['default'], cjs: ['', 'default'] },
+    logLevel,
   } = options;
   // track the performance of loading the file.
+  const logger = createLogger(logLevel);
 
   const argument = getArgument(options);
 
@@ -57,14 +59,14 @@ export async function loadEsmConfig<Config extends object = any, Argument = unkn
   }
 
   if (!filepath) {
-    debug(`no configuration file found for ${name}`);
+    logger.info(`no configuration file found for ${name}`);
     return;
   }
 
   const result = await loadEsmFile(filepath);
 
   if (!result) {
-    debug(`no configuration file found for ${name}`);
+    logger.info(`no configuration file found for ${name}`);
     return;
   }
 
@@ -76,7 +78,11 @@ export async function loadEsmConfig<Config extends object = any, Argument = unkn
   if (isEsModule) {
     for (const key of exportKeys.esm) {
       if (key === '') {
-        throw new Error('Invalid config: Cannot use an empty string as export key for esm.');
+        const error = new Error(
+          'Invalid config: Cannot use an empty string as export key for esm.',
+        );
+        logger.error(error);
+        throw error;
       }
 
       if (exported[key]) {
@@ -100,8 +106,9 @@ export async function loadEsmConfig<Config extends object = any, Argument = unkn
   const config = await (is.function_(exportedConfig) ? exportedConfig(argument) : exportedConfig);
 
   if (typeof config !== 'object') {
-    debug('configuration file did not return an object');
-    throw new Error(`the provided configuration must export or return an object.`);
+    const error = new Error(`the provided configuration must export or return an object.`);
+    logger.error(error);
+    throw error;
   }
 
   return {

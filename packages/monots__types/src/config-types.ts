@@ -6,13 +6,19 @@ import type { RemoveIndexSignature, ValueOf } from 'type-fest';
  */
 export interface MonotsEvents extends monots.Events {}
 
-// export type Events = RemoveIndexSignature<MonotsEvents>;
+export type NestedMonotsPlugins = Array<MonotsPlugin | NestedMonotsPlugins>;
 
 export interface MonotsConfig {
   /**
    * The plugins for the root packages.
    */
-  plugins?: MonotsPlugin[];
+  plugins?: NestedMonotsPlugins;
+
+  /**
+   * Names of plugins and the priority they should be loaded with. This
+   * overrides the priority provided to the plugin configuration.
+   */
+  priorities?: Record<string, MonotsPriority>;
 
   /**
    * The array of glob patterns for the packages to search through in the
@@ -245,7 +251,7 @@ declare global {
      * Extend this interface to add your own typed events to emit.
      */
     interface Events {
-      [key: string]: (...args: any[]) => MaybePromise<any>;
+      // [key: string]: (...args: any[]) => MaybePromise<any>;
     }
     interface Plugins {
       [key: string]: Plugin;

@@ -1,7 +1,8 @@
-import type { DeepMergeOptions } from '@monots/utils';
 import type { PartialDeep } from 'type-fest';
 
+import type { LogLevel } from './constants.js';
 import { type SupportedExtensions } from './constants.js';
+import type { DeepMergeOptions } from './utils.js';
 
 /**
  * The configuration as a function.
@@ -121,6 +122,12 @@ export interface LoadEsmConfigOptions<Config extends object = object, Argument =
    * @default false
    */
   disableUpwardLookup?: boolean;
+
+  /**
+   * The log level to use. Optionally you can provide your own instance of
+   * `consola` with it's log level already set.
+   */
+  logLevel?: LogLevel;
 }
 
 /**
@@ -160,3 +167,5 @@ export interface GenerateLookupFiles {
   extensions: SupportedExtensions[];
   dirs: string[];
 }
+
+export type { Consola } from 'consola';

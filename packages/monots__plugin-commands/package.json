@@ -1,9 +1,9 @@
 {
-  "name": "superstruct-extra",
-  "version": "0.2.0",
-  "description": "Extra types, refinements and coersions for superstruct.",
+  "name": "@monots/plugin-commands",
+  "version": "0.0.0",
+  "description": "A core plugin which adds cli command functionality to monots",
   "keywords": [],
-  "repository": "https://github.com/monots/monots/tree/master/packages/superstruct-extra",
+  "repository": "https://github.com/monots/monots/tree/master/packages/monots__plugin-commands",
   "license": "MIT",
   "contributors": [],
   "sideEffects": false,
@@ -26,20 +26,16 @@
   "browser": "./dist/index.browser.esm.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "templates"
   ],
   "dependencies": {
+    "@monots/core": "^0.16.0",
     "@monots/types": "^0.1.9",
-    "@types/is-uuid": "^1.0.0",
-    "email-validator": "^2.0.4",
-    "is-uuid": "^1.0.2",
-    "type-fest": "^2.13.0"
-  },
-  "devDependencies": {
-    "superstruct": "^0.15.4"
-  },
-  "peerDependencies": {
-    "superstruct": "*"
+    "@monots/utils": "^0.5.0",
+    "chalk": "^5.0.1",
+    "chalk-template": "^0.4.0",
+    "ora": "^6.1.0"
   },
   "publishConfig": {
     "access": "public"
@@ -48,8 +44,8 @@
     "entrypoints": [
       "index.ts"
     ],
-    "mode": "library",
     "tsconfigs": {},
+    "mode": "library",
     "externalModules": []
   }
 }

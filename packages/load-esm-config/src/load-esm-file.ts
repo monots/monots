@@ -7,10 +7,10 @@ import invariant from 'tiny-invariant';
 import { objectKeys } from 'ts-extras';
 import { parse } from 'tsconfck';
 
-import { debug } from './constants.js';
-import { loadFromBundledFile } from './load-from-bundled-file';
+import type { LogLevel } from './constants.js';
+import { loadFromBundledFile } from './load-from-bundled-file.js';
 import type { BundleConfigFile } from './types.js';
-import { isCommonJsFile, isEsModuleFile, isTypeScriptFile } from './utils';
+import { createLogger, isCommonJsFile, isEsModuleFile, isTypeScriptFile } from './utils.js';
 
 export interface LoadEsmFileResult {
   /**
@@ -34,14 +34,28 @@ export interface LoadEsmFileResult {
   isEsModule: boolean;
 }
 
+interface LoadEsmFileOptions {
+  /**
+   * The `logLevel` or instance of consola.
+   */
+  logLevel?: LogLevel;
+}
+
 /**
  * Load all the exports from the requested file. This will check the nearest
  * package.json for whether to load the file as an esm module.
  *
  * If the closest parent `package.json` file has a `"type": "module"` then this
  * will be loaded as an esm module.
+ *
+ * @param filepath the `cwd` is set to the `path.dirname()` of this filepath
+ * provided.
  */
-export async function loadEsmFile(filepath: string): Promise<LoadEsmFileResult | undefined> {
+export async function loadEsmFile(
+  filepath: string,
+  options: LoadEsmFileOptions = {},
+): Promise<LoadEsmFileResult | undefined> {
+  const logger = createLogger(options.logLevel);
   const cwd = path.dirname(filepath);
   const start = performance.now();
   const getDuration = () => `${(performance.now() - start).toFixed(2)}ms`;
@@ -81,13 +95,13 @@ export async function loadEsmFile(filepath: string): Promise<LoadEsmFileResult |
       try {
         await fs.writeFile(tmpFile, bundled.code);
         exported = await import(`${fileUrl}.js?t=${now}`);
-        debug(`TS + native esm config loaded in ${getDuration()}`, fileUrl);
+        logger.debug(`TS + native esm config loaded in ${getDuration()}`, fileUrl);
       } finally {
         await fs.unlink(tmpFile);
       }
     } else {
       exported = await import(`${fileUrl}?t=${now}`);
-      debug(`native esm config loaded in ${getDuration()}`, fileUrl);
+      logger.debug(`native esm config loaded in ${getDuration()}`, fileUrl);
     }
   }
 
@@ -96,7 +110,7 @@ export async function loadEsmFile(filepath: string): Promise<LoadEsmFileResult |
     const bundled = await bundleConfigFile({ fileName: filepath, cwd });
     dependencies = bundled.dependencies;
     exported = await loadFromBundledFile(filepath, bundled.code);
-    debug(`bundled config file loaded in ${getDuration()}`);
+    logger.debug(`bundled config file loaded in ${getDuration()}`);
   }
 
   if (!exported) {

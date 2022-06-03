@@ -12,7 +12,13 @@
   },
   "references": [
     {
+      "path": "../../load-esm-config/src"
+    },
+    {
       "path": "../../monots__core/src"
+    },
+    {
+      "path": "../../monots__plugin-commands/src"
     },
     {
       "path": "../../monots__test/src"
