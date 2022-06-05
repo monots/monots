@@ -1,0 +1,11 @@
+// Vitest Snapshot v1
+
+exports[`can process a basic template config 1`] = `
+{
+  "description": "base",
+  "name": "base",
+  "version": "1.0.0",
+}
+`;
+
+exports[`can process a basic template config 2`] = `""`;
