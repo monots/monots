@@ -1,6 +1,0 @@
-/**
- * Add your inline documentation
- */
-export function <%= camelCaseName %>() {
-  return '';
-}

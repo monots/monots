@@ -16,6 +16,9 @@
       "path": "packages/load-esm-config/src"
     },
     {
+      "path": "packages/monots__binary-install/src"
+    },
+    {
       "path": "packages/monots__cli/src"
     },
     {
@@ -34,9 +37,6 @@
       "path": "packages/monots__next-plugin/src"
     },
     {
-      "path": "packages/monots__plugin-command-create/src"
-    },
-    {
       "path": "packages/monots__plugin-commands/src"
     },
     {
@@ -44,6 +44,12 @@
     },
     {
       "path": "packages/monots__preset-npm/src"
+    },
+    {
+      "path": "packages/monots__template/src"
+    },
+    {
+      "path": "packages/monots__template/tests"
     },
     {
       "path": "packages/monots__test/src"

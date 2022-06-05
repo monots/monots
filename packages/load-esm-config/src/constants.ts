@@ -1,7 +1,18 @@
-import type { ValueOf } from 'type-fest';
 import type { Consola } from 'consola';
+import * as path from 'node:path';
+import type { ValueOf } from 'type-fest';
+
+interface GetPatternProps {
+  name: string;
+  extension: string;
+  directory: string;
+}
 
 export const DEFAULT_GET_ARGUMENT = () => {};
+export const DEFAULT_GET_PATTERN = (props: GetPatternProps) => [
+  path.join(props.directory, `${props.name}.config${props.extension}`),
+];
+export type GetPattern = typeof DEFAULT_GET_PATTERN;
 export const SUPPORTED_EXTENSIONS = [
   '.tsx',
   '.ts',

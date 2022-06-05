@@ -1,7 +1,6 @@
 import is from '@sindresorhus/is';
 import consola from 'consola';
 import merge, { type Options as DeepMergeOptions } from 'deepmerge';
-import * as path from 'node:path';
 
 import { LogLevel, SUPPORTED_EXTENSIONS } from './constants.js';
 import type { GenerateLookupFiles } from './types.js';
@@ -59,12 +58,12 @@ export function isCommonJsFile(filename: string): boolean {
  * Generate the files to load the configuration from.
  */
 export function generateLookupFiles(options: GenerateLookupFiles): string[] {
-  const { name, extensions, dirs } = options;
+  const { name, extensions, dirs, getPattern } = options;
   const files: string[] = [];
 
-  for (const dir of dirs) {
-    for (const ext of extensions) {
-      files.push(path.join(dir, `${name}.config${ext}`));
+  for (const directory of dirs) {
+    for (const extension of extensions) {
+      files.push(...getPattern({ name, extension, directory }));
     }
   }
 

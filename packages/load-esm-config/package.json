@@ -38,6 +38,7 @@
     "debug": "^4.3.4",
     "deepmerge": "^4.2.2",
     "esbuild": "^0.14.41",
+    "esbuild-plugin-alias": "^0.2.1",
     "find-up": "^6.3.0",
     "normalize-path": "^3.0.0",
     "read-pkg-up": "^9.1.0",
@@ -45,9 +46,6 @@
     "ts-extras": "^0.10.2",
     "tsconfck": "^2.0.1",
     "type-fest": "^2.13.0"
-  },
-  "devDependencies": {
-    "@monots/test": "^0.0.0"
   },
   "publishConfig": {
     "access": "public"

@@ -4,17 +4,20 @@ import type * as _ from '@monots/plugin-commands'; // for the types
 import { getPackageJson } from '@monots/utils';
 import chalk from 'chalk';
 import { Builtins, Cli } from 'clipanion';
-import { createLogger, LogLevel } from 'load-esm-config';
+import type { LogLevel } from 'load-esm-config';
+import { createLogger } from 'load-esm-config';
 import parser from 'yargs-parser';
 
 /**
  * Loads the `monots` configuration and uses it to register all commands.
  */
 export async function createCli() {
-  const { version, description = '', name } = await getPackageJson(import.meta.url);
+  const [{ version, description = '', name }, result] = await Promise.all([
+    getPackageJson(import.meta.url),
+    loadConfig(),
+  ]);
   const argv = parser(process.argv.slice(2));
   const logLevel: LogLevel = argv.silent ? 'silent' : argv.logLevel ?? 'log';
-  const result = await loadConfig();
   const logger = createLogger(logLevel);
 
   if (!result) {

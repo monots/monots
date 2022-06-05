@@ -1,7 +1,8 @@
 import type { CorePlugin, MonotsCommand, MonotsCommandClass } from '@monots/core';
-import { PluginProps } from '@monots/types';
+import type { PluginProps } from '@monots/types';
 import { deepMerge } from '@monots/utils';
-import ora, { Ora } from 'ora';
+import type { Ora } from 'ora';
+import ora from 'ora';
 
 import { BuildCommand } from './build-command.js';
 

@@ -34,8 +34,12 @@ test.concurrent('`monots prepare` should create development dist files', async (
     ].map((file) => fs.readlink(file)),
   );
 
+  const [firstLine, ...restOfMain] = main?.split('\n') ?? [];
+
   expect(result, 'The result is successful').toBe(0);
-  expect(main).toMatchSnapshot();
+  expect(firstLine?.includes('esbuild-register')).toBe(true);
+  expect(firstLine?.startsWith('const { register } = require(')).toBe(true);
+  expect(restOfMain.join('\n')).toMatchSnapshot();
   expect(types).toMatchSnapshot();
   expect(typesWithDefault).toMatchSnapshot();
   expect(symlinkTargets.map((file) => path.relative(getPath(), file))).toMatchSnapshot();

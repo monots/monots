@@ -1,8 +1,7 @@
-import { FatalError, MonotsCommand, ProjectEntity, CommandOption } from '@monots/core';
+import { CommandOption, FatalError, MonotsCommand, ProjectEntity } from '@monots/core';
 import type { CommandBoolean, CommandString, Usage } from '@monots/types';
 import { copyTemplate, folderExists, mangleScopedPackageName } from '@monots/utils';
 import chalk from 'chalk-template';
-
 import * as path from 'node:path';
 import ora from 'ora';
 

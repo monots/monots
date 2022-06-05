@@ -1,12 +1,14 @@
-import shell from 'shelljs';
-import chalkTemplate from 'chalk-template';
+import chalk from 'chalk-template';
+import { execa } from 'execa';
 
-const auditResult = shell.exec('pnpm audit --fix', {});
+const subprocess = execa('pnpm', ['audit', '--fix'], { stdio: 'pipe' });
+// subprocess.stdout?.pipe(process.stdout);
+const { stdout } = await subprocess;
 
-if (auditResult.stdout.includes('No fixes were made')) {
-  chalkTemplate`{yellow no fixes required 🎉}`;
+if (stdout.includes('No fixes were made')) {
+  console.log(chalk`{yellow no fixes required 🎉}`);
   process.exit(0);
 }
 
-console.log(chalkTemplate`{yellow updating dependencies after fixing security risks}`);
-shell.exec('pnpm install');
+console.log(chalk`{yellow updating dependencies after fixing security risks}`);
+await execa('pnpm', ['install'], { stdio: 'inherit' });

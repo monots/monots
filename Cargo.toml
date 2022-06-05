@@ -1,0 +1,6 @@
+[workspace]
+# Use the newer version of the cargo resolver
+# https://doc.rust-lang.org/cargo/reference/resolver.html#resolver-versions
+resolver = "2"
+members = ["crates/*", "crates/*/node", "crates/*/wasm", "crates/*/deno"]
+default-members = ["crates/*"]

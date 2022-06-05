@@ -7,7 +7,7 @@ import type {
   ResolvedMonotsConfig,
 } from '@monots/types';
 import type { Emitter } from '@monots/utils';
-import type { ExportedConfig, LoadEsmConfigOptions, Consola } from 'load-esm-config';
+import type { Consola, ExportedConfig, LoadEsmConfigOptions } from 'load-esm-config';
 import type { Except, RemoveIndexSignature, TsConfigJson as BaseTsConfigJson } from 'type-fest';
 
 /**

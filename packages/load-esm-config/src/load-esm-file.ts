@@ -1,4 +1,5 @@
 import { build } from 'esbuild';
+import aliasPlugin from 'esbuild-plugin-alias';
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -39,6 +40,11 @@ interface LoadEsmFileOptions {
    * The `logLevel` or instance of consola.
    */
   logLevel?: LogLevel;
+
+  /**
+   * The aliases to add to the `tsconfig.paths` object.
+   */
+  alias?: Record<string, string>;
 }
 
 /**
@@ -55,7 +61,8 @@ export async function loadEsmFile(
   filepath: string,
   options: LoadEsmFileOptions = {},
 ): Promise<LoadEsmFileResult | undefined> {
-  const logger = createLogger(options.logLevel);
+  const { alias, logLevel } = options;
+  const logger = createLogger(logLevel);
   const cwd = path.dirname(filepath);
   const start = performance.now();
   const getDuration = () => `${(performance.now() - start).toFixed(2)}ms`;
@@ -82,7 +89,7 @@ export async function loadEsmFile(
 
   if (isEsModule) {
     const fileUrl = pathToFileURL(filepath);
-    const bundled = await bundleConfigFile({ fileName: filepath, isEsModule, cwd });
+    const bundled = await bundleConfigFile({ fileName: filepath, isEsModule, cwd, alias });
     const now = Date.now();
     dependencies = bundled.dependencies;
 
@@ -107,7 +114,7 @@ export async function loadEsmFile(
 
   if (!exported) {
     // bundle config file and transpile to cjs using esbuild
-    const bundled = await bundleConfigFile({ fileName: filepath, cwd });
+    const bundled = await bundleConfigFile({ fileName: filepath, cwd, alias });
     dependencies = bundled.dependencies;
     exported = await loadFromBundledFile(filepath, bundled.code);
     logger.debug(`bundled config file loaded in ${getDuration()}`);
@@ -126,7 +133,7 @@ export async function loadEsmFile(
 async function bundleConfigFile(
   options: BundleConfigFile,
 ): Promise<{ code: string; dependencies: string[] }> {
-  const { fileName, cwd, isEsModule = false } = options;
+  const { fileName, cwd, isEsModule = false, alias = {} } = options;
   const { tsconfig } = await parse(fileName);
   const tsconfigPaths = objectKeys(tsconfig?.compilerOptions?.paths ?? {}).map(
     (path) => new RegExp(`^${path.replace('*', '[a-zA-Z-_\\$\\[\\]]*')}`),
@@ -147,6 +154,7 @@ async function bundleConfigFile(
     // Target the current version of node.
     target: `node${process.versions.node}`,
     plugins: [
+      aliasPlugin(alias),
       {
         name: 'externalize-deps',
         setup(build) {

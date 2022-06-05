@@ -3,7 +3,7 @@ import { findUp } from 'find-up';
 import * as path from 'node:path';
 import normalizePath from 'normalize-path';
 
-import { DEFAULT_GET_ARGUMENT } from './constants.js';
+import { DEFAULT_GET_ARGUMENT, DEFAULT_GET_PATTERN } from './constants.js';
 import { loadEsmFile } from './load-esm-file.js';
 import type { ExportedConfig, LoadEsmConfigOptions, LoadEsmConfigResult } from './types.js';
 import { createLogger, deepMerge, generateLookupFiles } from './utils.js';
@@ -30,18 +30,17 @@ export async function loadEsmConfig<Config extends object = any, Argument = unkn
     dirs = ['.config', ''],
     extensions = ['.ts', '.tsx', '.mts', '.cts', '.js', '.jsx', '.mjs', '.cjs'],
     getArgument = DEFAULT_GET_ARGUMENT,
+    getPattern = DEFAULT_GET_PATTERN,
     disableUpwardLookup = false,
     mergeOptions,
     exportKeys = { esm: ['default'], cjs: ['', 'default'] },
     logLevel,
+    alias,
   } = options;
-  // track the performance of loading the file.
-  const logger = createLogger(logLevel);
 
+  const logger = createLogger(logLevel); // track the performance of loading the file.
   const argument = getArgument(options);
-
-  // lookup the configuration file from the provided `cwd`.
-  const LOOKUP_FILES = generateLookupFiles({ name, extensions, dirs });
+  const LOOKUP_FILES = generateLookupFiles({ name, extensions, dirs, getPattern }); // lookup the configuration file from the provided `cwd`.
   const stopAt = disableUpwardLookup ? cwd : undefined;
   let root = cwd;
   let filepath: string | undefined;
@@ -63,7 +62,7 @@ export async function loadEsmConfig<Config extends object = any, Argument = unkn
     return;
   }
 
-  const result = await loadEsmFile(filepath);
+  const result = await loadEsmFile(filepath, { logLevel: logger, alias });
 
   if (!result) {
     logger.info(`no configuration file found for ${name}`);

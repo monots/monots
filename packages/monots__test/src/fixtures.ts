@@ -1,7 +1,8 @@
 import del from 'del';
 import { loadJsonFile } from 'load-json-file';
-import { randomBytes } from 'node:crypto';
+import * as crypto from 'node:crypto';
 import * as path from 'node:path';
+import * as fs from 'node:fs/promises';
 import copy from 'recursive-copy';
 
 interface CreateSetupFixtures<Context extends object> {
@@ -35,21 +36,23 @@ export function createSetupFixtures<Context extends object>(options: CreateSetup
   const tmp = path.join(root, '..', 'tmp');
 
   async function setupFixtures(dir: string) {
-    const target = path.join(tmp, `${dir}-${randomBytes(5).toString('hex')}`);
+    const target = path.join(tmp, `${dir}-${crypto.randomBytes(5).toString('hex')}`);
     const source = path.join(root, dir);
 
     // in case of name-clash override the previous directory.
-    await copy(source, target, { overwrite: true });
+    await copy(source, target, { overwrite: true, dot: true, junk: true });
 
     function getPath(...paths: string[]) {
       return path.join(target, ...paths);
     }
 
+    const cleanupTargets = [target];
+
     async function cleanup() {
-      await del(target, { force: true });
+      await del(cleanupTargets, { force: true });
     }
 
-    cleanups = [...cleanups, cleanup];
+    cleanups.push(cleanup);
 
     return {
       getPath,
@@ -62,6 +65,29 @@ export function createSetupFixtures<Context extends object>(options: CreateSetup
       },
       loadJsonFile: async <Json = any>(...paths: string[]) => loadJsonFile<Json>(getPath(...paths)),
       context: { ...context, cwd: getPath() },
+      readFile: async (path: string, encoding?: BufferEncoding) =>
+        fs.readFile(getPath(path), { encoding }),
+      /**
+       * Create a temporary folder to use adjacent to the initial that
+       * will automatically be cleaned up when cleaning up the fixtures.
+       */
+      tmp: (name?: string) => {
+        const prefix = name ? `${name}-` : '';
+        const folder = path.join(tmp, `${prefix}${dir}-${crypto.randomBytes(5).toString('hex')}`);
+        cleanupTargets.push(folder);
+
+        function getPath(...paths: string[]) {
+          return path.join(folder, ...paths);
+        }
+
+        return {
+          getPath,
+          loadJsonFile: async <Json = any>(...paths: string[]) =>
+            loadJsonFile<Json>(getPath(...paths)),
+          readFile: async (path: string, encoding?: BufferEncoding) =>
+            fs.readFile(getPath(path), { encoding }),
+        };
+      },
     };
   }
 

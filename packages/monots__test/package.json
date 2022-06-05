@@ -1,8 +1,7 @@
 {
   "name": "@monots/test",
   "version": "0.0.0",
-  "private": true,
-  "description": "Test utilities ",
+  "description": "Internal testing utilities for `monots`",
   "keywords": [],
   "repository": "https://github.com/monots/monots/tree/master/packages/monots__test",
   "license": "MIT",
@@ -37,7 +36,7 @@
     "recursive-copy": "^2.0.14"
   },
   "devDependencies": {
-    "@types/node": "^17.0.38"
+    "@types/node": "^17.0.40"
   },
   "peerDependencies": {
     "@types/node": "^16 || ^17 || ^18"

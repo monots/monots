@@ -1,6 +1,0 @@
-[workspace]
-members = ["crates/*"]
-default-members = ["crates/*"]
-
-[profile.release]
-overflow-checks = true

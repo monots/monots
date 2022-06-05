@@ -140,3 +140,7 @@ yarn.lock
 
 # CI `pnpm` cache
 .pnpm-store/
+
+/rustfmt.toml
+/rust-toolchain.toml
+/target

@@ -1,7 +1,6 @@
 import type { PartialDeep } from 'type-fest';
 
-import type { LogLevel } from './constants.js';
-import { type SupportedExtensions } from './constants.js';
+import type { GetPattern, LogLevel, SupportedExtensions } from './constants.js';
 import type { DeepMergeOptions } from './utils.js';
 
 /**
@@ -78,6 +77,21 @@ export interface LoadEsmConfigOptions<Config extends object = object, Argument =
   };
 
   /**
+   * The file patterns to search for.
+   *
+   * @default
+   *
+   * ```ts
+   * import * as path from 'node:path';
+   *
+   * function getPattern(props: GetPatternProps) {
+   *   return [ path.join(props.directory, `${props.name}.config${props.extension}`)];
+   * }
+   * ```
+   */
+  getPattern?: GetPattern;
+
+  /**
    * The extensions to support.
    *
    * @default ['.ts', '.mts', '.cts', '.js', '.mjs', '.cjs']
@@ -128,6 +142,16 @@ export interface LoadEsmConfigOptions<Config extends object = object, Argument =
    * `consola` with it's log level already set.
    */
   logLevel?: LogLevel;
+
+  /**
+   * Alias certain dependencies.
+   *
+   * This is helpful when the file being loaded will not be loaded in the
+   * context of the imported dependencies.
+   *
+   * The format is identical to the `tsconfig.json > compilerOptions.paths` property.
+   */
+  alias?: Record<string, string>;
 }
 
 /**
@@ -160,12 +184,10 @@ export interface BundleConfigFile {
   fileName: string;
   isEsModule?: boolean;
   cwd: string;
+  alias?: Record<string, string>;
 }
 
-export interface GenerateLookupFiles {
-  name: string;
-  extensions: SupportedExtensions[];
-  dirs: string[];
-}
+export interface GenerateLookupFiles
+  extends Pick<Required<LoadEsmConfigOptions>, 'name' | 'extensions' | 'dirs' | 'getPattern'> {}
 
 export type { Consola } from 'consola';

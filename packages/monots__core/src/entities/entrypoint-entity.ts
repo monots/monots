@@ -202,7 +202,7 @@ export class EntrypointEntity extends BaseEntity<Entrypoint> {
         );
         return fs.writeFile(
           target,
-          `// Allow the project to be used for commonjs environments \nconst { register } = require('${register}');\n\nconst { unregister } = register({ target: \`node\${process.version.slice(1)}\`})\nmodule.exports = require('${relativePath}');\nunregister();`.trim(),
+          `const { register } = require('${register}');\n\nconst { unregister } = register({ target: \`node\${process.version.slice(1)}\`})\nmodule.exports = require('${relativePath}');\nunregister();`.trim(),
         );
       });
 

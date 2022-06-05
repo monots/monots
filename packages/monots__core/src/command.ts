@@ -1,14 +1,14 @@
-import { PluginProps } from '@monots/types';
+import type { PluginProps } from '@monots/types';
+import chalk from 'chalk';
 import type { BaseContext, Command as CliCommand, Usage } from 'clipanion';
 import { Command, Option as CommandOption } from 'clipanion';
 import type { Consola } from 'consola';
 import { LogLevel } from 'load-esm-config';
 import * as path from 'node:path';
-import type { LooseTest } from 'typanion';
-import type { ConditionalPick } from 'type-fest';
-import { isEnum } from 'typanion';
 import { objectKeys } from 'ts-extras';
-import chalk from 'chalk';
+import type { LooseTest } from 'typanion';
+import { isEnum } from 'typanion';
+import type { ConditionalPick } from 'type-fest';
 
 export abstract class MonotsCommand
   extends Command<MonotsCommandContext>
@@ -128,7 +128,7 @@ export type PropsFromCommand<Command extends CliCommand<MonotsCommandContext>> =
   >;
 };
 
-export { Option as CommandOption, type Usage } from 'clipanion';
+export { type Usage, Option as CommandOption } from 'clipanion';
 
 /**
  * This stores the available monots commands.

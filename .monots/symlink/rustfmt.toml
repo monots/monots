@@ -1,0 +1,28 @@
+# versions
+edition = "2021"
+version = "Two"
+unstable_features = true
+
+# file defaults
+newline_style = "Unix"
+tab_spaces = 2
+
+# imports and modules
+imports_granularity = "Crate"
+imports_layout = "HorizontalVertical"
+reorder_imports = true
+group_imports = "StdExternalCrate"
+reorder_modules = true
+
+# comments and docs
+format_code_in_doc_comments = true
+normalize_comments = true
+wrap_comments = true
+
+# extras
+condense_wildcard_suffixes = true
+force_multiline_blocks = true
+format_macro_matchers = true
+format_strings = true
+reorder_impl_items = true
+use_field_init_shorthand = true

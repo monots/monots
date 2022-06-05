@@ -16,7 +16,7 @@
     "chalk": "^5.0.1",
     "chalk-template": "^0.4.0",
     "load-json-file": "^7.0.1",
-    "shelljs": "^0.8.5",
+    "execa": "^6.1.0",
     "write-json-file": "^5.0.0"
   },
   "monots": {

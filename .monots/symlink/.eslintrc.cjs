@@ -14,7 +14,10 @@ module.exports = {
     },
     { files: ['*.tsx'], extends: ['monots/react'] },
     {
-      files: ['./packages/{create-monots,monots__cli}/src/**/*.ts', './.monots/**'],
+      files: [
+        './packages/{create-monots,monots__cli,monots__binary-install}/src/**/*.ts',
+        './.monots/**',
+      ],
       rules: { 'no-console': 'off', 'unicorn/no-process-exit': 'off' },
     },
     {

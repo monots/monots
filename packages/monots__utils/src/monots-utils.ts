@@ -129,8 +129,6 @@ export async function copyTemplate(props: CopyTemplateProps) {
         transform: (chunk, _encoding, done) => {
           const output = template(chunk.toString())(variablesWithCasing);
           done(undefined, output);
-          // render(chunk.toString(), variables, {}, (error, ouput) => {
-          // });
         },
       });
     },
