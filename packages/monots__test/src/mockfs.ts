@@ -1,5 +1,4 @@
 import { vol } from 'memfs';
-import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
 
 declare type DirectoryContent = string | null;

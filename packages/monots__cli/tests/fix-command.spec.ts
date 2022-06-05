@@ -6,7 +6,7 @@ import { cli, context } from '../src/setup';
 const setupFixtures = createSetupFixtures({ context, fileUrl: import.meta.url });
 
 afterAll(async () => {
-  setupFixtures.cleanup();
+  await setupFixtures.cleanup();
 });
 
 test.concurrent('`monots fix` should update the package.json files', async ({ expect }) => {

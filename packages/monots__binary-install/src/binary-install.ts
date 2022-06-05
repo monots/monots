@@ -1,13 +1,16 @@
 import chalk from 'chalk';
 import del from 'del';
-import { createReadStream, createWriteStream } from 'node:fs';
+import {
+  createReadStream,
+  // createWriteStream
+} from 'node:fs';
 import * as fs from 'node:fs/promises';
 import * as os from 'node:os';
 import * as path from 'node:path';
 import { pipeline } from 'node:stream/promises';
 import fetch from 'node-fetch';
-import StreamZip from 'node-stream-zip';
-import * as tar from 'tar';
+// import StreamZip from 'node-stream-zip';
+// import * as tar from 'tar';
 
 /**
  * Check if a folder exists for the provided `folderPath` the provided target.

@@ -50,7 +50,19 @@
   "monots": {
     "mode": "cli",
     "tsconfigs": {
-      "tests": {}
+      "tests": {
+        "include": [
+          "**/*.ts",
+          "**/*.js",
+          "*.ts",
+          "*.js"
+        ],
+        "exclude": [
+          "fixtures/**",
+          "tmp/**",
+          "mocks/**"
+        ]
+      }
     }
   }
 }

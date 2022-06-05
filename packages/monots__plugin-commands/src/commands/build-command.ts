@@ -1,7 +1,6 @@
 import { MonotsCommand, ProjectEntity } from '@monots/core';
 import type { Usage } from '@monots/types';
-import chalkTemplate from 'chalk-template';
-import ora from 'ora';
+import chalk from 'chalk-template';
 
 /**
  * This command is used to prepare the project by setting up all the entrypoints
@@ -23,10 +22,9 @@ export class BuildCommand extends MonotsCommand {
     examples: [['Build your files', '$0 build']],
   };
 
-  override async execute() {
-    this.cli.run();
-    super.execute();
-    const spinner = ora(chalkTemplate`loading project`).start();
+  async run() {
+    const { ora } = this.context;
+    const spinner = ora.start(chalk`loading project`);
 
     try {
       const project = await ProjectEntity.create({ cwd: this.cwd });
@@ -36,7 +34,7 @@ export class BuildCommand extends MonotsCommand {
       spinner.text = 'building project';
       await project.build();
 
-      spinner.succeed(chalkTemplate`{bold yay!} your project was built successfully!`);
+      spinner.succeed(chalk`{bold yay!} your project was built successfully!`);
       return 0;
     } catch (error: any) {
       spinner.fail(`oops, something went wrong: ${error.message}`);

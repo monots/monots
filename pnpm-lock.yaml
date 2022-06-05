@@ -442,7 +442,6 @@ importers:
       inquirer: ^8.2.4
       load-esm-config: ^0.2.0
       lodash.template: ^4.5.0
-      mlly: ^0.5.2
       normalize-path: ^3.0.0
       recursive-copy: ^2.0.14
       ts-extras: ^0.10.2
@@ -457,7 +456,6 @@ importers:
       inquirer: 8.2.4
       load-esm-config: link:../load-esm-config
       lodash.template: 4.5.0
-      mlly: 0.5.2
       normalize-path: 3.0.0
       recursive-copy: 2.0.14
       ts-extras: 0.10.2
@@ -5631,17 +5629,6 @@ packages:
     hasBin: true
     dev: false
 
-  /mlly/0.3.19:
-    resolution: {integrity: sha512-zMq5n3cOf4fOzA4WoeulxagbAgMChdev3MgP6K51k7M0u2whTXxupfIY4VVzws4vxkiWhwH1rVQcsw7zDGfRhA==}
-    dev: false
-
-  /mlly/0.5.2:
-    resolution: {integrity: sha512-4GTELSSErv6ZZJYU98fZNuIBJcXSz+ktHdRrCYEqU1m6ZlebOCG0jwZ+IEd9vOrbpYsVBBMC5OTrEyLnKRcauQ==}
-    dependencies:
-      pathe: 0.2.0
-      pkg-types: 0.3.2
-    dev: false
-
   /mrmime/1.0.0:
     resolution: {integrity: sha512-a70zx7zFfVO7XpnQ2IX1Myh9yY4UYvfld/dikWRnsXxbyvMcfz+u6UfgNAtH+k2QqtJuzVpv6eLTx1G2+WKZbQ==}
     engines: {node: '>=10'}
@@ -6205,10 +6192,6 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
-  /pathe/0.2.0:
-    resolution: {integrity: sha512-sTitTPYnn23esFR3RlqYBWn4c45WGeLcsKzQiUpXJAyfcWkolvlYpV8FLo7JishK946oQwMFUCHXQ9AjGPKExw==}
-    dev: false
-
   /pathval/1.1.1:
     resolution: {integrity: sha512-Dp6zGqpTdETdR63lehJYPeIOqpiNBNtc7BpWSLrOje7UaIsE5aY92r/AunQA7rsXvet3lrJ3JnZX29UPTKXyKQ==}
     dev: false
@@ -6253,14 +6236,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       find-up: 4.1.0
-    dev: false
-
-  /pkg-types/0.3.2:
-    resolution: {integrity: sha512-eBYzX/7NYsQEOR2alWY4rnQB49G62oHzFpoi9Som56aUr8vB8UGcmcIia9v8fpBeuhH3Ltentuk2OGpp4IQV3Q==}
-    dependencies:
-      jsonc-parser: 3.0.0
-      mlly: 0.3.19
-      pathe: 0.2.0
     dev: false
 
   /pluralize/8.0.0:

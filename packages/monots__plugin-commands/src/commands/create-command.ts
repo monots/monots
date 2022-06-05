@@ -3,7 +3,6 @@ import type { CommandBoolean, CommandString, Usage } from '@monots/types';
 import { copyTemplate, folderExists, mangleScopedPackageName } from '@monots/utils';
 import chalk from 'chalk-template';
 import * as path from 'node:path';
-import ora from 'ora';
 
 /**
  * Create a package for the project.
@@ -47,14 +46,14 @@ export class CreateCommand extends MonotsCommand {
     description: 'Set the description of the package being created',
   });
 
-  override async execute() {
-    super.execute();
+  override async run() {
+    const { ora } = this.context;
 
     if (this.project) {
       throw new FatalError('Creating projects is not currently supported.', this.cwd);
     }
 
-    const spinner = ora(chalk`loading project package`).start();
+    const spinner = ora.start(chalk`loading project package`);
 
     try {
       const project = await ProjectEntity.create({ cwd: this.cwd });
@@ -88,7 +87,6 @@ export class CreateCommand extends MonotsCommand {
       return 0;
     } catch (error: any) {
       spinner.fail(`oops, something went wrong: ${error.message}`);
-      this.context.logger.error(error);
       return 1;
     }
   }

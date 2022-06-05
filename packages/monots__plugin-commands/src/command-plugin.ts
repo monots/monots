@@ -1,10 +1,17 @@
-import type { CorePlugin, MonotsCommand, MonotsCommandClass } from '@monots/core';
+import type { CorePlugin } from '@monots/core';
 import type { PluginProps } from '@monots/types';
 import { deepMerge } from '@monots/utils';
 import type { Ora } from 'ora';
 import ora from 'ora';
 
-import { BuildCommand } from './build-command.js';
+import {
+  BuildCommand,
+  CheckCommand,
+  CreateCommand,
+  FixCommand,
+  InitCommand,
+  PrepareCommand,
+} from './commands/index.js';
 
 export interface CommandPluginProps {}
 
@@ -32,7 +39,14 @@ export function commandPlugin(_props?: CommandPluginProps): CorePlugin {
         },
       });
 
-      props.on('commands:register', () => [BuildCommand]);
+      props.on('commands:register', () => [
+        BuildCommand,
+        CheckCommand,
+        CreateCommand,
+        FixCommand,
+        InitCommand,
+        PrepareCommand,
+      ]);
       return { commands, cliContext };
     },
   };

@@ -1,4 +1,4 @@
-import { resolve as baseResolve, moduleResolve } from 'import-meta-resolve';
+import { resolve as baseResolve } from 'import-meta-resolve';
 
 /**
  * ```

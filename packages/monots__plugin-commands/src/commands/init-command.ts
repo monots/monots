@@ -1,16 +1,13 @@
-import { ProjectEntity } from '@monots/core';
+import { MonotsCommand, ProjectEntity } from '@monots/core';
 import type { Usage } from '@monots/types';
-import chalkTemplate from 'chalk-template';
-import ora from 'ora';
-
-import { BaseCommand } from './base-command.js';
+import chalk from 'chalk-template';
 
 /**
  * Initialize the current directory to use `monots`.
  *
  * @category CliCommand
  */
-export class InitCommand extends BaseCommand {
+export class InitCommand extends MonotsCommand {
   static override paths = [['init']];
   static override usage: Usage = {
     description: 'Init the current directory to be the root for a monots project',
@@ -20,32 +17,32 @@ export class InitCommand extends BaseCommand {
     `,
   };
 
-  override async execute() {
-    super.execute();
-    const spinner = ora(chalkTemplate`Reading local {bold package.json}`).start();
+  override async run() {
+    const { ora } = this.context;
+    ora.start(chalk`reading local {bold package.json}`);
     let project: ProjectEntity;
 
     try {
       project = await ProjectEntity.create({ cwd: this.cwd, skipPackages: true });
-      spinner.succeed('Found local package.json file');
+      ora.succeed('found local package.json file');
     } catch (error: any) {
-      spinner.fail(error.message);
+      ora.fail(error.message);
 
       return 1;
     }
 
-    spinner.info('Saving the monots configuration to the package.json');
+    ora.info('saving the monots configuration to the package.json');
 
     try {
       const changed = await project.saveJson();
 
       if (changed) {
-        spinner.succeed('Successfully initialized project');
+        ora.succeed('successfully initialized project');
       } else {
-        spinner.warn('Skipping initialization since the project has already been initialized');
+        ora.warn('skipping initialization since the project has already been initialized');
       }
     } catch (error: any) {
-      spinner.fail(error.message);
+      ora.fail(error.message);
       return 1;
     }
 

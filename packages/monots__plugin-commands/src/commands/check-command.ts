@@ -1,31 +1,27 @@
-import { ProjectEntity } from '@monots/core';
+import { MonotsCommand, ProjectEntity } from '@monots/core';
 import type { Usage } from '@monots/types';
-import chalkTemplate from 'chalk-template';
-import ora from 'ora';
-
-import { BaseCommand } from './base-command.js';
+import chalk from 'chalk-template';
 
 /**
  * Fixes all the visible project files.
  *
  * @category CliCommand
  */
-export class CheckCommand extends BaseCommand {
+export class CheckCommand extends MonotsCommand {
   static override paths = [['check']];
   static override usage: Usage = {
     description: 'Check for configuration and validation errors in the project.',
     category: 'Lint',
-    details: chalkTemplate`
+    details: chalk`
       This command checks all the package.json files to see if they need updating.
       Use {cyan monots fix} to fix the errors.
     `,
     examples: [['Run this to check whether the project has', '$0 check']],
   };
 
-  override async execute() {
-    super.execute();
-
-    const spinner = ora(chalkTemplate`loading the monots project`).start();
+  override async run() {
+    const { ora } = this.context;
+    const spinner = ora.start(chalk`loading the monots project`);
 
     try {
       const project = await ProjectEntity.create({ cwd: this.cwd });
@@ -35,7 +31,7 @@ export class CheckCommand extends BaseCommand {
       spinner.succeed('whoop! your project validated successfully!');
       return 0;
     } catch (error: any) {
-      spinner.fail(chalkTemplate`${error.message}\n\nUse {cyan monots fix} to fix the errors.`);
+      spinner.fail(chalk`${error.message}\n\nUse {cyan monots fix} to fix the errors.`);
       return 1;
     }
   }

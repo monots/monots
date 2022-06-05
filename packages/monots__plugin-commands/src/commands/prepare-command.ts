@@ -1,9 +1,6 @@
-import { ProjectEntity } from '@monots/core';
+import { MonotsCommand, ProjectEntity } from '@monots/core';
 import type { Usage } from '@monots/types';
-import chalkTemplate from 'chalk-template';
-import ora from 'ora';
-
-import { BaseCommand } from './base-command.js';
+import chalk from 'chalk-template';
 
 /**
  * This command is used to prepare the project by setting up all the entrypoints
@@ -15,7 +12,7 @@ import { BaseCommand } from './base-command.js';
  *
  * @category CliCommand
  */
-export class PrepareCommand extends BaseCommand {
+export class PrepareCommand extends MonotsCommand {
   static override paths = [['prepare']];
   static override usage: Usage = {
     description: 'Prepare the development files for each entrypoint in your project',
@@ -30,23 +27,22 @@ export class PrepareCommand extends BaseCommand {
     ],
   };
 
-  override async execute() {
-    super.execute();
-
-    const spinner = ora(chalkTemplate`Preparing project for development`).start();
+  override async run() {
+    const { ora, version } = this.context;
+    ora.start(chalk`Preparing project for development`);
 
     try {
-      const project = await ProjectEntity.create({ cwd: this.cwd, version: this.context.version });
+      const project = await ProjectEntity.create({ cwd: this.cwd, version });
 
-      spinner.info('cleaning dist files');
+      ora.info('cleaning dist files');
       await project.cleanDist('*.js');
 
-      spinner.info('preparing development files');
+      ora.info('preparing development files');
       await project.prepare();
-      spinner.succeed('Your project is now ready for development.');
+      ora.succeed('your project is now ready for development.');
       return 0;
     } catch (error: any) {
-      spinner.fail(`Something went wrong: ${error.message}.`);
+      ora.fail(`something went wrong: ${error.message}.`);
       return 1;
     }
   }

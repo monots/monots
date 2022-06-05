@@ -101,12 +101,6 @@
         }
       },
       "tests": {
-        "include": [
-          "**/*.ts",
-          "**/*.js",
-          "*.ts",
-          "*.js"
-        ],
         "compilerOptions": {
           "baseUrl": "../src",
           "paths": {
@@ -114,7 +108,17 @@
               "./index.ts"
             ]
           }
-        }
+        },
+        "include": [
+          "**/*.ts",
+          "**/*.js",
+          "*.ts",
+          "*.js"
+        ],
+        "exclude": [
+          "fixtures/**",
+          "tmp/**"
+        ]
       }
     },
     "externalModules": []

@@ -78,9 +78,8 @@ export interface CopyTemplateProps
  */
 export async function copyTemplate(props: CopyTemplateProps): Promise<CopyOperation[]> {
   const rename = normalizeObjectPaths(props.rename ?? {});
-  console.log({ rename });
   const customTemplateFiles = normalizeObjectPaths(props.customTemplateFiles ?? {});
-  const ignore = (props.ignore ?? []).map((path) => normalize(path));
+  const ignore = new Set((props.ignore ?? []).map((path) => normalize(path)));
 
   return copy(props.source, props.destination, {
     overwrite: props.overwrite,
@@ -88,11 +87,10 @@ export async function copyTemplate(props: CopyTemplateProps): Promise<CopyOperat
     dot: true,
     filter: (filename) => {
       filename = normalize(filename);
-      return !ignore.some((file) => file === filename);
+      return !ignore.has(filename);
       // return true;
     },
     rename: (filename) => {
-      console.log({ filename });
       filename = normalize(filename);
       filename = rename[filename] ?? filename;
       const customTemplate = customTemplateFiles[filename];

@@ -39,11 +39,16 @@ export abstract class MonotsCommand
 
   async execute(): Promise<number | void> {
     this.cwd = this.cwd ? path.resolve(this.cwd) : this.context.cwd;
+    return this.run();
   }
+
+  /**
+   * Run the command. This method is required on every `monots` command.
+   */
+  abstract run(): Promise<number | void>;
 }
 
 export interface MonotsCommandClass {
-  new (): MonotsCommand;
   paths?: string[][];
   schema?: Array<
     LooseTest<{
@@ -51,6 +56,7 @@ export interface MonotsCommandClass {
     }>
   >;
   usage?: Usage;
+  new (): MonotsCommand;
 }
 
 export interface MonotsCommand {

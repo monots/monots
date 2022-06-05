@@ -1,8 +1,8 @@
 import del from 'del';
 import { loadJsonFile } from 'load-json-file';
 import * as crypto from 'node:crypto';
-import * as path from 'node:path';
 import * as fs from 'node:fs/promises';
+import * as path from 'node:path';
 import copy from 'recursive-copy';
 
 interface CreateSetupFixtures<Context extends object> {

@@ -1,5 +1,4 @@
 import { deepMerge, is, resolvePath } from '@monots/utils';
-// import { resolvePath } from 'mlly';
 import { execa as baseExeca } from 'execa';
 import { prompt } from 'inquirer';
 import type { LoadEsmConfigOptions } from 'load-esm-config';
@@ -152,7 +151,7 @@ interface GetInstallCommand {
 function getInstallCommand(props: GetInstallCommand): () => Promise<void> {
   const { custom, initial, templateProps, variables, filepath, results } = props;
   let install: () => Promise<void>;
-  const { execa } = props.templateProps;
+  const { execa } = templateProps;
 
   if (is.array(initial)) {
     const [file, rest = []] = initial;

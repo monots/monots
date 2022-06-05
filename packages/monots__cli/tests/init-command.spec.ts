@@ -6,7 +6,7 @@ import { cli, context } from '../src/setup';
 const setupFixtures = createSetupFixtures({ context, fileUrl: import.meta.url });
 
 afterAll(async () => {
-  setupFixtures.cleanup();
+  await setupFixtures.cleanup();
 });
 
 test.concurrent('`monots init` should run without error in a pnpm project', async ({ expect }) => {

@@ -1,8 +1,8 @@
+import type { MaybePromise } from '@monots/types';
 import type { execa } from 'execa';
 import type { PromptModule } from 'inquirer';
 import type { ExportedConfig } from 'load-esm-config';
 import type { CopyOperation } from 'recursive-copy';
-import { MaybePromise } from '@monots/types';
 /**
  * Configuration variables for the monots template.
  *

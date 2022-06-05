@@ -6,7 +6,7 @@ import { cli, context } from '../src/setup.js';
 const setupFixtures = createSetupFixtures({ context, fileUrl: import.meta.url });
 
 afterAll(async () => {
-  setupFixtures.cleanup();
+  await setupFixtures.cleanup();
 });
 
 test.concurrent('`monots build` should create build files', async ({ expect }) => {
