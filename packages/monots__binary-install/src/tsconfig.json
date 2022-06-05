@@ -1,0 +1,18 @@
+{
+  "__AUTO_GENERATED__": [
+    "To update the configuration edit the following field in the 'package.json' for this package.",
+    "`monots.tsconfigs.src`",
+    "",
+    "Then run the command to automatically update everything: `monots fix`"
+  ],
+  "extends": "../../../.monots/tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["node"],
+    "noEmit": false,
+    "declaration": true,
+    "composite": true,
+    "emitDeclarationOnly": true,
+    "outDir": "../dist"
+  },
+  "references": []
+}
