@@ -19,6 +19,9 @@
       "path": "../../monots__core/src"
     },
     {
+      "path": "../../monots__template/src"
+    },
+    {
       "path": "../../monots__types/src"
     },
     {

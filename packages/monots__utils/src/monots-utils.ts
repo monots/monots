@@ -3,11 +3,12 @@ import debug from 'debug';
 import merge, { type Options as DeepMergeOptions } from 'deepmerge';
 import { isPlainObject } from 'is-what';
 import template from 'lodash.template';
+import * as crypto from 'node:crypto';
 import * as fs from 'node:fs/promises';
 import * as os from 'node:os';
-import * as crypto from 'node:crypto';
 import * as path from 'node:path';
 import { Transform } from 'node:stream';
+import normalizePath from 'normalize-path';
 import { readPackageUp, readPackageUpSync } from 'read-pkg-up';
 import copy from 'recursive-copy';
 
@@ -186,7 +187,7 @@ export function getPackageJsonSync() {
  */
 export function getDirname(fileUrl: string) {
   const filename = fileUrl.startsWith('file:') ? new URL(fileUrl).pathname : fileUrl;
-  return path.dirname(slash(filename));
+  return path.dirname(path.normalize(normalizePath(filename)));
 }
 
 /**

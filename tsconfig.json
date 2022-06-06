@@ -40,6 +40,9 @@
       "path": "packages/monots__plugin-commands/src"
     },
     {
+      "path": "packages/monots__plugin-npm/src"
+    },
+    {
       "path": "packages/monots__preset-core/src"
     },
     {

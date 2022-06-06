@@ -15,6 +15,6 @@
     }
   },
   "files": ["fixtures/base/monots.template.ts"],
-  "include": ["**/*.ts", "**/*.js", "*.ts", "*.js"],
-  "exclude": ["fixtures/**", "tmp/**"]
+  "include": ["**/*.ts", "**/*.js", "*.ts", "**/monots.template.ts", "*.js"],
+  "exclude": ["fixtures/**", "!**/monots.template.ts", "tmp/**"]
 }

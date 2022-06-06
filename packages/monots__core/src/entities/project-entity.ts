@@ -5,6 +5,7 @@ import del from 'del';
 import detectIndent from 'detect-indent';
 import { execa } from 'execa';
 import glob from 'fast-glob';
+import { isArray, isPlainObject } from 'is-what';
 import yaml from 'js-yaml';
 import { loadJsonFile } from 'load-json-file';
 import * as fs from 'node:fs/promises';
@@ -12,7 +13,6 @@ import * as path from 'node:path';
 import parseJson from 'parse-json';
 import type { JsonObject } from 'type-fest';
 import { writeJsonFile } from 'write-json-file';
-import { isArray, isPlainObject } from 'is-what';
 
 import { DEFAULT_BROWSERSLIST, NAME, TYPESCRIPT_VERSION } from '../constants.js';
 import { bundleWithEsbuild } from '../helpers/bundle-with-esbuild.js';

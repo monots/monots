@@ -16,8 +16,7 @@ test.concurrent('can process a basic template config', async ({ expect }) => {
   await processTemplate({
     source,
     destination,
-    templateProps: {},
-    initialVariables: { _: [] },
+    initialVariables: { name: 'test' },
     install: ['pnpm', ['install']], // overriden since this is a slow operation.
   });
 

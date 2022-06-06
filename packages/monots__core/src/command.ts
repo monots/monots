@@ -29,7 +29,7 @@ export abstract class MonotsCommand
     return this._interactive ?? true;
   }
 
-  private _interactive?: CommandBoolean = CommandOption.Boolean('--interactive,-i', {
+  private readonly _interactive?: CommandBoolean = CommandOption.Boolean('--interactive,-i', {
     description: 'Run in interactive mode. This is the default.',
   });
 
@@ -40,7 +40,7 @@ export abstract class MonotsCommand
     description: 'Use default values and arguments passed in from the command line.',
   });
 
-  private _cwd?: CommandString = CommandOption.String('--cwd', {
+  private readonly _cwd?: CommandString = CommandOption.String('--cwd', {
     description: 'Set the current working directory from which the command should be run',
     hidden: true,
   });

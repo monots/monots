@@ -1,9 +1,10 @@
 import { CommandOption, MonotsCommand } from '@monots/core';
+import type { InstallCommand } from '@monots/template';
+import { processTemplate, scaffold } from '@monots/template';
 import type { CommandString, Usage } from '@monots/types';
 import { createTemporaryFolder } from '@monots/utils';
 import chalk from 'chalk-template';
 import * as path from 'node:path';
-import { InstallCommand, processTemplate, scaffold } from '@monots/template';
 
 /**
  * Create a package / crate or  for the project.
@@ -58,6 +59,7 @@ export class CreateCommand extends MonotsCommand {
 
       for (const handler of handlers) {
         const handlerSource = handler.templates[this.template];
+
         if (!handlerSource) {
           continue;
         }
@@ -86,7 +88,7 @@ export class CreateCommand extends MonotsCommand {
 
           logger.debug(`template source set to ${destination}`);
           source = destination;
-        } catch (error) {
+        } catch {
           spinner.fail('invalid template provided');
           return 1;
         }
@@ -128,6 +130,7 @@ export class CreateCommand extends MonotsCommand {
       spinner.succeed('template processed successfully');
     } catch (error) {
       spinner.fail('failed to process template');
+
       if (error instanceof Error) {
         logger.error(error.message);
       }

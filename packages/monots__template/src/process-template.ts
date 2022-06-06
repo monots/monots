@@ -1,7 +1,7 @@
-import { deepMerge, resolvePath, fileExists } from '@monots/utils';
-import { isArray, isFunction, isPlainObject } from 'is-what';
+import { deepMerge, fileExists, resolvePath } from '@monots/utils';
 import { execa as baseExeca } from 'execa';
 import { prompt } from 'inquirer';
+import { isArray, isFunction, isPlainObject } from 'is-what';
 import type { LoadEsmConfigOptions } from 'load-esm-config';
 import { loadEsmConfig } from 'load-esm-config';
 import type { GetPattern } from 'load-esm-config/src/constants.js';
@@ -9,13 +9,13 @@ import * as path from 'node:path';
 import type { CopyOperation } from 'recursive-copy';
 
 import { copyTemplate } from './copy-template.js';
+import { createFileUtils } from './file-utils.js';
 import type {
   BaseVariables,
   InstallCommand,
   MonotsTemplateConfig,
   MonotsTemplateProps,
 } from './types.js';
-import { createFileUtils } from './file-utils.js';
 
 export interface LoadTemplateProps
   extends Pick<LoadEsmConfigOptions, 'cwd' | 'logLevel' | 'config'>,
@@ -204,7 +204,7 @@ function getInitialInstall(
 function getInstallCommand(props: GetInstallCommand): () => Promise<void> {
   const { custom, initial, templateProps, variables, filepath, results } = props;
   const { execa } = templateProps;
-  let install = getInitialInstall(initial, templateProps);
+  const install = getInitialInstall(initial, templateProps);
 
   if (isArray(custom)) {
     const [file, rest = []] = custom;

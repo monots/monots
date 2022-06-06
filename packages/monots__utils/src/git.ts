@@ -1,5 +1,5 @@
-import { execa } from 'execa';
 import del from 'del';
+import { execa } from 'execa';
 
 export async function isInGitRepository(cwd = process.cwd()): Promise<boolean> {
   try {
@@ -49,7 +49,7 @@ export class GitUtils {
   /**
    * Safely checks if the current directory is a git repository.
    */
-  async init(message: string = 'feat: getting started with monots 🎉🥳'): Promise<boolean> {
+  async init(message = 'feat: getting started with monots 🎉🥳'): Promise<boolean> {
     const cwd = this.cwd;
     let hasInitialized = false;
     try {

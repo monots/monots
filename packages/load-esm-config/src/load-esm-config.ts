@@ -1,5 +1,5 @@
-import { isFunction } from 'is-what';
 import { findUp } from 'find-up';
+import { isFunction } from 'is-what';
 import * as path from 'node:path';
 import normalizePath from 'normalize-path';
 

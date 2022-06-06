@@ -1,13 +1,12 @@
 import type { MaybePromise } from '@monots/types';
+import type { Options } from 'del';
 import type { execa } from 'execa';
 import type { PromptModule } from 'inquirer';
 import type { ExportedConfig } from 'load-esm-config';
-import type { CopyOperation } from 'recursive-copy';
-
-import type * as fs from 'node:fs/promises';
 import type { loadJsonFile } from 'load-json-file';
+import type * as fs from 'node:fs/promises';
+import type { CopyOperation } from 'recursive-copy';
 import type { writeJsonFile } from 'write-json-file';
-import type { Options } from 'del';
 
 /**
  * Configuration variables for the monots template.
@@ -249,7 +248,7 @@ export interface FileUtils {
   /**
    * All paths are relative to the template destination. You can use an absolute path to reference a file outside of the template destination.
    */
-  copy(props: CopyProps): Promise<void>;
+  copy: (props: CopyProps) => Promise<void>;
   read: typeof fs.readFile;
   write: typeof fs.writeFile;
   loadJson: typeof loadJsonFile;

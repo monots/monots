@@ -1,6 +1,6 @@
-import { isNumber, isPlainObject, isString } from 'is-what';
 import consola from 'consola';
 import merge, { type Options as DeepMergeOptions } from 'deepmerge';
+import { isNumber, isPlainObject, isString } from 'is-what';
 
 import { LogLevel, SUPPORTED_EXTENSIONS } from './constants.js';
 import type { GenerateLookupFiles } from './types.js';
