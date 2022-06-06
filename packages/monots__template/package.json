@@ -31,17 +31,23 @@
   "dependencies": {
     "@monots/types": "^0.1.9",
     "@monots/utils": "^0.5.0",
+    "@types/degit": "^2.8.3",
     "@types/inquirer": "^8.2.1",
     "@types/lodash.template": "^4.5.1",
     "@types/normalize-path": "^3.0.0",
+    "degit": "^2.8.4",
+    "del": "^6.1.1",
     "execa": "^6.1.0",
     "inquirer": "^8.2.4",
+    "is-what": "^4.1.7",
     "load-esm-config": "^0.2.0",
+    "load-json-file": "^7.0.1",
     "lodash.template": "^4.5.0",
     "normalize-path": "^3.0.0",
     "recursive-copy": "^2.0.14",
     "ts-extras": "^0.10.2",
-    "type-fest": "^2.13.0"
+    "type-fest": "^2.13.0",
+    "write-json-file": "^5.0.0"
   },
   "publishConfig": {
     "access": "public"
@@ -55,19 +61,24 @@
         "compilerOptions": {
           "baseUrl": "../src",
           "paths": {
-            "@monots/core": [
+            "@monots/template": [
               "./index.ts"
             ]
           }
         },
+        "files": [
+          "fixtures/base/monots.template.ts"
+        ],
         "include": [
           "**/*.ts",
           "**/*.js",
           "*.ts",
+          "**/monots.template.ts",
           "*.js"
         ],
         "exclude": [
           "fixtures/**",
+          "!**/monots.template.ts",
           "tmp/**"
         ]
       }

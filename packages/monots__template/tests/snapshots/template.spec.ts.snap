@@ -2,6 +2,9 @@
 
 exports[`can process a basic template config 1`] = `
 {
+  "dependencies": {
+    "asdf": "file:./asdf",
+  },
   "description": "base",
   "name": "base",
   "version": "1.0.0",

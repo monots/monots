@@ -1,5 +1,5 @@
 /**
- * Add your inline documentation
+ * Add your documentation here.
  */
 export function <%= camelCaseName %>() {
   return '';

@@ -1,4 +1,4 @@
-import is from '@sindresorhus/is';
+import { isPromise } from 'is-what';
 import type { ReadonlyDeep } from 'type-fest';
 
 type AnyFunction = (...args: any[]) => any;
@@ -120,7 +120,7 @@ export class Emitter<Events extends EventsMap = EventsMap> {
       for (const [index, handler] of (this.#events[props.event] ?? []).entries()) {
         const result = handler(...props.args);
 
-        if (is.promise(result)) {
+        if (isPromise(result)) {
           throw new Error('Must specify `async: true` when using promises');
         }
 

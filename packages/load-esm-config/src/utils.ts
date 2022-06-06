@@ -1,4 +1,4 @@
-import is from '@sindresorhus/is';
+import { isNumber, isPlainObject, isString } from 'is-what';
 import consola from 'consola';
 import merge, { type Options as DeepMergeOptions } from 'deepmerge';
 
@@ -13,9 +13,9 @@ const { Consola } = consola as unknown as typeof import('consola');
 export function createLogger(logLevel?: LogLevel): import('consola').Consola {
   return !logLevel
     ? new Consola({ level: LogLevel.log })
-    : is.string(logLevel)
+    : isString(logLevel)
     ? new Consola({ level: LogLevel[logLevel] ?? 2 })
-    : is.number(logLevel)
+    : isNumber(logLevel)
     ? new Consola({
         level:
           logLevel < 0
@@ -83,5 +83,5 @@ export function deepMerge<Type = any>(
   objects: Array<object | unknown[]>,
   options?: DeepMergeOptions,
 ): Type {
-  return merge.all<Type>(objects as any, { isMergeableObject: is.plainObject, ...options });
+  return merge.all<Type>(objects as any, { isMergeableObject: isPlainObject, ...options });
 }

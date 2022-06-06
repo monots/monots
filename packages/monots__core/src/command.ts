@@ -17,10 +17,33 @@ export abstract class MonotsCommand
   /**
    * Set the current working directory from the command line.
    */
-  cwd: CommandString = CommandOption.String('--cwd', {
+  get cwd(): CommandString {
+    return this._cwd ? path.resolve(this._cwd) : this.context.cwd;
+  }
+
+  get interactive(): boolean {
+    if (this.defaults) {
+      return false;
+    }
+
+    return this._interactive ?? true;
+  }
+
+  private _interactive?: CommandBoolean = CommandOption.Boolean('--interactive,-i', {
+    description: 'Run in interactive mode. This is the default.',
+  });
+
+  /**
+   * When this is true the interactive mode will be disabled.
+   */
+  defaults?: CommandBoolean = CommandOption.Boolean('-y', {
+    description: 'Use default values and arguments passed in from the command line.',
+  });
+
+  private _cwd?: CommandString = CommandOption.String('--cwd', {
     description: 'Set the current working directory from which the command should be run',
-    hidden: false,
-  }) as CommandString;
+    hidden: true,
+  });
 
   /**
    * Set whether the command should use verbose logging from the command line.
@@ -38,12 +61,11 @@ export abstract class MonotsCommand
   });
 
   async execute(): Promise<number | void> {
-    this.cwd = this.cwd ? path.resolve(this.cwd) : this.context.cwd;
     return this.run();
   }
 
   /**
-   * Run the command. This method is required on every `monots` command.
+   * Run the command. This method is required on every `MonotsCommand`.
    */
   abstract run(): Promise<number | void>;
 }

@@ -11,9 +11,10 @@
     "declaration": false,
     "baseUrl": "../src",
     "paths": {
-      "@monots/core": ["./index.ts"]
+      "@monots/template": ["./index.ts"]
     }
   },
+  "files": ["fixtures/base/monots.template.ts"],
   "include": ["**/*.ts", "**/*.js", "*.ts", "*.js"],
   "exclude": ["fixtures/**", "tmp/**"]
 }

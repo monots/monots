@@ -1,4 +1,4 @@
-import is from '@sindresorhus/is';
+import { isFunction } from 'is-what';
 import { findUp } from 'find-up';
 import * as path from 'node:path';
 import normalizePath from 'normalize-path';
@@ -102,7 +102,7 @@ export async function loadEsmConfig<Config extends object = any, Argument = unkn
     exportedConfig = exported;
   }
 
-  const config = await (is.function_(exportedConfig) ? exportedConfig(argument) : exportedConfig);
+  const config = await (isFunction(exportedConfig) ? exportedConfig(argument) : exportedConfig);
 
   if (typeof config !== 'object') {
     const error = new Error(`the provided configuration must export or return an object.`);

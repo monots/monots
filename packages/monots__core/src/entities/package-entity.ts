@@ -1,7 +1,8 @@
-import { deepMerge, is, removeUndefined } from '@monots/utils';
+import { deepMerge, removeUndefined } from '@monots/utils';
 import chalkTemplate from 'chalk-template';
 import del from 'del';
 import glob from 'fast-glob';
+import { isEmptyObject, isNullOrUndefined } from 'is-what';
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
 import normalizePath from 'normalize-path';
@@ -68,7 +69,7 @@ export class PackageEntity extends BaseEntity<Package> {
    */
   get fields(): EntrypointField[] {
     return (this.#fields ??= entrypointFields.filter(
-      (field) => !is.nullOrUndefined(this.json[field]),
+      (field) => !isNullOrUndefined(this.json[field]),
     ));
   }
 
@@ -133,7 +134,7 @@ export class PackageEntity extends BaseEntity<Package> {
 
     const compilerOptions = { types: [], noEmit: true };
 
-    if (is.emptyObject(monots.tsconfigs)) {
+    if (isEmptyObject(monots.tsconfigs)) {
       monots.tsconfigs = {
         [monots.sourceFolderName]: { compilerOptions },
       };

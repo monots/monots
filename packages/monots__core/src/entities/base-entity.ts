@@ -1,4 +1,5 @@
-import { is, removeUndefined } from '@monots/utils';
+import { removeUndefined } from '@monots/utils';
+import { isEmptyArray, isEmptyObject } from 'is-what';
 import * as path from 'node:path';
 import * as t from 'superstruct';
 import { writeJsonFile } from 'write-json-file';
@@ -101,14 +102,14 @@ export abstract class BaseEntity<JsonData extends BaseData> {
     const actual = removeUndefined(this.json);
     const expected = removeUndefined(this.createJson());
 
-    if (is.emptyObject(expected.monots)) {
+    if (isEmptyObject(expected.monots)) {
       // Remove empty `monots` configuration object.
       Reflect.deleteProperty(expected, 'monots');
     }
 
     const output = compareOutput({ actual, expected, name: this.name });
 
-    if (is.emptyArray(output)) {
+    if (isEmptyArray(output)) {
       return false;
     }
 

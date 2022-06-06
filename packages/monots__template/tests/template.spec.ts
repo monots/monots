@@ -17,7 +17,7 @@ test.concurrent('can process a basic template config', async ({ expect }) => {
     source,
     destination,
     templateProps: {},
-    cliArguments: { _: [] },
+    initialVariables: { _: [] },
     install: ['pnpm', ['install']], // overriden since this is a slow operation.
   });
 
@@ -41,4 +41,7 @@ test.concurrent('can process a basic template config', async ({ expect }) => {
   expect(await target.readFile('rename-thee.md', 'utf8')).toMatchInlineSnapshot(
     '"Should be renamed from `rename-me.md` to `rename-thee.md`."',
   );
+
+  // file utilities
+  expect(await target.readFile('asdf.txt', 'utf8')).toMatchInlineSnapshot(`"asdf"`);
 });

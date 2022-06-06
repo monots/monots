@@ -1,10 +1,11 @@
-import is from '@sindresorhus/is';
 import { camelCaseIt, kebabCaseIt } from 'case-it';
 import debug from 'debug';
 import merge, { type Options as DeepMergeOptions } from 'deepmerge';
-import { template } from 'lodash-es';
+import { isPlainObject } from 'is-what';
+import template from 'lodash.template';
 import * as fs from 'node:fs/promises';
 import * as os from 'node:os';
+import * as crypto from 'node:crypto';
 import * as path from 'node:path';
 import { Transform } from 'node:stream';
 import { readPackageUp, readPackageUpSync } from 'read-pkg-up';
@@ -65,7 +66,7 @@ export function deepMerge<Type = any>(
   objects: Array<object | unknown[]>,
   options?: DeepMergeOptions,
 ): Type {
-  return merge.all<Type>(objects as any, { isMergeableObject: is.plainObject, ...options });
+  return merge.all<Type>(objects as any, { isMergeableObject: isPlainObject, ...options });
 }
 
 /**
@@ -257,20 +258,15 @@ export function createDebugger(namespace: MonotsDebugScope, options: DebuggerOpt
   };
 }
 
+/**
+ * Create a temporary directory.
+ */
+export function createTemporaryFolder() {
+  return path.join(os.tmpdir(), crypto.randomBytes(16).toString('hex'));
+}
+
 export const isWindows = os.platform() === 'win32';
 
-/**
- * Normalize the path for posix systems.
- */
-export function normalizePath(id: string): string {
-  return path.posix.normalize(isWindows ? slash(id) : id);
-}
-
-function slash(p: string): string {
-  return p.replace(/\\/g, '/');
-}
-
-export { default as is } from '@sindresorhus/is';
 export { camelCaseIt as camelCase, kebabCaseIt as kebabCase } from 'case-it';
 export { type Options as DeepMergeOptions } from 'deepmerge';
 export { default as invariant } from 'tiny-invariant';

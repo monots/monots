@@ -3,6 +3,12 @@ import type { execa } from 'execa';
 import type { PromptModule } from 'inquirer';
 import type { ExportedConfig } from 'load-esm-config';
 import type { CopyOperation } from 'recursive-copy';
+
+import type * as fs from 'node:fs/promises';
+import type { loadJsonFile } from 'load-json-file';
+import type { writeJsonFile } from 'write-json-file';
+import type { Options } from 'del';
+
 /**
  * Configuration variables for the monots template.
  *
@@ -68,36 +74,14 @@ export interface MonotsTemplateConfig extends monots.TemplateConfig {
 
   /**
    * Perform work after installation is called.
+   *
+   * In this post install hook you can also use `await import('package')` to
+   * import any of the newly installed packages.
    */
   postInstall?: (props: PostInstallProps) => MaybePromise<void>;
 }
 
-/**
- * An install command that can be used
- */
-export type InstallCommand<Props extends object> =
-  | [file: string, arguments?: string[]]
-  | ((props: Props) => MaybePromise<void>);
-
-export interface MonotsTemplateProps extends monots.TemplateProps {
-  /**
-   * The source directory of the template.
-   */
-  source: string;
-
-  /**
-   * The destination directory.
-   */
-  destination: string;
-
-  /**
-   * The current working directory which is responsible for invoking the
-   * command.
-   *
-   * @default process.cwd()
-   */
-  cwd: string;
-
+export interface ExecaProps {
   /**
    * The `execa` module for executing commands with the cwd scoped to the target
    * directory.
@@ -121,11 +105,38 @@ export interface MonotsTemplateProps extends monots.TemplateProps {
    * ```
    */
   execa: typeof execa;
+}
+
+/**
+ * An install command that can be used
+ */
+export type InstallCommand<Props extends object = ExecaProps> =
+  | [file: string, arguments?: string[]]
+  | ((props: Props) => MaybePromise<void>);
+
+export interface MonotsTemplateProps extends ExecaProps {
+  /**
+   * The source directory of the template.
+   */
+  source: string;
+
+  /**
+   * The destination directory.
+   */
+  destination: string;
+
+  /**
+   * The current working directory which is responsible for invoking the
+   * command.
+   *
+   * @default process.cwd()
+   */
+  cwd: string;
 
   /**
    * All the cli arguments that were passed when created via the cli.
    */
-  cliArguments?: CliArguments;
+  initialVariables: BaseVariables;
 }
 
 export type DefineMonotsTemplate = ExportedConfig<MonotsTemplateConfig, MonotsTemplateProps>;
@@ -141,14 +152,16 @@ export interface PreInstallProps
   extends MonotsTemplateProps,
     FilepathProps,
     VariablesProps,
-    ResultsProps {}
+    ResultsProps,
+    FileUtils {}
 
 export interface PostInstallProps
   extends MonotsTemplateProps,
     FilepathProps,
     VariablesProps,
     ResultsProps,
-    InstallProps {}
+    InstallProps,
+    FileUtils {}
 
 interface FilepathProps {
   /**
@@ -161,7 +174,7 @@ interface VariablesProps {
   /**
    * The loaded variables.
    */
-  variables: Record<string, any>;
+  variables: BaseVariables;
 }
 
 interface ResultsProps {
@@ -181,13 +194,10 @@ interface InstallProps {
 
 export interface RenamePathsProps extends MonotsTemplateProps, VariablesProps {}
 
-export interface CliArguments {
+export interface BaseVariables {
   /** All remaining options */
-  [argName: string]: any;
-  /** Non-option arguments */
-  _: Array<string | number>;
-  /** Arguments after the end-of-options flag `--` */
-  '--'?: Array<string | number>;
+  [key: string]: any;
+  name: string;
 }
 
 export interface GatherVariablesProps extends MonotsTemplateProps {
@@ -202,9 +212,53 @@ export interface GatherVariablesProps extends MonotsTemplateProps {
   defaultVariables: Record<string, any>;
 }
 
+export interface CopyProps {
+  /**
+   * The source path relative to the provided root path.
+   */
+  source: string;
+
+  /**
+   * The destination path relative to the provided root path.
+   */
+  destination: string;
+
+  /**
+   * Whether to overwrite destination files.
+   */
+  overwrite?: boolean;
+  /**
+   * Whether to expand symbolic links.
+   */
+  expand?: boolean;
+  /**
+   * Whether to copy files beginning with a `.`
+   */
+  dot?: boolean;
+  /**
+   * Whether to copy OS junk files (e.g. `.DS_Store`, `Thumbs.db`).
+   */
+  junk?: boolean;
+  /**
+   * Filter function / regular expression / glob that determines which files to copy (uses maximatch).
+   */
+  filter?: string | string[] | RegExp | ((path: string) => boolean);
+}
+
+export interface FileUtils {
+  /**
+   * All paths are relative to the template destination. You can use an absolute path to reference a file outside of the template destination.
+   */
+  copy(props: CopyProps): Promise<void>;
+  read: typeof fs.readFile;
+  write: typeof fs.writeFile;
+  loadJson: typeof loadJsonFile;
+  writeJson: typeof writeJsonFile;
+  rm: (patterns: string | readonly string[], options?: Options) => Promise<string[]>;
+}
+
 declare global {
   namespace monots {
     interface TemplateConfig {}
-    interface TemplateProps {}
   }
 }

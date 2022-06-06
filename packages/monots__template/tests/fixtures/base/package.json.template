@@ -1,5 +1,8 @@
 {
   "name": "<%= name %>",
   "description": "<%= name %>",
+  "dependencies": {
+    "asdf": "file:./asdf"
+  },
   "version": "<%= version %>"
 }

@@ -33,6 +33,7 @@
     "@types/is-uuid": "^1.0.0",
     "email-validator": "^2.0.4",
     "is-uuid": "^1.0.2",
+    "is-what": "^4.1.7",
     "type-fest": "^2.13.0"
   },
   "devDependencies": {

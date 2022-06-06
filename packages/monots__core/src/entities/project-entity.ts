@@ -1,5 +1,5 @@
 import { getPackages } from '@manypkg/get-packages';
-import { type InstallerType, fileExists, getInstaller, is } from '@monots/utils';
+import { type InstallerType, fileExists, getInstaller } from '@monots/utils';
 import chalkTemplate from 'chalk-template';
 import del from 'del';
 import detectIndent from 'detect-indent';
@@ -12,6 +12,7 @@ import * as path from 'node:path';
 import parseJson from 'parse-json';
 import type { JsonObject } from 'type-fest';
 import { writeJsonFile } from 'write-json-file';
+import { isArray, isPlainObject } from 'is-what';
 
 import { DEFAULT_BROWSERSLIST, NAME, TYPESCRIPT_VERSION } from '../constants.js';
 import { bundleWithEsbuild } from '../helpers/bundle-with-esbuild.js';
@@ -297,7 +298,7 @@ export class ProjectEntity extends BaseEntity<Project> {
     let workspaces: string[] | undefined;
     const jsonWorkspaces = this.json.workspaces;
 
-    if (is.array(jsonWorkspaces)) {
+    if (isArray(jsonWorkspaces)) {
       workspaces = jsonWorkspaces;
     } else if (Array.isArray(jsonWorkspaces?.packages)) {
       workspaces = jsonWorkspaces?.packages as string[];
@@ -319,7 +320,7 @@ export class ProjectEntity extends BaseEntity<Project> {
         await fs.readFile(path.join(this.directory, 'pnpm-workspace.yaml'), { encoding: 'utf8' }),
       );
 
-      workspaces = is.plainObject(pnpm) ? (pnpm.packages as string[]) : undefined;
+      workspaces = isPlainObject(pnpm) ? (pnpm.packages as string[]) : undefined;
     }
 
     if (!workspaces) {

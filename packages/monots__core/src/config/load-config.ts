@@ -8,7 +8,8 @@ import type {
   ResolvedMonotsConfig,
   ResolvedPlugin,
 } from '@monots/types';
-import { deepMerge, Emitter, is, sort } from '@monots/utils';
+import { deepMerge, Emitter, sort } from '@monots/utils';
+import { isArray, isFunction, isNumber, isPromise, isString } from 'is-what';
 import {
   type LoadEsmConfigOptions,
   type LoadEsmConfigResult,
@@ -103,7 +104,7 @@ export async function loadConfig(options?: LoadConfigOptions): Promise<ResolvedM
     } else {
       const fn = transformers[plugin.type]?.(plugin as any);
 
-      if (!is.function_(fn)) {
+      if (!isFunction(fn)) {
         throw new Error(`No transformer found for plugin type "${plugin.type}"`);
       }
 
@@ -119,7 +120,7 @@ export async function loadConfig(options?: LoadConfigOptions): Promise<ResolvedM
     transformedPlugins.push(transformedPlugin);
     const maybePromise = transformedPlugin.plugin(pluginProps);
 
-    if (is.promise(maybePromise)) {
+    if (isPromise(maybePromise)) {
       await maybePromise;
     }
   }
@@ -143,15 +144,11 @@ export async function loadConfig(options?: LoadConfigOptions): Promise<ResolvedM
 }
 
 function getPriority(value: number | MonotsPriority | undefined): number {
-  return is.number(value)
-    ? value
-    : is.string(value)
-    ? MonotsPriority[value]
-    : MonotsPriority.Default;
+  return isNumber(value) ? value : isString(value) ? MonotsPriority[value] : MonotsPriority.Default;
 }
 
 function flattenPlugins(plugins: NestedMonotsPlugins = []): MonotsPlugin[] {
-  return plugins.flatMap((plugin) => (is.array(plugin) ? flattenPlugins(plugin) : plugin));
+  return plugins.flatMap((plugin) => (isArray(plugin) ? flattenPlugins(plugin) : plugin));
 }
 
 function sortPlugins(plugins: MonotsPlugin[]): MonotsPlugin[] {
