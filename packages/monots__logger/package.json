@@ -1,0 +1,87 @@
+{
+  "name": "@monots/logger",
+  "version": "0.0.0",
+  "description": "the main logger used throughout monots",
+  "keywords": [],
+  "repository": "https://github.com/monots/monots/tree/master/packages/monots__logger",
+  "license": "MIT",
+  "contributors": [],
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "browser": "./dist/index.browser.esm.js",
+      "import": "./dist/index.esm.js"
+    },
+    "./index.js": {
+      "types": "./dist/index.d.ts",
+      "browser": "./dist/index.browser.esm.js",
+      "import": "./dist/index.esm.js"
+    },
+    "./package.json": "./package.json",
+    "./types/*": "./dist/*.d.ts"
+  },
+  "module": "./dist/index.esm.js",
+  "browser": "./dist/index.browser.esm.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@bitty/format-date": "^1.4.0",
+    "is-unicode-supported": "^1.2.0",
+    "is-what": "^4.1.7",
+    "picocolors": "^1.0.0",
+    "std-env": "^3.1.1",
+    "string-width": "^5.1.2",
+    "ts-extras": "^0.10.2",
+    "type-fest": "^2.13.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.41"
+  },
+  "peerDependencies": {
+    "@types/node": "^16 || ^17 || ^18"
+  },
+  "peerDependenciesMeta": {
+    "@types/node": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "monots": {
+    "entrypoints": [
+      "index.ts"
+    ],
+    "tsconfigs": {
+      "src": {
+        "compilerOptions": {
+          "types": [
+            "node"
+          ]
+        }
+      },
+      "tests": {
+        "compilerOptions": {
+          "types": [
+            "node"
+          ],
+          "baseUrl": "./",
+          "paths": {
+            "@monots/logger": [
+              "../src/index.ts"
+            ]
+          }
+        }
+      }
+    },
+    "mode": "library",
+    "externalModules": []
+  }
+}
