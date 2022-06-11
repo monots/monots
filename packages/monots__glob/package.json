@@ -1,0 +1,81 @@
+{
+  "name": "@monots/glob",
+  "version": "0.0.0",
+  "description": "a glob utility forked from fdir with support for custom file systems",
+  "keywords": [],
+  "repository": "https://github.com/monots/monots/tree/master/packages/monots__glob",
+  "license": "MIT",
+  "contributors": [],
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "browser": "./dist/index.browser.esm.js",
+      "import": "./dist/index.esm.js"
+    },
+    "./index.js": {
+      "types": "./dist/index.d.ts",
+      "browser": "./dist/index.browser.esm.js",
+      "import": "./dist/index.esm.js"
+    },
+    "./package.json": "./package.json",
+    "./types/*": "./dist/*.d.ts"
+  },
+  "module": "./dist/index.esm.js",
+  "browser": "./dist/index.browser.esm.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@types/normalize-path": "^3.0.0",
+    "@types/picomatch": "^2.3.0",
+    "anymatch": "^3.1.2",
+    "is-what": "^4.1.7",
+    "normalize-path": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.42"
+  },
+  "peerDependencies": {
+    "@types/node": "^16 || ^17 || ^18"
+  },
+  "peerDependenciesMeta": {
+    "@types/node": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "monots": {
+    "entrypoints": [
+      "index.ts"
+    ],
+    "tsconfigs": {
+      "src": {
+        "compilerOptions": {
+          "types": [
+            "node"
+          ]
+        }
+      },
+      "tests": {
+        "compilerOptions": {
+          "baseUrl": "./",
+          "paths": {
+            "@monots/glob": [
+              "../src/index.ts"
+            ]
+          },
+          "types": [
+            "node"
+          ]
+        }
+      }
+    },
+    "mode": "library",
+    "externalModules": []
+  }
+}
