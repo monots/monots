@@ -367,7 +367,7 @@ export class PackageEntity extends BaseEntity<Package> {
    * Ensure that the dist file is created.
    */
   async #ensureDist() {
-    await del(this.output);
+    await fs.rm(this.output, { force: true, recursive: true });
     await fs.mkdir(this.output, { recursive: true });
   }
 

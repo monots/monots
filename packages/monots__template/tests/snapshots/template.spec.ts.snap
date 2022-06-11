@@ -3,7 +3,7 @@
 exports[`can process a basic template config 1`] = `
 {
   "dependencies": {
-    "asdf": "file:./asdf",
+    "asdf": "^1.2.2",
   },
   "description": "base",
   "name": "base",

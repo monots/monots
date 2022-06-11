@@ -1,5 +1,6 @@
 import { MonotsPriority } from '@monots/constants';
 import type {
+  AnyFunction,
   MonotsConfig,
   MonotsPlugin,
   NestedMonotsPlugins,
@@ -18,7 +19,6 @@ import {
 } from 'load-esm-config';
 import * as path from 'node:path';
 import normalizePath from 'normalize-path';
-import type { AnyFunction } from 'superstruct-extra';
 import { objectEntries } from 'ts-extras';
 import type { Except } from 'type-fest';
 
@@ -67,15 +67,18 @@ export async function loadConfig(options?: LoadConfigOptions): Promise<ResolvedM
     throw new Error('no configuration file found');
   }
 
+  const { config, root } = result;
+
   // store the transformers which will map plugins to their resolved version.
   const transformers: PluginTransformers = Object.create(null);
-  // sort the plugins by priority
-  const plugins = sortPlugins(flattenPlugins(result.config.plugins));
+
+  // flatten the plugins and then sort by priority.
+  const plugins = sortPlugins(flattenPlugins(config.plugins), config.priorities);
   const transformedPlugins: ResolvedPlugin[] = [];
   const pluginProps: PluginProps = {
     ...result,
     logger: createLogger(options?.logLevel ?? 'warn'),
-    getPath: (...paths: string[]) => normalizePath(path.join(result.root, ...paths)),
+    getPath: (...paths: string[]) => normalizePath(path.join(root, ...paths)),
     emit: emitter.emit,
     on: emitter.on,
   };
@@ -143,14 +146,28 @@ export async function loadConfig(options?: LoadConfigOptions): Promise<ResolvedM
   return resolved;
 }
 
+/**
+ * Get the priority of a plugin as a number.
+ */
 function getPriority(value: number | MonotsPriority | undefined): number {
   return isNumber(value) ? value : isString(value) ? MonotsPriority[value] : MonotsPriority.Default;
 }
 
+/**
+ * Flatten the nested plugins into a flat array.
+ */
 function flattenPlugins(plugins: NestedMonotsPlugins = []): MonotsPlugin[] {
   return plugins.flatMap((plugin) => (isArray(plugin) ? flattenPlugins(plugin) : plugin));
 }
 
-function sortPlugins(plugins: MonotsPlugin[]): MonotsPlugin[] {
-  return sort(plugins ?? []).desc((plugin) => getPriority(plugin.priority));
+/**
+ * Sort the plugins by priority.
+ */
+function sortPlugins(
+  plugins: MonotsPlugin[],
+  priorities: MonotsConfig['priorities'] = {},
+): MonotsPlugin[] {
+  return sort(plugins ?? []).desc((plugin) =>
+    getPriority(priorities[plugin.name] ?? plugin.priority),
+  );
 }

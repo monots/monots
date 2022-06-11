@@ -41,7 +41,7 @@
     "ts-extras": "^0.10.2"
   },
   "devDependencies": {
-    "@types/node": "^17.0.41"
+    "@types/node": "^17.0.42"
   },
   "peerDependencies": {
     "@types/node": "^16 || ^17 || ^18"
@@ -50,6 +50,9 @@
     "@types/node": {
       "optional": true
     }
+  },
+  "engines": {
+    "node": ">=16"
   },
   "publishConfig": {
     "access": "public"

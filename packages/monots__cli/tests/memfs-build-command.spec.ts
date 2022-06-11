@@ -10,8 +10,8 @@ import { vol } from 'memfs';
 import path from 'node:path';
 import { beforeEach, test, vi } from 'vitest';
 
-import { cli, context } from '../src/setup.js';
 import fileJson from './fixtures/pnpm-to-build.js';
+import { cli, context } from './test-setup.js';
 
 vi.mock('node:fs/promises');
 vi.mock('node:fs');

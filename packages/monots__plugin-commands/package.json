@@ -41,6 +41,9 @@
     "recursive-copy": "^2.0.14",
     "typanion": "^3.9.0"
   },
+  "engines": {
+    "node": ">=16"
+  },
   "publishConfig": {
     "access": "public"
   },

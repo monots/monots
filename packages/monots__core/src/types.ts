@@ -72,13 +72,18 @@ declare global {
        *
        * Use this to add new properties to the `ResolvedMonotsConfig` object.
        */
-      'core:prepare': (props: PluginProps) => MaybePromise<PartialResolvedConfig | undefined>;
+      'core:prepare': (props: PluginProps) => MaybePromise<PartialResolvedConfig | void>;
 
       /**
        * All plugins have been initialized and the resolved configuration is
        * provided within this event.
        */
-      'core:ready': (props: ResolvedAlias) => Promise<void>;
+      'core:ready': (props: ResolvedAlias) => MaybePromise<void>;
+
+      /**
+       * Called when everything is completed and cleanup is done.
+       */
+      'core:dispose': (props: ResolvedAlias) => MaybePromise<void>;
     }
   }
 }

@@ -1,4 +1,3 @@
-import del from 'del';
 import { loadJsonFile } from 'load-json-file';
 import * as fs from 'node:fs/promises';
 import path from 'node:path';
@@ -34,8 +33,8 @@ export function createFileUtils(directory: string): FileUtils {
       const [filepath, ...rest] = args;
       return writeJsonFile(filepath, ...rest);
     },
-    rm: (pattern, options) => {
-      return del(pattern, { cwd: url.pathname, ...options });
+    rm: (target, options) => {
+      return fs.rm(new URL(target, url.href), { cwd: url.pathname, ...options });
     },
   };
 }

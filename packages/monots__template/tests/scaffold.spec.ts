@@ -37,7 +37,7 @@ test.concurrent('scaffold an app', async ({ expect }) => {
   expect(await dest.loadJsonFile('package.json.template')).toMatchInlineSnapshot(`
     {
       "dependencies": {
-        "asdf": "file:./asdf",
+        "asdf": "^1.2.2",
       },
       "description": "<%= name %>",
       "name": "<%= name %>",

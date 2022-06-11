@@ -42,6 +42,9 @@
   "peerDependencies": {
     "superstruct": "*"
   },
+  "engines": {
+    "node": ">=16"
+  },
   "publishConfig": {
     "access": "public"
   },

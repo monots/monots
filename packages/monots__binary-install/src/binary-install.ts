@@ -1,15 +1,15 @@
+import Zip from 'adm-zip';
 import { execa } from 'execa';
 import { http, https } from 'follow-redirects';
 import { createWriteStream } from 'node:fs';
 import * as fs from 'node:fs/promises';
-import { IncomingMessage } from 'node:http';
+import type { IncomingMessage } from 'node:http';
 import * as os from 'node:os';
 import * as path from 'node:path';
 import type { Writable } from 'node:stream';
 import { pipeline } from 'node:stream/promises';
 import colors from 'picocolors';
 import * as tar from 'tar';
-import Zip from 'adm-zip';
 
 interface BinaryProps {
   name: string;
@@ -73,11 +73,10 @@ export class Binary {
     try {
       let extractionStream: Writable;
 
-      if (this.type === 'zip') {
-        extractionStream = await this.#createZipStream();
-      } else {
-        extractionStream = tar.extract({ strip: this.nested ? 1 : undefined, C: this.directory });
-      }
+      extractionStream =
+        this.type === 'zip'
+          ? await this.#createZipStream()
+          : tar.extract({ strip: this.nested ? 1 : undefined, C: this.directory });
 
       await pipeline(await this.#stream, extractionStream);
       await this.#zip();

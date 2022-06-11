@@ -56,7 +56,7 @@ function deletePath(filepath) {
   }
 
   if (stat.isFile()) {
-    console.log('deleting file', filepath);
+    process.stdout.write(`deleting file: ${filepath}`);
     unlinkSync(filepath);
   }
 
@@ -99,13 +99,11 @@ for (const { original, target } of targets) {
   // The file or directory exists but is not symlinked correctly. It should be
   // deleted.
   if (targetStat) {
-    console.log('deleting path', target);
+    process.stdout.write(`deleting path: ${target}`);
     deletePath(target);
   }
 
   symlinkSync(original, target);
 }
 
-console.log(
-  '\n\u001B[32mSuccessfully symlinked the `support/root` files to the root directory.\u001B[0m\n',
-);
+process.stdout.write('\n\u001B[32m✔\u001B[0m symlinked config files to the root directory\n');

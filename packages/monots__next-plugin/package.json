@@ -50,6 +50,9 @@
   "peerDependencies": {
     "next": "*"
   },
+  "engines": {
+    "node": ">=16"
+  },
   "publishConfig": {
     "access": "public"
   },

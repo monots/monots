@@ -27,6 +27,7 @@ export class BuildCommand extends BaseCommand {
 
   override async execute() {
     super.execute();
+
     const spinner = ora(chalkTemplate`loading project`).start();
 
     try {

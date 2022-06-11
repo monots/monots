@@ -12,4 +12,4 @@ zip = "0.6.2"
 
 [dev-dependencies]
 testing = "0.20.1"
-insta = "1.14.0"
+insta = "1.14.1"

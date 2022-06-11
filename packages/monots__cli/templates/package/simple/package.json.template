@@ -16,9 +16,15 @@
   "publishConfig": {
     "access": "public"
   },
+  "dependencies": {},
   "monots": {
     "entrypoints": [
       "index.ts"
-    ]
+    ],
+    "tsconfigs": {
+      "tests": {
+        "compilerOptions": {}
+      }
+    }
   }
 }

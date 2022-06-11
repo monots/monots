@@ -32,6 +32,9 @@
     "@monots/core": "^0.16.0",
     "@monots/types": "^0.1.9"
   },
+  "engines": {
+    "node": ">=16"
+  },
   "publishConfig": {
     "access": "public"
   },

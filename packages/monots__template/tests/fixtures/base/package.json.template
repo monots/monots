@@ -2,7 +2,7 @@
   "name": "<%= name %>",
   "description": "<%= name %>",
   "dependencies": {
-    "asdf": "file:./asdf"
+    "asdf": "^1.2.2"
   },
   "version": "<%= version %>"
 }

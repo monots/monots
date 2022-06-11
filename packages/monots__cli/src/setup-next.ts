@@ -17,27 +17,20 @@ export async function createCli() {
     loadConfig(),
   ]);
   const argv = parser(process.argv.slice(2));
-  const logLevel: LogLevel = argv.silent ? 'silent' : argv.logLevel ?? 'log';
-  const logger = createLogger(logLevel);
+  const level: LogLevel = argv.silent ? 'silent' : argv.logLevel ?? 'log';
+  const logger = createLogger(level);
 
   if (!result) {
     logger.error(new Error('No configuration found for `monots`'));
     process.exit(1);
   }
 
-  const context: MonotsCommandContext = {
-    ...result.cliContext,
-    internal: false,
-    version,
-    description,
-    name,
-    logLevel: logger.level,
-    logger,
-    cwd: process.cwd(),
-    stdin: process.stdin,
-    stdout: process.stdout,
-    stderr: process.stderr,
-  };
+  const logLevel = logger.level;
+  const internal = false;
+  const cwd = process.cwd();
+  const rest = result.cliContext;
+
+  const context = { ...rest, internal, version, description, name, logLevel, logger, cwd };
 
   const cli = new Cli<MonotsCommandContext>({
     binaryLabel: description,

@@ -8,7 +8,7 @@ export interface MonotsEvents extends monots.Events {}
 
 export type NestedMonotsPlugins = Array<MonotsPlugin | NestedMonotsPlugins>;
 
-export interface MonotsConfig {
+export interface MonotsConfig extends monots.Config {
   /**
    * The plugins for the root packages.
    */
@@ -30,23 +30,23 @@ export interface MonotsConfig {
    */
   packages?: string[];
 
-  tsconfig?: {
-    /**
-     * The base tsconfig that all generated tsconfig files will extend from.
-     *
-     * This also supports relative paths to a local file. In order for a path to
-     * be considered as relative, it must start with `./` or `../`.
-     *
-     * @default `@monots/tsconfig/tsconfig.json`
-     */
-    base?: string;
-    /**
-     * The root tsconfig file.
-     *
-     * @default `./tsconfig.json`
-     */
-    path?: string;
-  };
+  // tsconfig?: {
+  //   /**
+  //    * The base tsconfig that all generated tsconfig files will extend from.
+  //    *
+  //    * This also supports relative paths to a local file. In order for a path to
+  //    * be considered as relative, it must start with `./` or `../`.
+  //    *
+  //    * @default `@monots/tsconfig/tsconfig.json`
+  //    */
+  //   base?: string;
+  //   /**
+  //    * The root tsconfig file.
+  //    *
+  //    * @default `./tsconfig.json`
+  //    */
+  //   path?: string;
+  // };
 
   /**
    * The globs which match the package names followed by a configuration.
@@ -257,5 +257,6 @@ declare global {
       [key: string]: Plugin;
     }
     interface ResolvedConfig {}
+    interface Config {}
   }
 }

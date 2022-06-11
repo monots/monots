@@ -9,14 +9,10 @@
   "compilerOptions": {
     "noEmit": true,
     "declaration": false,
-    "types": [
-      "node"
-    ],
+    "types": ["node"],
     "baseUrl": "../src",
     "paths": {
-      "@monots/binary-install": [
-        "./index.ts"
-      ]
+      "@monots/binary-install": ["./index.ts"]
     }
   }
 }

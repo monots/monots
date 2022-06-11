@@ -31,6 +31,9 @@
   "dependencies": {
     "type-fest": "^2.13.0"
   },
+  "engines": {
+    "node": ">=16"
+  },
   "publishConfig": {
     "access": "public"
   },

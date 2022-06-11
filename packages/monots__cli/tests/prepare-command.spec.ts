@@ -3,7 +3,7 @@ import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
 import { afterAll, test } from 'vitest';
 
-import { cli, context } from '../src/setup';
+import { cli, context } from './test-setup.js';
 
 const setupFixtures = createSetupFixtures({ context, fileUrl: import.meta.url });
 

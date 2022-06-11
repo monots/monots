@@ -62,7 +62,7 @@ export type PropsFromCommand<Command extends CliCommand<CommandContext>> = {
   >;
 };
 
-export type { Usage } from 'clipanion';
+export type { BaseContext, Usage } from 'clipanion';
 
 declare global {
   namespace monots {

@@ -1,8 +1,9 @@
-import {} from 'type-fest';
-import {} from 'ts-extras';
 import pc from 'picocolors';
-import { Formatter } from 'picocolors/types.js';
-import { AnsiForegroundColor, AnsiFormat } from '../types.js';
+import type { Formatter } from 'picocolors/types.js';
+import {} from 'ts-extras';
+import {} from 'type-fest';
+
+import type { AnsiForegroundColor, AnsiFormat } from '../types.js';
 
 interface AnsiFormatterProps {
   color?: AnsiForegroundColor;
@@ -14,9 +15,7 @@ interface AnsiFormatterProps {
 function getBackgroundColor<Color extends Exclude<AnsiForegroundColor, 'gray'>>(
   color: Color,
 ): `bg${Capitalize<Color>}` {
-  return `bg${color.substring(0, 1).toUpperCase()}${color.substring(
-    1,
-  )}` as `bg${Capitalize<Color>}`;
+  return `bg${color.slice(0, 1).toUpperCase()}${color.slice(1)}` as `bg${Capitalize<Color>}`;
 }
 
 export function getFormatter(props: AnsiFormatterProps = {}): Formatter {

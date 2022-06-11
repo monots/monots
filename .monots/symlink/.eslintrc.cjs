@@ -17,11 +17,12 @@ module.exports = {
       files: [
         './packages/{create-monots,monots__cli,monots__binary-install}/src/**/*.ts',
         './.monots/**',
+        './packages/monots__logger/src/logger.ts',
       ],
       rules: { 'no-console': 'off', 'unicorn/no-process-exit': 'off' },
     },
     {
-      files: ['**/{vite,vitest}.config.{js,ts}'],
+      files: ['**/*.config.{js,ts}', './packages/monots__logger/src/index.ts'],
       rules: { 'import/no-default-export': 'off' },
     },
   ],

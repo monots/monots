@@ -9,14 +9,10 @@
   "compilerOptions": {
     "noEmit": true,
     "declaration": false,
-    "types": [
-      "node"
-    ],
+    "types": ["node"],
     "baseUrl": "./",
     "paths": {
-      "@monots/logger": [
-        "../src/index.ts"
-      ]
+      "@monots/logger": ["../src/index.ts"]
     }
   }
 }

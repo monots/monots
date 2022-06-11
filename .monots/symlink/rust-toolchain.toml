@@ -1,4 +1,4 @@
 [toolchain]
 # Find versions: https://rust-lang.github.io/rustup-components-history/
-channel = "nightly-2022-06-02"
+channel = "nightly-2022-06-11"
 profile = "default"

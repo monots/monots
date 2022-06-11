@@ -1,8 +1,8 @@
 import type { CorePlugin } from '@monots/core';
-import type { PluginProps } from '@monots/types';
+import type { BaseContext, PluginProps } from '@monots/types';
 import { deepMerge } from '@monots/utils';
-import type { Ora } from 'ora';
-import ora from 'ora';
+import * as process from 'node:process';
+import createOra, { type Ora } from 'ora';
 
 import {
   BuildCommand,
@@ -13,14 +13,17 @@ import {
   PrepareCommand,
 } from './commands/index.js';
 
-export interface CommandPluginProps {}
+export interface CommandPluginProps extends Partial<BaseContext> {}
 
-export function commandPlugin(_props?: CommandPluginProps): CorePlugin {
+export function commandPlugin(props: CommandPluginProps = {}): CorePlugin {
+  const { stderr = process.stderr, stdin = process.stdin, stdout = process.stdout } = props;
+
   return {
     name: 'command',
     type: 'core',
     onPrepare: (props) => {
-      const isSilent = props.logger.level < 0;
+      const { on, emit, logger } = props;
+      const isSilent = logger.level < 0;
 
       const commands = props.emit({
         event: 'commands:register',
@@ -28,13 +31,14 @@ export function commandPlugin(_props?: CommandPluginProps): CorePlugin {
         transformer: (values) => values.flat(),
       });
 
+      const ora = createOra({ isSilent, stream: stderr });
       const cliContext = props.emit({
         event: 'commands:context',
         args: [props],
         transformer: (values) => {
           return deepMerge<monots.CommandContext>([
             ...values,
-            { ora: ora({ isSilent }), on: props.on, emit: props.emit },
+            { ora, on, emit, stderr, stdin, stdout },
           ]);
         },
       });
@@ -47,6 +51,7 @@ export function commandPlugin(_props?: CommandPluginProps): CorePlugin {
         InitCommand,
         PrepareCommand,
       ]);
+
       return { commands, cliContext };
     },
   };
@@ -69,7 +74,7 @@ declare global {
       cliContext: monots.CommandContext;
     }
 
-    interface CommandContext {
+    interface CommandContext extends BaseContext {
       /**
        * Provide the ora
        */

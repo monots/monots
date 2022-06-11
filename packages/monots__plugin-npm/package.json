@@ -1,0 +1,57 @@
+{
+  "name": "@monots/plugin-npm",
+  "version": "0.0.0",
+  "description": "Core support for managing npm packages",
+  "keywords": [],
+  "repository": "https://github.com/monots/monots/tree/master/packages/monots__plugin-npm",
+  "license": "MIT",
+  "contributors": [],
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "browser": "./dist/index.browser.esm.js",
+      "import": "./dist/index.esm.js"
+    },
+    "./index.js": {
+      "types": "./dist/index.d.ts",
+      "browser": "./dist/index.browser.esm.js",
+      "import": "./dist/index.esm.js"
+    },
+    "./package.json": "./package.json",
+    "./types/*": "./dist/*.d.ts"
+  },
+  "module": "./dist/index.esm.js",
+  "browser": "./dist/index.browser.esm.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@monots/constants": "^0.0.0",
+    "@monots/core": "^0.16.0",
+    "@monots/plugin-commands": "^0.0.0",
+    "@monots/types": "^0.1.9",
+    "@monots/utils": "^0.5.0",
+    "anymatch": "^3.1.2",
+    "load-json-file": "^7.0.1",
+    "picomatch": "^2.3.1",
+    "type-fest": "^2.13.0",
+    "write-json-file": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "monots": {
+    "entrypoints": [
+      "index.ts"
+    ],
+    "tsconfigs": {},
+    "mode": "library",
+    "externalModules": []
+  }
+}

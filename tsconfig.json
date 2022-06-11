@@ -19,6 +19,9 @@
       "path": "packages/monots__binary-install/src"
     },
     {
+      "path": "packages/monots__binary-install/tests"
+    },
+    {
       "path": "packages/monots__cli/src"
     },
     {
@@ -34,6 +37,18 @@
       "path": "packages/monots__core/tests"
     },
     {
+      "path": "packages/monots__glob/src"
+    },
+    {
+      "path": "packages/monots__glob/tests"
+    },
+    {
+      "path": "packages/monots__logger/src"
+    },
+    {
+      "path": "packages/monots__logger/tests"
+    },
+    {
       "path": "packages/monots__next-plugin/src"
     },
     {
@@ -47,6 +62,12 @@
     },
     {
       "path": "packages/monots__preset-npm/src"
+    },
+    {
+      "path": "packages/monots__prompts/src"
+    },
+    {
+      "path": "packages/monots__prompts/tests"
     },
     {
       "path": "packages/monots__template/src"

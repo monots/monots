@@ -2,7 +2,7 @@ import { createSetupFixtures } from '@monots/test';
 import type { PackageJson } from 'type-fest';
 import { afterAll, test } from 'vitest';
 
-import { cli, context } from '../src/setup';
+import { cli, context } from './test-setup.js';
 
 const setupFixtures = createSetupFixtures({ context, fileUrl: import.meta.url });
 

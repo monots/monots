@@ -1,5 +1,6 @@
 import type { Readable, Writable } from 'node:stream';
 import type picocolors from 'picocolors';
+
 import type { Prompt } from './elements/prompt.js';
 
 export interface Choice {

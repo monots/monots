@@ -1,5 +1,4 @@
 import type { MaybePromise } from '@monots/types';
-import type { Options } from 'del';
 import type { execa } from 'execa';
 import type { PromptModule } from 'inquirer';
 import type { ExportedConfig } from 'load-esm-config';
@@ -253,7 +252,7 @@ export interface FileUtils {
   write: typeof fs.writeFile;
   loadJson: typeof loadJsonFile;
   writeJson: typeof writeJsonFile;
-  rm: (patterns: string | readonly string[], options?: Options) => Promise<string[]>;
+  rm: (target: string | readonly string[]) => Promise<void>;
 }
 
 declare global {

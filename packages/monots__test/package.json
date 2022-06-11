@@ -33,10 +33,12 @@
     "delay": "^5.0.0",
     "load-json-file": "^7.0.1",
     "memfs": "^3.4.4",
-    "recursive-copy": "^2.0.14"
+    "msw": "^0.42.1",
+    "recursive-copy": "^2.0.14",
+    "vitest": "^0.14.2"
   },
   "devDependencies": {
-    "@types/node": "^17.0.40"
+    "@types/node": "^17.0.42"
   },
   "peerDependencies": {
     "@types/node": "^16 || ^17 || ^18"
@@ -45,6 +47,9 @@
     "@types/node": {
       "optional": true
     }
+  },
+  "engines": {
+    "node": ">=16"
   },
   "publishConfig": {
     "access": "public"

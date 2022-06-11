@@ -1,4 +1,4 @@
-import { type Emitter, createNanoEvents, type Unsubscribe } from 'nanoevents';
+import { type Emitter, type Unsubscribe, createNanoEvents } from 'nanoevents';
 import type { Interface as ReadlineInterface, Key } from 'node:readline';
 import readline from 'node:readline';
 import type picocolors from 'picocolors';

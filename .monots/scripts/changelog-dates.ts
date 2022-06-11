@@ -1,4 +1,5 @@
 import { getPackages } from '@manypkg/get-packages';
+import log from '@monots/logger';
 import { execSync } from 'node:child_process';
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
@@ -122,7 +123,7 @@ async function run() {
 
     await fs.writeFile(filePath, updatedContent);
 
-    console.log(`\u001B[32mAdded date to changelog: ${filePath}`);
+    log.success(`Added date to changelog: ${filePath}`);
   }
 }
 

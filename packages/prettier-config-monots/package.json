@@ -39,12 +39,15 @@
     "prettier-plugin-svelte": "^2.7.0"
   },
   "devDependencies": {
-    "@types/node": "^17.0.40",
+    "@types/node": "^17.0.42",
     "@types/prettier": "^2.6.1",
     "prettier": "^2.6.2"
   },
   "peerDependencies": {
     "prettier": "^2"
+  },
+  "engines": {
+    "node": ">=16"
   },
   "publishConfig": {
     "access": "public"

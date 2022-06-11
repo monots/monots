@@ -1,8 +1,9 @@
 import pico from 'picocolors';
 import { cursor, erase } from 'sisteransi';
-import { MaybePromise } from '../types.js';
 
-import { Action, clear, figures, lines, style, UnknownAction } from '../utils';
+import type { MaybePromise } from '../types.js';
+import type { Action, UnknownAction } from '../utils';
+import { clear, figures, lines, style } from '../utils';
 import type { PromptProps } from './prompt';
 import { Prompt } from './prompt';
 

@@ -185,9 +185,19 @@ export function getPackageJsonSync() {
  * const dirname = getDirname(import.meta.url);
  * ```
  */
-export function getDirname(fileUrl: string) {
-  const filename = fileUrl.startsWith('file:') ? new URL(fileUrl).pathname : fileUrl;
-  return path.dirname(path.normalize(normalizePath(filename)));
+export function getDirname(fileUrl: string | URL) {
+  return path.dirname(path.normalize(normalizePath(getPath(fileUrl))));
+}
+
+/**
+ * Get the normalized path of the provided `path`.
+ */
+export function getPath(path: string | URL): string {
+  return path instanceof URL
+    ? path.pathname
+    : path.startsWith('file:')
+    ? new URL(path).pathname
+    : normalizePath(path);
 }
 
 /**

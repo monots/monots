@@ -1,53 +1,48 @@
+import { getPackages } from '@manypkg/get-packages';
+import log from '@monots/logger';
+import { execa } from 'execa';
 import { loadJsonFile } from 'load-json-file';
-import { exec as ex } from 'node:child_process';
-import { promisify } from 'node:util';
+import * as path from 'node:path';
 import { writeJsonFile } from 'write-json-file';
 
 import { baseDir } from './helpers.js';
 
-const exec = promisify(ex);
+const originalValues: Array<[string, string]> = [];
+const files = await getPackages(baseDir()).then(({ packages }) =>
+  packages
+    .filter((pkg) => !pkg.packageJson.private && (pkg.packageJson as any).type === 'module')
+    .map(({ dir }) => path.join(dir, 'package.json')),
+);
 
-const files = [
-  baseDir('packages/monots__core/package.json'),
-  baseDir('packages/monots__utils/package.json'),
-  baseDir('packages/monots__types/package.json'),
-  baseDir('packages/monots__cli/package.json'),
-  baseDir('packages/superstruct-extra/package.json'),
-];
+let exit = 0;
 
-async function run() {
-  let exit = 0;
-  const originalValues: Array<[string, string]> = [];
+try {
+  log.warn(`temporarily adjusting the exports packages.`);
+  await Promise.all(
+    files.map(async (file) => {
+      const json = await loadJsonFile<any>(file);
+      const original = json.exports;
+      json.exports = { '.': './src/index.ts' };
+      await writeJsonFile(file, json, { detectIndent: true });
+      originalValues.push([file, original]);
+    }),
+  );
 
-  try {
-    console.log(`Temporarily pointing the exports object.`);
-    await Promise.all(
-      files.map(async (file) => {
-        const json = await loadJsonFile<any>(file);
-        const original = json.exports;
-        json.exports = { '.': './src/index.ts' };
-        await writeJsonFile(file, json, { detectIndent: true });
-        originalValues.push([file, original]);
-      }),
-    );
-
-    const script = process.argv.slice(2).join(' ');
-    await exec(script);
-  } catch (error) {
-    console.error(error);
-    exit = 1;
-  } finally {
-    console.log(`Reverting the exports objects`);
-    await Promise.all(
-      originalValues.map(async ([file, original]) => {
-        const json = await loadJsonFile<any>(file);
-        json.exports = original;
-        await writeJsonFile(file, json, { detectIndent: true });
-      }),
-    );
-
-    process.exit(exit);
-  }
+  log.verbose('exports adjusted', files);
+  const [script = 'false', ...rest] = process.argv.slice(2);
+  await execa(script, rest, { stdio: 'inherit' });
+} catch (error) {
+  log.fatal(error);
+  exit = 1;
+} finally {
+  log.info(`reverting the exports property in all packages`);
+  await Promise.all(
+    originalValues.map(async ([file, original]) => {
+      const json = await loadJsonFile<any>(file);
+      json.exports = original;
+      await writeJsonFile(file, json, { detectIndent: true });
+    }),
+  );
+  log.verbose('exports reverted', files);
+  process.exit(exit);
 }
-
-run();

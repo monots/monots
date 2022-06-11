@@ -2,18 +2,27 @@ import type { MonotsEvents, Plugin } from '@monots/types';
 import type { Unsubscribe } from '@monots/utils';
 import { loadJsonFile } from 'load-json-file';
 
-export interface CorePlugin extends Plugin {
-  type: 'core';
+import type { EmitterProps } from './types.js';
 
+export interface BaseCorePlugin extends Plugin {
   /**
    * Return an object with properties to populate the resolved configuration resolved configuration.
    */
   onPrepare?: MonotsEvents['core:prepare'];
 
   /**
-   * A handler for after
+   * A handler for after the monots configuration has been resolved.
    */
   onReady?: MonotsEvents['core:ready'];
+
+  /**
+   * A handler for when monots is disposed.
+   */
+  onDispose?: MonotsEvents['core:dispose'];
+}
+
+export interface CorePlugin extends BaseCorePlugin {
+  type: 'core';
 }
 
 /**
@@ -29,18 +38,44 @@ export function corePlugin(): CorePlugin {
     },
     transformers: {
       core: (plugin) => (props) => {
-        const dispose: Unsubscribe[] = [];
-
-        if (plugin.onPrepare) {
-          dispose.push(props.on('core:prepare', plugin.onPrepare));
-        }
-
-        if (plugin.onReady) {
-          dispose.push(props.on('core:ready', plugin.onReady));
-        }
+        handleCorePluginEvents({ plugin, on: props.on });
       },
     },
   };
+}
+
+interface HandleCorePluginEventsProps extends Pick<EmitterProps, 'on'> {
+  plugin: BaseCorePlugin;
+}
+
+/**
+ * @internal
+ */
+export function handleCorePluginEvents(props: HandleCorePluginEventsProps) {
+  const { on, plugin } = props;
+  const dispose: Unsubscribe[] = [];
+  const { onDispose, onPrepare, onReady } = plugin;
+
+  if (onPrepare) {
+    const handler = on('core:prepare', onPrepare);
+    dispose.push(handler);
+  }
+
+  if (onReady) {
+    const handler = on('core:ready', onReady);
+    dispose.push(handler);
+  }
+
+  if (onDispose) {
+    const handler = on('core:dispose', (config) => {
+      onDispose(config);
+
+      for (const unsubscribe of dispose) {
+        unsubscribe();
+      }
+    });
+    dispose.push(handler);
+  }
 }
 
 declare global {

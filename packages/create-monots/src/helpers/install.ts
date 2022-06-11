@@ -36,7 +36,7 @@ export async function pnpmInstall(
  */
 export async function pnpmAdd(cwd: string, packages: string[]): Promise<void> {
   try {
-    await execa('pnpm', ['add', '-W', ...packages], { cwd, stdio: 'inherit' });
+    await execa('pnpm', ['add', ...packages], { cwd, stdio: 'inherit' });
   } catch (error) {
     if (isNativeError(error)) {
       console.error(`Failed to install packages: ${error.message}`);

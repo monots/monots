@@ -1,8 +1,9 @@
 import color from 'kleur';
 import { cursor, erase } from 'sisteransi';
-import { BaseProps } from '../types.js';
 
-import { Action, clear, style, UnknownAction } from '../utils';
+import type { BaseProps } from '../types.js';
+import type { Action, UnknownAction } from '../utils';
+import { clear, style } from '../utils';
 import { Prompt } from './prompt';
 
 /**

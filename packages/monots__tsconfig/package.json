@@ -28,6 +28,9 @@
     "dist",
     "tsconfig.json"
   ],
+  "engines": {
+    "node": ">=16"
+  },
   "publishConfig": {
     "access": "public"
   }

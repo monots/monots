@@ -1,7 +1,7 @@
 import { createSetupFixtures } from '@monots/test';
 import { afterAll, test } from 'vitest';
 
-import { cli, context } from '../src/setup.js';
+import { cli, context } from './test-setup.js';
 
 const setupFixtures = createSetupFixtures({ context, fileUrl: import.meta.url });
 
