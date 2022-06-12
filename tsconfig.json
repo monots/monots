@@ -37,6 +37,12 @@
       "path": "packages/monots__core/tests"
     },
     {
+      "path": "packages/monots__fs/src"
+    },
+    {
+      "path": "packages/monots__fs/tests"
+    },
+    {
       "path": "packages/monots__glob/src"
     },
     {

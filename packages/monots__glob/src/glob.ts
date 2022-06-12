@@ -1,6 +1,5 @@
 import anymatch, { type Matcher } from 'anymatch';
 import { isError } from 'is-what';
-import type { Dirent, ObjectEncodingOptions, PathLike } from 'node:fs';
 import fs from 'node:fs/promises';
 import * as path from 'node:path';
 import normalizePath from 'normalize-path';
@@ -62,7 +61,6 @@ const DEFAULT_OPTIONS: Required<GlobProps> = {
   cwd: process.cwd(),
   fs: DEFAULT_FS,
   maxDepth: Number.POSITIVE_INFINITY,
-  absolute: false,
   includeFiles: true,
   includeDirectories: true,
   followSymlinks: true,
@@ -77,7 +75,14 @@ const DEFAULT_OPTIONS: Required<GlobProps> = {
 type MatchFunction = (filename: string) => boolean;
 
 interface Entry {
-  path: string;
+  /**
+   * The absolute path on the file system.
+   */
+  absolute: string;
+  /**
+   * The path relative to the provided `cwd`.
+   */
+  relative: string;
   isDirectory: boolean;
   isFile: boolean;
   isSymlink: boolean;
@@ -114,13 +119,11 @@ async function* walkDirectory(
 
   if (options.includeDirectories && shouldInclude({ path: relativeDirectory, ...includeProps })) {
     yield {
+      absolute: normalizeDirectory(props.root, options.trailingSlash),
+      relative: normalizeDirectory(relativeDirectory, options.trailingSlash),
       isDirectory: !props.isSymbolicLink,
       isFile: false,
       isSymlink: !!props.isSymbolicLink,
-      path: normalizeDirectory(
-        options.absolute ? props.root : relativeDirectory,
-        options.trailingSlash,
-      ),
     };
   }
 
@@ -163,7 +166,8 @@ async function* walkDirectory(
         };
       } else if (options.includeFiles && shouldInclude({ path: relativeRoot, ...includeProps })) {
         fileToYield = {
-          path: options.absolute ? resolvedRoot : relativeRoot,
+          absolute: resolvedRoot,
+          relative: relativeRoot,
           isDirectory: false,
           isSymlink: false,
           isFile: true,
@@ -185,11 +189,11 @@ async function* walkDirectory(
       return;
     }
 
-    yield* combine(concurrentIterators);
-
     for (const entry of concurrentFiles) {
       yield entry;
     }
+
+    yield* combine(concurrentIterators, void 0);
   } catch (error) {
     throw wrapErrorWithRootPath(error, props.root);
   }
@@ -330,15 +334,6 @@ export interface GlobProps {
    * @default true
    */
   includeFiles?: boolean;
-
-  /**
-   * Use this to get full absolute paths in the output.
-   *
-   * > By default, `@monots/glob` returns paths relative to the `cwd`.
-   *
-   * @default false
-   */
-  absolute?: boolean;
 
   /**
    * If a pattern ends in a `<pattern>/` it will be expanded to `<pattern>/**`.

@@ -8,7 +8,7 @@ describe('glob', () => {
     const gathered: string[] = [];
 
     for await (const entry of glob({ cwd, includeDirectories: false })) {
-      gathered.push(entry.path);
+      gathered.push(entry.relative);
     }
 
     expect(gathered).toMatchInlineSnapshot(`
@@ -35,7 +35,7 @@ describe('glob', () => {
       cwd,
       includeDirectories: false,
     })) {
-      gathered.push(entry.path);
+      gathered.push(entry.relative);
     }
 
     expect(gathered).toMatchInlineSnapshot(`
@@ -50,7 +50,7 @@ describe('glob', () => {
     const gathered: string[] = [];
 
     for await (const entry of glob({ include: [], cwd })) {
-      gathered.push(entry.path);
+      gathered.push(entry.relative);
     }
 
     expect(gathered).toMatchInlineSnapshot(`[]`);
@@ -61,7 +61,7 @@ describe('glob', () => {
     const include = ['fixtures/**/*/*.md'];
 
     for await (const entry of glob({ include, cwd, includeDirectories: false })) {
-      gathered.push(entry.path);
+      gathered.push(entry.relative);
     }
 
     expect(gathered).toMatchInlineSnapshot(`
@@ -80,7 +80,7 @@ describe('glob', () => {
     const gathered: string[] = [];
 
     for await (const entry of glob({ includeFiles: false, cwd })) {
-      gathered.push(entry.path);
+      gathered.push(entry.relative);
     }
 
     expect(gathered).toMatchInlineSnapshot(`
@@ -101,11 +101,11 @@ describe('glob', () => {
     const gathered: string[] = [];
 
     for await (const entry of glob({ concurrent: true, cwd, includeDirectories: false })) {
-      concurrent.push(entry.path);
+      concurrent.push(entry.relative);
     }
 
     for await (const entry of glob({ cwd, includeDirectories: false })) {
-      gathered.push(entry.path);
+      gathered.push(entry.relative);
     }
 
     expect([...concurrent].sort()).toEqual(gathered);

@@ -381,6 +381,23 @@ importers:
       type-fest: 2.13.0
       write-json-file: 5.0.0
 
+  packages/monots__fs:
+    specifiers:
+      '@monots/glob': ^0.0.0
+      '@types/diff': ^5.0.2
+      '@types/node': ^17.0.42
+      diff: ^5.1.0
+      memfs: ^3.4.4
+      type-fest: ^2.13.0
+    dependencies:
+      '@monots/glob': link:../monots__glob
+      '@types/diff': 5.0.2
+      diff: 5.1.0
+      memfs: 3.4.4
+      type-fest: 2.13.0
+    devDependencies:
+      '@types/node': 17.0.42
+
   packages/monots__glob:
     specifiers:
       '@types/node': ^17.0.42
@@ -1437,6 +1454,10 @@ packages:
 
   /@types/degit/2.8.3:
     resolution: {integrity: sha512-CL7y71j2zaDmtPLD5Xq5S1Gv2dFoHl0/GBZm6s39Mj/ls28L3NzAOqf7H4H0/2TNVMgMjMVf9CAFYSjmXhi3bw==}
+    dev: false
+
+  /@types/diff/5.0.2:
+    resolution: {integrity: sha512-uw8eYMIReOwstQ0QKF0sICefSy8cNO/v7gOTiIy9SbwuHyEecJUm7qlgueOO5S1udZ5I/irVydHVwMchgzbKTg==}
     dev: false
 
   /@types/eslint-scope/3.7.3:
@@ -2972,6 +2993,11 @@ packages:
   /diff-sequences/28.1.1:
     resolution: {integrity: sha512-FU0iFaH/E23a+a718l8Qa/19bF9p06kgE0KipMOMadwa3SjnaElKzPaUC0vnibs6/B/9ni97s61mcejk8W1fQw==}
     engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
+    dev: false
+
+  /diff/5.1.0:
+    resolution: {integrity: sha512-D+mk+qE8VC/PAUrlAU34N+VfXev0ghe5ywmpqrawphmVZc1bEfn56uo9qpyGp1p4xpzOHkSW4ztBd6L7Xx4ACw==}
+    engines: {node: '>=0.3.1'}
     dev: false
 
   /dir-glob/2.2.2:

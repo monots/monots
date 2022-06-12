@@ -1,0 +1,66 @@
+// Vitest Snapshot v1
+
+exports[`populate from file system 1`] = `
+{
+  "/custom/path/.directory/file.md": "",
+  "/custom/path/.file": "hello my sister!
+",
+  "/custom/path/file.md": "with contents
+",
+  "/custom/path/first/file.md": "the first time i saw your face, i wept for you
+",
+  "/custom/path/first/nested/directory/file.json": "{}
+",
+  "/custom/path/first/nested/directory/file.md": "",
+  "/custom/path/first/nested/file.md": "you are my fire
+",
+  "/custom/path/second/file.md": "you got this!
+",
+  "/custom/path/second/nested/directory/file.md": "",
+  "/custom/path/second/nested/file.md": "why??!!!
+",
+}
+`;
+
+exports[`populate from file system and apply changes back 1`] = `
+{
+  "/custom/path/.directory/file.md": "",
+  "/custom/path/.file": "hello my sister!
+",
+  "/custom/path/file.md": "with contents
+",
+  "/custom/path/first/file.md": "the first time i saw your face, i wept for you
+",
+  "/custom/path/first/nested/directory/file.json": "{}
+",
+  "/custom/path/first/nested/directory/file.md": "",
+  "/custom/path/first/nested/file.md": "you are my fire
+",
+  "/custom/path/second/file.md": "you got this!
+",
+  "/custom/path/second/nested/directory/file.md": "",
+  "/custom/path/second/nested/file.md": "why??!!!
+",
+}
+`;
+
+exports[`populate from file system and apply changes back 2`] = `
+{
+  "/custom/path/.directory/file.md": "",
+  "/custom/path/file.md": "with contents
+hello world",
+  "/custom/path/files.md": "hello world",
+  "/custom/path/first/file.md": "the first time i saw your face, i wept for you
+",
+  "/custom/path/first/nested/directory/file.json": "{}
+",
+  "/custom/path/first/nested/directory/file.md": "",
+  "/custom/path/first/nested/file.md": "you are my fire
+",
+  "/custom/path/second/file.md": "you got this!
+",
+  "/custom/path/second/nested/directory/file.md": "",
+  "/custom/path/second/nested/file.md": "why??!!!
+",
+}
+`;
