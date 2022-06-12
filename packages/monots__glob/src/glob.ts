@@ -185,7 +185,7 @@ async function* walkDirectory(
       return;
     }
 
-    yield* combine(concurrentIterators, undefined);
+    yield* combine(concurrentIterators);
 
     for (const entry of concurrentFiles) {
       yield entry;
@@ -196,7 +196,10 @@ async function* walkDirectory(
 }
 
 function wrapErrorWithRootPath(error: unknown, root: string) {
-  if (isError(error) && 'root' in error) return error;
+  if (isError(error) && 'root' in error) {
+    return error;
+  }
+
   const errorWithRoot = new Error() as Error & { root: string };
 
   errorWithRoot.root = root;

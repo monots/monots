@@ -1,0 +1,57 @@
+use deno_ast::ParsedSource;
+use serde::{Deserialize, Serialize};
+
+use crate::{
+  decorators::{decorators_to_defs, DecoratorDef},
+  params::param_to_param_def,
+  ts_type::{ts_type_ann_to_def, TsTypeDef},
+  ts_type_param::{maybe_type_param_decl_to_type_param_defs, TsTypeParamDef},
+  ParamDef,
+};
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(rename_all = "camelCase")]
+pub struct FunctionDef {
+  pub params: Vec<ParamDef>,
+  pub return_type: Option<TsTypeDef>,
+  pub is_async: bool,
+  pub is_generator: bool,
+  pub type_params: Vec<TsTypeParamDef>,
+  #[serde(skip_serializing_if = "Vec::is_empty")]
+  pub decorators: Vec<DecoratorDef>,
+}
+
+pub fn function_to_function_def(
+  parsed_source: &ParsedSource,
+  function: &deno_ast::swc::ast::Function,
+) -> FunctionDef {
+  let params = function
+    .params
+    .iter()
+    .map(|param| param_to_param_def(parsed_source, param))
+    .collect();
+
+  let maybe_return_type = function.return_type.as_ref().map(ts_type_ann_to_def);
+
+  let type_params = maybe_type_param_decl_to_type_param_defs(function.type_params.as_ref());
+
+  let decorators = decorators_to_defs(parsed_source, &function.decorators);
+
+  FunctionDef {
+    params,
+    return_type: maybe_return_type,
+    is_async: function.is_async,
+    is_generator: function.is_generator,
+    type_params,
+    decorators,
+  }
+}
+
+pub fn get_doc_for_fn_decl(
+  parsed_source: &ParsedSource,
+  fn_decl: &deno_ast::swc::ast::FnDecl,
+) -> (String, FunctionDef) {
+  let name = fn_decl.ident.sym.to_string();
+  let fn_def = function_to_function_def(parsed_source, &fn_decl.function);
+  (name, fn_def)
+}
