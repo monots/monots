@@ -46,7 +46,7 @@ function withMonots(nextConfig: NextConfig = {}) {
     }
 
     webpackConfig.module?.rules?.unshift({
-      test: /\/node_modules\/esbuild-register\/dist\/(index|node)\.js$/,
+      test: /\/node_modules\/esbuild-register\/dist\/node\.js$/,
       use: hookLoader,
     });
 

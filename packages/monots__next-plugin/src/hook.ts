@@ -5,13 +5,7 @@ import { type LoaderDefinitionFunction } from 'webpack';
  * via the monots module it shouldn't do anything (noop).
  */
 const loader: LoaderDefinitionFunction = function () {
-  this.callback(
-    null,
-    `module.exports = () => {};
-    exports.revert = () => {};
-    exports.default = () => {};
-  `,
-  );
+  this.callback(null, `exports.register = () => ({ unregister: () => {}});`);
 };
 
 export = loader;
