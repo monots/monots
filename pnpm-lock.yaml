@@ -139,7 +139,7 @@ importers:
       eslint-plugin-simple-import-sort: ^7.0.0
       eslint-plugin-svelte3: ^4.0.0
       eslint-plugin-testing-library: ^5.5.1
-      eslint-plugin-unicorn: ^42.0.0
+      eslint-plugin-unicorn: ^43.0.0
       react: ^18.1.0
       react-dom: ^18.1.0
       svelte: ^3.48.0
@@ -165,7 +165,7 @@ importers:
       eslint-plugin-simple-import-sort: 7.0.0_eslint@8.16.0
       eslint-plugin-svelte3: 4.0.0_vypdqzeyqutkgs6qzc7qod4c64
       eslint-plugin-testing-library: 5.5.1_xztl6dhthcahlo6akmb2bmjmle
-      eslint-plugin-unicorn: 42.0.0_eslint@8.16.0
+      eslint-plugin-unicorn: 43.0.0_eslint@8.16.0
     devDependencies:
       '@types/eslint': 8.4.2
       '@types/node': 17.0.36
@@ -425,6 +425,11 @@ packages:
 
   /@babel/helper-validator-identifier/7.16.7:
     resolution: {integrity: sha512-hsEnFemeiW4D08A5gUAZxLBTXpZ39P+a+DGDsHw1yxqyQ/jzFEnxf5uTEGp+3bzAbNOxU1paTgYS4ECU/IgfDw==}
+    engines: {node: '>=6.9.0'}
+    dev: false
+
+  /@babel/helper-validator-identifier/7.18.6:
+    resolution: {integrity: sha512-MmetCkz9ej86nJQV+sFCxoGGrUbU3q02kgLciwkrt9QqEB7cP39oKEY0PakknEO0Gu20SskMRi+AYZ3b1TpN9g==}
     engines: {node: '>=6.9.0'}
     dev: false
 
@@ -2136,6 +2141,10 @@ packages:
     resolution: {integrity: sha512-SXgeMX9VwDe7iFFaEWkA5AstuER9YKqy4EhHqr4DVqkwmD9rpVimkMKWHdjn30Ja45txyjhSn63lVX69eVCckg==}
     dev: false
 
+  /ci-info/3.3.2:
+    resolution: {integrity: sha512-xmDt/QIAdeZ9+nfdPsaBCpMvHNLFiLdjj59qjqn+6iPe6YmHGQ35sBnQ8uslRBXFmXkiZQOJRjvQeoGppoTjjg==}
+    dev: false
+
   /class-utils/0.3.6:
     resolution: {integrity: sha512-qOhPa/Fj7s6TY8H8esGu5QNpMMQxz79h+urzrNYN6mn+9BnxlDGf5QZ+XeCDsxSjPqsSR56XOZOJmpeurnLMeg==}
     engines: {node: '>=0.10.0'}
@@ -3430,14 +3439,14 @@ packages:
       - typescript
     dev: false
 
-  /eslint-plugin-unicorn/42.0.0_eslint@8.16.0:
-    resolution: {integrity: sha512-ixBsbhgWuxVaNlPTT8AyfJMlhyC5flCJFjyK3oKE8TRrwBnaHvUbuIkCM1lqg8ryYrFStL/T557zfKzX4GKSlg==}
-    engines: {node: '>=12'}
+  /eslint-plugin-unicorn/43.0.0_eslint@8.16.0:
+    resolution: {integrity: sha512-Z/6HX8yry+zAjo4jHHTAbe1rfniox7qgmCReGBfTc/CVgotfScaMCc4dtSSTHlJ+7Yix5o6LPXzwwpuGGFricg==}
+    engines: {node: '>=14.18'}
     peerDependencies:
-      eslint: '>=8.8.0'
+      eslint: '>=8.18.0'
     dependencies:
-      '@babel/helper-validator-identifier': 7.16.7
-      ci-info: 3.3.1
+      '@babel/helper-validator-identifier': 7.18.6
+      ci-info: 3.3.2
       clean-regexp: 1.0.0
       eslint: 8.16.0
       eslint-utils: 3.0.0_eslint@8.16.0
