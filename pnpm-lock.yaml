@@ -132,7 +132,7 @@ importers:
       eslint-plugin-jest-dom: ^4.0.2
       eslint-plugin-jest-formatting: ^3.1.0
       eslint-plugin-jsx-a11y: ^6.5.1
-      eslint-plugin-markdown: ^2.2.1
+      eslint-plugin-markdown: ^3.0.0
       eslint-plugin-promise: ^6.0.0
       eslint-plugin-react: ^7.30.0
       eslint-plugin-react-hooks: ^4.5.0
@@ -158,7 +158,7 @@ importers:
       eslint-plugin-jest-dom: 4.0.2_eslint@8.16.0
       eslint-plugin-jest-formatting: 3.1.0_eslint@8.16.0
       eslint-plugin-jsx-a11y: 6.5.1_eslint@8.16.0
-      eslint-plugin-markdown: 2.2.1_eslint@8.16.0
+      eslint-plugin-markdown: 3.0.0_eslint@8.16.0
       eslint-plugin-promise: 6.0.0_eslint@8.16.0
       eslint-plugin-react: 7.30.0_eslint@8.16.0
       eslint-plugin-react-hooks: 4.5.0_eslint@8.16.0
@@ -3346,11 +3346,11 @@ packages:
       minimatch: 3.1.2
     dev: false
 
-  /eslint-plugin-markdown/2.2.1_eslint@8.16.0:
-    resolution: {integrity: sha512-FgWp4iyYvTFxPwfbxofTvXxgzPsDuSKHQy2S+a8Ve6savbujey+lgrFFbXQA0HPygISpRYWYBjooPzhYSF81iA==}
-    engines: {node: ^8.10.0 || ^10.12.0 || >= 12.0.0}
+  /eslint-plugin-markdown/3.0.0_eslint@8.16.0:
+    resolution: {integrity: sha512-hRs5RUJGbeHDLfS7ELanT0e29Ocyssf/7kBM+p7KluY5AwngGkDf8Oyu4658/NZSGTTq05FZeWbkxXtbVyHPwg==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
-      eslint: '>=6.0.0'
+      eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
     dependencies:
       eslint: 8.16.0
       mdast-util-from-markdown: 0.8.5
@@ -5271,7 +5271,7 @@ packages:
     dev: false
 
   /ms/2.0.0:
-    resolution: {integrity: sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=}
+    resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==}
     dev: false
 
   /ms/2.1.2:
