@@ -260,7 +260,7 @@ importers:
       rollup: ^2.75.0
       rollup-plugin-esbuild: ^4.9.1
       sort-keys: ^5.0.0
-      superstruct: ^0.15.4
+      superstruct: ^1.0.0
       superstruct-extra: ^0.2.0
       ts-entries: ^1.2.0
       ts-extras: ^0.10.2
@@ -304,7 +304,7 @@ importers:
       rollup: 2.75.3
       rollup-plugin-esbuild: 4.9.1_dgay67aafm6c67qd6qiu2dy75y
       sort-keys: 5.0.0
-      superstruct: 0.15.4
+      superstruct: 1.0.3
       superstruct-extra: link:../superstruct-extra
       ts-entries: 1.2.0
       ts-extras: 0.10.2
@@ -403,7 +403,7 @@ importers:
       '@types/is-uuid': ^1.0.0
       email-validator: ^2.0.4
       is-uuid: ^1.0.2
-      superstruct: ^0.15.4
+      superstruct: ^1.0.0
       type-fest: ^2.13.0
     dependencies:
       '@monots/types': link:../monots__types
@@ -412,7 +412,7 @@ importers:
       is-uuid: 1.0.2
       type-fest: 2.13.0
     devDependencies:
-      superstruct: 0.15.4
+      superstruct: 1.0.3
 
 packages:
 
@@ -6862,8 +6862,9 @@ packages:
       react: 18.1.0
     dev: true
 
-  /superstruct/0.15.4:
-    resolution: {integrity: sha512-eOoMeSbP9ZJChNOm/9RYjE+F36rYR966AAqeG3xhQB02j2sfAUXDp4EQ/7bAOqnlJnuFDB8yvOu50SocvKpUEw==}
+  /superstruct/1.0.3:
+    resolution: {integrity: sha512-8iTn3oSS8nRGn+C2pgXSKPI3jmpm6FExNazNpjvqS6ZUJQCej3PUXEKM8NjHBOs54ExM+LPW/FBRhymrdcCiSg==}
+    engines: {node: '>=14.0.0'}
 
   /supports-color/5.5.0:
     resolution: {integrity: sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==}
