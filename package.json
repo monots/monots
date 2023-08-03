@@ -75,7 +75,7 @@
     "prettier-config-monots": "^0.2.1",
     "tsx": "^3.4.2",
     "typescript": "^4.7.2",
-    "vite": "^2.9.9",
+    "vite": "^2.9.16",
     "vitest": "^0.13.0"
   },
   "packageManager": "pnpm@7.1.7",
