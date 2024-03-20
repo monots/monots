@@ -25,7 +25,7 @@ importers:
       husky: ^8.0.1
       lint-staged: ^12.4.3
       npm-run-all: ^4.1.5
-      prettier: ^2.6.2
+      prettier: ^3.0.0
       prettier-config-monots: ^0.2.1
       tsx: ^3.4.2
       typescript: ^4.7.2
@@ -49,7 +49,7 @@ importers:
       husky: 8.0.1
       lint-staged: 12.4.3
       npm-run-all: 4.1.5
-      prettier: 2.6.2
+      prettier: 3.2.5
       prettier-config-monots: link:packages/prettier-config-monots
       tsx: 3.4.2
       typescript: 4.7.2
@@ -385,17 +385,17 @@ importers:
   packages/prettier-config-monots:
     specifiers:
       '@types/node': ^17.0.35
-      '@types/prettier': ^2.6.1
-      prettier: ^2.6.2
+      '@types/prettier': ^3.0.0
+      prettier: ^3.0.0
       prettier-plugin-packagejson: ^2.2.18
       prettier-plugin-svelte: ^2.7.0
     dependencies:
-      prettier-plugin-packagejson: 2.2.18_prettier@2.6.2
-      prettier-plugin-svelte: 2.7.0_prettier@2.6.2
+      prettier-plugin-packagejson: 2.2.18_prettier@3.2.5
+      prettier-plugin-svelte: 2.7.0_prettier@3.2.5
     devDependencies:
       '@types/node': 17.0.36
-      '@types/prettier': 2.6.3
-      prettier: 2.6.2
+      '@types/prettier': 3.0.0
+      prettier: 3.2.5
 
   packages/superstruct-extra:
     specifiers:
@@ -1220,8 +1220,11 @@ packages:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
     dev: false
 
-  /@types/prettier/2.6.3:
-    resolution: {integrity: sha512-ymZk3LEC/fsut+/Q5qejp6R9O1rMxz3XaRHDV6kX8MrGAhOSPqVARbDi+EZvInBpw+BnCX3TD240byVkOfQsHg==}
+  /@types/prettier/3.0.0:
+    resolution: {integrity: sha512-mFMBfMOz8QxhYVbuINtswBp9VL2b4Y0QqYHwqLz3YbgtfAcat2Dl6Y1o4e22S/OVE6Ebl9m7wWiMT2lSbAs1wA==}
+    deprecated: This is a stub types definition. prettier provides its own type definitions, so you do not need this installed.
+    dependencies:
+      prettier: 3.2.5
     dev: true
 
   /@types/prompts/2.0.14:
@@ -5899,22 +5902,22 @@ packages:
     engines: {node: '>=4'}
     dev: false
 
-  /prettier-plugin-packagejson/2.2.18_prettier@2.6.2:
+  /prettier-plugin-packagejson/2.2.18_prettier@3.2.5:
     resolution: {integrity: sha512-iBjQ3IY6IayFrQHhXvg+YvKprPUUiIJ04Vr9+EbeQPfwGajznArIqrN33c5bi4JcIvmLHGROIMOm9aYakJj/CA==}
     peerDependencies:
       prettier: '>= 1.16.0'
     dependencies:
-      prettier: 2.6.2
+      prettier: 3.2.5
       sort-package-json: 1.57.0
     dev: false
 
-  /prettier-plugin-svelte/2.7.0_prettier@2.6.2:
+  /prettier-plugin-svelte/2.7.0_prettier@3.2.5:
     resolution: {integrity: sha512-fQhhZICprZot2IqEyoiUYLTRdumULGRvw0o4dzl5jt0jfzVWdGqeYW27QTWAeXhoupEZJULmNoH3ueJwUWFLIA==}
     peerDependencies:
       prettier: ^1.16.4 || ^2.0.0
       svelte: ^3.2.0
     dependencies:
-      prettier: 2.6.2
+      prettier: 3.2.5
     dev: false
 
   /prettier/1.19.1:
@@ -5923,9 +5926,9 @@ packages:
     hasBin: true
     dev: false
 
-  /prettier/2.6.2:
-    resolution: {integrity: sha512-PkUpF+qoXTqhOeWL9fu7As8LXsIUZ1WYaJiY/a7McAQzxjk82OF0tibkFXVCDImZtWxbvojFjerkiLb0/q8mew==}
-    engines: {node: '>=10.13.0'}
+  /prettier/3.2.5:
+    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
+    engines: {node: '>=14'}
     hasBin: true
 
   /pretty-format/27.5.1:
