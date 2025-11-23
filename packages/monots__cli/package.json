@@ -31,7 +31,7 @@
     "chalk": "^5.0.1",
     "chalk-template": "^0.4.0",
     "clipanion": "^3.1.0",
-    "esbuild": "^0.14.41",
+    "esbuild": "^0.25.0",
     "esbuild-register": "^3.3.2",
     "ora": "^6.1.0",
     "type-fest": "^2.13.0"
