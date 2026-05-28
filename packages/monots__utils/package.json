@@ -36,7 +36,7 @@
     "debug": "^4.3.4",
     "deepmerge": "^4.2.2",
     "lodash-es": "^4.17.21",
-    "read-pkg-up": "^9.1.0",
+    "read-package-up": "^11.0.0",
     "recursive-copy": "^2.0.14",
     "tiny-invariant": "^1.2.0"
   },
