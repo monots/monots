@@ -44,7 +44,7 @@
     "meow": "^10.1.1",
     "prompts": "^2.4.2",
     "rimraf": "^3.0.2",
-    "tar": "^6.1.11",
+    "tar": "^7.0.0",
     "validate-npm-package-name": "^4.0.0"
   },
   "engines": {
