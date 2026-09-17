@@ -40,11 +40,11 @@
   },
   "devDependencies": {
     "@types/node": "^17.0.35",
-    "@types/prettier": "^2.6.1",
-    "prettier": "^2.6.2"
+    "@types/prettier": "^3.0.0",
+    "prettier": "^3.0.0"
   },
   "peerDependencies": {
-    "prettier": "^2"
+    "prettier": "^3.0.0"
   },
   "publishConfig": {
     "access": "public"
