@@ -29,7 +29,7 @@
     "@monots/types": "^0.1.9",
     "@monots/utils": "^0.5.0",
     "chalk": "^5.0.1",
-    "chalk-template": "^0.4.0",
+    "chalk-template": "^0.5.0",
     "clipanion": "^3.1.0",
     "esbuild": "^0.14.41",
     "esbuild-register": "^3.3.2",
